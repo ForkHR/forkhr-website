@@ -1,38 +1,21 @@
 import { Button } from '@/components/ui/button'
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from "@/components/ui/carousel"
-import Autoplay from "embla-carousel-autoplay"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { ArchiveIcon, BarChartIcon, CheckIcon, Cross1Icon } from '@radix-ui/react-icons'
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "@/components/ui/accordion"
-import { useEffect, useRef } from 'react'
-import { ArrowRight, UserIcon } from 'lucide-react'
+import { CheckIcon } from '@radix-ui/react-icons'
+import { useEffect } from 'react'
+import { ArrowRight, BellIcon, CalendarClock, ClockIcon, FolderIcon, PieChartIcon, StarIcon, UserIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 
 const Section1 = () => {
     return (
-        <div className="max-w-[800px] mx-auto px-4 flex gap-5 min-h-[60vh] flex-col md:flex-row">
+        <div className="max-w-[800px] mx-auto px-6 flex gap-5 min-h-[60vh] flex-col md:flex-row">
             <div className="mx-auto w-full flex max-w-[980px] flex-col gap-3 md:gap-6 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20 flex-1 justify-center">
                 <h1 className="max-w-[350px] md:max-w-[650px] text-5xl font-bold leading-tight tracking-tighter lg:text-6xl xl:text-7xl lg:leading-[1.1]">
                     Workforce<br/>management<br/>made easy<span className="text-primary">.</span>
                 </h1>
                 <div className="flex flex-col gap-1">
-                    <li className="flex items-center text-sm gap-2"><CheckIcon className="w-5 h-5" color="#533afd"/>Manage employee schedules</li>
-                    <li className="flex items-center text-sm gap-2"><CheckIcon className="w-5 h-5" color="#533afd"/>Track clock-in/clock-out hours</li>
-                    <li className="flex items-center text-sm gap-2"><CheckIcon className="w-5 h-5" color="#533afd"/>Manage HR</li>
-                    <li className="flex items-center text-sm gap-2"><CheckIcon className="w-5 h-5" color="#533afd"/>Gather feedback</li>
-                    <li className="flex items-center text-sm gap-2"><CheckIcon className="w-5 h-5" color="#533afd"/>Improve staff retention</li>
+                    <li className="flex items-center text-sm gap-2"><CheckIcon className="w-5 h-5" color="#533afd"/>Schedule & Time Tracking</li>
+                    <li className="flex items-center text-sm gap-2"><CheckIcon className="w-5 h-5" color="#533afd"/>Staff HR & Compliance</li>
+                    <li className="flex items-center text-sm gap-2"><CheckIcon className="w-5 h-5" color="#533afd"/>Boost Retention & Engagement</li>
                 </div>
                 <div className="md:pb-10">
                     <div className="flex w-full space-x-4 rounded">
@@ -62,12 +45,12 @@ const Section1 = () => {
 const Section2 = () => {
     return (
         // Animation fade-in page
-        <div className=" bg-slate-100">
-        <section className="max-w-[800px] mx-auto w-100 px-2 min-h-screen py-20">
+        <div className=" border-t border-slate-200 bg-white fade-in-up border-dashed">
+        <section className="max-w-[800px] mx-auto w-100 px-6 min-h-screen py-20">
             <div className="max-w-[800px] mx-auto">
                 <div className="flex justify-between pb-10 flex-col gap-8">
                     <div className="flex-1">
-                        <h1 className="text-5xl font-semibold">
+                        <h1 className="text-5xl font-semibold underline decoration-primary decoration-4 underline-offset-4 text-pri">
                             Optimize your operations<span className="text-primary">.</span>
                         </h1>
                     </div>
@@ -84,11 +67,11 @@ const Section2 = () => {
                             HOW WE SOLVE IT
                         </div>
                     </div>
-                    <div className="flex justify-between border-b py-6">
+                    <div className="flex gap-4 justify-between border-b py-6">
                         <h5 className="text-xl md:text-2xl flex-1">
                             1. Schedule & Time Tracking
                         </h5>
-                        <div className="text-base md:text-base flex-1 flex flex-col gap-8">
+                        <div className="text-base md:text-base flex-1 flex flex-col gap-2 md:gap-6">
                             <p>
                                 Drag-and-drop scheduling.
                             </p>
@@ -109,11 +92,11 @@ const Section2 = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="flex justify-between border-b py-6">
+                    <div className="flex gap-4 justify-between border-b py-6">
                         <h5 className="text-xl md:text-2xl flex-1">
                             2. Staff HR & Compliance
                         </h5>
-                        <div className="text-base md:text-base flex-1 flex flex-col gap-8">
+                        <div className="text-base md:text-base flex-1 flex flex-col gap-2 md:gap-6">
                             <p>
                                 Paperless onboarding with built-in legal forms like W-4, I-9, and more.
                             </p>
@@ -125,11 +108,11 @@ const Section2 = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="flex justify-between py-6">
+                    <div className="flex gap-4 justify-between py-6">
                         <h5 className="text-xl md:text-2xl flex-1">
                             3. Boost Retention & Engagement
                         </h5>
-                        <div className="text-base md:text-base flex-1 flex flex-col gap-8">
+                        <div className="text-base md:text-base flex-1 flex flex-col gap-2 md:gap-6">
                             <p>
                                 Gather feedback through employee surveys.
                             </p>
@@ -150,11 +133,11 @@ const Section2 = () => {
 
 const Section3 = () => {
     return (
-        <section className="min-h-[75vh] md:py-20 py-10">
-            <div className="max-w-[800px] mx-auto px-4 gap-8">
+        <section className="min-h-[75vh] md:py-20 py-10 border-t border-slate-200 bg-white fade-in-up border-dashed">
+            <div className="max-w-[800px] mx-auto px-6 gap-8">
                 <div className="flex justify-between flex-col gap-8">
                     <div className="text-5xl font-semibold flex-1">
-                        <div className="max-w-[75%] font-semibold">
+                        <div className="max-w-[75%] font-semibold underline decoration-primary decoration-4 underline-offset-4">
                             What we save you<span className="text-primary">.</span>
                         </div>
                     </div>
@@ -231,6 +214,100 @@ const Section3 = () => {
     )
 }
 
+const apps = [
+    {
+        name: "Schedule",
+        title: "Simple scheduling",
+        description: "Create schedule in minutes with our easy-to-use scheduling tool. Drag and drop shifts, assign employees, and manage time off requests. Shift pool with open shifts and shift swaps.", 
+        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><CalendarClock className="w-4 h-4" color="#fff"/></div>,
+        image: "/assets/pebble-1.png"
+    },
+    {
+        name: "Time Tracking",
+        title: "Accurate time tracking",
+        description: "Employee clock-in/clock-out tracking is made easy with our terminal, geo location, and manual clock-in options. Ensure accurate time tracking and reduce time theft.",
+        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><ClockIcon className="w-4 h-4" color="#fff"/></div>,
+    },
+    {
+        name: "Onboarding",
+        title: "Paperless onboarding",
+        description: "Streamline your onboarding process with paperless onboarding. Employees can complete legal forms like W-4, I-9, and more online, ensuring compliance and reducing paperwork.",
+        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><UserIcon className="w-4 h-4" color="#fff"/></div>,
+    },
+    {
+        name: "Documents",
+        title: "Employee documents",
+        description: "Manage employee documents with ease. Upload, request and create documents for your employees. Set expiration reminders and e-signatures to ensure compliance and keep your team organized.",
+        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><FolderIcon className="w-4 h-4" color="#fff"/></div>,
+    },
+    {
+        name: "Surveys",
+        title: "Gather feedback",
+        description: "Gather feedback from your team with employee surveys. Create custom or from our templates survey to get insights into employee satisfaction, engagement, and performance.",
+        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><PieChartIcon className="w-4 h-4" color="#fff"/></div>,
+    },
+    {
+        name: "Announcements",
+        title: "Keep your team informed",
+        description: "Keep your team informed with announcements. Share important updates, news, and events to ensure everyone is on the same page.",
+        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><BellIcon className="w-4 h-4" color="#fff"/></div>,
+    },
+    {
+        name: "Peer Reviews",
+        title: "Foster a culture of recognition",
+        description: "Foster a culture of recognition and appreciation with peer reviews. Encourage employees to give feedback to each other, boosting morale and engagement.",
+        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><StarIcon className="w-4 h-4" color="#fff"/></div>,
+    },
+]
+
+const Section4 = () => {
+    return (
+        <div className="border-t border-slate-200 fade-in-up border-dashed">
+            {apps.map((app, index) => (
+            <div className={`max-w-[800px] mx-auto px-6 flex gap-5 min-h-[90vh] flex-col md:flex-row border-l border-r border-dashed border-slate-200${index === 0 ? "" : " border-t"}`}
+                key={index}
+            >
+                <div className="mx-auto w-full flex max-w-[980px] flex-col gap-3 md:gap-6 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20 flex-1 justify-center">
+                    <div className="text-base font-bold">
+                        <div className="max-w-[75%] text-slate-800 flex gap-3 items-center">
+                            {app.icon} {app.name}
+                        </div>
+                    </div>
+                    <div className="text-5xl font-semibold">
+                        <div className="max-w-[75%] font-semibold">
+                            {app.title}
+                        </div>
+                    </div>
+                    <p className="text-base md:text-xl">
+                        {app.description}
+                    </p>
+                    <div className="md:pb-10">
+                        <div className="flex w-full space-x-4 rounded">
+                            <Link to="https://app.forkhr.com/register" target="_blank">
+                                <Button className="px-6">
+                                    Try {app.name}
+                                    <ArrowRight className="w-4 h-4 ms-2"/>
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex-1">
+
+                </div>
+                {/* <div className="overflow-hidden max-w-[680px] flex items-center justify-center flex-1 bg-no-repeat bg-contain bg-right bg-[url(/assets/pebble-3.png)]">
+                    <img
+                        alt="img-1"
+                        src="/assets/asset-1.png"
+                        draggable="false"
+                    />
+                </div> */}
+            </div>
+            ))}
+        </div>
+    )
+}
+
 const Home = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -240,8 +317,9 @@ const Home = () => {
     return (
         <main className="fade-in-up">
             <Section1/>
-            <Section2/>
             <Section3/>
+            <Section2/>
+            <Section4/>
         </main>
     )
 }
