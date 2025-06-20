@@ -31,7 +31,7 @@ const Section1 = () => {
                     Diverse and reliable supply management for your business.
                 </span>
                 <div className="flex w-full space-x-4 md:pb-10">
-                    <Link to="https://app.emplorex.com" target="_blank">
+                    <Link to="https://app.forkhr.com" target="_blank">
                         <Button>
                             Get started
                         </Button>
@@ -236,7 +236,7 @@ const Section4 = () => {
                             <div className="flex flex-col gap-8 bg-white">
                                 <div className="flex flex-col gap-3">
                                     <h4 className="text-lg font-semibold">
-                                        Before Emplorex
+                                        Before ForkHR
                                     </h4>
                                     <ul className="text-muted-foreground list-disc">
                                         <li className="flex items-center gap-2"><Cross1Icon className="w-6 h-6" color="#E54D2E"/>Manually emailing orders to suppliers</li>
@@ -248,7 +248,7 @@ const Section4 = () => {
                                 </div>
                                 <div className="flex flex-col gap-3">
                                     <h4 className="text-lg font-semibold">
-                                        After Emplorex
+                                        After ForkHR
                                     </h4>
                                     <ul className="text-muted-foreground list-disc">
                                         <li className="flex items-center gap-2"><CheckIcon className="w-6 h-6" color="#3DD68C"/>Automated order placement</li>
@@ -283,7 +283,7 @@ const Faq = () => {
                         How to add a new vendor?
                     </AccordionTrigger>
                     <AccordionContent>
-                        Go to <Link className="underline" target="_blank" to="https://app.emplorex.com/supply/marketplace">Marketplace</Link> and click on the "Add vendor" button.
+                        Go to <Link className="underline" target="_blank" to="https://app.forkhr.com/supply/marketplace">Marketplace</Link> and click on the "Add vendor" button.
                     </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-2">
@@ -291,7 +291,7 @@ const Faq = () => {
                         How to remove a vendor?
                     </AccordionTrigger>
                     <AccordionContent>
-                        Go to <Link className="underline" target="_blank" to="https://app.emplorex.com/supply/marketplace">Marketplace</Link> and click on the "Remove vendor" button.
+                        Go to <Link className="underline" target="_blank" to="https://app.forkhr.com/supply/marketplace">Marketplace</Link> and click on the "Remove vendor" button.
                     </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-3">

@@ -8,26 +8,26 @@ const PrivacyPolicy = () => {
     }, [])
 
     return (
-        <main className="md:container px-2 py-10 md:py-20 min-h-screen fade-in-up overflow-hidden">
-            <div className="text-5xl md:text-8xl font-semibold">
-                Privacy Policy
+        <main className="max-w-[800px] mx-auto w-full px-4 py-10 md:py-20 min-h-screen fade-in-up overflow-hidden">
+            <div className="text-5xl md:text-7xl font-semibold">
+                Privacy Policy<span className="text-primary">.</span>
             </div>
             <div className="text-xl mt-10">
-                Effective  as of July 29, 2023 
+                Effective as of Jun 20, 2025
             </div>
             <div className="py-10">
             <div>
                 <p>
-                    This Privacy Policy describes the privacy practices of Emplorex Inc. and its affiliates (“Emplorex”, “we”, “our” or “us”) in relation to the use of our websites, applications, products, and services (collectively, the “Services”).
+                    This Privacy Policy describes the privacy practices of ForkHR Inc. and its affiliates (“ForkHR”, “we”, “our” or “us”) in relation to the use of our websites, applications, products, and services (collectively, the “Services”).
                 </p>
                 <p>
-                    At <strong>Emplorex Inc.</strong>, we take your privacy seriously. Please read this Privacy Policy to learn how we treat your personal data.
+                    At <strong>ForkHR Inc.</strong>, we take your privacy seriously. Please read this Privacy Policy to learn how we treat your personal data.
                     <br/>
                     By using or accessing our Services in any manner, you acknowledge that you accept the practices and policies outlined
                     below, and you hereby consent that we will collect, use, and share your information as described in this Privacy Policy.
                 </p>
                 <br/>
-                <p>Remember that your use of Emplorex's Services is at all times subject to our Terms of Use which incorporates this Privacy Policy. Any terms we use in this Policy without defining them have the definitions given to them in the Terms of Use.</p>
+                <p>Remember that your use of ForkHR's Services is at all times subject to our Terms of Use which incorporates this Privacy Policy. Any terms we use in this Policy without defining them have the definitions given to them in the Terms of Use.</p>
                 <br/>
 
                 <p>You may print a copy of this Privacy Policy. If you have a disability, you may access this Privacy Policy in an alternative format by contacting support@forkhr.com</p>
@@ -100,11 +100,11 @@ const PrivacyPolicy = () => {
                         <li>Marketing and selling the Services.</li>
                         <li>Showing you advertisements, including interest-based or online behavioral advertising.</li>
                         <li>Corresponding with You</li>
-                        <li>Responding to correspondence that we receive from you, contacting you when necessary or requested, and sending you information about Emplorex or the Services.</li>
+                        <li>Responding to correspondence that we receive from you, contacting you when necessary or requested, and sending you information about ForkHR or the Services.</li>
                         <li>Sending emails and other communications according to your preferences or that display content that we think will interest you.</li>
                         <li>Meeting Legal Requirements and Enforcing Legal Terms</li>
                         <li>Fulfilling our legal obligations under applicable law, regulation, court order or other legal process, such as preventing, detecting and investigating security incidents and potentially illegal or prohibited activities.</li>
-                        <li>Protecting the rights, property, or safety of you, Emplorex or another party.</li>
+                        <li>Protecting the rights, property, or safety of you, ForkHR or another party.</li>
                         <li>Enforcing any agreements with you.</li>
                         <li>Responding to claims that any posting or other content violates third-party rights.</li>
                         <li>Resolving disputes.</li>
@@ -227,7 +227,7 @@ const PrivacyPolicy = () => {
                 <br/>
                 <div>
                     <strong>Changes to this Privacy Policy</strong>
-                    <p>We’re constantly trying to improve our Services, so we may need to change this Privacy Policy from time to time, but we will alert you to any such changes by placing a notice on the Emplorex website, by sending you an email and/or by some other means. Please
+                    <p>We’re constantly trying to improve our Services, so we may need to change this Privacy Policy from time to time, but we will alert you to any such changes by placing a notice on the ForkHR website, by sending you an email and/or by some other means. Please
                         note that if you’ve opted not to receive legal notice emails from us (or you haven’t provided us with your email address), those legal notices will still govern your use of the Services, and you are still responsible for reading and understanding
                         them. If you use the Services after any changes to the Privacy Policy have been posted, that means you agree to all of the changes. Use of information we collect is subject to the Privacy Policy in effect at the time such information is collected.</p>
                     <br/>

@@ -18,7 +18,7 @@ const Login = () => {
                     Supply, Manage, Sell.
                 </h1>
                 <p className="font-semibold text-muted-foreground">
-                    Sing into your Emplorex account
+                    Sing into your ForkHR account
                 </p>
             </div>
             <div className="flex gap-10 flex-wrap flex-1 w-full">
@@ -31,11 +31,11 @@ const Login = () => {
                             Supply & Manage Your Business
                         </h2>
                         <p className="text-muted-foreground py-4 max-w-[350px]">
-                            Supply your business with the best vendors and manage your team with Emplorex operations.
+                            Supply your business with the best vendors and manage your team with ForkHR operations.
                         </p>
-                        <Link to="https://app.emplorex.com" target="_blank">
+                        <Link to="https://app.forkhr.com" target="_blank">
                             <Button>
-                                Open Emplorex operations
+                                Open ForkHR operations
                                 <ArrowRight className="w-4 h-4 ms-2"/>
                             </Button>
                         </Link>

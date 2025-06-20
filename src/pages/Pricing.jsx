@@ -94,7 +94,7 @@ const Section3 = () => {
                         Per user, billed monthly
                     </div>
                     <div className="pt-10">
-                        <Link to="https://app.emplorex.com/register">
+                        <Link to="https://app.forkhr.com/register">
                             <Button
                                 className="w-full"
                             >

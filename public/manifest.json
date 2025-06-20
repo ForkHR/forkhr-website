@@ -1,7 +1,7 @@
 {
-  "name": "Emplorex",
-  "short_name": "Emplorex",
-  "id": "emplorex.com",
+  "name": "ForkHR",
+  "short_name": "ForkHR",
+  "id": "forkhr.com",
   "start_url": "/",
   "background_color": "#ffffff",
   "display": "standalone",
@@ -15,11 +15,11 @@
     "business",
     "SAAS"
   ],
-  "description": "Emplorex is an innovative marketplace that empowers small businesses to connect, collaborate, and thrive. We provide a platform for your whole business operation, from hiring and payroll to inventory and supplying your business. We are the one-stop for all your business needs.",
+  "description": "ForkHR is an innovative marketplace that empowers small businesses to connect, collaborate, and thrive. We provide a platform for your whole business operation, from hiring and payroll to inventory and supplying your business. We are the one-stop for all your business needs.",
   "related_applications": [{
-    "id": "emplorex.com",
+    "id": "forkhr.com",
     "platform": "webapp",
-    "url": "https://emplorex.com/manifest.json"
+    "url": "https://forkhr.com/manifest.json"
   }],
   "icons": [
     {

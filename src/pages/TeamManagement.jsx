@@ -31,7 +31,7 @@ const Section1 = () => {
                     All team management tools in one place. No more hassle in managing your team.
                 </span>
                 <div className="flex w-full space-x-4 md:pb-10">
-                    <Link to="https://app.emplorex.com" target="_blank">
+                    <Link to="https://app.forkhr.com" target="_blank">
                         <Button>
                             Get started
                         </Button>
@@ -66,7 +66,7 @@ const Section2 = () => {
                     All essential team management tools in one place
                 </div>
                 <div className="text-xl max-w-[550px]">
-                    Emplorex offers a wide range of team management tools to help you manage your team efficiently.
+                    ForkHR offers a wide range of team management tools to help you manage your team efficiently.
                 </div>
             </div>
         </div>
@@ -255,7 +255,7 @@ const Section4 = () => {
                             <div className="flex flex-col gap-8 bg-white">
                                 <div className="flex flex-col gap-3">
                                     <h4 className="text-lg font-semibold">
-                                        Before Emplorex
+                                        Before ForkHR
                                     </h4>
                                     <ul className="text-muted-foreground list-disc pl-5">
                                         <li className="flex items-center gap-2"><Cross1Icon className="w-6 h-6" color="#E54D2E"/>Manually emailing orders to suppliers</li>
@@ -267,7 +267,7 @@ const Section4 = () => {
                                 </div>
                                 <div className="flex flex-col gap-3">
                                     <h4 className="text-lg font-semibold">
-                                        After Emplorex
+                                        After ForkHR
                                     </h4>
                                     <ul className="text-muted-foreground list-disc pl-5">
                                         <li className="flex items-center gap-2"><CheckIcon className="w-6 h-6" color="#3DD68C"/>Automated standing order placement</li>
@@ -395,7 +395,7 @@ const Faq = () => {
                         How secure is the data?
                     </AccordionTrigger>
                     <AccordionContent>
-                        Emplorex uses the latest security measures to protect your data. All data is encrypted and stored securely. They can be accessed only by you and the management.
+                        ForkHR uses the latest security measures to protect your data. All data is encrypted and stored securely. They can be accessed only by you and the management.
                     </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-2">
@@ -464,7 +464,7 @@ const Faq = () => {
                         How secure are the documents?
                     </AccordionTrigger>
                     <AccordionContent>
-                        Emplorex uses the latest security measures to protect your data. All documents stored securely and can be accessed only by you and the management.
+                        ForkHR uses the latest security measures to protect your data. All documents stored securely and can be accessed only by you and the management.
                     </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-2">

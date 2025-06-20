@@ -7,7 +7,7 @@ import { Link, NavLink } from 'react-router-dom'
 const Footer = () => {
     return (
         <footer className="text-center py-20 border-t-slate-200 border-t bg-white border-dashed">
-            <div className="max-w-[800px] mx-auto flex flex-col">
+            <div className="max-w-[800px] mx-auto w-full flex flex-col">
                 <div className="flex gap-4 justify-between md:pb-20 md:flex-row flex-col">
                     <div className="flex flex-col gap-4 items-start">
                         <div className="text-base font-semibold px-3 text-neutral-500">
@@ -28,14 +28,6 @@ const Footer = () => {
                                     className="text-black"
                                 >
                                     Time cards
-                                </Button>
-                            </Link>
-                            <Link to="/timecards">
-                                <Button
-                                    variant="link"
-                                    className="text-black"
-                                >
-                                    Time off requests
                                 </Button>
                             </Link>
                             <Link to="/onboarding">

@@ -93,7 +93,7 @@ const Header = () => {
                                     >
                                         <Button className="w-full text-base justify-start" variant="ghost"><BackpackIcon className="w-6 h-6 me-2" />Request a demo</Button>
                                     </Link>
-                                    <Link to="https://app.emplorex.com"
+                                    <Link to="https://app.forkhr.com"
                                         target="_blank"
                                         onClick={() => setOpen(false)}
                                         className="flex-1"
@@ -106,7 +106,7 @@ const Header = () => {
                     : 
                         <> */}
                             <NavLink
-                                to="https://app.emplorex.com/login"
+                                to="https://app.forkhr.com/login"
                                 target="_blank"
                             >
                                 <Button
@@ -117,7 +117,7 @@ const Header = () => {
                                     <ArrowRight className="w-4 h-4 ms-2" />
                                 </Button>
                             </NavLink>
-                            <NavLink to="https://app.emplorex.com/register"
+                            <NavLink to="https://app.forkhr.com/register"
                                 target="_blank"
                             >
                                 <Button>

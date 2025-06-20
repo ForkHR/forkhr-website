@@ -1,7 +1,7 @@
-# Emplorex Website
+# ForkHR Website
 
-Welcome to the Emplorex website repository! This repository contains the source code and assets for the Emplorex main website.
+Welcome to the ForkHR website repository! This repository contains the source code and assets for the ForkHR main website.
 
 ## License
 
-Emplorex Inc. &copy; 2024 - All rights reserved
+ForkHR Inc. &copy; 2024 - All rights reserved

@@ -24,7 +24,7 @@ const Section1 = () => {
     return (
         <div className="max-w-[800px] mx-auto px-4 flex gap-5 min-h-[60vh] flex-col md:flex-row">
             <div className="mx-auto w-full flex max-w-[980px] flex-col gap-3 md:gap-6 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20 flex-1 justify-center">
-                <h1 className="max-w-[350px] md:max-w-[650px] text-5xl font-bold leading-tight tracking-tighter lg:text-6xl xl:text-6xl lg:leading-[1.1]">
+                <h1 className="max-w-[350px] md:max-w-[650px] text-5xl font-bold leading-tight tracking-tighter lg:text-6xl xl:text-7xl lg:leading-[1.1]">
                     Workforce<br/>management<br/>made easy<span className="text-primary">.</span>
                 </h1>
                 <div className="flex flex-col gap-1">
@@ -62,6 +62,7 @@ const Section1 = () => {
 const Section2 = () => {
     return (
         // Animation fade-in page
+        <div className=" bg-slate-100">
         <section className="max-w-[800px] mx-auto w-100 px-2 min-h-screen py-20">
             <div className="max-w-[800px] mx-auto">
                 <div className="flex justify-between pb-10 flex-col gap-8">
@@ -85,79 +86,86 @@ const Section2 = () => {
                     </div>
                     <div className="flex justify-between border-b py-6">
                         <h5 className="text-xl md:text-2xl flex-1">
-                            1. Time tracking and scheduling
+                            1. Schedule & Time Tracking
                         </h5>
-                        <div className="text-base md:text-base flex-1 flex flex-col gap-8 text-muted-foreground">
+                        <div className="text-base md:text-base flex-1 flex flex-col gap-8">
                             <p>
-                                Schedule your team in minutes. No more manual scheduling. No more missed shifts.
+                                Drag-and-drop scheduling.
                             </p>
                             <p>
-                                Manage your team availability. Employees can set their availability, and you can assign shifts accordingly.
+                                Tasks, breaks, and shift notes.
                             </p>
                             <p>
-                                Allow your employees to swap shifts with each other or pick up open shifts. Flexibility for your team, and less hassle for you.
+                                Weekly availability management.
                             </p>
                             <p>
-                                Track your team clock-in/clock-out hours. No more manual time tracking. No more missed hours.
+                                Open shifts and shift swaps.
                             </p>
                             <p>
-                                Time off requests made easy. Employees can request time off, and you can approve or deny requests in real-time.
+                                Time off requests.
+                            </p>
+                            <p>
+                                Clock-in/clock-out tracking. Terminal, geo location, and manual clock-in.
                             </p>
                         </div>
                     </div>
                     <div className="flex justify-between border-b py-6">
                         <h5 className="text-xl md:text-2xl flex-1">
-                            2. Onboarding and documents
+                            2. Staff HR & Compliance
                         </h5>
-                        <div className="text-base md:text-base flex-1 flex flex-col gap-8 text-muted-foreground">
+                        <div className="text-base md:text-base flex-1 flex flex-col gap-8">
                             <p>
-                                Onboard new employees in minutes. No more manual onboarding. No more missed documents.
+                                Paperless onboarding with built-in legal forms like W-4, I-9, and more.
                             </p>
                             <p>
-                                Store your team documents in one place. Secure and easy to access.
+                                Document management for employee files.
                             </p>
                             <p>
-                                E-sign documents with ease. No more paper documents. No more manual signatures.
+                                E-signatures and expiration reminders.
                             </p>
                         </div>
                     </div>
-                    <div className="flex justify-between border-b py-6">
+                    <div className="flex justify-between py-6">
                         <h5 className="text-xl md:text-2xl flex-1">
-                            3. Feedback and surveys
+                            3. Boost Retention & Engagement
                         </h5>
-                        <div className="text-base md:text-base flex-1 flex flex-col gap-8 text-muted-foreground">
+                        <div className="text-base md:text-base flex-1 flex flex-col gap-8">
                             <p>
-                                Survey your team in minutes. No more missed feedback.
+                                Gather feedback through employee surveys.
                             </p>
                             <p>
-                                News? Announcements made easy. Keep your team informed and track their engagement.
+                                Announcements to keep your team informed.
                             </p>
                             <p>
-                                Staff rating and reviews made easy. Understand your team performance and improve your operations.
+                                Peer reviews to foster a culture of recognition and appreciation.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        </div>
     )
 }
 
-const Section6 = () => {
+const Section3 = () => {
     return (
-        <section className="min-h-[75vh] md:py-20 py-10 bg-slate-100">
+        <section className="min-h-[75vh] md:py-20 py-10">
             <div className="max-w-[800px] mx-auto px-4 gap-8">
                 <div className="flex justify-between flex-col gap-8">
-                    <div className="text-4xl flex-1">
+                    <div className="text-5xl font-semibold flex-1">
                         <div className="max-w-[75%] font-semibold">
-                            Build workforce schedules in a few easy clicks<span className="text-primary">.</span>
+                            What we save you<span className="text-primary">.</span>
                         </div>
                     </div>
                     <div className="flex flex-col gap-8">
                         <div className="flex flex-col flex-1">
-                            <div className="flex flex-col border-b pb-6 gap-4">
+                            <div className="flex flex-col border-b pb-8 gap-4">
+                                <div className="text-6xl">
+                                    37%
+                                </div>
                                 <div className="text-2xl font-semibold">
-                                    Easy scheduling
+                                    Faster scheduling
                                 </div>
                                 <div className="text-xl">
                                     Create schedules in minutes with our easy-to-use scheduling tool. Drag and drop shifts, assign employees, and manage time off requests.
@@ -165,32 +173,54 @@ const Section6 = () => {
                             </div>
                         </div>
                         <div className="flex flex-col flex-1">
-                            <div className="flex flex-col border-b pb-6 gap-4">
+                            <div className="flex flex-col border-b pb-8 gap-4">
+                                <div className="text-6xl">
+                                    52%
+                                </div>
                                 <div className="text-2xl font-semibold">
-                                    Real-time updates
+                                    Less time theft
                                 </div>
                                 <div className="text-xl">
-                                    Keep your team informed with real-time updates. No more missed shifts or last-minute changes. Everyone stays in the loop.
+                                    Employee clock-in/clock-out tracking is made easy with our terminal, geo location, and manual clock-in options. Ensure accurate time tracking and reduce time theft.
                                 </div>
                             </div>
                         </div>
                         <div className="flex flex-col flex-1">
-                            <div className="flex flex-col border-b pb-6 gap-4">
+                            <div className="flex flex-col border-b pb-8 gap-4">
+                                <div className="text-6xl">
+                                    99%
+                                </div>
                                 <div className="text-2xl font-semibold">
-                                    Availability management
+                                    Onboarding doc completion
                                 </div>
                                 <div className="text-xl">
-                                    Manage employee weekly availability with ease. Employees can set their availability, and you can assign shifts accordingly.
+                                    Streamline your onboarding process with paperless onboarding. Employees can complete legal forms like W-4, I-9, and more online, ensuring compliance and reducing paperwork.
                                 </div>
                             </div>
                         </div>
                         <div className="flex flex-col flex-1">
-                            <div className="flex flex-col border-b pb-6 gap-4">
+                            <div className="flex flex-col border-b pb-8 gap-4">
+                                <div className="text-6xl">
+                                    2x
+                                </div>
                                 <div className="text-2xl font-semibold">
-                                    Open shifts and shift swaps
+                                    More staff announcement reads & engagement
                                 </div>
                                 <div className="text-xl">
-                                    Allow employees to swap shifts with each other or pick up open shifts. Flexibility for your team, and less hassle for you. 
+                                    Keep your team informed with announcements. Share important updates, news, and events to ensure everyone is on the same page.
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex flex-col flex-1">
+                            <div className="flex flex-col pb-8 gap-4">
+                                <div className="text-6xl">
+                                    3x
+                                </div>
+                                <div className="text-2xl font-semibold">
+                                    More performance feedback
+                                </div>
+                                <div className="text-xl">
+                                    Foster a culture of recognition and appreciation with peer reviews. Encourage employees to give feedback to each other, boosting morale and engagement.
                                 </div>
                             </div>
                         </div>
@@ -210,8 +240,8 @@ const Home = () => {
     return (
         <main className="fade-in-up">
             <Section1/>
-            {/* <Section6/> */}
             <Section2/>
+            <Section3/>
         </main>
     )
 }
