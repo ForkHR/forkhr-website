@@ -317,8 +317,8 @@ const Home = () => {
     return (
         <main className="fade-in-up">
             <Section1/>
-            <Section3/>
             <Section2/>
+            <Section3/>
             <Section4/>
         </main>
     )
