@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const Scheduler = () => {
     return (
-            <div className="max-w-[800px] mx-auto px-6 flex gap-5 min-h-[60vh] flex-col md:flex-row">
+            <div className="max-w-[800px] fade-in-up mx-auto px-6 flex gap-5 min-h-[60vh] flex-col md:flex-row">
                 <div className="mx-auto w-full flex max-w-[980px] flex-col gap-3 md:gap-6 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20 flex-1 justify-center">
                     <h1 className="max-w-[350px] md:max-w-[650px] text-5xl font-bold leading-tight tracking-tighter lg:text-6xl xl:text-7xl lg:leading-[1.1]">
                         Schedule<br/>your team<br/>with ease<span className="text-primary">.</span>
