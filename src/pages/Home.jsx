@@ -225,7 +225,7 @@ const apps = [
     },
     {
         name: "Time Tracking",
-        title: "Accurate time tracking",
+        title: "Time tracking",
         to: '/time-tracking',
         description: "Employee clock-in/clock-out tracking is made easy with our terminal, geo location, and manual clock-in options. Ensure accurate time tracking and reduce time theft.",
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><ClockIcon className="w-4 h-4" color="#fff"/></div>,
@@ -233,35 +233,35 @@ const apps = [
     {
         name: "Onboarding",
         title: "Paperless onboarding",
-        to: '/onboarding',
+        to: '/staff-hr',
         description: "Streamline your onboarding process with paperless onboarding. Employees can complete legal forms like W-4, I-9, and more online, ensuring compliance and reducing paperwork.",
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><UserIcon className="w-4 h-4" color="#fff"/></div>,
     },
     {
         name: "Documents",
         title: "Employee documents",
-        to: "/documents",
+        to: "/staff-hr",
         description: "Manage employee documents with ease. Upload, request and create documents for your employees. Set expiration reminders and e-signatures to ensure compliance and keep your team organized.",
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><FolderIcon className="w-4 h-4" color="#fff"/></div>,
     },
     {
         name: "Surveys",
         title: "Gather feedback",
-        to: "/surveys",
+        to: "/retention-and-engagement",
         description: "Gather feedback from your team with employee surveys. Create custom or from our templates survey to get insights into employee satisfaction, engagement, and performance.",
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><PieChartIcon className="w-4 h-4" color="#fff"/></div>,
     },
     {
         name: "Announcements",
         title: "Keep your team informed",
-        to: "/announcements",
+        to: "/retention-and-engagement",
         description: "Keep your team informed with announcements. Share important updates, news, and events to ensure everyone is on the same page.",
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><BellIcon className="w-4 h-4" color="#fff"/></div>,
     },
     {
         name: "Peer Reviews",
         title: "Foster a culture of recognition",
-        to: "/reviews",
+        to: "/retention-and-engagement",
         description: "Foster a culture of recognition and appreciation with peer reviews. Encourage employees to give feedback to each other, boosting morale and engagement.",
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><StarIcon className="w-4 h-4" color="#fff"/></div>,
     },
@@ -282,7 +282,7 @@ const Section4 = () => {
                     </div>
                     <div className="text-5xl font-semibold">
                         <div className="max-w-[75%] font-semibold">
-                            {app.title}
+                            {app.title}<span className="text-primary">.</span>
                         </div>
                     </div>
                     <p className="text-base md:text-xl">

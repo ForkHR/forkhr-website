@@ -143,7 +143,7 @@ const Section3 = () => {
     )
 }
 
-const Scheduler = () => {
+const StaffHr = () => {
 
     useEffect(() => {
         window.scrollTo(0,0)
@@ -190,4 +190,4 @@ const Scheduler = () => {
     )
 }
 
-export default Scheduler
+export default StaffHr

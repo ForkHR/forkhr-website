@@ -13,7 +13,7 @@ import {
 
 const apps = [
     {
-        name: "Schedule",
+        name: "Scheduler",
         title: "Simple scheduling",
         description: "Create schedule in minutes with our easy-to-use scheduling tool. Drag and drop shifts, assign employees, and manage time off requests. Shift pool with open shifts and shift swaps.", 
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-slate-200"><CalendarClock className="w-4 h-4"/></div>,
@@ -27,39 +27,19 @@ const apps = [
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-slate-200"><ClockIcon className="w-4 h-4"/></div>,
         to: '/time-tracking'
     },
-]
-
-const apps2 = [
     {
-        name: "Onboarding",
-        title: "Paperless onboarding",
-        description: "Streamline your onboarding process with paperless onboarding. Employees can complete legal forms like W-4, I-9, and more online, ensuring compliance and reducing paperwork.",
-        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-slate-200"><UserIcon className="w-4 h-4"/></div>,
-        to: '/onboarding'
-    },
-    {
-        name: "Documents",
-        title: "Employee documents",
-        description: "Manage employee documents with ease. Upload, request and create documents for your employees. Set expiration reminders and e-signatures to ensure compliance and keep your team organized.",
+        name: "Staff HR",
+        title: "Employee management",
+        description: "Manage employee information, ensure all legal documents are completed, and up to date.",
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-slate-200"><FolderIcon className="w-4 h-4"/></div>,
-        to: '/documents'
-    },
-]
-
-const apps3 = [
-    {
-        name: "Announcements",
-        title: "Keep your team informed",
-        description: "Keep your team informed with announcements. Share important updates, news, and events to ensure everyone is on the same page.",
-        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-slate-200"><BellIcon className="w-4 h-4"/></div>,
-        to: '/announcements'
+        to: '/staff-hr'
     },
     {
-        name: "Peer Reviews",
-        title: "Foster a culture of recognition",
-        description: "Foster a culture of recognition and appreciation with peer reviews. Encourage employees to give feedback to each other, boosting morale and engagement.",
-        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-slate-200"><StarIcon className="w-4 h-4"/></div>,
-        to: '/reviews'
+        name: "Retention & Engagement",
+        title: "Employee engagement",
+        description: "Engage your employees with our retention and engagement tools. Create surveys, polls, and feedback forms to understand employee satisfaction and improve retention.",
+        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-slate-200"><UserIcon className="w-4 h-4"/></div>,
+        to: '/retention-and-engagement'
     },
 ]
 
@@ -121,69 +101,8 @@ const Header = () => {
                                     Features
                                 </NavigationMenuTrigger>
                                 <NavigationMenuContent>
-                                    {/* <div className="text-sm font-semibold pt-3 pb-2 px-3">
-                                        Schedule & Time Tracking
-                                    </div> */}
-                                    <ul className="grid md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] px-2 pt-2">
+                                    <ul className="grid md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] p-2">
                                         {apps.map((app, index) => (
-                                            <li key={index} className="row-span-3">
-                                                <NavigationMenuLink asChild>
-                                                    <Link
-                                                        className="from-muted/50 to-muted hover:text-primary flex h-full w-full flex-col justify-end rounded-lg bg-linear-to-b p-3 no-underline outline-hidden select-none hover:bg-slate-100"
-                                                        to={app.to}
-                                                    >
-                                                        <div className="flex gap-5">
-                                                            <div className="h-6 w-6 rounded-full bg-slate-200">
-                                                                {app.icon}
-                                                            </div>
-                                                            <div>
-                                                                <div className="text-base font-medium">
-                                                                    {app.name}
-                                                                </div>
-                                                                <div className="text-xs text-muted-foreground">
-                                                                    {app.title}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </Link>
-                                                </NavigationMenuLink>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    {/* <div className="text-sm font-semibold pt-3 pb-2 px-3">
-                                        Staff HR & Compliance
-                                    </div> */}
-                                    <ul className="grid md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] px-2">
-                                        {apps2.map((app, index) => (
-                                            <li key={index} className="row-span-3">
-                                                <NavigationMenuLink asChild>
-                                                    <Link
-                                                        className="from-muted/50 to-muted hover:text-primary flex h-full w-full flex-col justify-end rounded-lg bg-linear-to-b p-3 no-underline outline-hidden select-none hover:bg-slate-100"
-                                                        to={app.to}
-                                                    >
-                                                        <div className="flex gap-5">
-                                                            <div className="h-6 w-6 rounded-full bg-slate-200">
-                                                                {app.icon}
-                                                            </div>
-                                                            <div>
-                                                                <div className="text-base font-medium">
-                                                                    {app.name}
-                                                                </div>
-                                                                <div className="text-xs text-muted-foreground">
-                                                                    {app.title}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </Link>
-                                                </NavigationMenuLink>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    {/* <div className="text-sm font-semibold pt-3 pb-2 px-3">
-                                        Retention & Engagement
-                                    </div> */}
-                                    <ul className="grid md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] px-2 pb-2">
-                                        {apps3.map((app, index) => (
                                             <li key={index} className="row-span-3">
                                                 <NavigationMenuLink asChild>
                                                     <Link
