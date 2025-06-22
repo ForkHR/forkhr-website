@@ -136,7 +136,7 @@ const Section3 = () => {
                 <div className="flex justify-between flex-col gap-20">
                     <div className="md:text-5xl text-3xl font-semibold flex-1 md:px-8 px-4">
                         <div className="md:max-w-[75%] font-semibold underline decoration-primary decoration-4 underline-offset-4 decoration-dashed">
-                            What we save you<span className="text-primary">.</span>
+                            What we improve<span className="text-primary">.</span>
                         </div>
                     </div>
                     <div className="flex flex-col gap-8">
