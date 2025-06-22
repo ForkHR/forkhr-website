@@ -16,7 +16,7 @@ import StaffHr from "./pages/StaffHr"
 function App() {
   return (
     <Router>
-      <div className="relative flex min-h-screen flex-col bg-background">
+      <div className="relative flex min-h-screen flex-col bg-background px-2 md:px-0">
         <Header/>
         <div className="flex-1">
           <Routes>
