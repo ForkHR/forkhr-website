@@ -146,7 +146,7 @@ const Header = () => {
                                     </Button>
                                 </DrawerTrigger>
                                 <DrawerContent
-                                    className="min-h-[calc(100vh-64px-env(safe-area-inset-bottom))]"
+                                    className="min-h-full"
                                 >
                                     <div className="p-4 flex justify-between items-center">
                                         <svg height="28px" viewBox="0 0 207 80" fill="none" xmlns="http://www.w3.org/2000/svg">

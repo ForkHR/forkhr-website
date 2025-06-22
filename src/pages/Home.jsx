@@ -22,6 +22,7 @@ const Section1 = () => {
                         <Link to="https://app.forkhr.com/register" target="_blank">
                             <Button className="md:px-8 px-4">
                                 Free trial
+                                <ArrowRight className="w-4 h-4 ms-2"/>
                             </Button>
                         </Link>
                     </div>
@@ -45,7 +46,7 @@ const Section1 = () => {
 const Section2 = () => {
     return (
         // Animation fade-in page
-        <div className=" border-t border-slate-200 bg-white fade-in-up border-dashed">
+        <div className=" border-t border-slate-200 fade-in-up border-dashed">
         <section className="max-w-[800px] mx-auto w-100 py-10 md:py-20 border-l border-r border-dashed border-slate-200">
             <div className="flex justify-between md:px-8 px-4 pb-10 flex-col gap-8 md:max-w-[75%]">
                 <div className="flex-1">
@@ -131,7 +132,7 @@ const Section2 = () => {
 
 const Section3 = () => {
     return (
-        <section className="border-t border-slate-200 bg-white fade-in-up border-dashed">
+        <section className="border-t border-slate-200 fade-in-up border-dashed">
             <div className="max-w-[800px] mx-auto w-100 py-20 border-l border-r border-slate-200 border-dashed">
                 <div className="flex justify-between flex-col gap-20">
                     <div className="md:text-5xl text-3xl font-semibold flex-1 md:px-8 px-4">
@@ -322,12 +323,14 @@ const Home = () => {
     }, [])
 
     return (
-        <main className="fade-in-up">
+        <>
+        <main className="fade-in-up z-10 relative">
             <Section1/>
             <Section2/>
             <Section3/>
             <Section4/>
         </main>
+        </>
     )
 }
 
