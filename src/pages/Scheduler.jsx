@@ -23,7 +23,7 @@ const Section2 = () => {
                 <div className="flex">
                     <div className="flex-1">
                         <div className="flex gap-3 flex-col py-6">
-                            <SendIcon className="w-6 h-6 text-primary mx-8"/>
+                            <SendIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base md:px-8 px-4 font-bold flex-1 border-l border-primary border-dashed">
                                 Make schedule sharing quick
                             </h5>
@@ -32,7 +32,7 @@ const Section2 = () => {
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col py-6">
-                            <CalendarClock className="w-6 h-6 text-primary mx-8"/>
+                            <CalendarClock className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base md:px-8 px-4 font-bold flex-1 border-l border-primary border-dashed">
                                 A single up-to-date schedule
                             </h5>
@@ -41,7 +41,7 @@ const Section2 = () => {
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col py-6">
-                            <TimerIcon className="w-6 h-6 text-primary mx-8"/>
+                            <TimerIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base md:px-8 px-4 font-bold flex-1 border-l border-primary border-dashed">
                                 Weekly availability
                             </h5>
@@ -50,7 +50,7 @@ const Section2 = () => {
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col py-6">
-                            <CheckIcon className="w-6 h-6 text-primary mx-8"/>
+                            <CheckIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base md:px-8 px-4 font-bold flex-1 border-l border-primary border-dashed">
                                 Assign and track everyday tasks
                             </h5>
@@ -59,7 +59,7 @@ const Section2 = () => {
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col py-6">
-                            <ArrowLeftRightIcon className="w-6 h-6 text-primary mx-8"/>
+                            <ArrowLeftRightIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base md:px-8 px-4 font-bold flex-1 border-l border-primary border-dashed">
                                 Open shifts and shift swaps
                             </h5>
@@ -68,7 +68,7 @@ const Section2 = () => {
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col py-6">
-                            <CoffeeIcon className="w-6 h-6 text-primary mx-8"/>
+                            <CoffeeIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base md:px-8 px-4 font-bold flex-1 border-l border-primary border-dashed">
                                 Time off requests
                             </h5>

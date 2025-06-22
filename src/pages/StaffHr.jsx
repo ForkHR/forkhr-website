@@ -23,7 +23,7 @@ const Section2 = () => {
                 <div className="flex">
                     <div className="flex-1">
                         <div className="flex gap-3 flex-col py-6">
-                            <FolderIcon className="w-6 h-6 text-primary mx-8"/>
+                            <FolderIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base font-bold flex-1 md:px-8 px-4 border-l border-primary border-dashed">
                                 Employee documents
                             </h5>
@@ -32,7 +32,7 @@ const Section2 = () => {
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col py-6">
-                            <FileSignatureIcon className="w-6 h-6 text-primary mx-8"/>
+                            <FileSignatureIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base font-bold flex-1 md:px-8 px-4 border-l border-primary border-dashed">
                                 E-signatures
                             </h5>
@@ -41,7 +41,7 @@ const Section2 = () => {
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col py-6">
-                            <FormInputIcon className="w-6 h-6 text-primary mx-8"/>
+                            <FormInputIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base font-bold flex-1 md:px-8 px-4 border-l border-primary border-dashed">
                                 Onboarding forms
                             </h5>

@@ -23,7 +23,7 @@ const Section2 = () => {
                 <div className="flex">
                     <div className="flex-1">
                         <div className="flex gap-3 flex-col py-6">
-                            <MonitorSmartphoneIcon className="w-6 h-6 text-primary mx-8"/>
+                            <MonitorSmartphoneIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base md:px-8 px-4 font-bold flex-1 border-l border-primary border-dashed">
                                 Clock-in terminals from your devices
                             </h5>
@@ -32,7 +32,7 @@ const Section2 = () => {
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col py-6">
-                            <TimerIcon className="w-6 h-6 text-primary mx-8"/>
+                            <TimerIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base md:px-8 px-4 font-bold flex-1 border-l border-primary border-dashed">
                                 Track clock-in/clock-out accurately
                             </h5>
@@ -41,7 +41,7 @@ const Section2 = () => {
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col py-6">
-                            <TimerIcon className="w-6 h-6 text-primary mx-8"/>
+                            <TimerIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base md:px-8 px-4 font-bold flex-1 border-l border-primary border-dashed">
                                 Weekly availability
                             </h5>
@@ -50,7 +50,7 @@ const Section2 = () => {
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col py-6">
-                            <MapIcon className="w-6 h-6 text-primary mx-8"/>
+                            <MapIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base md:px-8 px-4 font-bold flex-1 border-l border-primary border-dashed">
                                 GEO clock-in
                             </h5>
@@ -59,7 +59,7 @@ const Section2 = () => {
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col py-6">
-                            <UserIcon className="w-6 h-6 text-primary mx-8"/>
+                            <UserIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base md:px-8 px-4 font-bold flex-1 border-l border-primary border-dashed">
                                 Current status
                             </h5>

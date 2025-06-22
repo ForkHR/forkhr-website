@@ -20,7 +20,7 @@ const Section2 = () => {
                 <div className="flex">
                     <div className="flex-1">
                         <div className="flex gap-3 flex-col py-6">
-                            <PieChartIcon className="w-6 h-6 text-primary mx-8"/>
+                            <PieChartIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base font-bold flex-1 md:px-8 px-4 border-l border-primary border-dashed">
                                 Surveys
                             </h5>
@@ -29,7 +29,7 @@ const Section2 = () => {
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col py-6">
-                            <BellIcon className="w-6 h-6 text-primary mx-8"/>
+                            <BellIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base font-bold flex-1 md:px-8 px-4 border-l border-primary border-dashed">
                                 Announcements
                             </h5>
@@ -38,7 +38,7 @@ const Section2 = () => {
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col py-6">
-                            <StarIcon className="w-6 h-6 text-primary mx-8"/>
+                            <StarIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base font-bold flex-1 md:px-8 px-4 border-l border-primary border-dashed">
                                 Reviews
                             </h5>
