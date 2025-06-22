@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom'
 
 const Section1 = () => {
     return (
-        <div className="max-w-[800px] mx-auto px-6 flex gap-5 min-h-[60vh] flex-col md:flex-row border-l border-r border-slate-200 border-dashed">
+        <div className="max-w-[800px] mx-auto md:px-8 px-4 flex gap-5 min-h-[60vh] flex-col md:flex-row border-l border-r border-slate-200 border-dashed">
             <div className="mx-auto w-full flex max-w-[980px] flex-col gap-3 md:gap-6 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20 flex-1 justify-center">
-                <h1 className="max-w-[350px] md:max-w-[650px] text-5xl font-bold leading-tight tracking-tighter lg:text-6xl xl:text-7xl lg:leading-[1.1]">
+                <h1 className="max-w-[350px] md:max-w-[650px] text-5xl font-bold leading-[1] tracking-tighter lg:text-6xl xl:text-7xl lg:leading-[1.1]">
                     Workforce<br/>management<br/>made easy<span className="text-primary">.</span>
                 </h1>
                 <div className="flex flex-col gap-1">
@@ -20,7 +20,7 @@ const Section1 = () => {
                 <div className="md:pb-10">
                     <div className="flex w-full space-x-4 rounded">
                         <Link to="https://app.forkhr.com/register" target="_blank">
-                            <Button className="px-6">
+                            <Button className="md:px-8 px-4">
                                 Free trial
                             </Button>
                         </Link>
@@ -46,10 +46,10 @@ const Section2 = () => {
     return (
         // Animation fade-in page
         <div className=" border-t border-slate-200 bg-white fade-in-up border-dashed">
-        <section className="max-w-[800px] mx-auto w-100 py-20 border-l border-r border-dashed border-slate-200">
-            <div className="flex justify-between px-6 pb-10 flex-col gap-8 max-w-[75%]">
+        <section className="max-w-[800px] mx-auto w-100 py-10 md:py-20 border-l border-r border-dashed border-slate-200">
+            <div className="flex justify-between md:px-8 px-4 pb-10 flex-col gap-8 md:max-w-[75%]">
                 <div className="flex-1">
-                    <h1 className="text-5xl font-semibold underline decoration-primary decoration-4 underline-offset-4 text-pri">
+                    <h1 className="md:text-5xl text-3xl font-semibold underline decoration-primary decoration-4 underline-offset-4 decoration-dashed text-pri">
                         Optimize your operations<span className="text-primary">.</span>
                     </h1>
                 </div>
@@ -58,7 +58,7 @@ const Section2 = () => {
                 </p>
             </div>
             <div>
-                <div className="flex justify-between px-6 border-b py-6">
+                <div className="flex justify-between gap-4 md:px-8 px-4 border-b py-6">
                     <h5 className="text-base md:text-base flex-1 font-semibold">
                         YOUR BUSINESS GOAL
                     </h5>
@@ -66,9 +66,9 @@ const Section2 = () => {
                         HOW WE SOLVE IT
                     </div>
                 </div>
-                <div className="flex gap-4 px-6 border-slate-200 border-dashed justify-between border-b py-8">
+                <div className="flex gap-4 md:px-8 px-4 border-slate-200 border-dashed justify-between border-b py-8">
                     <h5 className="text-xl text-semibold flex-1">
-                        1. Schedule & Time Tracking
+                        <span className="text-primary font-bold">1.</span> Schedule & Time Tracking
                     </h5>
                     <div className="text-base md:text-base flex-1 flex flex-col gap-2 md:gap-6">
                         <p>
@@ -91,9 +91,9 @@ const Section2 = () => {
                         </p>
                     </div>
                 </div>
-                <div className="flex gap-4 px-6 border-slate-200 border-dashed justify-between border-b py-8">
+                <div className="flex gap-4 md:px-8 px-4 border-slate-200 border-dashed justify-between border-b py-8">
                     <h5 className="text-xl text-semibold flex-1">
-                        2. Staff HR & Compliance
+                        <span className="text-primary font-bold">2.</span> Staff HR & Compliance
                     </h5>
                     <div className="text-base md:text-base flex-1 flex flex-col gap-2 md:gap-6">
                         <p>
@@ -107,9 +107,9 @@ const Section2 = () => {
                         </p>
                     </div>
                 </div>
-                <div className="flex gap-4 px-6 border-slate-200 border-dashed justify-between py-8">
+                <div className="flex gap-4 md:px-8 px-4 border-slate-200 border-dashed justify-between py-8">
                     <h5 className="text-xl text-semibold flex-1">
-                        3. Boost Retention & Engagement
+                        <span className="text-primary font-bold">3.</span> Boost Retention & Engagement
                     </h5>
                     <div className="text-base md:text-base flex-1 flex flex-col gap-2 md:gap-6">
                         <p>
@@ -134,34 +134,34 @@ const Section3 = () => {
         <section className="border-t border-slate-200 bg-white fade-in-up border-dashed">
             <div className="max-w-[800px] mx-auto w-100 py-20 border-l border-r border-slate-200 border-dashed">
                 <div className="flex justify-between flex-col gap-20">
-                    <div className="text-5xl font-semibold flex-1 px-6">
-                        <div className="max-w-[75%] font-semibold underline decoration-primary decoration-4 underline-offset-4">
+                    <div className="md:text-5xl text-3xl font-semibold flex-1 md:px-8 px-4">
+                        <div className="md:max-w-[75%] font-semibold underline decoration-primary decoration-4 underline-offset-4 decoration-dashed">
                             What we save you<span className="text-primary">.</span>
                         </div>
                     </div>
                     <div className="flex flex-col gap-8">
                         <div className="flex flex-col flex-1">
                             <div className="flex flex-col pb-8 gap-4">
-                                <div className="text-6xl px-6 border-l border-primary pl-4 border-dashed">
+                                <div className="text-6xl md:px-8 px-4 border-l border-primary pl-4 border-dashed">
                                     37%
                                 </div>
-                                <div className="text-2xl font-semibold px-6">
+                                <div className="text-2xl font-semibold md:px-8 px-4">
                                     Faster scheduling
                                 </div>
-                                <div className="text-xl px-6">
+                                <div className="text-xl md:px-8 px-4">
                                     Create schedules in minutes with our easy-to-use scheduling tool. Drag and drop shifts, assign employees, and manage time off requests.
                                 </div>
                             </div>
                         </div>
                         <div className="flex flex-col flex-1">
                             <div className="flex flex-col pb-8 gap-4">
-                                <div className="text-6xl px-6 border-l border-primary pl-4 border-dashed">
+                                <div className="text-6xl md:px-8 px-4 border-l border-primary pl-4 border-dashed">
                                 52%
                             </div>
-                            <div className="text-2xl font-semibold px-6">
+                            <div className="text-2xl font-semibold md:px-8 px-4">
                                 Less time theft
                             </div>
-                            <div className="text-xl px-6">
+                            <div className="text-xl md:px-8 px-4">
                                 Employee clock-in/clock-out tracking is made easy with our terminal, geo location, and manual clock-in options. Ensure accurate time tracking and reduce time theft.
                             </div>
                         </div>
@@ -169,39 +169,39 @@ const Section3 = () => {
                     <div className="flex flex-col gap-8">
                         <div className="flex flex-col flex-1">
                             <div className="flex flex-col pb-8 gap-4">
-                                <div className="text-6xl px-6 border-l border-primary pl-4 border-dashed">
+                                <div className="text-6xl md:px-8 px-4 border-l border-primary pl-4 border-dashed">
                                     99%
                                 </div>
-                                <div className="text-2xl font-semibold px-6">
+                                <div className="text-2xl font-semibold md:px-8 px-4">
                                     Onboarding doc completion
                                 </div>
-                                <div className="text-xl px-6">
+                                <div className="text-xl md:px-8 px-4">
                                     Streamline your onboarding process with paperless onboarding. Employees can complete legal forms like W-4, I-9, and more online, ensuring compliance and reducing paperwork.
                                 </div>
                             </div>
                         </div>
                         <div className="flex flex-col flex-1">
                             <div className="flex flex-col pb-8 gap-4">
-                                <div className="text-6xl px-6 border-l border-primary pl-4 border-dashed">
+                                <div className="text-6xl md:px-8 px-4 border-l border-primary pl-4 border-dashed">
                                     2x
                                 </div>
-                                <div className="text-2xl font-semibold px-6">
+                                <div className="text-2xl font-semibold md:px-8 px-4">
                                     More staff announcement reads & engagement
                                 </div>
-                                <div className="text-xl px-6">
+                                <div className="text-xl md:px-8 px-4">
                                     Keep your team informed with announcements. Share important updates, news, and events to ensure everyone is on the same page.
                                 </div>
                             </div>
                         </div>
                         <div className="flex flex-col flex-1">
                             <div className="flex flex-col pb-8 gap-4">
-                                <div className="text-6xl px-6 border-l border-primary pl-4 border-dashed">
+                                <div className="text-6xl md:px-8 px-4 border-l border-primary pl-4 border-dashed">
                                     3x
                                 </div>
-                                <div className="text-2xl font-semibold px-6">
+                                <div className="text-2xl font-semibold md:px-8 px-4">
                                     More performance feedback
                                 </div>
-                                <div className="text-xl px-6">
+                                <div className="text-xl md:px-8 px-4">
                                     Foster a culture of recognition and appreciation with peer reviews. Encourage employees to give feedback to each other, boosting morale and engagement.
                                 </div>
                             </div>
@@ -271,17 +271,17 @@ const Section4 = () => {
     return (
         <div className="border-t border-slate-200 fade-in-up border-dashed">
             {apps.map((app, index) => (
-            <div className={`max-w-[800px] mx-auto px-6 flex gap-5 min-h-[75vh] flex-col md:flex-row border-l border-r border-dashed border-slate-200${index === 0 ? "" : " border-t"}`}
+            <div className={`max-w-[800px] mx-auto md:px-8 px-4 flex gap-5 min-h-[75vh] flex-col md:flex-row border-l border-r border-dashed border-slate-200${index === 0 ? "" : " border-t"}`}
                 key={index}
             >
                 <div className="mx-auto w-full flex max-w-[980px] flex-col gap-3 md:gap-6 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20 flex-1 justify-center">
                     <div className="text-base font-bold">
-                        <div className="max-w-[75%] text-slate-800 flex gap-3 items-center">
+                        <div className="md:max-w-[75%] text-slate-800 flex gap-3 items-center">
                             {app.icon} {app.name}
                         </div>
                     </div>
-                    <div className="text-5xl font-semibold">
-                        <div className="max-w-[75%] font-semibold">
+                    <div className="md:text-5xl text-3xl font-semibold">
+                        <div className="md:max-w-[75%] font-semibold">
                             {app.title}<span className="text-primary">.</span>
                         </div>
                     </div>
@@ -291,7 +291,7 @@ const Section4 = () => {
                     <div className="md:pb-10">
                         <div className="flex w-full space-x-4 rounded">
                             <Link to={app.to}>
-                                <Button className="px-6">
+                                <Button className="md:px-8 px-4">
                                     {app.name}
                                     <ArrowRight className="w-4 h-4 ms-2"/>
                                 </Button>
@@ -299,7 +299,7 @@ const Section4 = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 dm:flex hidden">
 
                 </div>
                 {/* <div className="overflow-hidden max-w-[680px] flex items-center justify-center flex-1 bg-no-repeat bg-contain bg-right bg-[url(/assets/pebble-3.png)]">

@@ -13,52 +13,54 @@ import { Link } from 'react-router-dom'
 
 const Faq = () => {
     return (
-        <section className="mx-auto flex max-w-[600px] flex-col items-center gap-3 md:gap-6 py-20 justify-center w-full">
-            <h1 className='max-w-[350px] text-6xl text-center font-semibold pb-20'>
+        <section className="flex border-t md:px-8 px-4 border-dashed border-slate-200 flex-col items-center py-10 justify-center w-full">
+            <h1 className='max-w-[350px] text-6xl text-center font-semibold pb-10'>
                 FAQ
             </h1>
-            <Accordion type="single" collapsible className="w-full pb-12 pt-6 md:container px-2">
-                <AccordionItem value="item-1">
-                    <AccordionTrigger className="text-start">
-                        Can I change my plan after I choose one?
-                    </AccordionTrigger>
-                    <AccordionContent>
-                        We proving a single plan that includes all features. For more information, please contact support@forkhr.com
-                    </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-2">
-                    <AccordionTrigger className="text-start">
-                        When will I be charged?
-                    </AccordionTrigger>
-                    <AccordionContent>
-                        You will be charged at the end of your free trial period. You can cancel anytime before that.
-                    </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-3">
-                    <AccordionTrigger className="text-start">
-                        Do you offer a free trial?
-                    </AccordionTrigger>
-                    <AccordionContent>
-                        Yes. You can start with a 30-day free trial. No credit card is required.
-                    </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-4">
-                    <AccordionTrigger className="text-start">
-                        Is there a discount for yearly plans?
-                    </AccordionTrigger>
-                    <AccordionContent>
-                        Currently, we only offer a monthly plan. However, we are working on introducing yearly plans in the future.
-                    </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-5">
-                    <AccordionTrigger className="text-start">
-                        What payment methods do you accept?
-                    </AccordionTrigger>
-                    <AccordionContent>
-                        We accept all major credit cards, including Visa, MasterCard, American Express, and Discover. You can also pay via PayPal.
-                    </AccordionContent>
-                </AccordionItem>
-            </Accordion>
+            <div className="w-full mx-auto max-w-[600px]">
+                <Accordion type="single" collapsible className="w-full pb-12 pt-6 md:container px-2">
+                    <AccordionItem value="item-1">
+                        <AccordionTrigger className="text-start">
+                            Can I change my plan after I choose one?
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            We proving a single plan that includes all features. For more information, please contact support@forkhr.com
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-2">
+                        <AccordionTrigger className="text-start">
+                            When will I be charged?
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            You will be charged at the end of your free trial period. You can cancel anytime before that.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-3">
+                        <AccordionTrigger className="text-start">
+                            Do you offer a free trial?
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            Yes. You can start with a 30-day free trial. No credit card is required.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-4">
+                        <AccordionTrigger className="text-start">
+                            Is there a discount for yearly plans?
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            Currently, we only offer a monthly plan. However, we are working on introducing yearly plans in the future.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-5">
+                        <AccordionTrigger className="text-start">
+                            What payment methods do you accept?
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            We accept all major credit cards, including Visa, MasterCard, American Express, and Discover. You can also pay via PayPal.
+                        </AccordionContent>
+                    </AccordionItem>
+                </Accordion>
+            </div>
         </section>
     )
 }
@@ -67,11 +69,11 @@ const Section3 = () => {
     return (
         <div className="w-full max-w-[400px]">
             <div className="flex flex-col lg:flex-row gap-10 flex-wrap flex-1 w-full">
-                <div className="rounded-3xl p-8 shadow-sm flex-1 border-[#000] border-4 flex flex-col">
+                <div className="rounded-3xl p-8 shadow-sm flex-1 border-primary border-4 flex flex-col">
                     <div className="text-muted-foreground font-semibold">
                         Recommended
                     </div>
-                    <h3 className="text-5xl font-semibold">
+                    <h3 className="md:text-5xl text-3xl font-semibold">
                         Essential
                     </h3>
                     <div className="text-base py-8 flex-1">
@@ -88,7 +90,7 @@ const Section3 = () => {
                         </ul>
                     </div>
                     <div className="text-5xl">
-                        $3.99
+                        $4.99
                     </div>
                     <div className="text-sm pt-1 text-muted-foreground">
                         Per user, billed monthly
@@ -117,34 +119,20 @@ const Pricing = () => {
     }, [])
 
     return (
-        <main className="md:container px-2 py-10 md:py-20 flex flex-col justify-center items-center gap-10 fade-in-up">
-            <div className="flex flex-col align-center items-center flex-1 w-full max-w-[1000px] text-center">
-                <h1 className="md:text-6xl text-4xl font-semibold max-w-[700px]">
-                    Single plan<span className="text-primary">.</span>
-                </h1>
-                <p className="font-semibold flex gap-4 pt-8 text-nowrap flex-wrap justify-center">
-                    <div className="flex gap-2 text-sm align-center items-center">
-                        <div className="w-6 h-6 bg-primary rounded-full flex align-center justify-center items-center">
-                            <CheckIcon className="w-4 h-4" color="#fff"/>
+        <main className="w-full max-w-[800px] mx-auto border-l border-r border-dashed border-slate-200 flex flex-col justify-center items-center fade-in-up">
+            <div className="py-10 md:px-8 px-4">
+                <div className="flex flex-col align-center items-center flex-1 w-full max-w-[800px] text-center">
+                    <h1 className="md:text-6xl text-4xl font-semibold max-w-[700px]">
+                        Single plan<span className="text-primary">.</span>
+                    </h1>
+                    <p className="font-semibold flex gap-4 py-8 text-nowrap flex-wrap justify-center text-gray-600">
+                        <div className="flex gap-2 text-sm align-center items-center">
+                            30 days free trial, no contract, cancel anytime
                         </div>
-                        30 days free trial
-                    </div>
-                    <div className="flex gap-2 text-sm align-center items-center">
-                        <div className="w-6 h-6 bg-primary rounded-full flex align-center justify-center items-center">
-                            <CheckIcon className="w-4 h-4" color="#fff"/>
-                        </div>
-                        No contracts
-                    </div>
-                    <div className="flex gap-2 text-sm align-center items-center">
-                        <div className="w-6 h-6 bg-primary rounded-full flex align-center justify-center items-center">
-                            <CheckIcon className="w-4 h-4" color="#fff"/>
-                        </div>
-                        Cancel anytime
-                    </div>
-                </p>
-                <br/>
+                    </p>
+                </div>
+                <Section3/>
             </div>
-            <Section3/>
             <Faq/>
         </main>
     )
