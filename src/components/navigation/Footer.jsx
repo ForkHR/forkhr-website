@@ -132,7 +132,7 @@ const Footer = () => {
                             </NavLink>
                         </div>
                         <div className="text-sm text-center md:text-end text-gray-400">
-                            <p>Fork solutions Inc. &copy; {new Date().getFullYear()} <br /> All rights reserved</p>
+                            <p>Fork Software Inc. &copy; {new Date().getFullYear()} <br /> All rights reserved</p>
                         </div>
                     </div>
                 </div>
