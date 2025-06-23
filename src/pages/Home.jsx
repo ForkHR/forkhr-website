@@ -67,11 +67,11 @@ const Section2 = () => {
                         HOW WE SOLVE IT
                     </div>
                 </div>
-                <div className="flex gap-4 md:px-8 px-4 border-slate-200 border-dashed justify-between border-b py-8">
+                <div className="flex gap-1 md:px-8 px-4 border-slate-200 border-dashed justify-between border-b py-8">
                     <h5 className="text-xl text-semibold flex-1">
                         <span className="text-primary font-bold">1.</span> Schedule & Time Tracking
                     </h5>
-                    <div className="text-base md:text-base flex-1 flex flex-col gap-2 md:gap-6">
+                    <div className="text-sm md:text-base flex-1 flex flex-col gap-2 md:gap-6">
                         <p>
                             Drag-and-drop scheduling.
                         </p>
@@ -92,11 +92,11 @@ const Section2 = () => {
                         </p>
                     </div>
                 </div>
-                <div className="flex gap-4 md:px-8 px-4 border-slate-200 border-dashed justify-between border-b py-8">
+                <div className="flex gap-1 md:px-8 px-4 border-slate-200 border-dashed justify-between border-b py-8">
                     <h5 className="text-xl text-semibold flex-1">
                         <span className="text-primary font-bold">2.</span> Staff HR & Compliance
                     </h5>
-                    <div className="text-base md:text-base flex-1 flex flex-col gap-2 md:gap-6">
+                    <div className="text-sm md:text-base flex-1 flex flex-col gap-2 md:gap-6">
                         <p>
                             Paperless onboarding with built-in legal forms like W-4, I-9, and more.
                         </p>
@@ -108,11 +108,11 @@ const Section2 = () => {
                         </p>
                     </div>
                 </div>
-                <div className="flex gap-4 md:px-8 px-4 border-slate-200 border-dashed justify-between py-8">
+                <div className="flex gap-1 md:px-8 px-4 border-slate-200 border-dashed justify-between py-8">
                     <h5 className="text-xl text-semibold flex-1">
                         <span className="text-primary font-bold">3.</span> Boost Retention & Engagement
                     </h5>
-                    <div className="text-base md:text-base flex-1 flex flex-col gap-2 md:gap-6">
+                    <div className="text-sm md:text-base flex-1 flex flex-col gap-2 md:gap-6">
                         <p>
                             Gather feedback through employee surveys.
                         </p>
@@ -133,8 +133,8 @@ const Section2 = () => {
 const Section3 = () => {
     return (
         <section className="border-t border-slate-200 fade-in-up border-dashed">
-            <div className="max-w-[800px] mx-auto w-100 py-20 border-l border-r border-slate-200 border-dashed">
-                <div className="flex justify-between flex-col gap-20">
+            <div className="max-w-[800px] mx-auto w-100 py-10 md:py-20 border-l border-r border-slate-200 border-dashed">
+                <div className="flex justify-between flex-col gap-8 md:gap-20">
                     <div className="md:text-5xl text-3xl font-semibold flex-1 md:px-8 px-4">
                         <div className="md:max-w-[75%] font-semibold underline decoration-primary decoration-4 underline-offset-4 decoration-dashed">
                             What we improve<span className="text-primary">.</span>
