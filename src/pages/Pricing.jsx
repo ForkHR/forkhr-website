@@ -13,12 +13,11 @@ import { Link } from 'react-router-dom'
 
 const Faq = () => {
     return (
-        <section className="flex border-t md:px-8 px-4 border-dashed border-slate-200 flex-col items-center py-10 justify-center w-full">
-            <h1 className='max-w-[350px] text-6xl text-center font-semibold pb-10'>
-                FAQ
+        <section className="flex border-t md:px-8 px-4 border-dashed border-slate-200 flex-col py-10 w-full">
+            <h1 className='max-w-[350px] md:max-w-[650px] text-5xl font-bold leading-[1] tracking-tighter lg:text-6xl xl:text-7xl lg:leading-[1.1] pb-6'>
+                FAQs<span className="text-primary">.</span>
             </h1>
-            <div className="w-full mx-auto max-w-[600px]">
-                <Accordion type="single" collapsible className="w-full pb-12 pt-6 md:container px-2">
+                <Accordion type="single" collapsible className="w-full pb-12 px-2">
                     <AccordionItem value="item-1">
                         <AccordionTrigger className="text-start">
                             Can I change my plan after I choose one?
@@ -60,51 +59,36 @@ const Faq = () => {
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
-            </div>
         </section>
     )
 }
 
 const Section3 = () => {
     return (
-        <div className="w-full max-w-[400px]">
-            <div className="flex flex-col lg:flex-row gap-10 flex-wrap flex-1 w-full">
-                <div className="rounded-3xl p-8 shadow-sm flex-1 border-primary border-4 flex flex-col">
-                    <div className="text-muted-foreground font-semibold">
-                        Recommended
-                    </div>
-                    <h3 className="md:text-5xl text-3xl font-semibold">
-                        Essential
-                    </h3>
-                    <div className="text-base py-8 flex-1">
-                        <ul className="text-muted-foreground list-disc">
-                            <li className="flex items-center gap-2"><CheckIcon className="w-6 h-6" color="#000"/>Scheduler</li>
-                            <li className="flex items-center gap-2"><CheckIcon className="w-6 h-6" color="#000"/>Time tracking</li>
-                            <li className="flex items-center gap-2"><CheckIcon className="w-6 h-6" color="#000"/>Time off requests</li>
-                            <li className="flex items-center gap-2"><CheckIcon className="w-6 h-6" color="#000"/>Documents</li>
-                            <li className="flex items-center gap-2"><CheckIcon className="w-6 h-6" color="#000"/>Onboarding</li>
-                            <li className="flex items-center gap-2"><CheckIcon className="w-6 h-6" color="#000"/>Surveys</li>
-                            <li className="flex items-center gap-2"><CheckIcon className="w-6 h-6" color="#000"/>Announcements</li>
-                            <li className="flex items-center gap-2"><CheckIcon className="w-6 h-6" color="#000"/>Reviews</li>
-                            <li className="flex items-center gap-2"><CheckIcon className="w-6 h-6" color="#000"/>24/7 support</li>
-                        </ul>
-                    </div>
-                    <div className="text-5xl">
-                        $4.99
-                    </div>
-                    <div className="text-sm pt-1 text-muted-foreground">
-                        Per user, billed monthly
-                    </div>
-                    <div className="pt-10">
-                        <Link to="https://app.forkhr.com/register">
-                            <Button
-                                className="w-full"
-                            >
-                                Start for free
-                                <ArrowRight className="w-4 h-4 ms-2" />
-                            </Button>
-                        </Link>
-                    </div>
+        <div className="flex md:gap-8 md:flex-row flex-col border border-dashed border-slate-200 rounded-lg p-1">
+            <div className="flex-1 p-6">
+                <h3 className="md:xl text-3xl font-semibold">
+                    Essential
+                </h3>
+                <div className="text-base text-gray-600 pt-2">
+                    Access a complete set of features with simple and transparent pricing. No setup fees, monthly fees, or hidden fees.
+                </div>
+                <div class="text-xs text-gray-400 pt-4">30-day free trial. Cancel anytime.</div>
+                <div className="pt-6">
+                    <Link to="https://app.forkhr.com/register">
+                        <Button>
+                            Start now
+                            <ArrowRight className="w-4 h-4 ms-2" />
+                        </Button>
+                    </Link>
+                </div>
+            </div>
+            <div className="flex-1 p-6 bg-slate-100 rounded-lg flex flex-col items-center justify-center text-center font-medium">
+                <div className="text-4xl">
+                    $4.99
+                </div>
+                <div className="text-sm text-muted-foreground font-normal">
+                    Per user, billed monthly
                 </div>
             </div>
         </div>
@@ -119,18 +103,11 @@ const Pricing = () => {
     }, [])
 
     return (
-        <main className="w-full max-w-[800px] mx-auto border-l border-r border-dashed border-slate-200 flex flex-col justify-center items-center fade-in-up">
+        <main className="w-full max-w-[800px] mx-auto border-l border-r border-dashed border-slate-200 flex flex-col fade-in-up">
             <div className="py-10 md:px-8 px-4">
-                <div className="flex flex-col align-center items-center flex-1 w-full max-w-[800px] text-center">
-                    <h1 className="md:text-6xl text-4xl font-semibold max-w-[700px]">
-                        Single plan<span className="text-primary">.</span>
-                    </h1>
-                    <p className="font-semibold flex gap-4 py-8 text-nowrap flex-wrap justify-center text-gray-600">
-                        <div className="flex gap-2 text-sm align-center items-center">
-                            30 days free trial, no contract, cancel anytime
-                        </div>
-                    </p>
-                </div>
+                <h1 className="max-w-[350px] md:max-w-[650px] text-5xl font-bold leading-[1] tracking-tighter lg:text-6xl xl:text-7xl lg:leading-[1.1] pb-10">
+                    Single plan<span className="text-primary">.</span>
+                </h1>
                 <Section3/>
             </div>
             <Faq/>

@@ -11,7 +11,7 @@ const Footer = () => {
                 <div className="flex gap-4 justify-between md:pb-20 md:flex-row flex-col md:px-8 px-4 md:py-20 py-10">
                     <div className="flex flex-col gap-4 items-start">
                         <div className="text-base font-semibold text-neutral-500">
-                            Product
+                            Features
                         </div>
                         <div className="flex flex-col items-start">
                             <Link to="/scheduler">
@@ -107,15 +107,15 @@ const Footer = () => {
                 </div>
             </div>
             <div className="border-t border-slate-200 border-dashed">
-                <div className="max-w-[800px] mx-auto w-full flex flex-col border-l border-r border-slate-200 py-8 border-dashed">
+                <div className="max-w-[800px] mx-auto w-full flex flex-col border-l border-r border-slate-200 py-4 md:py-8 border-dashed">
                     <div className="flex gap-2 md:justify-between md:items-center md:px-8 px-4 flex-col md:flex-row">
-                        <div className="flex flex-col md:items-start">
+                        <div className="flex flex-col flex-1 items-start">
                             <NavLink
                                 to="/privacy-policy"
                             >
                                 <Button
                                     variant="link"
-                                    className="text-black px-0"
+                                    className="text-black text-sm px-0 p-0 h-[20px]"
                                 >
                                     Privacy Policy
                                 </Button>
@@ -125,13 +125,13 @@ const Footer = () => {
                             >
                                 <Button
                                     variant="link"
-                                    className="text-black px-0"
+                                    className="text-black text-sm px-0 p-0 h-[20px]"
                                 >
                                     Terms of Service
                                 </Button>
                             </NavLink>
                         </div>
-                        <div className="text-sm text-center md:text-end text-gray-400">
+                        <div className="text-xs text-start md:text-end text-gray-400">
                             <p>Fork Software Inc. &copy; {new Date().getFullYear()} <br /> All rights reserved</p>
                         </div>
                     </div>
