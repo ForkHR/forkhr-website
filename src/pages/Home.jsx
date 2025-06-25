@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom'
 
 const Section1 = () => {
     return (
-        <div className="max-w-[800px] mx-auto md:px-8 px-4 flex gap-5 min-h-[60vh] flex-col md:flex-row border-l border-r border-slate-200 border-dashed">
-            <div className="mx-auto w-full flex max-w-[980px] flex-col gap-3 md:gap-6 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20 flex-1 justify-center">
+        <div className="max-w-[800px] mx-auto md:px-8 px-4 flex gap-5 min-h-[60vh] flex-col md:flex-row border-l border-r border-slate-200 border-dashed relative">
+            <div className="mx-auto z-10 w-full flex max-w-[980px] flex-col gap-3 md:gap-6 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20 flex-1 justify-center">
                 <h1 className="max-w-[350px] md:max-w-[650px] text-5xl font-bold leading-[1] tracking-tighter lg:text-6xl xl:text-7xl lg:leading-[1.1]">
                     Workforce<br/>management<br/>made easy<span className="text-primary">.</span>
                 </h1>
@@ -31,13 +31,7 @@ const Section1 = () => {
                     </div>
                 </div>
             </div>
-            {/* <div className="overflow-hidden max-w-[680px] flex items-center justify-center flex-1 bg-no-repeat bg-contain bg-right bg-[url(/assets/pebble-3.png)]">
-                <img
-                    alt="img-1"
-                    src="/assets/asset-1.png"
-                    draggable="false"
-                />
-            </div> */}
+            <div className="absolute hidden sm:flex right-0 w-full h-full max-w-[400px] items-center justify-center flex-1 bg-no-repeat bg-contain bg-right bg-[url(/assets/auth_bg.png)]"/>
         </div>
     )
 }
@@ -222,13 +216,14 @@ const apps = [
         to: '/scheduler',
         description: "Create schedule in minutes with our easy-to-use scheduling tool. Drag and drop shifts, assign employees, and manage time off requests. Shift pool with open shifts and shift swaps.", 
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><CalendarClock className="w-4 h-4" color="#fff"/></div>,
-        image: "/assets/pebble-1.png"
+        image: "/assets/introduction-scheduler.png"
     },
     {
         name: "Time Tracking",
         title: "Time tracking",
         to: '/time-tracking',
         description: "Employee clock-in/clock-out tracking is made easy with our terminal, geo location, and manual clock-in options. Ensure accurate time tracking and reduce time theft.",
+        image: "/assets/introduction-timetracking.png",
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><ClockIcon className="w-4 h-4" color="#fff"/></div>,
     },
     {
@@ -237,13 +232,15 @@ const apps = [
         to: '/staff-hr',
         description: "Streamline your onboarding process with paperless onboarding. Employees can complete legal forms like W-4, I-9, and more online, ensuring compliance and reducing paperwork.",
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><UserIcon className="w-4 h-4" color="#fff"/></div>,
+        image: "/assets/introduction-onboarding.png"
     },
     {
         name: "Documents",
-        title: "Employee documents",
+        title: "Store documents",
         to: "/staff-hr",
         description: "Manage employee documents with ease. Upload, request and create documents for your employees. Set expiration reminders and e-signatures to ensure compliance and keep your team organized.",
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><FolderIcon className="w-4 h-4" color="#fff"/></div>,
+        image: "/assets/introduction-documents.png"
     },
     {
         name: "Surveys",
@@ -251,6 +248,7 @@ const apps = [
         to: "/retention-and-engagement",
         description: "Gather feedback from your team with employee surveys. Create custom or from our templates survey to get insights into employee satisfaction, engagement, and performance.",
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><PieChartIcon className="w-4 h-4" color="#fff"/></div>,
+        image: "/assets/introduction-surveys.png"
     },
     {
         name: "Announcements",
@@ -258,6 +256,7 @@ const apps = [
         to: "/retention-and-engagement",
         description: "Keep your team informed with announcements. Share important updates, news, and events to ensure everyone is on the same page.",
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><BellIcon className="w-4 h-4" color="#fff"/></div>,
+        image: "/assets/introduction-announcements.png"
     },
     {
         name: "Peer Reviews",
@@ -265,6 +264,7 @@ const apps = [
         to: "/retention-and-engagement",
         description: "Foster a culture of recognition and appreciation with peer reviews. Encourage employees to give feedback to each other, boosting morale and engagement.",
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><StarIcon className="w-4 h-4" color="#fff"/></div>,
+        image: "/assets/introduction-reviews.png"
     },
 ]
 
@@ -275,41 +275,43 @@ const Section4 = () => {
             <div className={`max-w-[800px] mx-auto md:px-8 px-4 flex gap-5 min-h-[75vh] flex-col md:flex-row border-l border-r border-dashed border-slate-200${index === 0 ? "" : " border-t"}`}
                 key={index}
             >
-                <div className="mx-auto w-full flex max-w-[980px] flex-col gap-3 md:gap-6 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20 flex-1 justify-center">
-                    <div className="text-base font-bold">
-                        <div className="md:max-w-[75%] text-slate-800 flex gap-3 items-center">
-                            {app.icon} {app.name}
+                <div className="flex justify-center items-center w-full gap-10">
+                    <div className="mx-auto w-full flex max-w-[980px] flex-col gap-3 md:gap-6 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20 flex-1 justify-center">
+                        <div className="text-base font-bold">
+                            <div className="md:max-w-[75%] text-slate-800 flex gap-3 items-center">
+                                {app.icon} {app.name}
+                            </div>
+                        </div>
+                        <div className="md:text-5xl text-3xl font-semibold">
+                            <div className="md:max-w-[75%] font-semibold">
+                                {app.title}<span className="text-primary">.</span>
+                            </div>
+                        </div>
+                        <p className="text-base md:text-xl">
+                            {app.description}
+                        </p>
+                        <div className="md:pb-10">
+                            <div className="flex w-full space-x-4 rounded">
+                                <Link to={app.to}>
+                                    <Button className="md:px-8 px-4">
+                                        {app.name}
+                                        <ArrowRight className="w-4 h-4 ms-2"/>
+                                    </Button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
-                    <div className="md:text-5xl text-3xl font-semibold">
-                        <div className="md:max-w-[75%] font-semibold">
-                            {app.title}<span className="text-primary">.</span>
-                        </div>
-                    </div>
-                    <p className="text-base md:text-xl">
-                        {app.description}
-                    </p>
-                    <div className="md:pb-10">
-                        <div className="flex w-full space-x-4 rounded">
-                            <Link to={app.to}>
-                                <Button className="md:px-8 px-4">
-                                    {app.name}
-                                    <ArrowRight className="w-4 h-4 ms-2"/>
-                                </Button>
-                            </Link>
+                    <div className="flex-1 hidden md:flex align-center justify-center">
+                        <div>
+                        <img
+                            alt="img-1"
+                            src={`${app.image}`}
+                            draggable="false"
+                            className="w-full h-auto max-w-[400px] md:max-w-[500px] lg:max-w-[600px] xl:max-w-[700px]"
+                        />
                         </div>
                     </div>
                 </div>
-                <div className="flex-1 dm:flex hidden">
-
-                </div>
-                {/* <div className="overflow-hidden max-w-[680px] flex items-center justify-center flex-1 bg-no-repeat bg-contain bg-right bg-[url(/assets/pebble-3.png)]">
-                    <img
-                        alt="img-1"
-                        src="/assets/asset-1.png"
-                        draggable="false"
-                    />
-                </div> */}
             </div>
             ))}
         </div>
