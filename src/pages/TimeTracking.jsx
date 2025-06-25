@@ -41,15 +41,6 @@ const Section2 = () => {
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col py-6">
-                            <TimerIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
-                            <h5 className="text-base md:px-8 px-4 font-bold flex-1 border-l border-primary border-dashed">
-                                Weekly availability
-                            </h5>
-                            <div className="text-base md:px-8 px-4 text-gray-600">
-                                Employees can set their weekly availability in Fork, so you can easily see when they’re available to work and when they’re not.
-                            </div>
-                        </div>
-                        <div className="flex gap-3 flex-col py-6">
                             <MapIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base md:px-8 px-4 font-bold flex-1 border-l border-primary border-dashed">
                                 GEO clock-in
