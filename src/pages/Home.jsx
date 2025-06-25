@@ -272,7 +272,7 @@ const Section4 = () => {
     return (
         <div className="border-t border-slate-200 fade-in-up border-dashed">
             {apps.map((app, index) => (
-            <div className={`max-w-[800px] mx-auto md:px-8 px-4 flex gap-5 min-h-[75vh] flex-col md:flex-row border-l border-r border-dashed border-slate-200${index === 0 ? "" : " border-t"}`}
+            <div className={`max-w-[800px] mx-auto md:px-8 px-4 flex gap-5 items-center justify-center min-h-[75vh] flex-col md:flex-row border-l border-r border-dashed border-slate-200${index === 0 ? "" : " border-t"}`}
                 key={index}
             >
                 <div className="flex justify-center items-center w-full gap-10">
