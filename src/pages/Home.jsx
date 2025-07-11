@@ -53,10 +53,7 @@ const Section2 = () => {
                 </p>
             </div>
             <div>
-                <div className="flex md:flex-row flex-col justify-between gap-4 md:px-8 px-4 border-b py-6">
-                    <h5 className="text-base md:text-base flex-1 font-semibold">
-                        YOUR BUSINESS GOAL & HOW WE SOLVE IT
-                    </h5>
+                <div className="flex md:flex-row flex-col justify-between gap-4 md:px-8 px-4 border-b md:py-6 border-slate-200 border-dashed">
                 </div>
                 <div className="flex md:flex-row flex-col gap-4 md:px-8 px-4 border-slate-200 border-dashed justify-between border-b py-8">
                     <h5 className="text-xl text-semibold flex-1">
