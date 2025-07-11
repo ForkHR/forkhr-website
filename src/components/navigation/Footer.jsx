@@ -94,7 +94,7 @@ const Footer = () => {
                                 <ArrowRight className="inline-block ml-1 h-4 w-4 ms-3" />
                             </Button>
                         </Link>
-                        <Link to="https://app.forkhr.com/rgister" className="w-full">
+                        <Link to="https://app.forkhr.com/register" className="w-full">
                             <Button
                                 className="w-full justify-between"
                             >

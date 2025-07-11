@@ -61,7 +61,7 @@ const Section2 = () => {
                         HOW WE SOLVE IT
                     </div>
                 </div>
-                <div className="flex gap-1 md:px-8 px-4 border-slate-200 border-dashed justify-between border-b py-8">
+                <div className="flex md:flex-row flex-col gap-4 md:px-8 px-4 border-slate-200 border-dashed justify-between border-b py-8">
                     <h5 className="text-xl text-semibold flex-1">
                         <span className="text-primary font-bold">1.</span> Schedule & Time Tracking
                     </h5>
@@ -86,7 +86,7 @@ const Section2 = () => {
                         </p>
                     </div>
                 </div>
-                <div className="flex gap-1 md:px-8 px-4 border-slate-200 border-dashed justify-between border-b py-8">
+                <div className="flex md:flex-row flex-col gap-4 md:px-8 px-4 border-slate-200 border-dashed justify-between border-b py-8">
                     <h5 className="text-xl text-semibold flex-1">
                         <span className="text-primary font-bold">2.</span> Staff HR & Compliance
                     </h5>
@@ -102,7 +102,7 @@ const Section2 = () => {
                         </p>
                     </div>
                 </div>
-                <div className="flex gap-1 md:px-8 px-4 border-slate-200 border-dashed justify-between py-8">
+                <div className="flex md:flex-row flex-col gap-4 md:px-8 px-4 border-slate-200 border-dashed justify-between py-8">
                     <h5 className="text-xl text-semibold flex-1">
                         <span className="text-primary font-bold">3.</span> Boost Retention & Engagement
                     </h5>
