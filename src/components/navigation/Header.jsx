@@ -95,7 +95,7 @@ const Header = () => {
                                 className="flex items-center space-x-8 ms-4"
                             >
                                 <NavigationMenuItem>
-                                <NavigationMenuLink asChild className="text-[15px] font-semibold hover:text-primary focus:text-primary">
+                                <NavigationMenuLink asChild className="text-base font-semibold hover:text-primary focus:text-primary">
                                     <Link to="/">Home</Link>
                                 </NavigationMenuLink>
                                 </NavigationMenuItem>
