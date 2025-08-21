@@ -31,10 +31,10 @@ const Section2 = () => {
                         <div className="flex gap-3 flex-col py-6">
                             <BellIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base font-bold flex-1 md:px-8 px-4 border-l border-primary border-dashed">
-                                Announcements
+                                News
                             </h5>
                             <div className="text-base text-gray-600 md:px-8 px-4">
-                                Send important announcements to your employees, such as company news, policy changes, or upcoming events. Keep everyone informed and engaged with Fork.
+                                Send important News to your employees, such as company news, policy changes, or upcoming events. Keep everyone informed and engaged with Fork.
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col py-6">
@@ -59,7 +59,7 @@ const StaffHr = () => {
 
     useEffect(() => {
         window.scrollTo(0,0)
-        document.title = "Retention and Engagement - Fork HR"
+        document.title = "Retention and Engagement - Fork"
     }, [])
 
     return (

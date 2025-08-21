@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { ArrowLeftRightIcon, ArrowRight, CalendarClock, CheckIcon, CoffeeIcon, FileSignatureIcon, FolderIcon, FormInputIcon, SendIcon, TimerIcon } from 'lucide-react'
+import { ArrowLeftRightIcon, ArrowRight, Book, CalendarClock, CheckIcon, CoffeeIcon, FileSignatureIcon, FolderIcon, FolderKanban, FormInputIcon, SendIcon, TimerIcon } from 'lucide-react'
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -49,6 +49,24 @@ const Section2 = () => {
                                 I-9, W-4, and more. Fork makes it easy to collect all the information you need from new employees, such as their contact information, tax forms, and direct deposit information.
                             </div>
                         </div>
+                        <div className="flex gap-3 flex-col py-6">
+                            <Book className="w-6 h-6 text-primary md:mx-8 mx-4"/>
+                            <h5 className="text-base font-bold flex-1 md:px-8 px-4 border-l border-primary border-dashed">
+                                Training courses
+                            </h5>
+                            <div className="text-base text-gray-600 md:px-8 px-4">
+                                Assign and track employee training courses. Ensure your team is up-to-date with the latest skills and knowledge to improve performance and productivity.
+                            </div>
+                        </div>
+                        <div className="flex gap-3 flex-col py-6">
+                            <FolderKanban className="w-6 h-6 text-primary md:mx-8 mx-4"/>
+                            <h5 className="text-base font-bold flex-1 md:px-8 px-4 border-l border-primary border-dashed">
+                                Shared resources
+                            </h5>
+                            <div className="text-base text-gray-600 md:px-8 px-4">
+                                Share important resources and policies with your team. Ensure everyone has access to the information they need to perform their job effectively.
+                            </div>
+                        </div>
                     </div>
                     <div className="flex-1 md:flex hidden"/>
                 </div>
@@ -62,7 +80,7 @@ const StaffHr = () => {
 
     useEffect(() => {
         window.scrollTo(0,0)
-        document.title = "Staff HR - Fork HR"
+        document.title = "Staff HR - Fork"
     }, [])
 
     return (

@@ -14,7 +14,7 @@ const Mission = () => {
             </div>
             <div className="py-10">
                 <div className="text-2xl font-semibold">
-                    How Fork HR was born
+                    How Fork was born
                 </div>
                 <div className="py-4">
                     <div className="text-base max-w-[700px]">

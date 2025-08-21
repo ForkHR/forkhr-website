@@ -147,7 +147,7 @@ const Scheduler = () => {
 
     useEffect(() => {
         window.scrollTo(0,0)
-        document.title = "Scheduler - Fork HR"
+        document.title = "Scheduler - Fork"
     }, [])
 
     return (

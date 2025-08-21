@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { CheckIcon } from '@radix-ui/react-icons'
 import { useEffect } from 'react'
-import { ArrowRight, BellIcon, CalendarClock, ClockIcon, FolderIcon, PieChartIcon, StarIcon, UserIcon } from 'lucide-react'
+import { ArrowRight, BellIcon, Book, CalendarClock, ClockIcon, FolderIcon, FolderKanban, PieChartIcon, StarIcon, UserIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 
@@ -13,7 +13,7 @@ const Section1 = () => {
                     Workforce<br/>management<br/>made easy<span className="text-primary">.</span>
                 </h1>
                 <div className="flex flex-col gap-1">
-                    <li className="flex items-center text-sm gap-2"><CheckIcon className="w-5 h-5" color="#533afd"/>Schedule & Time Tracking</li>
+                    <li className="flex items-center text-sm gap-2"><CheckIcon className="w-5 h-5" color="#533afd"/>Scheduler & Time Tracking</li>
                     <li className="flex items-center text-sm gap-2"><CheckIcon className="w-5 h-5" color="#533afd"/>Staff HR & Compliance</li>
                     <li className="flex items-center text-sm gap-2"><CheckIcon className="w-5 h-5" color="#533afd"/>Boost Retention & Engagement</li>
                 </div>
@@ -49,7 +49,7 @@ const Section2 = () => {
                     </h1>
                 </div>
                 <p className="flex-1 text-base md:text-xl">
-                    Your business is unique, and so are your operations. Fork HR is designed to cater to your unique needs. Whether you have multiple locations, or you have a large team, our platform was designed to help you run your business efficiently.
+                    Your business is unique, and so are your operations. Fork is designed to cater to your unique needs. Whether you have multiple locations, or you have a large team, our platform was designed to help you run your business efficiently.
                 </p>
             </div>
             <div>
@@ -57,7 +57,7 @@ const Section2 = () => {
                 </div>
                 <div className="flex md:flex-row flex-col gap-4 md:px-8 px-4 border-slate-200 border-dashed justify-between border-b py-8">
                     <h5 className="text-xl text-semibold flex-1">
-                        <span className="text-primary font-bold">1.</span> Schedule & Time Tracking
+                        <span className="text-primary font-bold">1.</span> Scheduler & Time Tracking
                     </h5>
                     <div className="text-sm md:text-base flex-1 flex flex-col gap-2 md:gap-6">
                         <p>
@@ -94,6 +94,12 @@ const Section2 = () => {
                         <p>
                             E-signatures and expiration reminders.
                         </p>
+                        <p>
+                            Training course assignments and tracking.
+                        </p>
+                        <p>
+                            Shared resources and policies.
+                        </p>
                     </div>
                 </div>
                 <div className="flex md:flex-row flex-col gap-4 md:px-8 px-4 border-slate-200 border-dashed justify-between py-8">
@@ -105,7 +111,7 @@ const Section2 = () => {
                             Gather feedback through employee surveys.
                         </p>
                         <p>
-                            Announcements to keep your team informed.
+                            News to keep your team informed.
                         </p>
                         <p>
                             Peer reviews to foster a culture of recognition and appreciation.
@@ -178,7 +184,7 @@ const Section3 = () => {
                                     More staff announcement reads & engagement
                                 </div>
                                 <div className="text-xl md:px-8 px-4">
-                                    Keep your team informed with announcements. Share important updates, news, and events to ensure everyone is on the same page.
+                                    Keep your team informed with news. Share important updates, news, and events to ensure everyone is on the same page.
                                 </div>
                             </div>
                         </div>
@@ -237,6 +243,22 @@ const apps = [
         image: "/assets/introduction-documents.png"
     },
     {
+        name: "Training",
+        title: "Employee training",
+        to: "/staff-hr",
+        description: "Assign and track employee training courses. Ensure your team is up-to-date with the latest skills and knowledge to improve performance and productivity.",
+        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><Book className="w-4 h-4" color="#fff"/></div>,
+        image: "/assets/introduction-training.png"
+    },
+    {
+        name: "Resources",
+        title: "Shared resources",
+        to: "/staff-hr",
+        description: "Share important resources and policies with your team. Ensure everyone has access to the information they need to perform their job effectively.",
+        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><FolderKanban className="w-4 h-4" color="#fff"/></div>,
+        image: "/assets/introduction-resource.png"
+    },
+    {
         name: "Surveys",
         title: "Gather feedback",
         to: "/retention-and-engagement",
@@ -245,10 +267,10 @@ const apps = [
         image: "/assets/introduction-surveys.png"
     },
     {
-        name: "Announcements",
+        name: "News",
         title: "Keep your team informed",
         to: "/retention-and-engagement",
-        description: "Keep your team informed with announcements. Share important updates, news, and events to ensure everyone is on the same page.",
+        description: "Keep your team informed with news. Share important updates, news, and events to ensure everyone is on the same page.",
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><BellIcon className="w-4 h-4" color="#fff"/></div>,
         image: "/assets/introduction-announcements.png"
     },
@@ -315,7 +337,7 @@ const Section4 = () => {
 const Home = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
-        document.title = "Fork HR - Workforce management made easy"
+        document.title = "Fork - Workforce management made easy"
     }, [])
 
     return (

@@ -70,7 +70,7 @@ const TimeTracking = () => {
 
     useEffect(() => {
         window.scrollTo(0,0)
-        document.title = "Time Tracking - Fork HR"
+        document.title = "Time Tracking - Fork"
     }, [])
 
     return (

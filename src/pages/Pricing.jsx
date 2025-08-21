@@ -99,7 +99,7 @@ const Pricing = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-        document.title = 'Pricing - Fork HR'
+        document.title = 'Pricing - Fork'
     }, [])
 
     return (
