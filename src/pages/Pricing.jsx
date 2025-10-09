@@ -85,7 +85,7 @@ const Section3 = () => {
             </div>
             <div className="flex-1 p-6 bg-slate-100 rounded-lg flex flex-col items-center justify-center text-center font-medium">
                 <div className="text-4xl">
-                    $4.99
+                    $2.99
                 </div>
                 <div className="text-sm text-muted-foreground font-normal">
                     Per user, billed monthly

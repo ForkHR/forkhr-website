@@ -8,7 +8,7 @@ const PrivacyPolicy = () => {
     }, [])
 
     return (
-        <main className="max-w-[800px] mx-auto w-full px-4 py-10 md:py-20 min-h-screen fade-in-up overflow-hidden">
+        <main className="max-w-[800px] mx-auto w-full px-4 py-10 md:py-20 min-h-screen fade-in-up overflow-hidden border-r border-l border-slate-200 border-dashed">
             <div className="text-5xl md:text-7xl font-semibold">
                 Privacy Policy<span className="text-primary">.</span>
             </div>
@@ -18,10 +18,10 @@ const PrivacyPolicy = () => {
             <div className="py-10">
             <div>
                 <p>
-                    This Privacy Policy describes the privacy practices of ForkHR Inc. and its affiliates (“ForkHR”, “we”, “our” or “us”) in relation to the use of our websites, applications, products, and services (collectively, the “Services”).
+                    This Privacy Policy describes the privacy practices of Fork Software Inc. and its affiliates (“Fork”, “Fork HR”, “we”, “our” or “us”) in relation to the use of our websites, applications, products, and services (collectively, the “Services”).
                 </p>
                 <p>
-                    At <strong>ForkHR Inc.</strong>, we take your privacy seriously. Please read this Privacy Policy to learn how we treat your personal data.
+                    At <strong>Fork Software Inc.</strong>, we take your privacy seriously. Please read this Privacy Policy to learn how we treat your personal data.
                     <br/>
                     By using or accessing our Services in any manner, you acknowledge that you accept the practices and policies outlined
                     below, and you hereby consent that we will collect, use, and share your information as described in this Privacy Policy.

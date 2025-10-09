@@ -6,7 +6,6 @@ import Footer from "./components/navigation/Footer"
 import TermsOfService from "./pages/TermsOfService"
 import PrivacyPolicy from "./pages/PrivacyPolicy"
 import Mission from "./pages/Mission"
-import Login from "./pages/Login"
 import Pricing from "./pages/Pricing"
 import Scheduler from "./pages/Scheduler"
 import TimeTracking from "./pages/TimeTracking"
@@ -29,7 +28,6 @@ function App() {
             <Route path="/retention-and-engagement" element={<RetentionAndEngagement/>} />
             <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
             <Route path="/terms-of-service" element={<TermsOfService/>} />
-            <Route path="/login" element={<Login/>} />
             <Route path="*" element={<Err404page/>} />
           </Routes>
         </div>

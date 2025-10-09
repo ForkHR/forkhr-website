@@ -288,11 +288,11 @@ const Section4 = () => {
     return (
         <div className="border-t border-slate-200 fade-in-up border-dashed">
             {apps.map((app, index) => (
-            <div className={`max-w-[800px] mx-auto md:px-8 px-4 flex gap-5 items-center justify-center min-h-[75vh] flex-col md:flex-row border-l border-r border-dashed border-slate-200${index === 0 ? "" : " border-t"}`}
+            <div className={`max-w-[800px] mx-auto md:px-8 px-4 flex gap-5 items-center justify-center md:min-h-[65vh] flex-col md:flex-row border-l border-r border-dashed border-slate-200${index === 0 ? "" : " border-t"}`}
                 key={index}
             >
                 <div className="flex justify-center items-center w-full gap-10">
-                    <div className="mx-auto w-full flex max-w-[980px] flex-col gap-3 md:gap-6 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20 flex-1 justify-center">
+                    <div className="mx-auto w-full flex max-w-[980px] flex-col gap-3 md:gap-6 py-12 md:py-12 md:pb-8 lg:py-24 lg:pb-20 flex-1 justify-center">
                         <div className="text-base font-bold">
                             <div className="md:max-w-[75%] text-slate-800 flex gap-3 items-center">
                                 {app.icon} {app.name}
