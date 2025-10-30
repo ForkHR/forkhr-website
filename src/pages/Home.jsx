@@ -114,7 +114,13 @@ const Section2 = () => {
                             News to keep your team informed.
                         </p>
                         <p>
-                            Peer reviews to foster a culture of recognition and appreciation.
+                            Kudos to recognize and reward employees.
+                        </p>
+                        <p>
+                            Training courses to enhance skills.
+                        </p>
+                        <p>
+                            Shared resources for easy access to information.
                         </p>
                     </div>
                 </div>
@@ -267,18 +273,18 @@ const apps = [
         image: "/assets/introduction-surveys.png"
     },
     {
-        name: "News",
+        name: "Updates",
         title: "Keep your team informed",
         to: "/retention-and-engagement",
-        description: "Keep your team informed with news. Share important updates, news, and events to ensure everyone is on the same page.",
+        description: "Keep your team informed with company updates. Share important updates, news, and events to ensure everyone is on the same page.",
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><BellIcon className="w-4 h-4" color="#fff"/></div>,
         image: "/assets/introduction-announcements.png"
     },
     {
-        name: "Peer Reviews",
+        name: "Kudos",
         title: "Foster a culture of recognition",
         to: "/retention-and-engagement",
-        description: "Foster a culture of recognition and appreciation with peer reviews. Encourage employees to give feedback to each other, boosting morale and engagement.",
+        description: "Foster a culture of recognition and appreciation with Kudos, boosting morale and engagement.",
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><StarIcon className="w-4 h-4" color="#fff"/></div>,
         image: "/assets/introduction-reviews.png"
     },

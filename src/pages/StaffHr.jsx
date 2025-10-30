@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { ArrowLeftRightIcon, ArrowRight, Book, CalendarClock, CheckIcon, CoffeeIcon, FileSignatureIcon, FolderIcon, FolderKanban, FormInputIcon, SendIcon, TimerIcon } from 'lucide-react'
+import { ArrowLeftRightIcon, ArrowRight, Book, CalendarClock, CheckIcon, CoffeeIcon, FileSignatureIcon, FileWarning, FolderIcon, FolderKanban, FormInputIcon, SendIcon, UserPlus } from 'lucide-react'
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -32,39 +32,21 @@ const Section2 = () => {
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col py-6">
-                            <FileSignatureIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
+                            <FileWarning className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base font-bold flex-1 md:px-8 px-4 border-l border-primary border-dashed">
-                                E-signatures
+                                Incidents
                             </h5>
                             <div className="text-base text-gray-600 md:px-8 px-4">
-                                Employees can sign documents electronically in Fork, so you can easily collect signatures without the hassle of printing and scanning.
+                                Document and track workplace incidents. Maintain a safe and compliant work environment by keeping detailed records of any incidents that occur.
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col py-6">
-                            <FormInputIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
+                            <UserPlus className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base font-bold flex-1 md:px-8 px-4 border-l border-primary border-dashed">
-                                Onboarding forms
+                                Hiring
                             </h5>
                             <div className="text-base text-gray-600 md:px-8 px-4">
-                                I-9, W-4, and more. Fork makes it easy to collect all the information you need from new employees, such as their contact information, tax forms, and direct deposit information.
-                            </div>
-                        </div>
-                        <div className="flex gap-3 flex-col py-6">
-                            <Book className="w-6 h-6 text-primary md:mx-8 mx-4"/>
-                            <h5 className="text-base font-bold flex-1 md:px-8 px-4 border-l border-primary border-dashed">
-                                Training courses
-                            </h5>
-                            <div className="text-base text-gray-600 md:px-8 px-4">
-                                Assign and track employee training courses. Ensure your team is up-to-date with the latest skills and knowledge to improve performance and productivity.
-                            </div>
-                        </div>
-                        <div className="flex gap-3 flex-col py-6">
-                            <FolderKanban className="w-6 h-6 text-primary md:mx-8 mx-4"/>
-                            <h5 className="text-base font-bold flex-1 md:px-8 px-4 border-l border-primary border-dashed">
-                                Shared resources
-                            </h5>
-                            <div className="text-base text-gray-600 md:px-8 px-4">
-                                Share important resources and policies with your team. Ensure everyone has access to the information they need to perform their job effectively.
+                                Manage job postings and applications. Streamline your hiring process by posting job openings and tracking applications all in one place.
                             </div>
                         </div>
                     </div>

@@ -5,9 +5,8 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion"
-import { CubeIcon } from '@radix-ui/react-icons'
-import { ArchiveIcon, ArrowRight, BarChartIcon, CheckIcon, EyeIcon, UserIcon } from 'lucide-react'
-import { useEffect, useRef } from 'react'
+import { ArrowRight } from 'lucide-react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 
@@ -63,6 +62,39 @@ const Faq = () => {
     )
 }
 
+const Section4 = () => {
+    return (
+        <div className="flex md:gap-8 md:flex-row flex-col border border-dashed border-slate-200 rounded-lg p-1 mb-12">
+            <div className="flex-1 p-6">
+                <h3 className="md:xl text-3xl font-semibold">
+                    Basic
+                </h3>
+                <div className="text-base text-gray-600 pt-2">
+                    For small teams getting started. Access full set of features to manage your team efficiently.
+                </div>
+                <div className="pt-6">
+                    <Link to="mailto:support@forkhr.com">
+                        <Button
+                            variant="outline"
+                        >
+                            Contact us
+                            <ArrowRight className="w-4 h-4 ms-2" />
+                        </Button>
+                    </Link>
+                </div>
+            </div>
+            <div className="flex-1 p-6 bg-slate-100 rounded-lg flex flex-col items-center justify-center text-center font-medium">
+                <div className="text-4xl">
+                    Free
+                </div>
+                <div className="text-sm text-muted-foreground font-normal">
+                    up to 5 users
+                </div>
+            </div>
+        </div>
+    )
+}
+
 const Section3 = () => {
     return (
         <div className="flex md:gap-8 md:flex-row flex-col border border-dashed border-slate-200 rounded-lg p-1">
@@ -71,7 +103,7 @@ const Section3 = () => {
                     Essential
                 </h3>
                 <div className="text-base text-gray-600 pt-2">
-                    Access a complete set of features with simple and transparent pricing. No setup fees, monthly fees, or hidden fees.
+                    Access a complete set of features with simple and transparent pricing. No setup fees or hidden charges.
                 </div>
                 <div class="text-xs text-gray-400 pt-4">30-day free trial. Cancel anytime.</div>
                 <div className="pt-6">
@@ -88,7 +120,7 @@ const Section3 = () => {
                     $2.99
                 </div>
                 <div className="text-sm text-muted-foreground font-normal">
-                    Per user, billed monthly
+                    per user, billed monthly
                 </div>
             </div>
         </div>
@@ -106,8 +138,9 @@ const Pricing = () => {
         <main className="w-full max-w-[800px] mx-auto border-l border-r border-dashed border-slate-200 flex flex-col fade-in-up">
             <div className="py-10 md:px-8 px-4">
                 <h1 className="max-w-[350px] md:max-w-[650px] text-5xl font-bold leading-[1] tracking-tighter lg:text-6xl xl:text-7xl lg:leading-[1.1] pb-10">
-                    Single plan<span className="text-primary">.</span>
+                    Simple pricing<span className="text-primary">.</span>
                 </h1>
+                <Section4/>
                 <Section3/>
             </div>
             <Faq/>

@@ -31,19 +31,37 @@ const Section2 = () => {
                         <div className="flex gap-3 flex-col py-6">
                             <BellIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base font-bold flex-1 md:px-8 px-4 border-l border-primary border-dashed">
-                                News
+                                Company updates
                             </h5>
                             <div className="text-base text-gray-600 md:px-8 px-4">
-                                Send important News to your employees, such as company news, policy changes, or upcoming events. Keep everyone informed and engaged with Fork.
+                                Send important updates to your employees, such as company news, policy changes, or upcoming events. Keep everyone informed and engaged with Fork.
                             </div>
                         </div>
                         <div className="flex gap-3 flex-col py-6">
                             <StarIcon className="w-6 h-6 text-primary md:mx-8 mx-4"/>
                             <h5 className="text-base font-bold flex-1 md:px-8 px-4 border-l border-primary border-dashed">
-                                Reviews
+                                Kudos
                             </h5>
                             <div className="text-base text-gray-600 md:px-8 px-4">
-                                Conduct performance reviews and evaluations to assess your employees’ skills, strengths, and areas for improvement. Use the feedback to help them grow and develop in their roles.
+                                Recognize and reward your employees for their hard work and achievements. Boost morale and motivation by celebrating successes with Fork's Kudos feature.
+                            </div>
+                        </div>
+                        <div className="flex gap-3 flex-col py-6">
+                            <Book className="w-6 h-6 text-primary md:mx-8 mx-4"/>
+                            <h5 className="text-base font-bold flex-1 md:px-8 px-4 border-l border-primary border-dashed">
+                                Training courses
+                            </h5>
+                            <div className="text-base text-gray-600 md:px-8 px-4">
+                                Assign and track employee training courses. Ensure your team is up-to-date with the latest skills and knowledge to improve performance and productivity.
+                            </div>
+                        </div>
+                        <div className="flex gap-3 flex-col py-6">
+                            <FolderKanban className="w-6 h-6 text-primary md:mx-8 mx-4"/>
+                            <h5 className="text-base font-bold flex-1 md:px-8 px-4 border-l border-primary border-dashed">
+                                Shared resources
+                            </h5>
+                            <div className="text-base text-gray-600 md:px-8 px-4">
+                                Share important resources and policies with your team. Ensure everyone has access to the information they need to perform their job effectively.
                             </div>
                         </div>
                     </div>

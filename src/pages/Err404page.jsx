@@ -8,16 +8,8 @@ const Err404page = () => {
     }, [])
     return (
         <div
-            className="flex flex-col justify-center items-center min-h-[50vh] fade-in-up gap-2 py-20"
+            className="flex flex-col justify-center items-center min-h-[75vh] fade-in-up gap-2 py-20"
         >
-            <div>
-                <img
-                    alt="404"
-                    src="/assets/404.png"
-                    className="h-50"
-                    draggable="false"
-                />
-            </div>
             <div
                 className="flex justify-center items-center"
             >
