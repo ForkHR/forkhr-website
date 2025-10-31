@@ -2,6 +2,7 @@
 import { Button } from '@/components/ui/button'
 import { ArrowRight, BellIcon, Book, Folder, PieChartIcon, StarIcon } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect } from 'react'
 
 
@@ -107,11 +108,13 @@ const StaffHr = () => {
                             </div>
                         </div>
                         <div className="flex-1 hidden md:block">
-                            <img
+                            <Image
                                 alt="img-1"
                                 src="/assets/introduction-surveys.png"
                                 draggable="false"
                                 className="w-full h-auto max-w-[400px] md:max-w-[500px] lg:max-w-[600px] xl:max-w-[700px]"
+                                width={700}
+                                height={400}
                             />
                         </div>
                     </div>
