@@ -1,9 +1,8 @@
-"use client"
 import { Button } from '@/components/ui/button'
 import { ArrowLeftRightIcon, ArrowRight, CalendarClock, CheckIcon, CoffeeIcon, SendIcon, TimerIcon } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
-import React, { useEffect } from 'react'
+import type { Metadata } from 'next'
 
 
 const Section2 = () => {
@@ -145,13 +144,25 @@ const Section3 = () => {
     )
 }
 
+// add metadata for the page and change og title
+export const metadata: Metadata = {
+    title: "Scheduler - Fork",
+    description: "Easily build work schedules that meet daily staffing needs with Fork's powerful scheduling tools.",
+    openGraph: {
+        title: "Scheduler - Fork",
+        description: "Easily build work schedules that meet daily staffing needs with Fork's powerful scheduling tools.",
+        images: ['/og-image.png'],
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: "Scheduler - Fork", 
+        description: "Easily build work schedules that meet daily staffing needs with Fork's powerful scheduling tools.",
+        images: ['/og-image.png'],
+    },
+}
+
 const Scheduler = () => {
-
-    useEffect(() => {
-        window.scrollTo(0,0)
-        document.title = "Scheduler - Fork"
-    }, [])
-
     return (
         <>
             <div className="max-w-[800px] fade-in-up mx-auto flex gap-5 min-h-[60vh] flex-col md:flex-row">

@@ -1,9 +1,8 @@
-"use client"
 import { Button } from '@/components/ui/button'
 import { ArrowLeftRightIcon, ArrowRight, CalendarClock, CheckIcon, CoffeeIcon, MapIcon, MonitorSmartphoneIcon, SendIcon, TimerIcon, UserIcon } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
-import React, { useEffect } from 'react'
+import type { Metadata } from 'next'
 
 
 const Section2 = () => {
@@ -68,13 +67,24 @@ const Section2 = () => {
     )
 }
 
+export const metadata: Metadata = {
+    title: "Time Tracking - Fork",
+    description: "Accurate time tracking with terminal clock-in, geo location, and real-time timesheet management.",
+    openGraph: {
+        title: "Time Tracking - Fork",
+        description: "Accurate time tracking with terminal clock-in, geo location, and real-time timesheet management.",
+        images: ['/og-image.png'],
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: "Time Tracking - Fork", 
+        description: "Accurate time tracking with terminal clock-in, geo location, and real-time timesheet management.",
+        images: ['/og-image.png'],
+    },
+}
+
 const TimeTracking = () => {
-
-    useEffect(() => {
-        window.scrollTo(0,0)
-        document.title = "Time Tracking - Fork"
-    }, [])
-
     return (
         <>
             <div className="max-w-[800px] fade-in-up mx-auto flex gap-5 min-h-[60vh] flex-col md:flex-row">

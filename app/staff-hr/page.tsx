@@ -1,9 +1,8 @@
-"use client"
 import { Button } from '@/components/ui/button'
 import { ArrowLeftRightIcon, ArrowRight, Book, CalendarClock, CheckIcon, CoffeeIcon, FileSignatureIcon, FileWarning, FolderIcon, FolderKanban, FormInputIcon, SendIcon, UserPlus } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
-import React, { useEffect } from 'react'
+import type { Metadata } from 'next'
 
 const Section2 = () => {
     return (
@@ -58,14 +57,24 @@ const Section2 = () => {
     )
 }
 
+export const metadata: Metadata = {
+    title: "Staff HR - Fork",
+    description: "Streamline your HR processes with paperless onboarding, document management, and compliance tools.",
+    openGraph: {
+        title: "Staff HR - Fork",
+        description: "Streamline your HR processes with paperless onboarding, document management, and compliance tools.",
+        images: ['/og-image.png'],
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: "Staff HR - Fork", 
+        description: "Streamline your HR processes with paperless onboarding, document management, and compliance tools.",
+        images: ['/og-image.png'],
+    },
+}
 
 const StaffHr = () => {
-
-    useEffect(() => {
-        window.scrollTo(0,0)
-        document.title = "Staff HR - Fork"
-    }, [])
-
     return (
         <>
             <div className="max-w-[800px] fade-in-up mx-auto flex gap-5 min-h-[60vh] flex-col md:flex-row">

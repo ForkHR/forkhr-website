@@ -1,9 +1,8 @@
-"use client"
 import { Button } from '@/components/ui/button'
 import { ArrowRight, BellIcon, Book, Folder, PieChartIcon, StarIcon } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useEffect } from 'react'
+import type { Metadata } from 'next'
 
 
 const Section2 = () => {
@@ -74,14 +73,24 @@ const Section2 = () => {
     )
 }
 
+export const metadata: Metadata = {
+    title: "Retention and Engagement - Fork",
+    description: "Boost employee retention and engagement with surveys, company updates, kudos, and training tools.",
+    openGraph: {
+        title: "Retention and Engagement - Fork",
+        description: "Boost employee retention and engagement with surveys, company updates, kudos, and training tools.",
+        images: ['/og-image.png'],
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: "Retention and Engagement - Fork", 
+        description: "Boost employee retention and engagement with surveys, company updates, kudos, and training tools.",
+        images: ['/og-image.png'],
+    },
+}
 
 const StaffHr = () => {
-
-    useEffect(() => {
-        window.scrollTo(0,0)
-        document.title = "Retention and Engagement - Fork"
-    }, [])
-
     return (
         <>
             <div className="max-w-[800px] fade-in-up mx-auto flex gap-5 min-h-[60vh] flex-col md:flex-row">
