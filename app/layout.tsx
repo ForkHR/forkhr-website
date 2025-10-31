@@ -20,6 +20,18 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.svg',
   },
+  openGraph: {
+    title: "Fork - Workforce Management Made Easy",
+    description: "Workforce management made easy with scheduling, time tracking, staff HR, and engagement tools.",
+    images: ['/og-image.png'],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Fork - Workforce Management Made Easy",
+    description: "Workforce management made easy with scheduling, time tracking, staff HR, and engagement tools.",
+    images: ['/og-image.png'],
+  },
 };
 
 export default function RootLayout({
