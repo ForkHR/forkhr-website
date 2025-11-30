@@ -97,7 +97,7 @@ const StaffHr = () => {
                                     </Link>
                                 </div>
                                 <div className="text-xs text-gray-400 pt-4">
-                                    30-day free trial. Cancel anytime.
+                                    7-day free trial. Cancel anytime.
                                 </div>
                             </div>
                         </div>

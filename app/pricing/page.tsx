@@ -123,7 +123,7 @@ const Section3 = () => {
                 <div className="text-base text-gray-600 pt-2">
                     Access a complete set of features with simple and transparent pricing. No setup fees or hidden charges.
                 </div>
-                <div className="text-xs text-gray-400 pt-4">30-day free trial. Cancel anytime.</div>
+                <div className="text-xs text-gray-400 pt-4">7-day free trial. Cancel anytime.</div>
                 <div className="pt-6">
                     <Link href="https://app.forkhr.com/register">
                         <Button>
