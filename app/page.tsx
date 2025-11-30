@@ -5,6 +5,30 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 
+const SectionPrice = () => {
+    return (
+            <div className=" border-t border-slate-200 fade-in-up border-dashed">
+                <Link
+                    href="https://app.forkhr.com/register"
+                >
+                        <div className='max-w-[800px] mx-auto flex gap-5 items-center justify-center flex-col md:flex-row border-l border-r border-dashed border-slate-200 w-full'>
+                            <div className="flex md:gap-8 md:flex-row flex-col p-3 w-full">
+                                <div className="flex-1 px-6 flex flex-col font-medium bg-primary rounded-lg w-full">
+                                    <div className="text-white font-semibold pt-4 md:text-3xl text-xl">
+                                        Early adopters lock in lifetime pricing!
+                                    </div>
+                                    <div className="text-sm md:text-1xl text-white pt-2 pb-4">
+                                        only $3.99/user/month
+                                    </div>
+                                    <ArrowRight className="w-6 h-6 text-white mb-4"/>
+                                </div>
+                            </div>
+                        </div>
+                </Link>
+            </div>
+    )
+}
+
 const Section1 = () => {
     return (
         <div className="max-w-[800px] mx-auto md:px-8 px-4 flex gap-5 min-h-[60vh] flex-col md:flex-row border-l border-r border-slate-200 border-dashed relative">
@@ -349,6 +373,7 @@ const Home = () => {
             <Section2/>
             <Section3/>
             <Section4/>
+            <SectionPrice/>
         </main>
     )
 }

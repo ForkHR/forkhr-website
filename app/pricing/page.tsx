@@ -40,7 +40,7 @@ const Faq = () => {
                             Do you offer a free trial?
                         </AccordionTrigger>
                         <AccordionContent>
-                            Yes. You can start with a 30-day free trial. No credit card is required.
+                            Yes. You can start with a 7-days free trial. No credit card is required.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-4">
@@ -66,7 +66,7 @@ const Faq = () => {
 
 const Section4 = () => {
     return (
-        <div className="flex md:gap-8 md:flex-row flex-col border border-dashed border-slate-200 rounded-lg p-1 mb-8">
+        <div className="flex md:gap-8 md:flex-row flex-col border border-dashed border-slate-200 rounded-lg p-1 mb-4">
             <div className="flex-1 p-6">
                 <h3 className="md:xl text-3xl font-semibold">
                     Basic
@@ -97,10 +97,26 @@ const Section4 = () => {
     )
 }
 
+const Section5 = () => {
+    return (
+        <div className="fade-in-up">
+            <div className='max-w-[800px] mx-auto flex gap-5 items-center justify-center flex-col md:flex-row border-b border-dashed border-slate-200 w-full mb-3'>
+                <div className="flex md:gap-8 md:flex-row flex-col p-3 w-full">
+                    <div className="flex-1 px-6 flex flex-col font-medium bg-primary rounded-lg w-full">
+                        <div className="text-white font-semibold py-4 md:text-3xl text-xl">
+                            Early adopters lock in lifetime pricing!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
 const Section3 = () => {
     return (
-        <div className="flex md:gap-8 md:flex-row flex-col border border-dashed border-slate-200 rounded-lg p-1">
-            <div className="flex-1 p-6">
+        <div className="flex md:gap-8 md:flex-row flex-col">
+            <div className="flex-1 px-6 pb-6 pt-4">
                 <h3 className="md:xl text-3xl font-semibold">
                     Essential
                 </h3>
@@ -111,18 +127,26 @@ const Section3 = () => {
                 <div className="pt-6">
                     <Link href="https://app.forkhr.com/register">
                         <Button>
-                            Start now
+                            Lock in Lifetime Pricing
                             <ArrowRight className="w-4 h-4 ms-2" />
                         </Button>
                     </Link>
                 </div>
             </div>
             <div className="flex-1 p-6 bg-slate-100 rounded-lg flex flex-col items-center justify-center text-center font-medium">
-                <div className="text-5xl">
-                    $2.99
+                <div className="flex items-baseline gap-2">
+                    <div className="text-5xl">
+                        $3.99
+                    </div>
+                    <div className="text-2xl text-muted-foreground line-through font-semibold">
+                        $4.99
+                    </div>
                 </div>
                 <div className="text-sm text-muted-foreground font-normal">
-                    per user, billed monthly
+                    per user / month
+                </div>
+                <div className="text-sm text-muted-foreground font-normal">
+                    limited time offer
                 </div>
             </div>
         </div>
@@ -142,8 +166,10 @@ const Pricing = () => {
                 <h1 className="max-w-[350px] md:max-w-[650px] text-5xl font-bold leading-[1] tracking-tighter lg:text-6xl xl:text-7xl lg:leading-[1.1] pb-10">
                     Simple pricing<span className="text-primary">.</span>
                 </h1>
-                <Section4/>
-                <Section3/>
+                <div className="border border-dashed border-slate-200 rounded-lg p-1">
+                    <Section5/>
+                    <Section3/>
+                </div>
             </div>
             <Faq/>
         </main>
