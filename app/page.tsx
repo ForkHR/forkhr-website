@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { CheckIcon } from '@radix-ui/react-icons'
-import { ArrowRight, BellIcon, Book, CalendarClock, ClockIcon, FolderIcon, FolderKanban, PieChartIcon, StarIcon, UserIcon } from 'lucide-react'
+import { ArrowRight, BellIcon, Book, BookText, CalendarClock, ClockIcon, FolderIcon, FolderKanban, PieChartIcon, StarIcon, UserIcon } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -255,6 +255,14 @@ const apps = [
         description: "Employee clock-in/clock-out tracking is made easy with our terminal, geo location, and manual clock-in options. Ensure accurate time tracking and reduce time theft.",
         image: "/assets/introduction-timetracking.png",
         icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><ClockIcon className="w-4 h-4" color="#fff"/></div>,
+    },
+    {
+        name: "Forms",
+        title: "Custom forms",
+        to: '/staff-hr',
+        description: "Create and manage custom forms for any HR process. Fork's form builder makes it easy to collect and organize data from your employees.",
+        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><BookText className="w-4 h-4" color="#fff"/></div>,
+        image: "/assets/introduction-forms.png"
     },
     {
         name: "Onboarding",
