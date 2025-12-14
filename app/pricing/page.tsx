@@ -1,5 +1,3 @@
-"use client"
-
 import { Button } from '@/components/ui/button'
 import {
     Accordion,
@@ -8,14 +6,60 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion"
 import { ArrowRight } from 'lucide-react'
-import { useEffect } from 'react'
 import Link from 'next/link'
+import { CheckIcon } from '@radix-ui/react-icons'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+    title: 'Pricing - Fork',
+    description: 'Simple pricing for scheduling, time tracking, HR, and engagement tools.',
+    openGraph: {
+        title: 'Pricing - Fork',
+        description: 'Simple pricing for scheduling, time tracking, HR, and engagement tools.',
+        images: ['/og-image.png'],
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Pricing - Fork',
+        description: 'Simple pricing for scheduling, time tracking, HR, and engagement tools.',
+        images: ['/og-image.png'],
+    },
+}
+
+
+const tiersEnum = [
+    {
+        name: "Essential",
+        value: "essential",
+        price: 39,
+        description: "For small teams starting out",
+        addons: ['Scheduling', 'Open shifts & trades', 'Shift tasks', 'Employee availability', 'Time off requests', 'Time tracking', 'Company updates', 'Hiring', 'Unlimited employees & locations', 'Job roles & permissions'],
+        addonsValue: ["schedule", "time-off-requests", "timecards", "updates", "hiring"],
+    },
+    {
+        name: "Pro",
+        value: "pro",
+        price: 79,
+        description: "For growing teams",
+        addons: ['All from Essential', 'Onboarding forms', 'Employee documents', 'Custom forms', 'Surveys', 'Recognitions', 'Shared library'],
+        addonsValue: ["schedule", "time-off-requests", "timecards", "onboarding", "documents", "updates", "forms", "recognitions", "surveys", "library", "hiring"],
+    },
+    {
+        name: "Premium",
+        value: "premium",
+        price: 129,
+        description: "Maximize your HR capabilities",
+        addons: ['All from Pro', 'AI assistant', 'Training courses', 'Incident reports', 'Termination records', 'Advanced analytics & reports', 'Priority support'],
+        addonsValue: ["schedule", "time-off-requests", "timecards", "onboarding", "documents", "updates", "forms", "recognitions", "surveys", "library", "course", "hiring", "incidents", 'termination-records', 'ai'],
+    },
+]
 
 
 const Faq = () => {
     return (
         <section className="flex border-t md:px-8 px-4 border-dashed border-slate-200 flex-col py-10 w-full">
-            <h1 className='max-w-[350px] md:max-w-[650px] text-5xl font-bold leading-[1] tracking-tighter lg:text-6xl xl:text-7xl lg:leading-[1.1] pb-6'>
+            <h1 className='max-w-[350px] md:max-w-[650px] text-5xl font-bold leading-none tracking-tighter lg:text-6xl xl:text-7xl lg:leading-[1.1] pb-6'>
                 FAQs<span className="text-primary">.</span>
             </h1>
                 <Accordion type="single" collapsible className="w-full pb-12 px-2">
@@ -24,7 +68,7 @@ const Faq = () => {
                             Can I change my plan after I choose one?
                         </AccordionTrigger>
                         <AccordionContent>
-                            We proving a single plan that includes all features. For more information, please contact support@forkhr.com
+                            Yes — you can upgrade or downgrade your plan anytime. If you need help choosing a plan, contact support@forkhr.com.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-2">
@@ -48,7 +92,7 @@ const Faq = () => {
                             Is there a discount for yearly plans?
                         </AccordionTrigger>
                         <AccordionContent>
-                            Currently, we only offer a monthly plan. However, we are working on introducing yearly plans in the future.
+                            Currently, we only offer monthly billing. If you need annual billing, contact support@forkhr.com.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-5">
@@ -64,112 +108,72 @@ const Faq = () => {
     )
 }
 
-const Section4 = () => {
+const PricingGrid = () => {
     return (
-        <div className="flex md:gap-8 md:flex-row flex-col border border-dashed border-slate-200 rounded-lg p-1 mb-4">
-            <div className="flex-1 p-6">
-                <h3 className="md:xl text-3xl font-semibold">
-                    Basic
-                </h3>
-                <div className="text-base text-gray-600 pt-2">
-                    For small teams getting started. Access full set of features to manage your team efficiently.
-                </div>
-                <div className="pt-6">
-                    <Link href="mailto:support@forkhr.com">
-                        <Button
-                            variant="outline"
-                        >
-                            Contact us
-                            <ArrowRight className="w-4 h-4 ms-2" />
-                        </Button>
-                    </Link>
-                </div>
-            </div>
-            <div className="flex-1 p-6 bg-slate-100 rounded-lg flex flex-col items-center justify-center text-center font-medium">
-                <div className="text-5xl text:primary">
-                    Free
-                </div>
-                <div className="text-sm text-muted-foreground font-normal">
-                    up to 5 users
-                </div>
-            </div>
-        </div>
-    )
-}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {tiersEnum.map((tier) => (
+                <div
+                    key={tier.value}
+                    className={`border border-dashed rounded-3xl p-5 flex flex-col ${tier.value === 'pro' ? 'border-primary' : 'border-slate-200'}`}
+                >
+                    <div className="flex items-center justify-between">
+                        <div className="text-xl font-semibold text-slate-900">
+                            {tier.name}
+                        </div>
+                        {tier.value === 'pro' ? (
+                            <div className="bg-primary text-primary-foreground px-2 py-1 text-xs font-semibold rounded">
+                                Popular
+                            </div>
+                        ) : null}
+                    </div>
 
-const Section5 = () => {
-    return (
-        <div className="fade-in-up">
-            <div className='max-w-[800px] mx-auto flex gap-5 items-center justify-center flex-col md:flex-row border-b border-dashed border-slate-200 w-full mb-3'>
-                <div className="flex md:gap-8 md:flex-row flex-col p-3 w-full">
-                    <div className="flex-1 px-6 flex flex-col font-medium bg-primary rounded-lg w-full">
-                        <div className="text-white font-semibold py-4 md:text-3xl text-xl">
-                            Early adopters lock in lifetime pricing!
+                    <div className="flex items-end mt-4 mb-2">
+                        <div className="text-sm text-muted-foreground mb-2 mr-1">$</div>
+                        <div className="text-5xl font-semibold leading-none text-slate-900">
+                            {tier.price}
+                        </div>
+                        <div className="flex flex-col justify-end ml-2">
+                            <div className="text-xs text-muted-foreground leading-tight">month/</div>
+                            <div className="text-xs text-muted-foreground leading-tight">location</div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    )
-}
 
-const Section3 = () => {
-    return (
-        <div className="flex md:gap-8 md:flex-row flex-col">
-            <div className="flex-1 px-6 pb-6 pt-4">
-                <h3 className="md:xl text-3xl font-semibold">
-                    Essential
-                </h3>
-                <div className="text-base text-gray-600 pt-2">
-                    Access a complete set of features with simple and transparent pricing. No setup fees or hidden charges.
-                </div>
-                <div className="text-xs text-gray-400 pt-4">7-day free trial. Cancel anytime.</div>
-                <div className="pt-6">
-                    <Link href="https://app.forkhr.com/register">
-                        <Button>
-                            Lock in Lifetime Pricing
-                            <ArrowRight className="w-4 h-4 ms-2" />
-                        </Button>
-                    </Link>
-                </div>
-            </div>
-            <div className="flex-1 p-6 bg-slate-100 rounded-lg flex flex-col items-center justify-center text-center font-medium">
-                <div className="flex items-baseline gap-2">
-                    <div className="text-5xl">
-                        $3.99
+                    <div className="text-sm text-muted-foreground">
+                        {tier.description}
                     </div>
-                    <div className="text-2xl text-muted-foreground line-through font-semibold">
-                        $4.99
+
+                    <div className="mt-4">
+                        <Link href="https://app.forkhr.com/register" target="_blank">
+                            <Button className="w-full" variant={tier.value === 'pro' ? 'default' : 'outline'}>
+                                Get {tier.name}
+                                <ArrowRight className="w-4 h-4 ms-2" />
+                            </Button>
+                        </Link>
+                    </div>
+
+                    <div className="text-sm font-semibold mt-5 mb-3">What’s included</div>
+                    <div className="flex flex-col gap-2 flex-1">
+                        {tier.addons.map((addon) => (
+                            <div key={addon} className="flex items-start gap-2">
+                                <CheckIcon className="w-4 h-4 mt-0.5 text-primary" />
+                                <div className="text-sm text-slate-700">{addon}</div>
+                            </div>
+                        ))}
                     </div>
                 </div>
-                <div className="text-sm text-muted-foreground font-normal">
-                    per user / month
-                </div>
-                <div className="text-sm text-muted-foreground font-normal">
-                    limited time offer
-                </div>
-            </div>
+            ))}
         </div>
     )
 }
 
 const Pricing = () => {
-
-    useEffect(() => {
-        window.scrollTo(0, 0)
-        document.title = 'Pricing - Fork'
-    }, [])
-
     return (
         <main className="w-full max-w-[800px] mx-auto border-l border-r border-dashed border-slate-200 flex flex-col fade-in-up">
             <div className="py-10 md:px-8 px-4">
-                <h1 className="max-w-[350px] md:max-w-[650px] text-5xl font-bold leading-[1] tracking-tighter lg:text-6xl xl:text-7xl lg:leading-[1.1] pb-10">
+                <h1 className="max-w-[350px] md:max-w-[650px] text-5xl font-bold leading-none tracking-tighter lg:text-6xl xl:text-7xl lg:leading-[1.1] pb-10">
                     Simple pricing<span className="text-primary">.</span>
                 </h1>
-                <div className="border border-dashed border-slate-200 rounded-lg p-1">
-                    <Section5/>
-                    <Section3/>
-                </div>
+                <PricingGrid />
             </div>
             <Faq/>
         </main>
