@@ -168,7 +168,7 @@ const Header = () => {
                             <Sheet
                                 open={open} onOpenChange={setOpen}
                             >
-                                <SheetTrigger>
+                                <SheetTrigger asChild>
                                     <Button variant="secondary" className="text-base">
                                         <HamburgerMenuIcon className="h-6 w-6" />
                                     </Button>
