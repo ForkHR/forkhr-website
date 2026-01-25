@@ -88,7 +88,7 @@ const Header = () => {
                                         <NavigationMenuTrigger
                                             className="text-base font-semibold bg-transparent hover:text-primary hover:bg-transparent focus:bg-transparent data-[state=open]:text-primary data-[state=open]:bg-transparent p-0"
                                         >
-                                            Features
+                                            Products
                                         </NavigationMenuTrigger>
                                         <NavigationMenuContent>
                                             <ul className="grid md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -210,7 +210,7 @@ const Header = () => {
                                             onClick={() => setOpen(false)}
                                             className="py-4 border-b border-dashed text-gray-700 border-slate-200 font-semibold text-lg flex px-4 items-center"
                                         >
-                                            Staff HR
+                                            HR & Compliance
                                         </Link>
                                         <Link href="/retention-and-engagement"
                                             className="py-4 border-b border-dashed text-gray-700 border-slate-200 font-semibold text-lg flex px-4 items-center"
