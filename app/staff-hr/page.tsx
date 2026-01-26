@@ -7,7 +7,7 @@ import type { Metadata } from 'next'
 const Section2 = () => {
     return (
         // Animation fade-in page
-        <div className="border-t border-slate-200 bg-white fade-in-up border-dashed">
+        <div className="border-t border-slate-200 fade-in-up border-dashed">
             <section className="max-w-[800px] mx-auto w-100 md:py-20 py-10 border-r border-l border-slate-200 border-dashed w-full">
                 <div className="flex justify-between md:px-8 px-4 pb-10 flex-col gap-8 md:max-w-[75%]">
                     <div className="flex-1">

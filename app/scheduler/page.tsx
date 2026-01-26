@@ -8,7 +8,7 @@ import type { Metadata } from 'next'
 const Section2 = () => {
     return (
         // Animation fade-in page
-        <div className="border-t border-slate-200 bg-white fade-in-up border-dashed">
+        <div className="border-t border-slate-200 fade-in-up border-dashed">
             <section className="max-w-[800px] mx-auto min-h-screen md:py-20 py-10 border-r border-l border-slate-200 border-dashed w-full">
                 <div className="flex justify-between md:px-8 px-4 pb-10 flex-col gap-8 md:max-w-[75%]">
                     <div className="flex-1">
@@ -88,7 +88,7 @@ const Section2 = () => {
 
 const Section3 = () => {
     return (
-        <section className="border-t border-slate-200 bg-white fade-in-up border-dashed">
+        <section className="border-t border-slate-200 fade-in-up border-dashed">
             <div className="max-w-[800px] mx-auto w-full py-20 border-l border-r border-slate-200 border-dashed">
                 <div className="flex justify-between flex-col gap-20">
                     <div className="md:text-5xl text-3xl font-semibold flex-1 md:px-8 px-4">
