@@ -117,9 +117,9 @@ export default function BlobBackground() {
       }
     >
       {/* Ambient gradient blobs */}
-      <div className="absolute -top-50 left-[-10%] lg:h-[520px] lg:w-[520px] blob blob-float-1 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(99,102,241,0.85),rgba(34,211,238,0.35),transparent_65%)]" />
-      <div className="absolute top-156 right-[-12%] lg:h-[560px] lg:w-[560px] blob blob-float-2 rounded-full bg-[radial-gradient(circle_at_40%_40%,rgba(236,72,153,0.70),rgba(99,102,241,0.35),transparent_65%)]" />
-      <div className="absolute top-164 left-[10%] lg:h-[640px] lg:w-[640px] blob blob-float-3 rounded-full bg-[radial-gradient(circle_at_35%_35%,rgba(34,211,238,0.60),rgba(99,102,241,0.25),transparent_65%)]" />
+      <div className="absolute -top-80 left-[-10%] md:h-[520px] md:w-[520px] blob blob-float-1 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(99,102,241,0.85),rgba(34,211,238,0.35),transparent_65%)]" />
+      <div className="absolute -top-56 right-[-12%] md:h-[560px] md:w-[560px] blob blob-float-2 rounded-full bg-[radial-gradient(circle_at_40%_40%,rgba(236,72,153,0.70),rgba(99,102,241,0.35),transparent_65%)]" />
+      <div className="absolute -top-150 left-[10%] md:h-[640px] md:w-[640px] blob blob-float-3 rounded-full bg-[radial-gradient(circle_at_35%_35%,rgba(34,211,238,0.60),rgba(99,102,241,0.25),transparent_65%)]" />
 
       {/* Cursor-follow glow (subtle, satisfying) */}
       {!reduceMotion && (
