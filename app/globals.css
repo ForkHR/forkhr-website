@@ -142,13 +142,13 @@
 
   .liquid-glass-header::after {
     opacity: 0.55;
-    border-radius: 1rem!important;
+    border-radius: 8rem!important;
   }
 
   .liquid-glass::before {
     content: "";
     position: absolute;
-    border-radius: 1rem!important;
+    border-radius: 8rem!important;
     inset: -2px;
     z-index: 0;
     background:
