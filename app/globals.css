@@ -236,38 +236,34 @@
     background-repeat: repeat;
   }
 
-  .blob {
-    filter: blur(42px);
-    opacity: 0.75;
-    transform: translate3d(0, 0, 0);
-    will-change: transform;
+  /* Slow ambient gradient drift */
+  .gradient-drift-1 {
+    animation: drift-1 25s ease-in-out infinite;
   }
 
-  .blob-float-1 {
-    animation: blob-float-1 18s ease-in-out infinite;
+  .gradient-drift-2 {
+    animation: drift-2 30s ease-in-out infinite;
   }
 
-  .blob-float-2 {
-    animation: blob-float-2 22s ease-in-out infinite;
+  .gradient-drift-3 {
+    animation: drift-3 35s ease-in-out infinite;
   }
 
-  .blob-float-3 {
-    animation: blob-float-3 26s ease-in-out infinite;
+  @keyframes drift-1 {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    33% { transform: translate3d(3%, -2%, 0) scale(1.03); }
+    66% { transform: translate3d(-2%, 3%, 0) scale(0.98); }
   }
 
-  @keyframes blob-float-1 {
-    0%, 100% { transform: translate3d(-6%, -8%, 0) scale(1); }
-    50% { transform: translate3d(8%, 10%, 0) scale(1.08); }
+  @keyframes drift-2 {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    40% { transform: translate3d(-3%, 2%, 0) scale(1.04); }
+    70% { transform: translate3d(2%, -2%, 0) scale(0.97); }
   }
 
-  @keyframes blob-float-2 {
-    0%, 100% { transform: translate3d(10%, -6%, 0) scale(1.02); }
-    50% { transform: translate3d(-10%, 12%, 0) scale(0.98); }
-  }
-
-  @keyframes blob-float-3 {
-    0%, 100% { transform: translate3d(-8%, 12%, 0) scale(1.06); }
-    50% { transform: translate3d(12%, -10%, 0) scale(0.96); }
+  @keyframes drift-3 {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(2%, 3%, 0) scale(1.05); }
   }
 
   @keyframes glass-sheen {
@@ -276,9 +272,9 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .blob-float-1,
-    .blob-float-2,
-    .blob-float-3 {
+    .gradient-drift-1,
+    .gradient-drift-2,
+    .gradient-drift-3 {
       animation: none !important;
     }
   }

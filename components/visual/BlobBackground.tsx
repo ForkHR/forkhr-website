@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react'
 
 export default function BlobBackground() {
   const containerRef = useRef<HTMLDivElement | null>(null)
-  const glowRef = useRef<HTMLDivElement | null>(null)
   const [mounted, setMounted] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const reduceMotion = useRef(true)
@@ -17,103 +16,49 @@ export default function BlobBackground() {
       const isNarrow = window.innerWidth < 768
       setIsMobile(isTouch || isNarrow)
     }
-
     computeIsMobile()
     window.addEventListener('resize', computeIsMobile, { passive: true })
     setMounted(true)
     return () => window.removeEventListener('resize', computeIsMobile)
   }, [])
 
+  // Smooth mouse parallax — desktop only
   useEffect(() => {
     if (!mounted || reduceMotion.current) return
     const el = containerRef.current
-    const glow = glowRef.current
     if (!el) return
 
-    // Skip on touch devices / narrow screens
     const isTouch = window.matchMedia('(pointer: coarse)').matches
-    const isNarrow = window.innerWidth < 768
-    if (isTouch || isNarrow) return
+    if (isTouch) return
 
     let rafId = 0
-
-    // Cursor state
-    let targetX = 0
-    let targetY = 0
-    let curX = 0
-    let curY = 0
-    let prevX = 0
-    let prevY = 0
-    let velocityMag = 0
-    let initialized = false
-    let hasPointer = false
-
-    // Blob positions (parallax layers — each blob follows at different speed)
-    const blobCount = 4
-    const blobX = new Float64Array(blobCount)
-    const blobY = new Float64Array(blobCount)
-    const parallax = [0.06, 0.04, 0.03, 0.08]
-    const ease = [0.035, 0.025, 0.018, 0.05]
+    let mx = 0
+    let my = 0
+    let sx = 0
+    let sy = 0
 
     const onPointerMove = (e: PointerEvent) => {
-      hasPointer = true
-      targetX = e.clientX
-      targetY = e.clientY
+      mx = (e.clientX / window.innerWidth - 0.5) * 2
+      my = (e.clientY / window.innerHeight - 0.5) * 2
       if (!rafId) rafId = requestAnimationFrame(tick)
     }
 
-    const onPointerLeave = () => { hasPointer = false }
-
     const tick = () => {
       rafId = 0
+      sx += (mx - sx) * 0.025
+      sy += (my - sy) * 0.025
 
-      if (!initialized) {
-        curX = targetX
-        curY = targetY
-        initialized = true
-      } else {
-        prevX = curX
-        prevY = curY
-        curX += (targetX - curX) * 0.1
-        curY += (targetY - curY) * 0.1
-      }
+      el.style.setProperty('--mx', `${sx * 30}px`)
+      el.style.setProperty('--my', `${sy * 20}px`)
 
-      // Velocity for glow intensity
-      const dx = curX - prevX
-      const dy = curY - prevY
-      const rawVel = Math.sqrt(dx * dx + dy * dy)
-      velocityMag += (Math.min(rawVel, 40) / 40 - velocityMag) * 0.08
-
-      // Move cursor glow (fixed positioned, viewport coords)
-      if (glow) {
-        glow.style.left = `${curX}px`
-        glow.style.top = `${curY}px`
-        glow.style.opacity = `${0.4 + velocityMag * 0.4}`
-        glow.style.transform = `translate(-50%, -50%) scale(${1 + velocityMag * 0.25})`
-      }
-
-      // Move each blob with parallax
-      for (let i = 0; i < blobCount; i++) {
-        blobX[i] += (targetX * parallax[i] - blobX[i]) * ease[i]
-        blobY[i] += (targetY * parallax[i] - blobY[i]) * ease[i]
-        el.style.setProperty(`--bx${i}`, `${blobX[i]}px`)
-        el.style.setProperty(`--by${i}`, `${blobY[i]}px`)
-      }
-
-      const dist = Math.abs(targetX - curX) + Math.abs(targetY - curY)
-      if (dist > 0.3 || hasPointer || velocityMag > 0.005) {
+      if (Math.abs(mx - sx) > 0.001 || Math.abs(my - sy) > 0.001) {
         rafId = requestAnimationFrame(tick)
       }
     }
 
     window.addEventListener('pointermove', onPointerMove, { passive: true })
-    window.addEventListener('pointerleave', onPointerLeave)
-    window.addEventListener('blur', onPointerLeave)
-
     return () => {
       window.removeEventListener('pointermove', onPointerMove)
-      window.removeEventListener('pointerleave', onPointerLeave)
-      window.removeEventListener('blur', onPointerLeave)
       if (rafId) cancelAnimationFrame(rafId)
     }
   }, [mounted])
@@ -123,185 +68,124 @@ export default function BlobBackground() {
   const isAnimated = !reduceMotion.current
 
   return (
-    <>
-      {/* Decorative blobs — absolute, scroll with page */}
-      <div
-        ref={containerRef}
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
-        style={{
-          '--bx0': '0px', '--by0': '0px',
-          '--bx1': '0px', '--by1': '0px',
-          '--bx2': '0px', '--by2': '0px',
-          '--bx3': '0px', '--by3': '0px',
-        } as React.CSSProperties}
-      >
-        {/* Mobile: fewer + softer blobs */}
-        {isMobile ? (
-          <>
-            <div
-              className="absolute"
-              style={{
-                width: 360,
-                height: 360,
-                top: 220,
-                left: '-35%',
-                willChange: 'transform',
-              }}
-            >
-              <div
-                className="h-full w-full rounded-full blob blob-float-1"
-                style={{
-                  background:
-                    'radial-gradient(circle at 35% 35%, rgba(99,102,241,0.55), rgba(79,70,229,0.22), transparent 65%)',
-                  filter: 'blur(28px)',
-                  opacity: 0.55,
-                }}
-              />
-            </div>
+    <div
+      ref={containerRef}
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+      style={{
+        '--mx': '0px',
+        '--my': '0px',
+      } as React.CSSProperties}
+    >
+      {isMobile ? (
+        <>
+          {/* Mobile — two soft washes, CSS animation only */}
+          <div
+            className="absolute rounded-full gradient-drift-1"
+            style={{
+              width: 420,
+              height: 420,
+              top: 120,
+              left: '-30%',
+              background:
+                'radial-gradient(circle at 40% 40%, rgba(99,102,241,0.4), rgba(79,70,229,0.15), transparent 70%)',
+              filter: 'blur(60px)',
+            }}
+          />
+          <div
+            className="absolute rounded-full gradient-drift-2"
+            style={{
+              width: 380,
+              height: 380,
+              top: -100,
+              right: '-25%',
+              background:
+                'radial-gradient(circle at 50% 45%, rgba(139,92,246,0.3), rgba(124,58,237,0.1), transparent 70%)',
+              filter: 'blur(60px)',
+            }}
+          />
+        </>
+      ) : (
+        <>
+          {/* Blob 0 — indigo, top-left area */}
+          <div
+            className="absolute rounded-full gradient-drift-1"
+            style={{
+              width: 650,
+              height: 650,
+              top: 200,
+              left: '-5%',
+              background:
+                'radial-gradient(circle at 35% 35%, rgba(99,102,241,0.45), rgba(79,70,229,0.18), transparent 70%)',
+              filter: 'blur(60px)',
+              transform: isAnimated
+                ? 'translate3d(var(--mx), var(--my), 0)'
+                : undefined,
+              willChange: 'transform',
+            }}
+          />
 
-            <div
-              className="absolute"
-              style={{
-                width: 340,
-                height: 340,
-                top: -140,
-                right: '-40%',
-                willChange: 'transform',
-              }}
-            >
-              <div
-                className="h-full w-full rounded-full blob blob-float-2"
-                style={{
-                  background:
-                    'radial-gradient(circle at 45% 40%, rgba(236,72,153,0.35), rgba(139,92,246,0.18), transparent 65%)',
-                  filter: 'blur(28px)',
-                  opacity: 0.45,
-                }}
-              />
-            </div>
-          </>
-        ) : (
-          <>
-            {/* Blob 0 — primary indigo, top-left */}
-            <div
-              className="absolute"
-              style={{
-                width: 600,
-                height: 600,
-                top: 400,
-                left: '-8%',
-                transform: isAnimated
-                  ? 'translate3d(var(--bx0), var(--by0), 0)'
-                  : undefined,
-                willChange: 'transform',
-              }}
-            >
-              <div
-                className="h-full w-full rounded-full blob blob-float-1"
-                style={{
-                  background:
-                    'radial-gradient(circle at 35% 35%, rgba(99,102,241,0.7), rgba(79,70,229,0.3), transparent 65%)',
-                }}
-              />
-            </div>
+          {/* Blob 1 — violet/purple, top-right */}
+          <div
+            className="absolute rounded-full gradient-drift-2"
+            style={{
+              width: 580,
+              height: 580,
+              top: -150,
+              right: '-8%',
+              background:
+                'radial-gradient(circle at 50% 40%, rgba(139,92,246,0.35), rgba(124,58,237,0.12), transparent 70%)',
+              filter: 'blur(70px)',
+              transform: isAnimated
+                ? 'translate3d(calc(var(--mx) * -0.7), calc(var(--my) * -0.5), 0)'
+                : undefined,
+              willChange: 'transform',
+            }}
+          />
 
-            {/* Blob 1 — pink/violet, top-right */}
-            <div
-              className="absolute"
-              style={{
-                width: 550,
-                height: 550,
-                top: -190,
-                right: '-10%',
-                transform: isAnimated
-                  ? 'translate3d(var(--bx1), var(--by1), 0)'
-                  : undefined,
-                willChange: 'transform',
-              }}
-            >
-              <div
-                className="h-full w-full rounded-full blob blob-float-2"
-                style={{
-                  background:
-                    'radial-gradient(circle at 45% 40%, rgba(236,72,153,0.55), rgba(139,92,246,0.3), transparent 65%)',
-                }}
-              />
-            </div>
+          {/* Blob 2 — blue, mid-center, softer */}
+          <div
+            className="absolute rounded-full gradient-drift-3"
+            style={{
+              width: 750,
+              height: 750,
+              top: -180,
+              left: '10%',
+              background:
+                'radial-gradient(circle at 45% 45%, rgba(59,130,246,0.18), rgba(99,102,241,0.1), transparent 65%)',
+              filter: 'blur(80px)',
+              transform: isAnimated
+                ? 'translate3d(calc(var(--mx) * 0.5), calc(var(--my) * 0.6), 0)'
+                : undefined,
+              willChange: 'transform',
+            }}
+          />
 
-            {/* Blob 2 — cyan/teal, center-left, deeper */}
-            <div
-              className="absolute"
-              style={{
-                width: 700,
-                height: 700,
-                top: -220,
-                left: '5%',
-                transform: isAnimated
-                  ? 'translate3d(var(--bx2), var(--by2), 0)'
-                  : undefined,
-                willChange: 'transform',
-              }}
-            >
-              <div
-                className="h-full w-full rounded-full blob blob-float-3"
-                style={{
-                  background:
-                    'radial-gradient(circle at 40% 40%, rgba(34,211,238,0.25), rgba(99,102,241,0.2), transparent 60%)',
-                }}
-              />
-            </div>
-
-            {/* Blob 3 — accent warm, subtle, mid-right */}
-            <div
-              className="absolute"
-              style={{
-                width: 420,
-                height: 420,
-                top: 100,
-                right: '5%',
-                transform: isAnimated
-                  ? 'translate3d(var(--bx3), var(--by3), 0)'
-                  : undefined,
-                willChange: 'transform',
-              }}
-            >
-              <div
-                className="h-full w-full rounded-full blob blob-float-1"
-                style={{
-                  background:
-                    'radial-gradient(circle at 50% 50%, rgba(251,191,36,0.25), rgba(251,146,60,0.15), transparent 65%)',
-                }}
-              />
-            </div>
-          </>
-        )}
-
-        {/* Subtle grain texture */}
-        <div className="absolute inset-0 opacity-[0.06] bg-grain" />
-
-        {/* Vignette for readability */}
-        <div className="absolute inset-0 bg-[radial-gradient(1400px_circle_at_50%_0%,transparent_25%,rgba(255,255,255,0.9)_80%)]" />
-      </div>
-
-      {/* Cursor glow — fixed, follows mouse globally, desktop only */}
-      {isAnimated && (
-        <div
-          ref={glowRef}
-          aria-hidden="true"
-          className="pointer-events-none fixed z-1 hidden md:block rounded-full"
-          style={{
-            width: 50,
-            height: 50,
-            opacity: 0,
-            transform: 'translate(-50%, -50%)',
-            background:
-              'radial-gradient(circle at center, rgba(255,255,255,0.7) 0%, rgba(99,102,241,0.2) 30%, rgba(139,92,246,0.08) 55%, transparent 70%)',
-            filter: 'blur(5px)',
-            willChange: 'left, top, opacity, transform',
-          }}
-        />
+          {/* Blob 3 — warm pink accent, subtle */}
+          <div
+            className="absolute rounded-full gradient-drift-1"
+            style={{
+              width: 400,
+              height: 400,
+              top: 60,
+              right: '8%',
+              background:
+                'radial-gradient(circle at 50% 50%, rgba(244,114,182,0.18), rgba(251,146,60,0.08), transparent 70%)',
+              filter: 'blur(70px)',
+              transform: isAnimated
+                ? 'translate3d(calc(var(--mx) * -0.4), calc(var(--my) * 0.5), 0)'
+                : undefined,
+              willChange: 'transform',
+            }}
+          />
+        </>
       )}
-    </>
+
+      {/* Grain */}
+      <div className="absolute inset-0 opacity-[0.04] bg-grain" />
+
+      {/* Soft vignette for readability */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_1200px_900px_at_50%_0%,transparent_30%,rgba(255,255,255,0.85)_80%)]" />
+    </div>
   )
 }

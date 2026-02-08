@@ -142,7 +142,7 @@ export default function Home() {
               </Link>
               <Link href="/features">
                 <Button variant="outline" size="lg" className="text-sm sm:text-base px-5 sm:px-8 h-10 sm:h-12">
-                  See all features
+                  Learn more
                 </Button>
               </Link>
             </div>
@@ -155,7 +155,7 @@ export default function Home() {
       </section>
 
       {/* Social proof bar */}
-      <section className="border-t border-slate-100">
+      <section>
         <div className="max-w-5xl mx-auto px-6 py-12 md:py-16">
           <p className="text-sm font-medium text-slate-400 uppercase tracking-wider text-center mb-8">
             Built for teams in
