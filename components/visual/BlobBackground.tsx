@@ -291,8 +291,8 @@ export default function BlobBackground() {
           aria-hidden="true"
           className="pointer-events-none fixed z-1 hidden md:block rounded-full"
           style={{
-            width: 150,
-            height: 150,
+            width: 50,
+            height: 50,
             opacity: 0,
             transform: 'translate(-50%, -50%)',
             background:
