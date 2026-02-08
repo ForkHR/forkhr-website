@@ -1,144 +1,200 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
-
-function prefersReducedMotion(): boolean {
-  if (typeof window === 'undefined') return true
-  return window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false
-}
+import { useEffect, useRef, useState } from 'react'
 
 export default function BlobBackground() {
   const containerRef = useRef<HTMLDivElement | null>(null)
+  const glowRef = useRef<HTMLDivElement | null>(null)
   const [mounted, setMounted] = useState(false)
-
-  const reduceMotion = useMemo(() => {
-    if (typeof window === 'undefined') return true
-    return prefersReducedMotion()
-  }, [])
+  const reduceMotion = useRef(true)
 
   useEffect(() => {
+    reduceMotion.current =
+      window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false
     setMounted(true)
   }, [])
 
   useEffect(() => {
-    if (reduceMotion) return
+    if (!mounted || reduceMotion.current) return
     const el = containerRef.current
+    const glow = glowRef.current
     if (!el) return
 
+    // Skip on touch devices / narrow screens
+    const isTouch = window.matchMedia('(pointer: coarse)').matches
+    const isNarrow = window.innerWidth < 768
+    if (isTouch || isNarrow) return
+
     let rafId = 0
+
+    // Cursor state
     let targetX = 0
     let targetY = 0
-    let currentX = 0
-    let currentY = 0
-    let hasPointer = false
-    let hasLastClient = false
-    let lastClientX = 0
-    let lastClientY = 0
+    let curX = 0
+    let curY = 0
+    let prevX = 0
+    let prevY = 0
+    let velocityMag = 0
     let initialized = false
+    let hasPointer = false
 
-    const updateTargetFromLastClient = () => {
-      if (!hasLastClient) return
-      const rect = el.getBoundingClientRect()
-      targetX = lastClientX - rect.left
-      targetY = lastClientY - rect.top
-      if (!rafId) rafId = requestAnimationFrame(tick)
-    }
+    // Blob positions (parallax layers — each blob follows at different speed)
+    const blobCount = 4
+    const blobX = new Float64Array(blobCount)
+    const blobY = new Float64Array(blobCount)
+    const parallax = [0.06, 0.04, 0.03, 0.08]
+    const ease = [0.035, 0.025, 0.018, 0.05]
 
     const onPointerMove = (e: PointerEvent) => {
       hasPointer = true
-      hasLastClient = true
-      lastClientX = e.clientX
-      lastClientY = e.clientY
-      updateTargetFromLastClient()
+      targetX = e.clientX
+      targetY = e.clientY
+      if (!rafId) rafId = requestAnimationFrame(tick)
     }
 
-    const onPointerLeave = () => {
-      hasPointer = false
-    }
-
-    const onVisibilityChange = () => {
-      // When returning to the tab, rects can shift; resync to last pointer.
-      if (document.visibilityState === 'visible') updateTargetFromLastClient()
-    }
+    const onPointerLeave = () => { hasPointer = false }
 
     const tick = () => {
       rafId = 0
 
       if (!initialized) {
-        currentX = targetX
-        currentY = targetY
+        curX = targetX
+        curY = targetY
         initialized = true
       } else {
-        // smooth follow
-        currentX += (targetX - currentX) * 0.14
-        currentY += (targetY - currentY) * 0.14
+        prevX = curX
+        prevY = curY
+        curX += (targetX - curX) * 0.1
+        curY += (targetY - curY) * 0.1
       }
 
-      el.style.setProperty('--cursor-x', `${currentX}px`)
-      el.style.setProperty('--cursor-y', `${currentY}px`)
+      // Velocity for glow intensity
+      const dx = curX - prevX
+      const dy = curY - prevY
+      const rawVel = Math.sqrt(dx * dx + dy * dy)
+      velocityMag += (Math.min(rawVel, 40) / 40 - velocityMag) * 0.08
 
-      const dx = Math.abs(targetX - currentX)
-      const dy = Math.abs(targetY - currentY)
-      // Keep animating while we're converging, or while the pointer is active.
-      if (dx + dy > 0.5 || hasPointer) rafId = requestAnimationFrame(tick)
+      // Move cursor glow (fixed positioned, viewport coords)
+      if (glow) {
+        glow.style.left = `${curX}px`
+        glow.style.top = `${curY}px`
+        glow.style.opacity = `${0.4 + velocityMag * 0.4}`
+        glow.style.transform = `translate(-50%, -50%) scale(${1 + velocityMag * 0.25})`
+      }
+
+      // Move each blob with parallax
+      for (let i = 0; i < blobCount; i++) {
+        blobX[i] += (targetX * parallax[i] - blobX[i]) * ease[i]
+        blobY[i] += (targetY * parallax[i] - blobY[i]) * ease[i]
+        el.style.setProperty(`--bx${i}`, `${blobX[i]}px`)
+        el.style.setProperty(`--by${i}`, `${blobY[i]}px`)
+      }
+
+      const dist = Math.abs(targetX - curX) + Math.abs(targetY - curY)
+      if (dist > 0.3 || hasPointer || velocityMag > 0.005) {
+        rafId = requestAnimationFrame(tick)
+      }
     }
 
     window.addEventListener('pointermove', onPointerMove, { passive: true })
     window.addEventListener('pointerleave', onPointerLeave)
     window.addEventListener('blur', onPointerLeave)
-    window.addEventListener('scroll', updateTargetFromLastClient, { passive: true })
-    window.addEventListener('resize', updateTargetFromLastClient)
-    document.addEventListener('visibilitychange', onVisibilityChange)
+
     return () => {
       window.removeEventListener('pointermove', onPointerMove)
       window.removeEventListener('pointerleave', onPointerLeave)
       window.removeEventListener('blur', onPointerLeave)
-      window.removeEventListener('scroll', updateTargetFromLastClient)
-      window.removeEventListener('resize', updateTargetFromLastClient)
-      document.removeEventListener('visibilitychange', onVisibilityChange)
       if (rafId) cancelAnimationFrame(rafId)
     }
-  }, [reduceMotion])
+  }, [mounted])
 
-  // Avoid hydration mismatch from matchMedia-driven motion preferences.
   if (!mounted) return null
 
-  return (
-    <div
-      ref={containerRef}
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
-      style={
-        {
-          // default center for cursor glow (if no pointer yet)
-          ['--cursor-x' as never]: '50%',
-          ['--cursor-y' as never]: '25%',
-        } as React.CSSProperties
-      }
-    >
-      {/* Ambient gradient blobs */}
-      <div className="absolute -top-80 left-[-10%] md:h-[520px] md:w-[520px] blob blob-float-1 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(99,102,241,0.85),rgba(34,211,238,0.35),transparent_65%)]" />
-      <div className="absolute -top-56 right-[-12%] md:h-[560px] md:w-[560px] blob blob-float-2 rounded-full bg-[radial-gradient(circle_at_40%_40%,rgba(236,72,153,0.70),rgba(99,102,241,0.35),transparent_65%)]" />
-      <div className="absolute -top-150 left-[10%] md:h-[640px] md:w-[640px] blob blob-float-3 rounded-full bg-[radial-gradient(circle_at_35%_35%,rgba(34,211,238,0.60),rgba(99,102,241,0.25),transparent_65%)]" />
+  const isAnimated = !reduceMotion.current
 
-      {/* Cursor-follow glow (subtle, satisfying) */}
-      {!reduceMotion && (
+  return (
+    <>
+      {/* Decorative blobs — absolute, scroll with page */}
+      <div
+        ref={containerRef}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+        style={{
+          '--bx0': '0px', '--by0': '0px',
+          '--bx1': '0px', '--by1': '0px',
+          '--bx2': '0px', '--by2': '0px',
+          '--bx3': '0px', '--by3': '0px',
+        } as React.CSSProperties}
+      >
+        {/* Blob 0 — primary indigo, top-left */}
         <div
-          className="absolute h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 blob opacity-60"
+          className="absolute rounded-full blob blob-float-1"
           style={{
-            left: 'var(--cursor-x)',
-            top: 'var(--cursor-y)',
+            width: 600, height: 600,
+            top: -200, left: '-8%',
+            background: 'radial-gradient(circle at 35% 35%, rgba(99,102,241,0.7), rgba(79,70,229,0.3), transparent 65%)',
+            transform: isAnimated ? 'translate3d(var(--bx0), var(--by0), 0)' : undefined,
+          }}
+        />
+
+        {/* Blob 1 — pink/violet, top-right */}
+        <div
+          className="absolute rounded-full blob blob-float-2"
+          style={{
+            width: 550, height: 550,
+            top: -160, right: '-10%',
+            background: 'radial-gradient(circle at 45% 40%, rgba(236,72,153,0.55), rgba(139,92,246,0.3), transparent 65%)',
+            transform: isAnimated ? 'translate3d(var(--bx1), var(--by1), 0)' : undefined,
+          }}
+        />
+
+        {/* Blob 2 — cyan/teal, center-left, deeper */}
+        <div
+          className="absolute rounded-full blob blob-float-3"
+          style={{
+            width: 700, height: 700,
+            top: -320, left: '15%',
+            background: 'radial-gradient(circle at 40% 40%, rgba(34,211,238,0.45), rgba(99,102,241,0.2), transparent 60%)',
+            transform: isAnimated ? 'translate3d(var(--bx2), var(--by2), 0)' : undefined,
+          }}
+        />
+
+        {/* Blob 3 — accent warm, subtle, mid-right */}
+        <div
+          className="absolute rounded-full blob blob-float-1"
+          style={{
+            width: 420, height: 420,
+            top: 100, right: '5%',
+            background: 'radial-gradient(circle at 50% 50%, rgba(251,191,36,0.25), rgba(251,146,60,0.15), transparent 65%)',
+            transform: isAnimated ? 'translate3d(var(--bx3), var(--by3), 0)' : undefined,
+          }}
+        />
+
+        {/* Subtle grain texture */}
+        <div className="absolute inset-0 opacity-[0.06] bg-grain" />
+
+        {/* Vignette for readability */}
+        <div className="absolute inset-0 bg-[radial-gradient(1400px_circle_at_50%_0%,transparent_25%,rgba(255,255,255,0.9)_80%)]" />
+      </div>
+
+      {/* Cursor glow — fixed, follows mouse globally, desktop only */}
+      {isAnimated && (
+        <div
+          ref={glowRef}
+          aria-hidden="true"
+          className="pointer-events-none fixed z-[1] hidden md:block rounded-full"
+          style={{
+            width: 500,
+            height: 500,
+            opacity: 0,
+            transform: 'translate(-50%, -50%)',
             background:
-              'radial-gradient(circle at 40% 40%, rgba(255,255,255,0.65), rgba(99,102,241,0.18), rgba(34,211,238,0.10), transparent 60%)',
+              'radial-gradient(circle at center, rgba(255,255,255,0.7) 0%, rgba(99,102,241,0.2) 30%, rgba(139,92,246,0.08) 55%, transparent 70%)',
+            filter: 'blur(2px)',
+            willChange: 'left, top, opacity, transform',
           }}
         />
       )}
-
-      {/* Very light grain/noise layer for “glass” vibes */}
-      <div className="absolute inset-0 opacity-[0.08] bg-grain" />
-
-      {/* Soft vignette to keep content readable */}
-      <div className="absolute inset-0 bg-[radial-gradient(1200px_circle_at_50%_0%,transparent_30%,rgba(255,255,255,0.85)_85%)]" />
-    </div>
+    </>
   )
 }

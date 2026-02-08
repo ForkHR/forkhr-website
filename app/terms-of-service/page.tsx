@@ -9,7 +9,7 @@ const TermsOfService = () => {
     }, [])
 
     return (
-        <main className="max-w-[800px] mx-auto w-full px-4 py-10 md:py-20 min-h-screen fade-in-up overflow-hidden border-r border-l border-slate-200 border-dashed">
+        <main className="max-w-5xl mx-auto w-full px-4 md:px-6 py-10 md:py-20 min-h-screen fade-in-up">
             <div className="text-5xl md:text-7xl font-semibold">
                 Terms of Service<span className="text-primary">.</span>
             </div>

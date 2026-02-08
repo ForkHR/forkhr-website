@@ -16,21 +16,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Fork - Workforce Management Made Easy",
-  description: "Workforce management made easy with scheduling, time tracking, staff HR, and engagement tools.",
+  title: {
+    default: "Fork - All-in-One Workforce Management Platform",
+    template: "%s | Fork",
+  },
+  description: "Simplify scheduling, time tracking, HR onboarding, and team engagement in one platform. Built for restaurants, retail, healthcare, and service businesses.",
   icons: {
     icon: '/favicon.svg',
   },
+  metadataBase: new URL('https://forkhr.com'),
   openGraph: {
-    title: "Fork - Workforce Management Made Easy",
-    description: "Workforce management made easy with scheduling, time tracking, staff HR, and engagement tools.",
+    title: "Fork - All-in-One Workforce Management Platform",
+    description: "Simplify scheduling, time tracking, HR onboarding, and team engagement in one platform. Built for restaurants, retail, healthcare, and service businesses.",
     images: ['/og-image.png'],
     type: 'website',
+    siteName: 'Fork',
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Fork - Workforce Management Made Easy",
-    description: "Workforce management made easy with scheduling, time tracking, staff HR, and engagement tools.",
+    title: "Fork - All-in-One Workforce Management Platform",
+    description: "Simplify scheduling, time tracking, HR onboarding, and team engagement in one platform.",
     images: ['/og-image.png'],
   },
 };
@@ -45,7 +50,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="relative flex min-h-screen flex-col bg-background px-2 md:px-0">
+        <div className="relative flex min-h-screen flex-col bg-background">
           <BlobBackground />
           <div className="relative z-10 flex min-h-screen flex-col">
             <Header />

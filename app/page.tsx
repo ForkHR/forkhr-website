@@ -1,389 +1,310 @@
 import { Button } from '@/components/ui/button'
-import { CheckIcon } from '@radix-ui/react-icons'
-import { ArrowRight, BellIcon, Book, BookText, CalendarClock, ClockIcon, FolderIcon, FolderKanban, PieChartIcon, StarIcon, UserIcon } from 'lucide-react'
+import { ArrowRight, CalendarClock, ClockIcon, FileText, Users, BookOpen, Shield, CheckCircle2 } from 'lucide-react'
 import Link from 'next/link'
-import Image from 'next/image'
 
-
-const SectionPrice = () => {
-    return (
-            <div className=" border-t border-slate-200 fade-in-up border-dashed">
-                <Link
-                    href="https://app.forkhr.com/register"
-                >
-                        <div className='max-w-[800px] mx-auto flex gap-5 items-center justify-center flex-col md:flex-row border-l border-r border-dashed border-slate-200 w-full'>
-                            <div className="flex md:gap-8 md:flex-row flex-col p-3 w-full">
-                                <div className="flex-1 px-6 flex flex-col font-medium bg-primary rounded-lg w-full">
-                                    <div className="text-white font-semibold pt-4 md:text-3xl text-xl">
-                                        Early adopters lock in lifetime pricing!
-                                    </div>
-                                    <div className="text-sm md:text-1xl text-white pt-2 pb-4">
-                                        only $3.99/user/month
-                                    </div>
-                                    <ArrowRight className="w-6 h-6 text-white mb-4"/>
-                                </div>
-                            </div>
-                        </div>
-                </Link>
-            </div>
-    )
-}
-
-const Section1 = () => {
-    return (
-        <div className="max-w-[800px] mx-auto md:px-8 px-4 flex gap-5 min-h-[60vh] flex-col md:flex-row border-l border-r border-slate-200 border-dashed relative">
-            <div className="mx-auto z-10 w-full flex max-w-[980px] flex-col gap-3 md:gap-6 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20 flex-1 justify-center">
-                <h1 className="max-w-[350px] md:max-w-[650px] text-5xl font-bold leading-[1] tracking-tighter lg:text-6xl xl:text-7xl lg:leading-[1.1]">
-                    Workforce<br/>management<br/>made easy<span className="text-primary">.</span>
-                </h1>
-                <div className="flex flex-col gap-1">
-                    <li className="flex items-center text-sm gap-2"><CheckIcon className="w-5 h-5" color="#533afd"/>Scheduler & Time Tracking</li>
-                    <li className="flex items-center text-sm gap-2"><CheckIcon className="w-5 h-5" color="#533afd"/>Staff HR & Compliance</li>
-                    <li className="flex items-center text-sm gap-2"><CheckIcon className="w-5 h-5" color="#533afd"/>Boost Retention & Engagement</li>
-                </div>
-                <div className="md:pb-10">
-                    <div className="flex w-full space-x-4 rounded">
-                        <Link href="https://app.forkhr.com/register" target="_blank">
-                            <Button>
-                                Free trial
-                                <ArrowRight className="w-4 h-4 ms-2"/>
-                            </Button>
-                        </Link>
-                    </div>
-                    <div className="text-xs text-gray-400 pt-4">
-                        7-day free trial. Cancel anytime.
-                    </div>
-                </div>
-            </div>
-            <div className="absolute hidden sm:flex right-0 w-full h-full max-w-[400px] items-center justify-center flex-1 bg-no-repeat bg-contain bg-right bg-[url(/assets/auth_bg.png)]"/>
-        </div>
-    )
-}
-
-
-const Section2 = () => {
-    return (
-        // Animation fade-in page
-        <div className=" border-t border-slate-200 fade-in-up border-dashed">
-        <section className="max-w-[800px] mx-auto py-10 md:py-20 border-l border-r border-dashed border-slate-200 w-full">
-            <div className="flex justify-between md:px-8 px-4 pb-10 flex-col gap-8 md:max-w-[75%]">
-                <div className="flex-1">
-                    <h1 className="md:text-5xl text-3xl font-semibold underline decoration-primary decoration-4 underline-offset-4 decoration-dashed text-pri">
-                        Optimize your operations<span className="text-primary">.</span>
-                    </h1>
-                </div>
-                <p className="flex-1 text-base md:text-xl">
-                    Your business is unique, and so are your operations. Fork is designed to cater to your unique needs. Whether you have multiple locations, or you have a large team, our platform was designed to help you run your business efficiently.
-                </p>
-            </div>
-            <div>
-                <div className="flex md:flex-row flex-col justify-between gap-4 md:px-8 px-4 border-b md:py-6 border-slate-200 border-dashed">
-                </div>
-                <div className="flex md:flex-row flex-col gap-4 md:px-8 px-4 border-slate-200 border-dashed justify-between border-b py-8">
-                    <h5 className="text-xl text-semibold flex-1">
-                        <span className="text-primary font-bold">1.</span> Scheduler & Time Tracking
-                    </h5>
-                    <div className="text-sm md:text-base flex-1 flex flex-col gap-2 md:gap-6">
-                        <p>
-                            Drag-and-drop scheduling.
-                        </p>
-                        <p>
-                            Tasks, breaks, and shift notes.
-                        </p>
-                        <p>
-                            Weekly availability management.
-                        </p>
-                        <p>
-                            Open shifts and shift swaps.
-                        </p>
-                        <p>
-                            Time off requests.
-                        </p>
-                        <p>
-                            Clock-in/clock-out tracking. Terminal, geo location, and manual clock-in.
-                        </p>
-                    </div>
-                </div>
-                <div className="flex md:flex-row flex-col gap-4 md:px-8 px-4 border-slate-200 border-dashed justify-between border-b py-8">
-                    <h5 className="text-xl text-semibold flex-1">
-                        <span className="text-primary font-bold">2.</span> Staff HR & Compliance
-                    </h5>
-                    <div className="text-sm md:text-base flex-1 flex flex-col gap-2 md:gap-6">
-                        <p>
-                            Paperless onboarding with built-in legal forms like W-4, I-9, and more.
-                        </p>
-                        <p>
-                            Document management for employee files.
-                        </p>
-                        <p>
-                            E-signatures and expiration reminders.
-                        </p>
-                        <p>
-                            Training course assignments and tracking.
-                        </p>
-                        <p>
-                            Shared resources and policies.
-                        </p>
-                    </div>
-                </div>
-                <div className="flex md:flex-row flex-col gap-4 md:px-8 px-4 border-slate-200 border-dashed justify-between py-8">
-                    <h5 className="text-xl text-semibold flex-1">
-                        <span className="text-primary font-bold">3.</span> Boost Retention & Engagement
-                    </h5>
-                    <div className="text-sm md:text-base flex-1 flex flex-col gap-2 md:gap-6">
-                        <p>
-                            Gather feedback through employee surveys.
-                        </p>
-                        <p>
-                            News to keep your team informed.
-                        </p>
-                        <p>
-                            Kudos to recognize and reward employees.
-                        </p>
-                        <p>
-                            Training courses to enhance skills.
-                        </p>
-                        <p>
-                            Shared resources for easy access to information.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        </div>
-    )
-}
-
-const Section3 = () => {
-    return (
-        <section className="border-t border-slate-200 fade-in-up border-dashed">
-            <div className="max-w-[800px] mx-auto w-full py-10 md:py-20 border-l border-r border-slate-200 border-dashed">
-                <div className="flex justify-between flex-col gap-8 md:gap-20">
-                    <div className="md:text-5xl text-3xl font-semibold flex-1 md:px-8 px-4">
-                        <div className="md:max-w-[75%] font-semibold underline decoration-primary decoration-4 underline-offset-4 decoration-dashed">
-                            What we improve<span className="text-primary">.</span>
-                        </div>
-                    </div>
-                    <div className="flex flex-col gap-8">
-                        <div className="flex flex-col flex-1">
-                            <div className="flex flex-col pb-8 gap-4">
-                                <div className="text-6xl md:px-8 px-4 border-l border-primary pl-4 border-dashed">
-                                    37%
-                                </div>
-                                <div className="text-2xl font-semibold md:px-8 px-4">
-                                    Faster scheduling
-                                </div>
-                                <div className="text-xl md:px-8 px-4">
-                                    Create schedules in minutes with our easy-to-use scheduling tool. Drag and drop shifts, assign employees, and manage time off requests.
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex flex-col flex-1">
-                            <div className="flex flex-col pb-8 gap-4">
-                                <div className="text-6xl md:px-8 px-4 border-l border-primary pl-4 border-dashed">
-                                52%
-                            </div>
-                            <div className="text-2xl font-semibold md:px-8 px-4">
-                                Less time theft
-                            </div>
-                            <div className="text-xl md:px-8 px-4">
-                                Employee clock-in/clock-out tracking is made easy with our terminal, geo location, and manual clock-in options. Ensure accurate time tracking and reduce time theft.
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex flex-col gap-8">
-                        <div className="flex flex-col flex-1">
-                            <div className="flex flex-col pb-8 gap-4">
-                                <div className="text-6xl md:px-8 px-4 border-l border-primary pl-4 border-dashed">
-                                    99%
-                                </div>
-                                <div className="text-2xl font-semibold md:px-8 px-4">
-                                    Onboarding doc completion
-                                </div>
-                                <div className="text-xl md:px-8 px-4">
-                                    Streamline your onboarding process with paperless onboarding. Employees can complete legal forms like W-4, I-9, and more online, ensuring compliance and reducing paperwork.
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex flex-col flex-1">
-                            <div className="flex flex-col pb-8 gap-4">
-                                <div className="text-6xl md:px-8 px-4 border-l border-primary pl-4 border-dashed">
-                                    2x
-                                </div>
-                                <div className="text-2xl font-semibold md:px-8 px-4">
-                                    More staff announcement reads & engagement
-                                </div>
-                                <div className="text-xl md:px-8 px-4">
-                                    Keep your team informed with news. Share important updates, news, and events to ensure everyone is on the same page.
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex flex-col flex-1">
-                            <div className="flex flex-col pb-8 gap-4">
-                                <div className="text-6xl md:px-8 px-4 border-l border-primary pl-4 border-dashed">
-                                    3x
-                                </div>
-                                <div className="text-2xl font-semibold md:px-8 px-4">
-                                    More performance feedback
-                                </div>
-                                <div className="text-xl md:px-8 px-4">
-                                    Foster a culture of recognition and appreciation with peer reviews. Encourage employees to give feedback to each other, boosting morale and engagement.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    )
-}
-
-const apps = [
-    {
-        name: "Schedule",
-        title: "Simple scheduling",
-        to: '/scheduler',
-        description: "Create schedule in minutes with our easy-to-use scheduling tool. Drag and drop shifts, assign employees, and manage time off requests. Shift pool with open shifts and shift swaps.", 
-        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><CalendarClock className="w-4 h-4" color="#fff"/></div>,
-        image: "/assets/introduction-scheduler.png"
-    },
-    {
-        name: "Time Tracking",
-        title: "Time tracking",
-        to: '/time-tracking',
-        description: "Employee clock-in/clock-out tracking is made easy with our terminal, geo location, and manual clock-in options. Ensure accurate time tracking and reduce time theft.",
-        image: "/assets/introduction-timetracking.png",
-        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><ClockIcon className="w-4 h-4" color="#fff"/></div>,
-    },
-    {
-        name: "Forms",
-        title: "Custom forms",
-        to: '/staff-hr',
-        description: "Create and manage custom forms for any HR process. Fork's form builder makes it easy to collect and organize data from your employees.",
-        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><BookText className="w-4 h-4" color="#fff"/></div>,
-        image: "/assets/introduction-forms.png"
-    },
-    {
-        name: "Onboarding",
-        title: "Paperless onboarding",
-        to: '/staff-hr',
-        description: "Streamline your onboarding process with paperless onboarding. Employees can complete legal forms like W-4, I-9, and more online, ensuring compliance and reducing paperwork.",
-        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><UserIcon className="w-4 h-4" color="#fff"/></div>,
-        image: "/assets/introduction-onboarding.png"
-    },
-    {
-        name: "Documents",
-        title: "Store documents",
-        to: "/staff-hr",
-        description: "Manage employee documents with ease. Upload, request and create documents for your employees. Set expiration reminders and e-signatures to ensure compliance and keep your team organized.",
-        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><FolderIcon className="w-4 h-4" color="#fff"/></div>,
-        image: "/assets/introduction-documents.png"
-    },
-    {
-        name: "Training",
-        title: "Employee training",
-        to: "/staff-hr",
-        description: "Assign and track employee training courses. Ensure your team is up-to-date with the latest skills and knowledge to improve performance and productivity.",
-        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><Book className="w-4 h-4" color="#fff"/></div>,
-        image: "/assets/introduction-training.png"
-    },
-    {
-        name: "Resources",
-        title: "Shared resources",
-        to: "/staff-hr",
-        description: "Share important resources and policies with your team. Ensure everyone has access to the information they need to perform their job effectively.",
-        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><FolderKanban className="w-4 h-4" color="#fff"/></div>,
-        image: "/assets/introduction-resource.png"
-    },
-    {
-        name: "Surveys",
-        title: "Gather feedback",
-        to: "/retention-and-engagement",
-        description: "Gather feedback from your team with employee surveys. Create custom or from our templates survey to get insights into employee satisfaction, engagement, and performance.",
-        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><PieChartIcon className="w-4 h-4" color="#fff"/></div>,
-        image: "/assets/introduction-surveys.png"
-    },
-    {
-        name: "Updates",
-        title: "Keep your team informed",
-        to: "/retention-and-engagement",
-        description: "Keep your team informed with company updates. Share important updates, news, and events to ensure everyone is on the same page.",
-        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><BellIcon className="w-4 h-4" color="#fff"/></div>,
-        image: "/assets/introduction-announcements.png"
-    },
-    {
-        name: "Kudos",
-        title: "Foster a culture of recognition",
-        to: "/retention-and-engagement",
-        description: "Foster a culture of recognition and appreciation with Kudos, boosting morale and engagement.",
-        icon: <div className="h-8 w-8 flex justify-center items-center rounded-full bg-[#3647dd]"><StarIcon className="w-4 h-4" color="#fff"/></div>,
-        image: "/assets/introduction-reviews.png"
-    },
+const pillars = [
+  {
+    icon: <CalendarClock className="w-5 h-5" />,
+    title: 'Scheduling',
+    description: 'Drag-and-drop shift scheduling with availability, open shifts, shift swaps, and time-off requests.',
+  },
+  {
+    icon: <ClockIcon className="w-5 h-5" />,
+    title: 'Time & Attendance',
+    description: 'Terminal, mobile, and GPS clock-in. Real-time timesheets ready for payroll export.',
+  },
+  {
+    icon: <FileText className="w-5 h-5" />,
+    title: 'HR & Onboarding',
+    description: 'Paperless onboarding with W-4, I-9, e-signatures, document storage, and expiration tracking.',
+  },
+  {
+    icon: <Users className="w-5 h-5" />,
+    title: 'Team Engagement',
+    description: 'Surveys, company updates, peer recognition, and training courses to keep your team connected.',
+  },
+  {
+    icon: <BookOpen className="w-5 h-5" />,
+    title: 'Training & Resources',
+    description: 'Assign courses, share policies, and track completion — so every team member is set up to succeed.',
+  },
+  {
+    icon: <Shield className="w-5 h-5" />,
+    title: 'Compliance & Documents',
+    description: 'Incident reports, employment forms, and secure document management to stay compliant.',
+  },
 ]
 
-const Section4 = () => {
-    return (
-        <div className="border-t border-slate-200 fade-in-up border-dashed">
-            {apps.map((app, index) => (
-            <div className={`max-w-[800px] mx-auto md:px-8 px-4 flex gap-5 items-center justify-center md:min-h-[65vh] flex-col md:flex-row border-l border-r border-dashed border-slate-200${index === 0 ? "" : " border-t"}`}
-                key={index}
-            >
-                <div className="flex justify-center items-center w-full gap-10">
-                    <div className="mx-auto w-full flex max-w-[980px] flex-col gap-3 md:gap-6 py-12 md:py-12 md:pb-8 lg:py-24 lg:pb-20 flex-1 justify-center">
-                        <div className="text-base font-bold">
-                            <div className="md:max-w-[75%] text-slate-800 flex gap-3 items-center">
-                                {app.icon} {app.name}
-                            </div>
-                        </div>
-                        <div className="md:text-5xl text-3xl font-semibold">
-                            <div className="md:max-w-[75%] font-semibold">
-                                {app.title}<span className="text-primary">.</span>
-                            </div>
-                        </div>
-                        <p className="text-base md:text-xl">
-                            {app.description}
-                        </p>
-                        <div className="md:pb-10">
-                            <div className="flex w-full space-x-4 rounded">
-                                <Link href={app.to}>
-                                    <Button className="md:px-8 px-4">
-                                        {app.name}
-                                        <ArrowRight className="w-4 h-4 ms-2"/>
-                                    </Button>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex-1 hidden md:flex align-center justify-center">
-                        <div>
-                        <Image
-                            alt="img-1"
-                            src={`${app.image}`}
-                            draggable="false"
-                            className="w-full h-auto max-w-[400px] md:max-w-[500px] lg:max-w-[600px] xl:max-w-[700px]"
-                            width={700}
-                            height={400}
-                        />
-                        </div>
-                    </div>
-                </div>
+const features = [
+  {
+    icon: <CalendarClock className="w-5 h-5 text-primary" />,
+    title: 'Build schedules in minutes',
+    items: ['Drag-and-drop shift builder', 'Weekly employee availability', 'Open shifts & shift swaps', 'Shift tasks, breaks & notes', 'One-click schedule publishing'],
+  },
+  {
+    icon: <ClockIcon className="w-5 h-5 text-primary" />,
+    title: 'Track every hour accurately',
+    items: ['Terminal, mobile & GPS clock-in', 'Real-time timesheet updates', 'Geo-fenced locations', 'Break tracking', 'Payroll-ready exports'],
+  },
+  {
+    icon: <FileText className="w-5 h-5 text-primary" />,
+    title: 'Onboard without the paperwork',
+    items: ['Digital W-4, I-9 & custom forms', 'E-signatures & expiration alerts', 'Secure document storage', 'Onboarding checklists', 'Hiring & job postings'],
+  },
+  {
+    icon: <Users className="w-5 h-5 text-primary" />,
+    title: 'Keep your team engaged',
+    items: ['Employee surveys & feedback', 'Company-wide announcements', 'Peer recognition & kudos', 'Training course assignments', 'Shared resource library'],
+  },
+]
+
+const steps = [
+  {
+    step: '01',
+    title: 'Set up your team',
+    description: 'Add your locations, invite team members, and configure roles and permissions. Takes about 10 minutes.',
+  },
+  {
+    step: '02',
+    title: 'Build your first schedule',
+    description: 'Drag and drop shifts, set availability windows, and publish — your team gets notified instantly.',
+  },
+  {
+    step: '03',
+    title: 'Run your operations',
+    description: 'Track time, manage documents, send updates, and keep your whole team in sync from one dashboard.',
+  },
+]
+
+const useCases = [
+  'Restaurants & Cafés',
+  'Retail Stores',
+  'Hotels & Hospitality',
+  'Healthcare Clinics',
+  'Fitness & Gyms',
+  'Franchises',
+]
+
+export default function Home() {
+  return (
+    <main>
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div className="max-w-5xl mx-auto px-6 pt-4 pb-24 md:pt-32 md:pb-36">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-4">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+              </span>
+              Now available on iOS &amp; Android
             </div>
-            ))}
+
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08] text-slate-900">
+                All-in-One<br/>Workforce<br/>Management<span className="text-primary">.</span>
+            </h1>
+
+            <p className="md:mt-6 mt-4 text-md md:text-xl text-slate-600 max-w-2xl leading-relaxed">
+              Fork replaces spreadsheets, paper timesheets, and scattered tools with a single workforce management platform — built for restaurants, retail, and hourly teams.
+            </p>
+
+            <div className="mt-4 sm:mt-10 flex flex-row gap-3 sm:gap-4">
+              <Link href="https://app.forkhr.com/register" target="_blank">
+                <Button size="lg" className="text-sm sm:text-base px-5 sm:px-8 h-10 sm:h-12">
+                  Start free trial
+                  <ArrowRight className="w-4 h-4 ml-1.5 sm:ml-2" />
+                </Button>
+              </Link>
+              <Link href="/features">
+                <Button variant="outline" size="lg" className="text-sm sm:text-base px-5 sm:px-8 h-10 sm:h-12">
+                  See all features
+                </Button>
+              </Link>
+            </div>
+
+            <p className="mt-4 text-sm text-slate-400">
+              Free 7-day trial · No credit card required · Cancel anytime
+            </p>
+          </div>
         </div>
-    )
-}
+      </section>
 
-const Home = () => {
-    return (
-        <main className="fade-in-up z-10 relative">
-            <Section1/>
-            <Section2/>
-            <Section3/>
-            <Section4/>
-            {/* <SectionPrice/> */}
-        </main>
-    )
-}
+      {/* Social proof bar */}
+      <section className="border-t border-slate-100">
+        <div className="max-w-5xl mx-auto px-6 py-12 md:py-16">
+          <p className="text-sm font-medium text-slate-400 uppercase tracking-wider text-center mb-8">
+            Built for teams in
+          </p>
+          <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
+            {useCases.map((uc) => (
+              <span key={uc} className="text-sm font-medium text-slate-500">
+                {uc}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
 
-export default Home
+      {/* Platform overview — 6 pillars */}
+      <section className="bg-slate-50/60">
+        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
+          <div className="max-w-2xl mb-16">
+            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">Platform</p>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+              Everything your team needs, nothing it doesn&apos;t
+            </h2>
+            <p className="mt-4 text-lg text-slate-600 leading-relaxed">
+              Six core modules that cover scheduling, time tracking, HR, onboarding, engagement, and compliance — so you can stop juggling tools.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {pillars.map((p) => (
+              <div
+                key={p.title}
+                className="group rounded-2xl border border-slate-200/80 bg-white p-6 hover:border-primary/20 hover:shadow-sm transition-all"
+              >
+                <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/8 text-primary mb-4">
+                  {p.icon}
+                </div>
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">{p.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{p.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Link href="/features">
+              <Button variant="outline" className="px-8">
+                Explore all features
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Feature details */}
+      <section>
+        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
+          <div className="max-w-2xl mb-16">
+            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">Features</p>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+              Built for how you actually work
+            </h2>
+            <p className="mt-4 text-lg text-slate-600 leading-relaxed">
+              Every feature maps to a real operational need — no fluff, no bloat.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-10">
+            {features.map((f) => (
+              <div key={f.title} className="flex flex-col">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/8">
+                    {f.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold text-slate-900">{f.title}</h3>
+                </div>
+                <ul className="space-y-2.5">
+                  {f.items.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                      <span className="text-sm text-slate-600">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="bg-slate-50/60">
+        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
+          <div className="max-w-2xl mb-16">
+            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">How it works</p>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+              Up and running in under an hour
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-10">
+            {steps.map((s) => (
+              <div key={s.step}>
+                <div className="text-5xl font-bold text-primary/15 mb-4">{s.step}</div>
+                <h3 className="text-xl font-semibold text-slate-900 mb-3">{s.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{s.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Metrics */}
+      <section className="bg-slate-900 relative overflow-hidden">
+        {/* Decorative glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/15 rounded-full blur-[120px]" />
+
+        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28 relative">
+          <div className="text-center mb-16">
+            <p className="text-sm font-semibold text-white uppercase tracking-wider mb-3">By the numbers</p>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
+              Save time, cut costs, keep your team
+            </h2>
+            <p className="mt-4 text-slate-400 text-lg max-w-xl mx-auto">
+              Teams using Fork spend less time on admin and more time on what matters.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 md:gap-5">
+            {[
+              { metric: '10 hrs', label: 'Saved on scheduling per manager, every week', icon: <CalendarClock className="w-5 h-5" /> },
+              { metric: '$4,800', label: 'Average annual savings per location on admin costs', icon: <Shield className="w-5 h-5" /> },
+              { metric: '90%', label: 'Faster employee onboarding with digital forms', icon: <FileText className="w-5 h-5" /> },
+              { metric: '2x', label: 'More employee engagement with built-in communication', icon: <Users className="w-5 h-5" /> },
+            ].map((m) => (
+              <div key={m.label} className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 md:p-8 text-center hover:border-primary/30 hover:bg-white/10 transition-all group">
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/15 text-primary mb-4 group-hover:bg-primary/25 transition-colors">
+                  {m.icon}
+                </div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">{m.metric}</div>
+                <p className="text-sm text-slate-400 leading-relaxed">{m.label}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-xs text-slate-500 mt-10">
+            Based on average results reported by teams using Fork for 90+ days.
+          </p>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="bg-slate-900">
+        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
+            Ready to simplify your workforce management?
+          </h2>
+          <p className="text-lg text-slate-400 mb-10 max-w-xl mx-auto">
+            Join teams that run their operations on Fork. Start your free trial today — no credit card required.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="https://app.forkhr.com/register" target="_blank">
+              <Button size="lg" className="text-base px-8 h-12 bg-white text-slate-900 hover:bg-slate-100">
+                Start free trial
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
+            <Link href="/pricing">
+              <Button variant="outline" size="lg" className="text-base px-8 h-12 border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white">
+                View pricing
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}
