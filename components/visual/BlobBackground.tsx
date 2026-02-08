@@ -6,12 +6,22 @@ export default function BlobBackground() {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const glowRef = useRef<HTMLDivElement | null>(null)
   const [mounted, setMounted] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const reduceMotion = useRef(true)
 
   useEffect(() => {
     reduceMotion.current =
       window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false
+    const computeIsMobile = () => {
+      const isTouch = window.matchMedia?.('(pointer: coarse)')?.matches ?? false
+      const isNarrow = window.innerWidth < 768
+      setIsMobile(isTouch || isNarrow)
+    }
+
+    computeIsMobile()
+    window.addEventListener('resize', computeIsMobile, { passive: true })
     setMounted(true)
+    return () => window.removeEventListener('resize', computeIsMobile)
   }, [])
 
   useEffect(() => {
@@ -126,49 +136,146 @@ export default function BlobBackground() {
           '--bx3': '0px', '--by3': '0px',
         } as React.CSSProperties}
       >
-        {/* Blob 0 — primary indigo, top-left */}
-        <div
-          className="absolute rounded-full blob blob-float-1"
-          style={{
-            width: 600, height: 600,
-            top: -200, left: '-8%',
-            background: 'radial-gradient(circle at 35% 35%, rgba(99,102,241,0.7), rgba(79,70,229,0.3), transparent 65%)',
-            transform: isAnimated ? 'translate3d(var(--bx0), var(--by0), 0)' : undefined,
-          }}
-        />
+        {/* Mobile: fewer + softer blobs */}
+        {isMobile ? (
+          <>
+            <div
+              className="absolute"
+              style={{
+                width: 360,
+                height: 360,
+                top: 220,
+                left: '-35%',
+                willChange: 'transform',
+              }}
+            >
+              <div
+                className="h-full w-full rounded-full blob blob-float-1"
+                style={{
+                  background:
+                    'radial-gradient(circle at 35% 35%, rgba(99,102,241,0.55), rgba(79,70,229,0.22), transparent 65%)',
+                  filter: 'blur(28px)',
+                  opacity: 0.55,
+                }}
+              />
+            </div>
 
-        {/* Blob 1 — pink/violet, top-right */}
-        <div
-          className="absolute rounded-full blob blob-float-2"
-          style={{
-            width: 550, height: 550,
-            top: -160, right: '-10%',
-            background: 'radial-gradient(circle at 45% 40%, rgba(236,72,153,0.55), rgba(139,92,246,0.3), transparent 65%)',
-            transform: isAnimated ? 'translate3d(var(--bx1), var(--by1), 0)' : undefined,
-          }}
-        />
+            <div
+              className="absolute"
+              style={{
+                width: 340,
+                height: 340,
+                top: -140,
+                right: '-40%',
+                willChange: 'transform',
+              }}
+            >
+              <div
+                className="h-full w-full rounded-full blob blob-float-2"
+                style={{
+                  background:
+                    'radial-gradient(circle at 45% 40%, rgba(236,72,153,0.35), rgba(139,92,246,0.18), transparent 65%)',
+                  filter: 'blur(28px)',
+                  opacity: 0.45,
+                }}
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            {/* Blob 0 — primary indigo, top-left */}
+            <div
+              className="absolute"
+              style={{
+                width: 600,
+                height: 600,
+                top: 400,
+                left: '-8%',
+                transform: isAnimated
+                  ? 'translate3d(var(--bx0), var(--by0), 0)'
+                  : undefined,
+                willChange: 'transform',
+              }}
+            >
+              <div
+                className="h-full w-full rounded-full blob blob-float-1"
+                style={{
+                  background:
+                    'radial-gradient(circle at 35% 35%, rgba(99,102,241,0.7), rgba(79,70,229,0.3), transparent 65%)',
+                }}
+              />
+            </div>
 
-        {/* Blob 2 — cyan/teal, center-left, deeper */}
-        <div
-          className="absolute rounded-full blob blob-float-3"
-          style={{
-            width: 700, height: 700,
-            top: -320, left: '15%',
-            background: 'radial-gradient(circle at 40% 40%, rgba(34,211,238,0.45), rgba(99,102,241,0.2), transparent 60%)',
-            transform: isAnimated ? 'translate3d(var(--bx2), var(--by2), 0)' : undefined,
-          }}
-        />
+            {/* Blob 1 — pink/violet, top-right */}
+            <div
+              className="absolute"
+              style={{
+                width: 550,
+                height: 550,
+                top: -190,
+                right: '-10%',
+                transform: isAnimated
+                  ? 'translate3d(var(--bx1), var(--by1), 0)'
+                  : undefined,
+                willChange: 'transform',
+              }}
+            >
+              <div
+                className="h-full w-full rounded-full blob blob-float-2"
+                style={{
+                  background:
+                    'radial-gradient(circle at 45% 40%, rgba(236,72,153,0.55), rgba(139,92,246,0.3), transparent 65%)',
+                }}
+              />
+            </div>
 
-        {/* Blob 3 — accent warm, subtle, mid-right */}
-        <div
-          className="absolute rounded-full blob blob-float-1"
-          style={{
-            width: 420, height: 420,
-            top: 100, right: '5%',
-            background: 'radial-gradient(circle at 50% 50%, rgba(251,191,36,0.25), rgba(251,146,60,0.15), transparent 65%)',
-            transform: isAnimated ? 'translate3d(var(--bx3), var(--by3), 0)' : undefined,
-          }}
-        />
+            {/* Blob 2 — cyan/teal, center-left, deeper */}
+            <div
+              className="absolute"
+              style={{
+                width: 700,
+                height: 700,
+                top: -220,
+                left: '5%',
+                transform: isAnimated
+                  ? 'translate3d(var(--bx2), var(--by2), 0)'
+                  : undefined,
+                willChange: 'transform',
+              }}
+            >
+              <div
+                className="h-full w-full rounded-full blob blob-float-3"
+                style={{
+                  background:
+                    'radial-gradient(circle at 40% 40%, rgba(34,211,238,0.25), rgba(99,102,241,0.2), transparent 60%)',
+                }}
+              />
+            </div>
+
+            {/* Blob 3 — accent warm, subtle, mid-right */}
+            <div
+              className="absolute"
+              style={{
+                width: 420,
+                height: 420,
+                top: 100,
+                right: '5%',
+                transform: isAnimated
+                  ? 'translate3d(var(--bx3), var(--by3), 0)'
+                  : undefined,
+                willChange: 'transform',
+              }}
+            >
+              <div
+                className="h-full w-full rounded-full blob blob-float-1"
+                style={{
+                  background:
+                    'radial-gradient(circle at 50% 50%, rgba(251,191,36,0.25), rgba(251,146,60,0.15), transparent 65%)',
+                }}
+              />
+            </div>
+          </>
+        )}
 
         {/* Subtle grain texture */}
         <div className="absolute inset-0 opacity-[0.06] bg-grain" />
@@ -182,15 +289,15 @@ export default function BlobBackground() {
         <div
           ref={glowRef}
           aria-hidden="true"
-          className="pointer-events-none fixed z-[1] hidden md:block rounded-full"
+          className="pointer-events-none fixed z-1 hidden md:block rounded-full"
           style={{
-            width: 500,
-            height: 500,
+            width: 150,
+            height: 150,
             opacity: 0,
             transform: 'translate(-50%, -50%)',
             background:
               'radial-gradient(circle at center, rgba(255,255,255,0.7) 0%, rgba(99,102,241,0.2) 30%, rgba(139,92,246,0.08) 55%, transparent 70%)',
-            filter: 'blur(2px)',
+            filter: 'blur(5px)',
             willChange: 'left, top, opacity, transform',
           }}
         />

@@ -20,14 +20,14 @@ export const metadata: Metadata = {
     default: "Fork - All-in-One Workforce Management Platform",
     template: "%s | Fork",
   },
-  description: "Simplify scheduling, time tracking, HR onboarding, and team engagement in one platform. Built for restaurants, retail, healthcare, and service businesses.",
+  description: "All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.",
   icons: {
     icon: '/favicon.svg',
   },
   metadataBase: new URL('https://forkhr.com'),
   openGraph: {
     title: "Fork - All-in-One Workforce Management Platform",
-    description: "Simplify scheduling, time tracking, HR onboarding, and team engagement in one platform. Built for restaurants, retail, healthcare, and service businesses.",
+    description: "All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.",
     images: ['/og-image.png'],
     type: 'website',
     siteName: 'Fork',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "Fork - All-in-One Workforce Management Platform",
-    description: "Simplify scheduling, time tracking, HR onboarding, and team engagement in one platform.",
+    description: "All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.",
     images: ['/og-image.png'],
   },
 };

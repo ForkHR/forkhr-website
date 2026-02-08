@@ -53,7 +53,6 @@ export default function AboutPage() {
       <section>
         <div className="max-w-5xl mx-auto px-6 pt-4 pb-16 md:pt-28 md:pb-20">
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">About Fork</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-slate-900">
               Workforce management shouldn&apos;t be this hard
             </h1>

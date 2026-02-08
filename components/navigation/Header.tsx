@@ -94,11 +94,14 @@ const Header = () => {
             </div>
 
             {/* Mobile nav */}
-            <div className="flex flex-1 items-center justify-end md:hidden gap-2">
-              <Link href="https://app.forkhr.com/login" target="_blank">
-                <Button variant="ghost" className="text-[15px] text-primary hover:opacity-80 glass-shine">
-                  Sign in
-                  <ArrowRight className="w-4 h-4 ml-1" />
+            <div className="flex flex-1 items-center justify-end md:hidden gap-2 min-w-0">
+              <Link href="https://app.forkhr.com/login" target="_blank" className="min-w-0">
+                <Button
+                  variant="ghost"
+                  className="text-[15px] text-primary hover:opacity-80 glass-shine max-w-[55vw]"
+                >
+                  <span className="min-w-0 flex-1 truncate">Sign in</span>
+                  <ArrowRight className="w-4 h-4 ml-1 shrink-0" />
                 </Button>
               </Link>
               <Sheet open={open} onOpenChange={setOpen}>
@@ -123,9 +126,9 @@ const Header = () => {
                         key={link.href}
                         href={link.href}
                         onClick={() => setOpen(false)}
-                        className="py-4 border-b border-slate-100 text-slate-800 font-semibold text-lg flex items-start px-4 gap-2 hover:text-primary transition-colors"
+                        className="py-4 border-b border-slate-100 text-slate-800 font-semibold text-lg flex items-center px-4 gap-2 hover:text-primary transition-colors min-w-0"
                       >
-                        {link.label}
+                        <span className="truncate">{link.label}</span>
                       </Link>
                     ))}
                   </div>
@@ -133,11 +136,13 @@ const Header = () => {
                     <div className="flex flex-1 gap-3">
                       <Link href="https://app.forkhr.com/login" target="_blank" className="flex-1">
                         <Button variant="secondary" className="text-[15px] text-primary w-full glass-shine">
-                          Sign in
+                          <span className="truncate">Sign in</span>
                         </Button>
                       </Link>
                       <Link href="https://app.forkhr.com/register" target="_blank" className="flex-1">
-                        <Button className="flex-1 w-full">Start free trial</Button>
+                        <Button className="flex-1 w-full">
+                          <span className="truncate">Start free trial</span>
+                        </Button>
                       </Link>
                     </div>
                   </SheetFooter>

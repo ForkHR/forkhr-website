@@ -120,7 +120,6 @@ export default function PricingPage() {
       {/* Hero */}
       <section>
         <div className="max-w-5xl mx-auto px-6 pt-20 pb-6 md:pt-28 md:pb-10 text-center">
-          <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">Pricing</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-slate-900">
             One price per location. Unlimited team members.
           </h1>

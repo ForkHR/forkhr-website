@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
     }, [])
 
     return (
-        <main className="max-w-5xl mx-auto w-full px-4 md:px-6 py-10 md:py-20 min-h-screen fade-in-up">
+        <main className="max-w-5xl mx-auto w-full px-4 md:px-6 py-10 md:py-20 min-h-screen fade-in-up wrap-anywhere overflow-x-hidden">
             <div className="text-5xl md:text-7xl font-semibold">
                 Privacy Policy<span className="text-primary">.</span>
             </div>
@@ -179,7 +179,7 @@ const PrivacyPolicy = () => {
                         you visit our website and some of the Services and functionalities may not work.</p>
                     <p>To explore what Cookie settings are available to you, look in the “preferences” or “options” section of your browser’s menu. To find out more information about Cookies, including information about how to manage and delete Cookies, please visit&nbsp;
                         <a
-                        href="http://www.allaboutcookies.org/" target="_blank">http://www.allaboutcookies.org/</a>.</p>
+                        href="http://www.allaboutcookies.org/" target="_blank" className="inline-block max-w-full truncate align-bottom">http://www.allaboutcookies.org/</a>.</p>
                     <p>
                         <em>Information about Interest-Based Advertisements:</em>
                     </p>
@@ -191,8 +191,8 @@ const PrivacyPolicy = () => {
                     <p>We comply with the Digital Advertising Alliance (“DAA”) Self-Regulatory Principles for Online Behavioral Advertising. Through the DAA and Network Advertising Initiative (“NAI”), several media and marketing associations have developed an industry self-regulatory
                         program to give consumers a better understanding of, and greater control over, ads that are customized based a consumer’s online behavior across different websites and properties. To make choices about Interest-Based Ads from participating third parties,
                         including to opt-out of receiving behaviorally targeted advertisements from participating organizations, please visit the DAA’s or NAI’s consumer opt-out pages, which are located at&nbsp;
-                        <a href="http://www.networkadvertising.org/choices/" target="_blank">http://www.networkadvertising.org/choices/</a>&nbsp;or&nbsp;
-                        <a href="http://www.aboutads.info/choices" target="_blank">www.aboutads.info/choices</a>.</p>
+                        <a href="http://www.networkadvertising.org/choices/" target="_blank" className="inline-block max-w-full truncate align-bottom">http://www.networkadvertising.org/choices/</a>&nbsp;or&nbsp;
+                        <a href="http://www.aboutads.info/choices" target="_blank" className="inline-block max-w-full truncate align-bottom">www.aboutads.info/choices</a>.</p>
                     <br/>
                 </div>
                 <br/>
