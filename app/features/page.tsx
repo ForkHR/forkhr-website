@@ -29,10 +29,14 @@ export const metadata: Metadata = {
   title: 'Features — Fork | Scheduling, Time Tracking, HR & Engagement',
   description:
     'Explore all Fork features: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, and training.',
+  alternates: {
+    canonical: '/features',
+  },
   openGraph: {
     title: 'Features — Fork | Scheduling, Time Tracking, HR & Engagement',
     description:
       'Explore all Fork features: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, and training.',
+    url: 'https://forkhr.com/features',
     images: ['/og-image.png'],
     type: 'website',
   },
@@ -148,6 +152,11 @@ const sections = [
         icon: <FileWarning className="w-5 h-5 text-primary" />,
         title: 'Incident reports',
         desc: 'Document workplace incidents with structured reports. Maintain a safe and compliant work environment.',
+      },
+      {
+        icon: <FileText className="w-5 h-5 text-primary" />,
+        title: 'Termination records',
+        desc: 'Keep complete offboarding documentation, final notices, and exit checklists in one secure place.',
       },
       {
         icon: <Shield className="w-5 h-5 text-primary" />,

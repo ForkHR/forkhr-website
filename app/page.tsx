@@ -1,6 +1,31 @@
 import { Button } from '@/components/ui/button'
 import { ArrowRight, CalendarClock, ClockIcon, FileText, Users, BookOpen, Shield, CheckCircle2 } from 'lucide-react'
 import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Fork — All-in-One Workforce Management Platform',
+  description:
+    'All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Fork — All-in-One Workforce Management Platform',
+    description:
+      'All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.',
+    url: 'https://forkhr.com',
+    images: ['/og-image.png'],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Fork — All-in-One Workforce Management Platform',
+    description:
+      'All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.',
+    images: ['/og-image.png'],
+  },
+}
 
 const pillars = [
   {

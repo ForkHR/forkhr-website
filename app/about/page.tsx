@@ -7,10 +7,14 @@ export const metadata: Metadata = {
   title: 'About — Fork | Our Mission & Team',
   description:
     'Fork was built to simplify workforce management for hourly teams. Learn about our mission, values, and the team behind the platform.',
+  alternates: {
+    canonical: '/about',
+  },
   openGraph: {
     title: 'About — Fork | Our Mission & Team',
     description:
       'Fork was built to simplify workforce management for hourly teams. Learn about our mission, values, and the team behind the platform.',
+    url: 'https://forkhr.com/about',
     images: ['/og-image.png'],
     type: 'website',
   },

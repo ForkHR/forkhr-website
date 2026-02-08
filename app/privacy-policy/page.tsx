@@ -1,13 +1,27 @@
-"use client"
-import React, { useEffect } from 'react'
+import type { Metadata } from 'next'
 
-const PrivacyPolicy = () => {
+export const metadata: Metadata = {
+    title: 'Privacy Policy — Fork',
+    description: 'Read Fork\'s Privacy Policy for details on data collection, use, sharing, security, and retention.',
+    alternates: {
+        canonical: '/privacy-policy',
+    },
+    openGraph: {
+        title: 'Privacy Policy — Fork',
+        description: 'Read Fork\'s Privacy Policy for details on data collection, use, sharing, security, and retention.',
+        url: 'https://forkhr.com/privacy-policy',
+        images: ['/og-image.png'],
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Privacy Policy — Fork',
+        description: 'Read Fork\'s Privacy Policy for details on data collection, use, sharing, security, and retention.',
+        images: ['/og-image.png'],
+    },
+}
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-        document.title = "Privacy Policy"
-    }, [])
-
+export default function PrivacyPolicy() {
     return (
         <main className="max-w-5xl mx-auto w-full px-4 md:px-6 py-10 md:py-20 min-h-screen fade-in-up wrap-anywhere overflow-x-hidden">
             <div className="text-5xl md:text-7xl font-semibold">
@@ -246,5 +260,3 @@ const PrivacyPolicy = () => {
         </main>
     )
 }
-
-export default PrivacyPolicy

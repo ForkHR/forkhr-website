@@ -13,10 +13,14 @@ export const metadata: Metadata = {
   title: 'Pricing — Fork | Simple Per-Location Pricing',
   description:
     'Transparent pricing for workforce management. Unlimited employees, no per-user fees. Start with a free 7-day trial.',
+  alternates: {
+    canonical: '/pricing',
+  },
   openGraph: {
     title: 'Pricing — Fork | Simple Per-Location Pricing',
     description:
       'Transparent pricing for workforce management. Unlimited employees, no per-user fees. Start with a free 7-day trial.',
+    url: 'https://forkhr.com/pricing',
     images: ['/og-image.png'],
     type: 'website',
   },
@@ -115,8 +119,25 @@ const faqs = [
 ]
 
 export default function PricingPage() {
+  const jsonLdFaq = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a,
+      },
+    })),
+  }
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
+      />
       {/* Hero */}
       <section>
         <div className="max-w-5xl mx-auto px-6 pt-20 pb-6 md:pt-28 md:pb-10 text-center">

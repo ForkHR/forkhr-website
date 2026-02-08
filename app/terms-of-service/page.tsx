@@ -1,13 +1,27 @@
-"use client"
-import React, { useEffect } from 'react'
+import type { Metadata } from 'next'
 
-const TermsOfService = () => {
+export const metadata: Metadata = {
+    title: 'Terms of Service — Fork',
+    description: 'Read Fork\'s Terms of Service governing access to and use of the Fork website and services.',
+    alternates: {
+        canonical: '/terms-of-service',
+    },
+    openGraph: {
+        title: 'Terms of Service — Fork',
+        description: 'Read Fork\'s Terms of Service governing access to and use of the Fork website and services.',
+        url: 'https://forkhr.com/terms-of-service',
+        images: ['/og-image.png'],
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Terms of Service — Fork',
+        description: 'Read Fork\'s Terms of Service governing access to and use of the Fork website and services.',
+        images: ['/og-image.png'],
+    },
+}
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-        document.title = "Terms of Service"
-    }, [])
-
+export default function TermsOfService() {
     return (
         <main className="max-w-5xl mx-auto w-full px-4 md:px-6 py-10 md:py-20 min-h-screen fade-in-up wrap-anywhere overflow-x-hidden">
             <div className="text-5xl md:text-7xl font-semibold">
@@ -516,5 +530,3 @@ const TermsOfService = () => {
         </main>
     )
 }
-
-export default TermsOfService

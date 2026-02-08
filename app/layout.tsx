@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     template: "%s | Fork",
   },
   description: "All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.",
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: '/favicon.svg',
   },
@@ -45,12 +48,39 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLdOrganization = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Fork Workforce Inc.',
+    url: 'https://forkhr.com',
+    logo: 'https://forkhr.com/favicon.svg',
+    brand: {
+      '@type': 'Brand',
+      name: 'Fork',
+    },
+  }
+
+  const jsonLdWebSite = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Fork',
+    url: 'https://forkhr.com',
+  }
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="relative flex min-h-screen flex-col bg-background">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
+          />
           <BlobBackground />
           <div className="relative z-10 flex min-h-screen flex-col">
             <Header />
