@@ -115,7 +115,7 @@ export default function Home() {
     <main>
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="max-w-5xl mx-auto px-6 pt-4 pb-24 md:pt-32 md:pb-36">
+        <div className="max-w-5xl mx-auto px-6 pt-4 pb-12 md:pt-20 md:pb-24">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-4">
               <span className="relative flex h-2 w-2">
@@ -323,7 +323,7 @@ export default function Home() {
               </Button>
             </Link>
             <Link href="/pricing">
-              <Button variant="outline" size="lg" className="text-base px-8 h-12 border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white">
+              <Button variant="outline" size="lg" className="text-base px-8 h-12 border-slate-700 text-slate-300 bg-slate-800 hover:bg-slate-900 hover:text-white">
                 View pricing
               </Button>
             </Link>

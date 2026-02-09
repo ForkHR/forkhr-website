@@ -1,5 +1,6 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
 export default function BlobBackground() {
@@ -7,6 +8,8 @@ export default function BlobBackground() {
   const [mounted, setMounted] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const reduceMotion = useRef(true)
+
+  const pathname = usePathname()
 
   useEffect(() => {
     reduceMotion.current =
@@ -68,6 +71,7 @@ export default function BlobBackground() {
   const isAnimated = !reduceMotion.current
 
   return (
+    pathname === '/privacy-policy' || pathname === '/terms-of-service' ? null :
     <div
       ref={containerRef}
       aria-hidden="true"

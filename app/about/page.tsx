@@ -55,7 +55,7 @@ export default function AboutPage() {
     <main>
       {/* Hero */}
       <section>
-        <div className="max-w-5xl mx-auto px-6 pt-4 pb-16 md:pt-28 md:pb-20">
+        <div className="max-w-5xl mx-auto px-6 pt-4 pb-4 md:pt-28 md:pb-20">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-slate-900">
               Workforce management shouldn&apos;t be this hard
@@ -69,7 +69,7 @@ export default function AboutPage() {
 
       {/* Mission */}
       <section className="bg-slate-50/60">
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
+        <div className="max-w-5xl mx-auto px-6 py-12 md:py-28">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6">
@@ -100,7 +100,7 @@ export default function AboutPage() {
 
       {/* Values */}
       <section>
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
+        <div className="max-w-5xl mx-auto px-6 py-12 md:py-28">
           <div className="max-w-2xl mb-16">
             <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">Values</p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
@@ -136,11 +136,7 @@ export default function AboutPage() {
               </Button>
             </Link>
             <Link href="https://app.forkhr.com/register" target="_blank">
-              <Button
-                variant="outline"
-                size="lg"
-                className="text-base px-8 h-12 border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white"
-              >
+              <Button variant="outline" size="lg" className="text-base px-8 h-12 border-slate-700 text-slate-300 bg-slate-800 hover:bg-slate-900 hover:text-white">
                 Start free trial
               </Button>
             </Link>
