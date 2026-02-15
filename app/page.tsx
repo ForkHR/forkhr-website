@@ -1,19 +1,19 @@
 import { Button } from '@/components/ui/button'
-import { ArrowRight, CalendarClock, ClockIcon, FileText, Users, BookOpen, Shield, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, CalendarClock, ClockIcon, FileText, Users, BookOpen, Shield, CheckCircle2, Wrench, Trash2 } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Fork — All-in-One Workforce Management Platform',
   description:
-    'All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.',
+    'All-in-one workforce management platform for scheduling, time tracking, HR onboarding, engagement, maintenance logs, and waste control. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'Fork — All-in-One Workforce Management Platform',
     description:
-      'All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.',
+      'All-in-one workforce management platform for scheduling, time tracking, HR onboarding, engagement, maintenance logs, and waste control. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.',
     url: 'https://forkhr.com',
     images: ['/og-image.png'],
     type: 'website',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Fork — All-in-One Workforce Management Platform',
     description:
-      'All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.',
+      'All-in-one workforce management platform for scheduling, time tracking, HR onboarding, engagement, maintenance logs, and waste control. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.',
     images: ['/og-image.png'],
   },
 }
@@ -57,6 +57,16 @@ const pillars = [
     icon: <Shield className="w-5 h-5" />,
     title: 'Compliance & Documents',
     description: 'Incident reports, employment forms, and secure document management to stay compliant.',
+  },
+  {
+    icon: <Wrench className="w-5 h-5" />,
+    title: 'Maintenance Logs',
+    description: 'Track equipment issues from report to resolution with priority levels, cost tracking, and full audit trails.',
+  },
+  {
+    icon: <Trash2 className="w-5 h-5" />,
+    title: 'Waste Control',
+    description: 'Log waste in real time, track costs automatically, and use reports to find patterns and cut losses.',
   },
 ]
 
@@ -179,7 +189,7 @@ export default function Home() {
               Everything your team needs, nothing it doesn&apos;t
             </h2>
             <p className="mt-4 text-lg text-slate-600 leading-relaxed">
-              Six core modules that cover scheduling, time tracking, HR, onboarding, engagement, and compliance — so you can stop juggling tools.
+              Eight core modules that cover scheduling, time tracking, HR, onboarding, engagement, compliance, maintenance, and waste control — so you can stop juggling tools.
             </p>
           </div>
 

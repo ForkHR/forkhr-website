@@ -21,30 +21,41 @@ import {
   Bell,
   Star,
   FileWarning,
+  Wrench,
+  ClipboardList,
+  AlertTriangle,
+  DollarSign,
+  History,
+  Camera,
+  Trash2,
+  Package,
+  TrendingDown,
+  PieChart,
+  Tag,
 } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Features — Fork | Scheduling, Time Tracking, HR & Engagement',
+  title: 'Features — Fork | Scheduling, Time Tracking, HR, Maintenance & Waste Control',
   description:
-    'Explore all Fork features: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, and training.',
+    'Explore all Fork features: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, training, maintenance logs, and waste control.',
   alternates: {
     canonical: '/features',
   },
   openGraph: {
-    title: 'Features — Fork | Scheduling, Time Tracking, HR & Engagement',
+    title: 'Features — Fork | Scheduling, Time Tracking, HR, Maintenance & Waste Control',
     description:
-      'Explore all Fork features: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, and training.',
+      'Explore all Fork features: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, training, maintenance logs, and waste control.',
     url: 'https://forkhr.com/features',
     images: ['/og-image.png'],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Features — Fork | Scheduling, Time Tracking, HR & Engagement',
+    title: 'Features — Fork | Scheduling, Time Tracking, HR, Maintenance & Waste Control',
     description:
-      'Explore all Fork features: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, and training.',
+      'Explore all Fork features: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, training, maintenance logs, and waste control.',
     images: ['/og-image.png'],
   },
 }
@@ -199,8 +210,86 @@ const sections = [
         desc: 'Centralize policies, handbooks, and how-to guides. Your team can access everything from the app.',
       },
     ],
+  },  {
+    id: 'maintenance-logs',
+    label: 'Maintenance Logs',
+    icon: <Wrench className="w-5 h-5" />,
+    headline: 'Track equipment issues before they become costly problems',
+    description:
+      'Log maintenance requests, track repairs from report to resolution, and keep a complete history of every piece of equipment across all your locations.',
+    features: [
+      {
+        icon: <ClipboardList className="w-5 h-5 text-primary" />,
+        title: 'Structured logging',
+        desc: 'Log issues with category, item, priority, and description. Assign to locations and track status from draft to completed.',
+      },
+      {
+        icon: <AlertTriangle className="w-5 h-5 text-primary" />,
+        title: 'Priority levels',
+        desc: 'Flag issues as low, medium, high, or urgent so your team knows what to fix first.',
+      },
+      {
+        icon: <DollarSign className="w-5 h-5 text-primary" />,
+        title: 'Cost tracking',
+        desc: 'Record estimated and actual repair costs. Build a clear picture of maintenance spend over time.',
+      },
+      {
+        icon: <Camera className="w-5 h-5 text-primary" />,
+        title: 'Photo documentation',
+        desc: 'Attach photos to the issue report and the resolution. Visual proof makes handoffs effortless.',
+      },
+      {
+        icon: <History className="w-5 h-5 text-primary" />,
+        title: 'Full audit trail',
+        desc: 'Every status change is logged with who made it and when — giving you a complete history of every repair.',
+      },
+      {
+        icon: <Wrench className="w-5 h-5 text-primary" />,
+        title: 'Vendor management',
+        desc: 'Record vendor names on each log so you always know who handled the repair.',
+      },
+    ],
   },
-]
+  {
+    id: 'waste-control',
+    label: 'Waste Control',
+    icon: <Trash2 className="w-5 h-5" />,
+    headline: 'Reduce waste, track costs, and improve operations',
+    description:
+      'Give your team a fast way to log waste as it happens. Track every item, reason, and cost — then use reports to find patterns and cut losses.',
+    features: [
+      {
+        icon: <Trash2 className="w-5 h-5 text-primary" />,
+        title: 'Quick waste logging',
+        desc: 'Employees log waste in seconds from their phone — select the item, enter a quantity, pick a reason, and submit.',
+      },
+      {
+        icon: <Package className="w-5 h-5 text-primary" />,
+        title: 'Item catalog',
+        desc: 'Manage a catalog of trackable items with categories, SKUs, and cost-per-unit. Assign items to specific locations.',
+      },
+      {
+        icon: <Tag className="w-5 h-5 text-primary" />,
+        title: 'Reason tracking',
+        desc: 'Categorize every waste event — expired, damaged, mistake, end-of-day, burned, or custom reasons — to pinpoint root causes.',
+      },
+      {
+        icon: <DollarSign className="w-5 h-5 text-primary" />,
+        title: 'Automatic cost calculation',
+        desc: 'Total waste cost is calculated automatically from item cost and quantity — no manual math required.',
+      },
+      {
+        icon: <TrendingDown className="w-5 h-5 text-primary" />,
+        title: 'Waste reports',
+        desc: 'View waste by date, location, category, or reason. Spot trends and take action to reduce losses.',
+      },
+      {
+        icon: <PieChart className="w-5 h-5 text-primary" />,
+        title: 'Location comparison',
+        desc: 'Compare waste across locations to identify which sites need attention and share best practices.',
+      },
+    ],
+  },]
 
 export default function FeaturesPage() {
   return (
