@@ -3,13 +3,21 @@ import { ArrowRight } from 'lucide-react'
 import { Button } from '../ui/button'
 
 const productLinks = [
-  { label: 'Scheduling', href: '/features#scheduling' },
-  { label: 'Time tracking', href: '/features#time-tracking' },
-  { label: 'HR & onboarding', href: '/features#hr-onboarding' },
-  { label: 'Team engagement', href: '/features#team-engagement' },
-  { label: 'Maintenance logs', href: '/features#maintenance-logs' },
-  { label: 'Waste control', href: '/features#waste-control' },
+  { label: 'Scheduling', href: '/products#scheduling' },
+  { label: 'Time tracking', href: '/products#time-tracking' },
+  { label: 'HR & onboarding', href: '/products#hr-onboarding' },
+  { label: 'Team engagement', href: '/products#team-engagement' },
+  { label: 'Maintenance logs', href: '/products#maintenance-logs' },
+  { label: 'Waste control', href: '/products#waste-control' },
   { label: 'Pricing', href: '/pricing' },
+]
+
+const solutionLinks = [
+  { label: 'Compliance & Legal', href: '/solutions/compliance' },
+  { label: 'Operational Efficiency', href: '/solutions/operational-efficiency' },
+  { label: 'Multi-Location', href: '/solutions/multi-location' },
+  { label: 'Employee Retention', href: '/solutions/employee-retention' },
+  { label: 'Franchise & Brand', href: '/solutions/franchise' },
 ]
 
 const companyLinks = [
@@ -22,7 +30,7 @@ const Footer = () => {
   return (
     <footer className="border-t border-slate-200 bg-white/60 backdrop-blur-sm">
       <div className="max-w-5xl mx-auto px-4 md:px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-8">
           {/* Brand column */}
           <div className="md:col-span-2 flex flex-col gap-5">
             <Link href="/">
@@ -74,6 +82,23 @@ const Footer = () => {
             <h4 className="text-sm font-semibold text-slate-900 mb-4">Product</h4>
             <ul className="space-y-3">
               {productLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-slate-500 hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Solutions links */}
+          <div>
+            <h4 className="text-sm font-semibold text-slate-900 mb-4">Solutions</h4>
+            <ul className="space-y-3">
+              {solutionLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}

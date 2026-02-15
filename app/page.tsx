@@ -150,7 +150,7 @@ export default function Home() {
                   <ArrowRight className="w-4 h-4 ml-1.5 sm:ml-2" />
                 </Button>
               </Link>
-              <Link href="/features">
+              <Link href="/products">
                 <Button variant="outline" size="lg" className="text-sm sm:text-base px-5 sm:px-8 h-10 sm:h-12">
                   Learn more
                 </Button>
@@ -209,9 +209,9 @@ export default function Home() {
           </div>
 
           <div className="mt-12 text-center">
-            <Link href="/features">
+            <Link href="/products">
               <Button variant="outline" className="px-8">
-                Explore all features
+                Explore all products
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>

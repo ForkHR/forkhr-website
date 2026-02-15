@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
 
 export default function SchedulerRedirect() {
-  redirect('/features#scheduling')
+  redirect('/products#scheduling')
 }

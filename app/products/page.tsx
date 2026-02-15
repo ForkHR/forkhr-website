@@ -37,25 +37,25 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Features — Fork | Scheduling, Time Tracking, HR, Maintenance & Waste Control',
+  title: 'Products — Fork | Scheduling, Time Tracking, HR, Maintenance & Waste Control',
   description:
-    'Explore all Fork features: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, training, maintenance logs, and waste control.',
+    'Explore all Fork products: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, training, maintenance logs, and waste control.',
   alternates: {
-    canonical: '/features',
+    canonical: '/products',
   },
   openGraph: {
-    title: 'Features — Fork | Scheduling, Time Tracking, HR, Maintenance & Waste Control',
+    title: 'Products — Fork | Scheduling, Time Tracking, HR, Maintenance & Waste Control',
     description:
-      'Explore all Fork features: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, training, maintenance logs, and waste control.',
-    url: 'https://forkhr.com/features',
+      'Explore all Fork products: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, training, maintenance logs, and waste control.',
+    url: 'https://forkhr.com/products',
     images: ['/og-image.png'],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Features — Fork | Scheduling, Time Tracking, HR, Maintenance & Waste Control',
+    title: 'Products — Fork | Scheduling, Time Tracking, HR, Maintenance & Waste Control',
     description:
-      'Explore all Fork features: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, training, maintenance logs, and waste control.',
+      'Explore all Fork products: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, training, maintenance logs, and waste control.',
     images: ['/og-image.png'],
   },
 }

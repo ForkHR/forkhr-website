@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '../ui/button'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ChevronDown, Calendar, Clock, Umbrella, FileText, ClipboardCheck, UserPlus, FolderOpen, Briefcase, AlertTriangle, UserX, Megaphone, Star, BarChart3, BookOpen, Library, ClipboardList, Wrench, Trash2, Scale, Store, MapPin, Heart, Zap } from 'lucide-react'
 import {
   Sheet,
   SheetContent,
@@ -15,16 +15,89 @@ import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
-const navLinks = [
-  { label: 'Features', href: '/features' },
-  { label: 'Pricing', href: '/pricing' },
-  { label: 'About', href: '/about' },
+/* ─── Products data (mirrors the app navbar) ─── */
+const productGroups = [
+  {
+    label: 'Time & Scheduling',
+    items: [
+      { name: 'Schedule', desc: 'Build and share weekly schedules', icon: Calendar, href: '/products#scheduling' },
+      { name: 'Timecards', desc: 'Clock-in from any device, real-time timesheets', icon: Clock, href: '/products#time-tracking' },
+      { name: 'Time Off', desc: 'Manage PTO requests and approvals', icon: Umbrella, href: '/products#time-tracking' },
+    ],
+  },
+  {
+    label: 'HR & People',
+    items: [
+      { name: 'Onboarding', desc: 'Paperless onboarding for new hires', icon: UserPlus, href: '/products#hr-onboarding' },
+      { name: 'Employment Forms', desc: 'Digital W-4, I-9 and custom forms', icon: FileText, href: '/products#hr-onboarding' },
+      { name: 'Documents', desc: 'Organize and request employee documents', icon: FolderOpen, href: '/products#hr-onboarding' },
+      { name: 'Hiring', desc: 'Post jobs and track applicants', icon: Briefcase, href: '/products#hr-onboarding' },
+      { name: 'Incidents', desc: 'Document and track workplace incidents', icon: AlertTriangle, href: '/products#hr-onboarding' },
+      { name: 'Termination', desc: 'Offboarding records and exit checklists', icon: UserX, href: '/products#hr-onboarding' },
+    ],
+  },
+  {
+    label: 'Engagement',
+    items: [
+      { name: 'Updates', desc: 'Company news and announcements', icon: Megaphone, href: '/products#team-engagement' },
+      { name: 'Recognitions', desc: 'Peer-to-peer kudos and rewards', icon: Star, href: '/products#team-engagement' },
+      { name: 'Surveys', desc: 'Collect team feedback and measure satisfaction', icon: BarChart3, href: '/products#team-engagement' },
+      { name: 'Courses', desc: 'Assign training and track completion', icon: BookOpen, href: '/products#team-engagement' },
+      { name: 'Library', desc: 'Shared policies, handbooks, and guides', icon: Library, href: '/products#team-engagement' },
+    ],
+  },
+  {
+    label: 'Operations',
+    items: [
+      { name: 'Forms', desc: 'Build custom forms with drag-and-drop', icon: ClipboardList, href: '/products#hr-onboarding' },
+      { name: 'Checklists', desc: 'Daily task lists for every shift', icon: ClipboardCheck, href: '/products#hr-onboarding' },
+      { name: 'Maintenance Logs', desc: 'Track equipment issues and repairs', icon: Wrench, href: '/products#maintenance-logs' },
+      { name: 'Waste Control', desc: 'Log waste, track costs, reduce losses', icon: Trash2, href: '/products#waste-control' },
+    ],
+  },
+]
+
+/* ─── Solutions data ─── */
+const solutions = [
+  {
+    name: 'Compliance & Legal',
+    desc: 'Stay audit-ready with digital records, e-signatures, incident reports, and automated document tracking',
+    icon: Scale,
+    href: '/solutions/compliance',
+  },
+  {
+    name: 'Operational Efficiency',
+    desc: 'Cut waste, reduce costs, and streamline daily ops with checklists, maintenance logs, and real-time reporting',
+    icon: Zap,
+    href: '/solutions/operational-efficiency',
+  },
+  {
+    name: 'Multi-Location Management',
+    desc: 'Manage schedules, compare performance, and maintain consistency across every site from one dashboard',
+    icon: MapPin,
+    href: '/solutions/multi-location',
+  },
+  {
+    name: 'Employee Retention',
+    desc: 'Lower turnover with engagement surveys, peer recognition, career training, and better scheduling',
+    icon: Heart,
+    href: '/solutions/employee-retention',
+  },
+  {
+    name: 'Franchise & Brand',
+    desc: 'Standardize onboarding, training, and processes across franchise locations at scale',
+    icon: Store,
+    href: '/solutions/franchise',
+  },
 ]
 
 const Header = () => {
   const headerRef = useRef(null)
   const [open, setOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
+  const dropdownTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     const onScroll = () => {
@@ -34,6 +107,15 @@ const Header = () => {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  const handleDropdownEnter = (name: string) => {
+    if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current)
+    setActiveDropdown(name)
+  }
+
+  const handleDropdownLeave = () => {
+    dropdownTimeout.current = setTimeout(() => setActiveDropdown(null), 150)
+  }
 
   return (
     <header
@@ -69,15 +151,112 @@ const Header = () => {
             {/* Desktop nav */}
             <div className="hidden md:flex flex-1 items-center justify-between">
               <nav className="flex items-center gap-1">
-                {navLinks.map((link) => (
+                {/* Products dropdown */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => handleDropdownEnter('products')}
+                  onMouseLeave={handleDropdownLeave}
+                >
                   <Link
-                    key={link.href}
-                    href={link.href}
-                    className="glass-nav-link glass-shine text-[15px] font-semibold px-3 py-2 rounded-lg transition-colors hover:text-primary"
+                    href="/products"
+                    className="glass-nav-link glass-shine text-[15px] font-semibold px-3 py-2 rounded-lg transition-colors hover:text-primary inline-flex items-center gap-1"
                   >
-                    {link.label}
+                    Products
+                    <ChevronDown className={cn('w-3.5 h-3.5 transition-transform duration-200', activeDropdown === 'products' && 'rotate-180')} />
                   </Link>
-                ))}
+
+                  <div className={cn(
+                    'absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200',
+                    activeDropdown === 'products' ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'
+                  )}>
+                    <div className="w-[680px] rounded-2xl bg-white border border-slate-200/80 shadow-[0_20px_60px_rgba(2,6,23,0.12)] p-5 grid grid-cols-2 gap-x-6 gap-y-1">
+                      {productGroups.map((group) => (
+                        <div key={group.label} className="mb-3">
+                          <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider px-2 mb-1.5">
+                            {group.label}
+                          </div>
+                          {group.items.map((item) => (
+                            <Link
+                              key={item.name}
+                              href={item.href}
+                              onClick={() => setActiveDropdown(null)}
+                              className="flex items-start gap-3 rounded-lg px-2 py-2 hover:bg-slate-50 transition-colors group"
+                            >
+                              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/8 shrink-0 mt-0.5 group-hover:bg-primary/12 transition-colors">
+                                <item.icon className="w-4 h-4 text-primary" />
+                              </div>
+                              <div className="min-w-0">
+                                <div className="text-[13px] font-semibold text-slate-800">{item.name}</div>
+                                <div className="text-[12px] text-slate-500 leading-snug">{item.desc}</div>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      ))}
+                      <div className="col-span-2 border-t border-slate-100 pt-3 mt-1">
+                        <Link
+                          href="/products"
+                          onClick={() => setActiveDropdown(null)}
+                          className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary hover:underline px-2"
+                        >
+                          View all products
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Solutions dropdown */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => handleDropdownEnter('solutions')}
+                  onMouseLeave={handleDropdownLeave}
+                >
+                  <button
+                    className="glass-nav-link glass-shine text-[15px] font-semibold px-3 py-2 rounded-lg transition-colors hover:text-primary inline-flex items-center gap-1"
+                  >
+                    Solutions
+                    <ChevronDown className={cn('w-3.5 h-3.5 transition-transform duration-200', activeDropdown === 'solutions' && 'rotate-180')} />
+                  </button>
+
+                  <div className={cn(
+                    'absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200',
+                    activeDropdown === 'solutions' ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'
+                  )}>
+                    <div className="w-[400px] rounded-2xl bg-white backdrop-blur-xl border border-slate-200/80 shadow-[0_20px_60px_rgba(2,6,23,0.12)] p-4">
+                      {solutions.map((item) => (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          onClick={() => setActiveDropdown(null)}
+                          className="flex items-start gap-3 rounded-lg px-2.5 py-2.5 hover:bg-slate-50 transition-colors group"
+                        >
+                          <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/8 shrink-0 mt-0.5 group-hover:bg-primary/12 transition-colors">
+                            <item.icon className="w-4.5 h-4.5 text-primary" />
+                          </div>
+                          <div className="min-w-0">
+                            <div className="text-[13px] font-semibold text-slate-800">{item.name}</div>
+                            <div className="text-[12px] text-slate-500 leading-snug">{item.desc}</div>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <Link
+                  href="/pricing"
+                  className="glass-nav-link glass-shine text-[15px] font-semibold px-3 py-2 rounded-lg transition-colors hover:text-primary"
+                >
+                  Pricing
+                </Link>
+                <Link
+                  href="/about"
+                  className="glass-nav-link glass-shine text-[15px] font-semibold px-3 py-2 rounded-lg transition-colors hover:text-primary"
+                >
+                  About
+                </Link>
               </nav>
 
               <div className="flex items-center gap-2">
@@ -110,7 +289,7 @@ const Header = () => {
                     <HamburgerMenuIcon className="h-5 w-5" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent className="flex flex-col p-0 w-full bg-white backdrop-blur-xl">
+                <SheetContent className="flex flex-col p-0 w-full bg-white backdrop-blur-xl overflow-y-auto">
                   <SheetHeader>
                     <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                     <div className="p-4 flex items-center border-b border-slate-100">
@@ -120,17 +299,81 @@ const Header = () => {
               </svg>
                     </div>
                   </SheetHeader>
-                  <div className="flex-1">
-                    {navLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={() => setOpen(false)}
-                        className="py-4 border-b border-slate-100 text-slate-800 font-semibold text-lg flex items-center px-4 gap-2 hover:text-primary transition-colors min-w-0"
-                      >
-                        <span className="truncate">{link.label}</span>
-                      </Link>
-                    ))}
+                  <div className="flex-1 overflow-y-auto">
+                    {/* Products (collapsible) */}
+                    <button
+                      onClick={() => setMobileExpanded(mobileExpanded === 'products' ? null : 'products')}
+                      className="w-full py-4 border-b border-slate-100 text-slate-800 font-semibold text-lg flex items-center justify-between px-4 hover:text-primary transition-colors"
+                    >
+                      Products
+                      <ChevronDown className={cn('w-4 h-4 transition-transform', mobileExpanded === 'products' && 'rotate-180')} />
+                    </button>
+                    {mobileExpanded === 'products' && (
+                      <div className="bg-slate-50/50 border-b border-slate-100">
+                        {productGroups.map((group) => (
+                          <div key={group.label} className="px-4 pt-3 pb-1">
+                            <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">{group.label}</div>
+                            {group.items.map((item) => (
+                              <Link
+                                key={item.name}
+                                href={item.href}
+                                onClick={() => setOpen(false)}
+                                className="flex items-center gap-3 py-2.5 px-1 text-slate-700 hover:text-primary transition-colors"
+                              >
+                                <item.icon className="w-4 h-4 text-primary shrink-0" />
+                                <div>
+                                  <div className="text-sm font-medium">{item.name}</div>
+                                  <div className="text-xs text-slate-500">{item.desc}</div>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Solutions (collapsible) */}
+                    <button
+                      onClick={() => setMobileExpanded(mobileExpanded === 'solutions' ? null : 'solutions')}
+                      className="w-full py-4 border-b border-slate-100 text-slate-800 font-semibold text-lg flex items-center justify-between px-4 hover:text-primary transition-colors"
+                    >
+                      Solutions
+                      <ChevronDown className={cn('w-4 h-4 transition-transform', mobileExpanded === 'solutions' && 'rotate-180')} />
+                    </button>
+                    {mobileExpanded === 'solutions' && (
+                      <div className="bg-slate-50/50 border-b border-slate-100 px-4 py-2">
+                        {solutions.map((item) => (
+                          <Link
+                            key={item.name}
+                            href={item.href}
+                            onClick={() => setOpen(false)}
+                            className="flex items-center gap-3 py-2.5 px-1 text-slate-700 hover:text-primary transition-colors"
+                          >
+                            <item.icon className="w-4 h-4 text-primary shrink-0" />
+                            <div>
+                              <div className="text-sm font-medium">{item.name}</div>
+                              <div className="text-xs text-slate-500">{item.desc}</div>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Simple links */}
+                    <Link
+                      href="/pricing"
+                      onClick={() => setOpen(false)}
+                      className="py-4 border-b border-slate-100 text-slate-800 font-semibold text-lg flex items-center px-4 gap-2 hover:text-primary transition-colors"
+                    >
+                      Pricing
+                    </Link>
+                    <Link
+                      href="/about"
+                      onClick={() => setOpen(false)}
+                      className="py-4 border-b border-slate-100 text-slate-800 font-semibold text-lg flex items-center px-4 gap-2 hover:text-primary transition-colors"
+                    >
+                      About
+                    </Link>
                   </div>
                   <SheetFooter className="p-3">
                     <div className="flex flex-1 gap-3">
