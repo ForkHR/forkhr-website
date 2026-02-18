@@ -32,30 +32,36 @@ import {
   TrendingDown,
   PieChart,
   Tag,
+  HelpCircle,
+  ListOrdered,
+  Eye,
+  MessageSquare,
+  Bot,
+  PenLine,
 } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Products — Fork | Scheduling, Time Tracking, HR, Maintenance & Waste Control',
+  title: 'Products — Fork | Scheduling, Time Tracking, HR, FAQs, Maintenance & Waste Control',
   description:
-    'Explore all Fork products: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, training, maintenance logs, and waste control.',
+    'Explore all Fork products: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, training, company FAQs, maintenance logs, and waste control.',
   alternates: {
     canonical: '/products',
   },
   openGraph: {
-    title: 'Products — Fork | Scheduling, Time Tracking, HR, Maintenance & Waste Control',
+    title: 'Products — Fork | Scheduling, Time Tracking, HR, FAQs, Maintenance & Waste Control',
     description:
-      'Explore all Fork products: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, training, maintenance logs, and waste control.',
+      'Explore all Fork products: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, training, company FAQs, maintenance logs, and waste control.',
     url: 'https://forkhr.com/products',
     images: ['/og-image.png'],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Products — Fork | Scheduling, Time Tracking, HR, Maintenance & Waste Control',
+    title: 'Products — Fork | Scheduling, Time Tracking, HR, FAQs, Maintenance & Waste Control',
     description:
-      'Explore all Fork products: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, training, maintenance logs, and waste control.',
+      'Explore all Fork products: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, training, company FAQs, maintenance logs, and waste control.',
     images: ['/og-image.png'],
   },
 }
@@ -247,6 +253,46 @@ const sections = [
         icon: <Wrench className="w-5 h-5 text-primary" />,
         title: 'Vendor management',
         desc: 'Record vendor names on each log so you always know who handled the repair.',
+      },
+    ],
+  },
+  {
+    id: 'company-faqs',
+    label: 'Company FAQs',
+    icon: <HelpCircle className="w-5 h-5" />,
+    headline: 'Give your team instant answers to common questions',
+    description:
+      'Create, organize, and publish FAQs for your company. Employees find answers on their own — and your AI assistant uses them to respond smarter.',
+    features: [
+      {
+        icon: <PenLine className="w-5 h-5 text-primary" />,
+        title: 'Create & manage FAQs',
+        desc: 'Build FAQ collections with a simple editor. Add questions, write answers, and organize them into groups.',
+      },
+      {
+        icon: <ListOrdered className="w-5 h-5 text-primary" />,
+        title: 'Organized by topic',
+        desc: 'Group FAQs by title and description so employees can quickly find what they need.',
+      },
+      {
+        icon: <Eye className="w-5 h-5 text-primary" />,
+        title: 'Draft & publish workflow',
+        desc: 'Keep FAQs in draft until they\'re ready. Publish when you want your team to see them — unpublish anytime.',
+      },
+      {
+        icon: <MessageSquare className="w-5 h-5 text-primary" />,
+        title: 'Employee self-service',
+        desc: 'Published FAQs are visible to all employees so they can find answers without messaging a manager.',
+      },
+      {
+        icon: <Bot className="w-5 h-5 text-primary" />,
+        title: 'AI-powered answers',
+        desc: 'Your published FAQs feed directly into Fork\'s AI assistant, so it gives accurate, company-specific responses.',
+      },
+      {
+        icon: <Shield className="w-5 h-5 text-primary" />,
+        title: 'Manager controls',
+        desc: 'Only managers with the right permissions can create, edit, or delete FAQs — keeping your knowledge base consistent.',
       },
     ],
   },

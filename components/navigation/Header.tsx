@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '../ui/button'
-import { ArrowRight, ChevronDown, Calendar, Clock, Umbrella, FileText, ClipboardCheck, UserPlus, FolderOpen, Briefcase, AlertTriangle, UserX, Megaphone, Star, BarChart3, BookOpen, Library, ClipboardList, Wrench, Trash2, Scale, Store, MapPin, Heart, Zap } from 'lucide-react'
+import { ArrowRight, ChevronDown, Calendar, Clock, Umbrella, FileText, ClipboardCheck, UserPlus, FolderOpen, Briefcase, AlertTriangle, UserX, Megaphone, Star, BarChart3, BookOpen, Library, ClipboardList, Wrench, Trash2, Scale, Store, MapPin, Heart, Zap, HelpCircle } from 'lucide-react'
 import {
   Sheet,
   SheetContent,
@@ -44,6 +44,7 @@ const productGroups = [
       { name: 'Surveys', desc: 'Collect team feedback and measure satisfaction', icon: BarChart3, href: '/products#team-engagement' },
       { name: 'Courses', desc: 'Assign training and track completion', icon: BookOpen, href: '/products#team-engagement' },
       { name: 'Library', desc: 'Shared policies, handbooks, and guides', icon: Library, href: '/products#team-engagement' },
+      { name: 'Company FAQs', desc: 'Create and publish FAQs for your team', icon: HelpCircle, href: '/products#company-faqs' },
     ],
   },
   {
@@ -257,6 +258,12 @@ const Header = () => {
                 >
                   About
                 </Link>
+                <Link
+                  href="/faq"
+                  className="glass-nav-link glass-shine text-[15px] font-semibold px-3 py-2 rounded-lg transition-colors hover:text-primary"
+                >
+                  FAQ
+                </Link>
               </nav>
 
               <div className="flex items-center gap-2">
@@ -373,6 +380,13 @@ const Header = () => {
                       className="py-4 border-b border-slate-100 text-slate-800 font-semibold text-lg flex items-center px-4 gap-2 hover:text-primary transition-colors"
                     >
                       About
+                    </Link>
+                    <Link
+                      href="/faq"
+                      onClick={() => setOpen(false)}
+                      className="py-4 border-b border-slate-100 text-slate-800 font-semibold text-lg flex items-center px-4 gap-2 hover:text-primary transition-colors"
+                    >
+                      FAQ
                     </Link>
                   </div>
                   <SheetFooter className="p-3">

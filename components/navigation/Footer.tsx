@@ -8,6 +8,7 @@ const productLinks = [
   { label: 'HR & onboarding', href: '/products#hr-onboarding' },
   { label: 'Team engagement', href: '/products#team-engagement' },
   { label: 'Maintenance logs', href: '/products#maintenance-logs' },
+  { label: 'Company FAQs', href: '/products#company-faqs' },
   { label: 'Waste control', href: '/products#waste-control' },
   { label: 'Pricing', href: '/pricing' },
 ]
@@ -22,6 +23,7 @@ const solutionLinks = [
 
 const companyLinks = [
   { label: 'About', href: '/about' },
+  { label: 'FAQ', href: '/faq' },
   { label: 'Privacy policy', href: '/privacy-policy' },
   { label: 'Terms of service', href: '/terms-of-service' },
 ]

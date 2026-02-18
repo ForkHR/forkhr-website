@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { ArrowRight, CalendarClock, ClockIcon, FileText, Users, BookOpen, Shield, CheckCircle2, Wrench, Trash2 } from 'lucide-react'
+import { ArrowRight, CalendarClock, ClockIcon, FileText, Users, BookOpen, Shield, CheckCircle2, Wrench, Trash2, HelpCircle } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
@@ -57,6 +57,11 @@ const pillars = [
     icon: <Shield className="w-5 h-5" />,
     title: 'Compliance & Documents',
     description: 'Incident reports, employment forms, and secure document management to stay compliant.',
+  },
+  {
+    icon: <HelpCircle className="w-5 h-5" />,
+    title: 'Company FAQs',
+    description: 'Create and publish FAQs for your team. Employees find answers instantly — and your AI assistant gets smarter too.',
   },
   {
     icon: <Wrench className="w-5 h-5" />,
@@ -189,7 +194,7 @@ export default function Home() {
               Everything your team needs, nothing it doesn&apos;t
             </h2>
             <p className="mt-4 text-lg text-slate-600 leading-relaxed">
-              Eight core modules that cover scheduling, time tracking, HR, onboarding, engagement, compliance, maintenance, and waste control — so you can stop juggling tools.
+              Nine core modules that cover scheduling, time tracking, HR, onboarding, engagement, compliance, FAQs, maintenance, and waste control — so you can stop juggling tools.
             </p>
           </div>
 
