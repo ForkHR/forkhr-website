@@ -10,7 +10,7 @@ const productLinks = [
   { label: 'Maintenance logs', href: '/products#maintenance-logs' },
   { label: 'Company FAQs', href: '/products#company-faqs' },
   { label: 'Waste control', href: '/products#waste-control' },
-  { label: 'Pricing', href: '/pricing' },
+  { label: 'Job boards & recruiting ↗', href: 'https://jobs.forkhr.com/' },
 ]
 
 const solutionLinks = [
@@ -26,6 +26,7 @@ const companyLinks = [
   { label: 'FAQ', href: '/faq' },
   { label: 'Privacy policy', href: '/privacy-policy' },
   { label: 'Terms of service', href: '/terms-of-service' },
+  { label: 'Pricing', href: '/pricing' },
 ]
 
 const Footer = () => {
