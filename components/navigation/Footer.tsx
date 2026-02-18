@@ -55,7 +55,10 @@ const Footer = () => {
                 </Button>
               </Link>
             </div>
-
+            {/* Uptime status badge */}
+            <div className="mt-2">
+              <iframe src="https://status.forkhr.com/badge?theme=light" width="250" height="30" scrolling="no"></iframe>
+            </div>
             {/* App store badges */}
             <div className="flex items-center gap-3 mt-2">
               <a
