@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '../ui/button'
-import { ArrowRight, ChevronDown, Calendar, Clock, Umbrella, FileText, ClipboardCheck, UserPlus, FolderOpen, Briefcase, AlertTriangle, UserX, Megaphone, Star, BarChart3, BookOpen, Library, ClipboardList, Wrench, Trash2, Scale, Store, MapPin, Heart, Zap, HelpCircle } from 'lucide-react'
+import { ArrowRight, ChevronDown, Calendar, Clock, Umbrella, FileText, ClipboardCheck, UserPlus, FolderOpen, Briefcase, AlertTriangle, UserX, Megaphone, Star, BarChart3, BookOpen, Library, ClipboardList, Wrench, Trash2, Scale, Store, MapPin, Heart, Zap, HelpCircle, BotMessageSquare } from 'lucide-react'
 import {
   Sheet,
   SheetContent,
@@ -50,6 +50,7 @@ const productGroups = [
   {
     label: 'Operations',
     items: [
+      { name: 'AI Assistant', desc: 'Company-trained AI for instant answers', icon: BotMessageSquare, href: '/ai-assistant' },
       { name: 'Forms', desc: 'Build custom forms with drag-and-drop', icon: ClipboardList, href: '/products#hr-onboarding' },
       { name: 'Checklists', desc: 'Daily task lists for every shift', icon: ClipboardCheck, href: '/products#hr-onboarding' },
       { name: 'Maintenance Logs', desc: 'Track equipment issues and repairs', icon: Wrench, href: '/products#maintenance-logs' },

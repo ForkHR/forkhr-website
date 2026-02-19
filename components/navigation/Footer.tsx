@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import { Button } from '../ui/button'
 
 const productLinks = [
+  { label: 'AI Assistant', href: '/ai-assistant' },
   { label: 'Scheduling', href: '/products#scheduling' },
   { label: 'Time tracking', href: '/products#time-tracking' },
   { label: 'HR & onboarding', href: '/products#hr-onboarding' },
