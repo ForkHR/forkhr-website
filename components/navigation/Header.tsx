@@ -31,7 +31,7 @@ const productGroups = [
       { name: 'Onboarding', desc: 'Paperless onboarding for new hires', icon: UserPlus, href: '/products#hr-onboarding' },
       { name: 'Employment Forms', desc: 'Digital W-4, I-9 and custom forms', icon: FileText, href: '/products#hr-onboarding' },
       { name: 'Documents', desc: 'Organize and request employee documents', icon: FolderOpen, href: '/products#hr-onboarding' },
-      { name: 'Hiring', desc: 'Post jobs and track applicants', icon: Briefcase, href: '/products#hr-onboarding' },
+      { name: 'Hiring', desc: 'Post jobs and track applicants', icon: Briefcase, href: '/hiring' },
       { name: 'Incidents', desc: 'Document and track workplace incidents', icon: AlertTriangle, href: '/products#hr-onboarding' },
       { name: 'Termination', desc: 'Offboarding records and exit checklists', icon: UserX, href: '/products#hr-onboarding' },
     ],
@@ -123,7 +123,7 @@ const Header = () => {
     <header
       ref={headerRef}
       className={cn(
-        'sticky top-0 z-50 w-full',
+        'fixed top-0 z-50 w-full',
         'bg-transparent',
       )}
     >
@@ -161,7 +161,7 @@ const Header = () => {
                 >
                   <Link
                     href="/products"
-                    className="glass-nav-link glass-shine text-[15px] font-semibold px-3 py-2 rounded-lg transition-colors hover:text-primary inline-flex items-center gap-1"
+                    className="glass-nav-link text-[15px] font-semibold px-3 py-2 rounded-lg transition-colors inline-flex items-center gap-1"
                   >
                     Products
                     <ChevronDown className={cn('w-3.5 h-3.5 transition-transform duration-200', activeDropdown === 'products' && 'rotate-180')} />
@@ -171,35 +171,32 @@ const Header = () => {
                     'absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200',
                     activeDropdown === 'products' ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'
                   )}>
-                    <div className="w-[680px] rounded-2xl bg-white border border-slate-200/80 shadow-[0_20px_60px_rgba(2,6,23,0.12)] p-5 grid grid-cols-2 gap-x-6 gap-y-1">
-                      {productGroups.map((group) => (
-                        <div key={group.label} className="mb-3">
-                          <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider px-2 mb-1.5">
-                            {group.label}
+                    <div className="w-[720px] rounded-2xl bg-white border border-slate-200/80 shadow-[0_20px_60px_rgba(2,6,23,0.12)] p-4">
+                      <div className="grid grid-cols-4 gap-4">
+                        {productGroups.map((group) => (
+                          <div key={group.label}>
+                            <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider px-1.5 mb-2">
+                              {group.label}
+                            </div>
+                            {group.items.map((item) => (
+                              <Link
+                                key={item.name}
+                                href={item.href}
+                                onClick={() => setActiveDropdown(null)}
+                                className="flex items-center gap-2 rounded-lg px-1.5 py-1.5 hover:bg-slate-50 transition-colors group"
+                              >
+                                <item.icon className="w-4 h-4 text-primary shrink-0" />
+                                <span className="text-[13px] font-medium text-slate-700 group-hover:text-slate-900">{item.name}</span>
+                              </Link>
+                            ))}
                           </div>
-                          {group.items.map((item) => (
-                            <Link
-                              key={item.name}
-                              href={item.href}
-                              onClick={() => setActiveDropdown(null)}
-                              className="flex items-start gap-3 rounded-lg px-2 py-2 hover:bg-slate-50 transition-colors group"
-                            >
-                              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/8 shrink-0 mt-0.5 group-hover:bg-primary/12 transition-colors">
-                                <item.icon className="w-4 h-4 text-primary" />
-                              </div>
-                              <div className="min-w-0">
-                                <div className="text-[13px] font-semibold text-slate-800">{item.name}</div>
-                                <div className="text-[12px] text-slate-500 leading-snug">{item.desc}</div>
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                      ))}
-                      <div className="col-span-2 border-t border-slate-100 pt-3 mt-1">
+                        ))}
+                      </div>
+                      <div className="border-t border-slate-100 pt-3 mt-3">
                         <Link
                           href="/products"
                           onClick={() => setActiveDropdown(null)}
-                          className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary hover:underline px-2"
+                          className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary hover:underline px-1.5"
                         >
                           View all products
                           <ArrowRight className="w-3.5 h-3.5" />
@@ -216,7 +213,7 @@ const Header = () => {
                   onMouseLeave={handleDropdownLeave}
                 >
                   <button
-                    className="glass-nav-link glass-shine text-[15px] font-semibold px-3 py-2 rounded-lg transition-colors hover:text-primary inline-flex items-center gap-1"
+                    className="glass-nav-link text-[15px] font-semibold px-3 py-2 rounded-lg transition-colors inline-flex items-center gap-1"
                   >
                     Solutions
                     <ChevronDown className={cn('w-3.5 h-3.5 transition-transform duration-200', activeDropdown === 'solutions' && 'rotate-180')} />
@@ -249,19 +246,19 @@ const Header = () => {
 
                 <Link
                   href="/pricing"
-                  className="glass-nav-link glass-shine text-[15px] font-semibold px-3 py-2 rounded-lg transition-colors hover:text-primary"
+                  className="glass-nav-link text-[15px] font-semibold px-3 py-2 rounded-lg transition-colors"
                 >
                   Pricing
                 </Link>
                 <Link
                   href="/about"
-                  className="glass-nav-link glass-shine text-[15px] font-semibold px-3 py-2 rounded-lg transition-colors hover:text-primary"
+                  className="glass-nav-link text-[15px] font-semibold px-3 py-2 rounded-lg transition-colors"
                 >
                   About
                 </Link>
                 <Link
                   href="/faq"
-                  className="glass-nav-link glass-shine text-[15px] font-semibold px-3 py-2 rounded-lg transition-colors hover:text-primary"
+                  className="glass-nav-link text-[15px] font-semibold px-3 py-2 rounded-lg transition-colors"
                 >
                   FAQ
                 </Link>
@@ -269,13 +266,13 @@ const Header = () => {
 
               <div className="flex items-center gap-2">
                 <Link href="https://app.forkhr.com/login" target="_blank">
-                  <Button variant="ghost" className="text-[15px] text-primary hover:opacity-80 glass-shine">
+                  <Button variant="ghost" className="text-[15px] text-primary hover:opacity-80">
                     Sign in
                     <ArrowRight className="w-4 h-4 ml-1" />
                   </Button>
                 </Link>
                 <Link href="https://app.forkhr.com/register" target="_blank">
-                  <Button className="text-[15px]">Get started</Button>
+                  <Button className="text-[15px] glass-shine">Get started</Button>
                 </Link>
               </div>
             </div>
@@ -285,7 +282,7 @@ const Header = () => {
               <Link href="https://app.forkhr.com/login" target="_blank" className="min-w-0">
                 <Button
                   variant="ghost"
-                  className="text-[15px] text-primary hover:opacity-80 glass-shine max-w-[55vw]"
+                  className="text-[15px] text-primary hover:opacity-80 max-w-[55vw]"
                 >
                   <span className="min-w-0 flex-1 truncate">Sign in</span>
                   <ArrowRight className="w-4 h-4 ml-1 shrink-0" />
@@ -293,7 +290,7 @@ const Header = () => {
               </Link>
               <Sheet open={open} onOpenChange={setOpen}>
                 <SheetTrigger asChild>
-                  <Button variant="secondary" className="text-[15px] glass-shine" size="icon">
+                  <Button variant="secondary" className="text-[15px]" size="icon">
                     <HamburgerMenuIcon className="h-5 w-5" />
                   </Button>
                 </SheetTrigger>

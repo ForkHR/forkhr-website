@@ -8,6 +8,7 @@ import {
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import BlobBackground from '@/components/visual/BlobBackground'
 
 export const metadata: Metadata = {
   title: 'Pricing — Fork | Simple Per-Location Pricing',
@@ -139,10 +140,18 @@ export default function PricingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
       />
       {/* Hero */}
-      <section>
+      <section className="relative pt-[80px]"
+        style={{
+          backgroundImage: "radial-gradient(circle,#dee3e8 1px,transparent 0)",
+          backgroundSize: "20px 20px",
+        }}
+      >
+        <BlobBackground
+          variant="rounded"
+        />
         <div className="max-w-5xl mx-auto px-6 pt-4 pb-0 md:pt-20 md:text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-slate-900">
-            One price per location. Unlimited team members.
+            One price per location.<br/>Unlimited team members.
           </h1>
           <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
             No per-user fees, no hidden costs. Pick the plan that matches how you manage your team today.
@@ -151,62 +160,62 @@ export default function PricingPage() {
             All plans include a free 7-day trial · Cancel anytime
           </p>
         </div>
-      </section>
 
-      {/* Pricing grid */}
-      <section>
-        <div className="max-w-5xl mx-auto px-6 py-12 md:py-16">
-          <div className="grid md:grid-cols-3 gap-6">
-            {tiers.map((tier) => (
-              <div
-                key={tier.value}
-                className={`rounded-2xl p-6 flex flex-col border ${
-                  tier.highlighted
-                    ? 'border-primary shadow-md ring-1 ring-primary/10'
-                    : 'border-slate-200'
-                }`}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-semibold text-slate-900">{tier.name}</h3>
-                  {tier.highlighted && (
-                    <span className="bg-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full">
-                      Most popular
-                    </span>
-                  )}
+        {/* Pricing grid */}
+        <section>
+          <div className="max-w-5xl mx-auto px-6 py-12 md:py-16">
+            <div className="grid md:grid-cols-3 gap-6">
+              {tiers.map((tier) => (
+                <div
+                  key={tier.value}
+                  className={`rounded-2xl p-6 flex flex-col border ${
+                    tier.highlighted
+                      ? 'border-primary border-3 shadow-md ring-1 ring-primary/10'
+                      : 'border-slate-200'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-xl font-semibold text-slate-900">{tier.name}</h3>
+                    {tier.highlighted && (
+                      <span className="bg-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full">
+                        Most popular
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="flex items-end gap-1 mb-2">
+                    <span className="text-5xl font-bold text-slate-900">${tier.price}</span>
+                    <span className="text-sm text-slate-500 mb-1.5">/mo per location</span>
+                  </div>
+
+                  <p className="text-sm text-slate-600 mb-6">{tier.description}</p>
+
+                  <Link href="https://app.forkhr.com/register" target="_blank" className="mb-6">
+                    <Button
+                      className="w-full"
+                      variant={tier.highlighted ? 'default' : 'outline'}
+                    >
+                      {tier.cta}
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
+
+                  <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
+                    What&apos;s included
+                  </div>
+                  <ul className="space-y-2.5 flex-1">
+                    {tier.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2.5">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                        <span className="text-sm text-slate-700">{f}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                <div className="flex items-end gap-1 mb-2">
-                  <span className="text-5xl font-bold text-slate-900">${tier.price}</span>
-                  <span className="text-sm text-slate-500 mb-1.5">/mo per location</span>
-                </div>
-
-                <p className="text-sm text-slate-600 mb-6">{tier.description}</p>
-
-                <Link href="https://app.forkhr.com/register" target="_blank" className="mb-6">
-                  <Button
-                    className="w-full"
-                    variant={tier.highlighted ? 'default' : 'outline'}
-                  >
-                    {tier.cta}
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
-
-                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
-                  What&apos;s included
-                </div>
-                <ul className="space-y-2.5 flex-1">
-                  {tier.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                      <span className="text-sm text-slate-700">{f}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
       </section>
 
       {/* FAQ */}

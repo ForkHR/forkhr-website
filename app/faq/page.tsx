@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import BlobBackground from '@/components/visual/BlobBackground'
 
 export const metadata: Metadata = {
   title: 'FAQ — Fork | Frequently Asked Questions',
@@ -216,14 +217,20 @@ export default function FAQPage() {
       />
 
       {/* Hero */}
-      <section>
-        <div className="max-w-5xl mx-auto px-6 pt-4 pb-0 md:pt-20 md:text-center">
+      <section className="relative pt-[80px]"
+        style={{
+          backgroundImage: "radial-gradient(circle,#dee3e8 1px,transparent 0)",
+          backgroundSize: "20px 20px",
+        }}
+      >
+        <BlobBackground variant="question" />
+        <div className="max-w-5xl mx-auto px-6 py-4 pb-0 md:py-20 md:text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-slate-900">
             Frequently asked questions
           </h1>
           <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Everything you need to know about Fork. Can&apos;t find an answer?{' '}
-            <a href="mailto:support@forkhr.com" className="text-primary hover:underline">
+            Everything you need to know about Fork.<br/>Can&apos;t find an answer?{' '}
+            <a href="mailto:support@forkhr.com" className="text-primary hover:underline font-semibold">
               Reach out to our team
             </a>.
           </p>

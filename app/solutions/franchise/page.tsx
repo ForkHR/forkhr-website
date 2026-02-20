@@ -1,19 +1,18 @@
 import { Button } from '@/components/ui/button'
+import BlobBackground from '@/components/visual/BlobBackground'
 import {
   ArrowRight,
   ChevronRight,
   Store,
-  Layers,
   BookOpen,
   Shield,
   ClipboardCheck,
   FileText,
   Users,
-  Repeat,
   TrendingUp,
   CheckCircle2,
   Zap,
-  Award,
+  Sparkles,
 } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
@@ -100,7 +99,13 @@ export default function FranchisePage() {
   return (
     <main>
       {/* Hero */}
-      <section>
+      <section className="relative pt-20"
+        style={{
+          backgroundImage: "radial-gradient(circle,#dee3e8 1px,transparent 0)",
+          backgroundSize: "20px 20px",
+        }}
+      >
+        <BlobBackground variant="circle" />
         <div className="max-w-5xl mx-auto px-6 pt-4 pb-16 md:pt-28 md:pb-20">
           <nav className="inline-flex items-center gap-1.5 text-sm mb-5">
             <Link href="/products" className="text-slate-400 hover:text-primary transition-colors">Solutions</Link>
@@ -125,29 +130,38 @@ export default function FranchisePage() {
             </Link>
             <Link href="/solutions/multi-location">
               <Button variant="outline" size="lg" className="text-base px-8 h-12">
-                See multi-location solution
+                Learn more
               </Button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Stats */}
+      {/* Stats — asymmetric hero stat + row cards */}
       <section className="bg-slate-50/60">
         <div className="max-w-5xl mx-auto px-6 py-16 md:py-20">
-          <div className="grid sm:grid-cols-3 gap-8">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">{stat.value}</div>
-                <div className="text-base font-semibold text-slate-900 mb-1">{stat.label}</div>
-                <div className="text-sm text-slate-500">{stat.detail}</div>
-              </div>
-            ))}
+          <div className="grid md:grid-cols-[1.2fr_1fr] gap-10 md:gap-16 items-center">
+            <div>
+              <div className="text-6xl md:text-7xl font-bold text-primary tracking-tight leading-none mb-3">{stats[0].value}</div>
+              <div className="text-lg font-semibold text-slate-900 mb-1">{stats[0].label}</div>
+              <div className="text-sm text-slate-500">{stats[0].detail}</div>
+            </div>
+            <div className="space-y-3">
+              {stats.slice(1).map((stat) => (
+                <div key={stat.label} className="flex items-center gap-5 rounded-2xl border border-slate-200/80 bg-white p-5">
+                  <div className="text-3xl font-bold text-primary shrink-0">{stat.value}</div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-sm font-semibold text-slate-900">{stat.label}</div>
+                    <div className="text-xs text-slate-500">{stat.detail}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Benefits */}
+      {/* Benefits — bento grid */}
       <section>
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
           <div className="max-w-2xl mb-14">
@@ -159,24 +173,32 @@ export default function FranchisePage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((b) => (
-              <div key={b.title} className="flex flex-col">
-                <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/8 mb-4">
-                  {b.icon}
-                </div>
-                <h3 className="text-base font-semibold text-slate-900 mb-2">{b.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{b.desc}</p>
+          <div className="grid md:grid-cols-2 gap-5 mb-5">
+            {benefits.slice(0, 2).map((b) => (
+              <div key={b.title} className="group rounded-2xl border border-slate-200/80 bg-white p-8 md:p-10 hover:border-primary/20 hover:shadow-sm transition-all">
+                <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/8 mb-5">{b.icon}</div>
+                <h3 className="text-xl font-semibold text-slate-900 mb-3">{b.title}</h3>
+                <p className="text-base text-slate-600 leading-relaxed">{b.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {benefits.slice(2).map((b) => (
+              <div key={b.title} className="group rounded-2xl border border-slate-200/80 bg-white p-5 hover:border-primary/20 hover:shadow-sm transition-all">
+                <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/8 mb-3">{b.icon}</div>
+                <h3 className="text-sm font-semibold text-slate-900 mb-1">{b.title}</h3>
+                <p className="text-xs text-slate-500 leading-relaxed">{b.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Franchise playbook */}
+      {/* Franchise playbook — horizontal stepper with connecting line */}
       <section className="bg-slate-50/60">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-          <div className="max-w-2xl mb-10">
+          <div className="max-w-2xl mb-14">
+            <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mb-4">Playbook</p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
               How a franchise rollout works with Fork
             </h2>
@@ -185,23 +207,28 @@ export default function FranchisePage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-6 max-w-4xl">
-            {franchisePlaybook.map((phase, idx) => (
-              <div key={phase.phase} className="bg-white rounded-xl border border-slate-200 p-6">
-                <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold mb-4">
-                  {idx + 1}
+          <div className="relative">
+            {/* Connecting line (desktop) */}
+            <div className="hidden md:block absolute top-8 left-[calc(16.66%+20px)] right-[calc(16.66%+20px)] h-px bg-linear-to-r from-primary/10 via-primary/30 to-primary/10" />
+
+            <div className="grid md:grid-cols-3 gap-10 md:gap-8">
+              {franchisePlaybook.map((phase, idx) => (
+                <div key={phase.phase} className="relative text-center">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white border-2 border-primary/20 shadow-sm relative z-10 mb-6">
+                    <span className="text-xl font-bold text-primary">{String(idx + 1).padStart(2, '0')}</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-4">{phase.phase}</h3>
+                  <ul className="space-y-2 text-left inline-block">
+                    {phase.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-slate-600">
+                        <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h3 className="text-base font-semibold text-slate-900 mb-3">{phase.phase}</h3>
-                <ul className="space-y-2">
-                  {phase.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-slate-600">
-                      <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -235,27 +262,35 @@ export default function FranchisePage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CTA — gradient-border card */}
       <section className="bg-slate-900">
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
-            Scale your brand without losing control
-          </h2>
-          <p className="text-lg text-slate-400 mb-10 max-w-xl mx-auto">
-            Start your free 7-day trial and get every location on the same page — literally.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="https://app.forkhr.com/register" target="_blank">
-              <Button size="lg" className="text-base px-8 h-12 bg-white text-slate-900 hover:bg-slate-100">
-                Start free trial
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-            <Link href="/pricing">
-              <Button variant="outline" size="lg" className="text-base px-8 h-12 border-slate-700 text-slate-300 bg-slate-800 hover:bg-slate-900 hover:text-white">
-                View pricing
-              </Button>
-            </Link>
+        <div className="max-w-3xl mx-auto px-6 py-20 md:py-28">
+          <div className="relative rounded-3xl p-px bg-linear-to-br from-primary/60 via-white/10 to-primary/30">
+            <div className="rounded-[calc(1.5rem-1px)] bg-slate-900 px-8 py-14 md:px-14 md:py-20 text-center relative overflow-hidden">
+              <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-primary/20 rounded-full blur-[100px] pointer-events-none" />
+              <p className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 border border-primary/20 px-3 py-1 text-xs font-medium text-primary mb-6 relative">
+                <Sparkles className="w-3 h-3" /> No credit card required
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4 relative">
+                Scale your brand without losing control
+              </h2>
+              <p className="text-lg text-slate-400 mb-10 max-w-md mx-auto relative">
+                Start your free 7-day trial and get every location on the same page — literally.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center relative">
+                <Link href="https://app.forkhr.com/register" target="_blank">
+                  <Button size="lg" className="text-base px-8 h-12 bg-white text-slate-900 hover:bg-slate-100">
+                    Start free trial
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+                <Link href="/pricing">
+                  <Button variant="outline" size="lg" className="text-base px-8 h-12 border-slate-700 text-slate-300 bg-slate-800 hover:bg-slate-900 hover:text-white">
+                    View pricing
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

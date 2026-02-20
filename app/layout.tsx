@@ -17,10 +17,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Fork - All-in-One Workforce Management Platform",
+    default: "Fork - AI-Powered All-in-One Workforce Management Platform",
     template: "%s | Fork",
   },
-  description: "All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.",
+  description: "AI-Powered All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.",
   alternates: {
     canonical: '/',
   },
@@ -29,16 +29,16 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://forkhr.com'),
   openGraph: {
-    title: "Fork - All-in-One Workforce Management Platform",
-    description: "All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.",
+    title: "Fork - AI-Powered All-in-One Workforce Management Platform",
+    description: "AI-Powered All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.",
     images: ['/og-image.png'],
     type: 'website',
     siteName: 'Fork',
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Fork - All-in-One Workforce Management Platform",
-    description: "All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.",
+    title: "Fork - AI-Powered All-in-One Workforce Management Platform",
+    description: "AI-Powered All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.",
     images: ['/og-image.png'],
   },
 };
@@ -81,7 +81,6 @@ export default function RootLayout({
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
           />
-          <BlobBackground />
           <div className="relative z-10 flex min-h-screen flex-col">
             <Header />
             <div className="flex-1">

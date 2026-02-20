@@ -24,6 +24,7 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import BlobBackground from '@/components/visual/BlobBackground'
 
 export const metadata: Metadata = {
   title: 'AI Assistant — Fork | Company-Trained AI for Workforce Management',
@@ -168,7 +169,13 @@ export default function AIAssistantPage() {
   return (
     <main>
       {/* Hero */}
-      <section>
+      <section className="relative pt-[80px]"
+        style={{
+          backgroundImage: "radial-gradient(circle,#dee3e8 1px,transparent 0)",
+          backgroundSize: "20px 20px",
+        }}
+      >
+        <BlobBackground variant="sparkle"/>
         <div className="max-w-5xl mx-auto px-6 pt-4 pb-16 md:pt-28 md:pb-20">
           <nav className="inline-flex items-center gap-1.5 text-sm mb-5">
             <Link href="/products" className="text-slate-400 hover:text-primary transition-colors">Products</Link>
@@ -208,38 +215,42 @@ export default function AIAssistantPage() {
         </div>
       </section>
 
-      {/* Problem section */}
-      <section className="bg-slate-50/60">
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-          <div className="max-w-2xl mb-14">
-            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">The problem</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-              Your team has questions. The answers exist — they&apos;re just hard to find.
-            </h2>
-            <p className="mt-4 text-lg text-slate-600 leading-relaxed">
-              Every company has policies, procedures, and training materials. The problem is that employees can&apos;t find what they need — and managers spend hours repeating the same answers.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-5">
-            {painPoints.map((p) => (
-              <div
-                key={p.problem}
-                className="rounded-2xl border border-slate-200/80 bg-white p-6"
-              >
-                <h3 className="text-base font-semibold text-slate-900 mb-2">{p.problem}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{p.detail}</p>
-              </div>
-            ))}
+      {/* Problem section — dark with numbered pain points */}
+      <section className="bg-slate-900 relative overflow-hidden">
+        <div className="absolute -top-20 -right-40 w-[500px] h-[500px] bg-red-500/5 rounded-full blur-[100px]" />
+        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28 relative">
+          <div className="grid md:grid-cols-[1fr_1.4fr] gap-12 md:gap-16 items-start">
+            <div>
+              <p className="inline-flex items-center gap-2 rounded-full bg-red-500/10 border border-red-500/20 px-3.5 py-1.5 text-xs font-medium text-red-400 mb-5">
+                The problem
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
+                Your team has questions. The answers exist — they&apos;re just hard to find.
+              </h2>
+              <p className="mt-4 text-lg text-slate-400 leading-relaxed">
+                Every company has policies, procedures, and training materials. The problem is that employees can&apos;t find what they need — and managers spend hours repeating the same answers.
+              </p>
+            </div>
+            <div className="space-y-0">
+              {painPoints.map((p, i) => (
+                <div key={p.problem} className="flex gap-5 py-5 border-b border-white/6 last:border-0">
+                  <span className="text-2xl font-bold text-red-500/30 shrink-0 w-8 tabular-nums">{String(i + 1).padStart(2, '0')}</span>
+                  <div>
+                    <h3 className="text-base font-semibold text-white mb-1">{p.problem}</h3>
+                    <p className="text-sm text-slate-500 leading-relaxed">{p.detail}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* How it works */}
+      {/* How it works — horizontal stepper with connecting line */}
       <section id="how-it-works">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-          <div className="max-w-2xl mb-16">
-            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">How it works</p>
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mb-5">How it works</p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
               Three steps to a smarter support experience
             </h2>
@@ -248,36 +259,48 @@ export default function AIAssistantPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-10">
-            {steps.map((s) => (
-              <div key={s.step}>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="text-4xl font-bold text-primary/15">{s.step}</div>
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/8">
-                    {s.icon}
+          {/* Stepper */}
+          <div className="relative">
+            {/* Connecting line (desktop) */}
+            <div className="hidden md:block absolute top-8 left-[calc(16.66%+20px)] right-[calc(16.66%+20px)] h-px bg-linear-to-r from-primary/20 via-primary/40 to-primary/20" />
+
+            <div className="grid md:grid-cols-3 gap-12 md:gap-8">
+              {steps.map((s, i) => (
+                <div key={s.step} className="relative text-center">
+                  {/* Step circle */}
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white border-2 border-primary/20 shadow-sm relative z-10 mb-6">
+                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10">
+                      {s.icon}
+                    </div>
+                  </div>
+                  {/* Arrow between steps (mobile) */}
+                  {i < steps.length - 1 && (
+                    <div className="md:hidden flex justify-center -mt-3 mb-3">
+                      <div className="w-px h-8 bg-primary/20" />
+                    </div>
+                  )}
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2">{s.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed mb-4">{s.description}</p>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    {s.sources.map((source) => (
+                      <span key={source} className="inline-flex items-center gap-1.5 text-xs bg-slate-100 text-slate-500 rounded-full px-2.5 py-1">
+                        <CheckCircle2 className="w-3 h-3 text-primary shrink-0" />
+                        {source}
+                      </span>
+                    ))}
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-3">{s.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-4">{s.description}</p>
-                <ul className="space-y-1.5">
-                  {s.sources.map((source) => (
-                    <li key={source} className="flex items-center gap-2 text-sm text-slate-500">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
-                      {source}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Feature highlights */}
+      {/* Feature highlights — bento grid with varying sizes */}
       <section className="bg-slate-50/60">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-          <div className="max-w-2xl mb-14">
-            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">Features</p>
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mb-5">Features</p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
               Built for accuracy, not novelty
             </h2>
@@ -286,128 +309,170 @@ export default function AIAssistantPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((f) => (
-              <div key={f.title} className="flex flex-col">
+          {/* Bento grid — 2 large + 4 small */}
+          <div className="grid md:grid-cols-2 gap-5 mb-5">
+            {features.slice(0, 2).map((f) => (
+              <div key={f.title} className="rounded-2xl border border-slate-200/80 bg-white p-8 md:p-10">
+                <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/8 mb-5">
+                  {f.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-slate-900 mb-3">{f.title}</h3>
+                <p className="text-base text-slate-600 leading-relaxed">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {features.slice(2).map((f) => (
+              <div key={f.title} className="rounded-2xl border border-slate-200/80 bg-white p-6">
                 <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/8 mb-4">
                   {f.icon}
                 </div>
-                <h3 className="text-base font-semibold text-slate-900 mb-2">{f.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{f.desc}</p>
+                <h3 className="text-sm font-semibold text-slate-900 mb-1.5">{f.title}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Content sources */}
+      {/* Content sources — visual pipeline flow */}
       <section>
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-          <div className="max-w-2xl mb-14">
-            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">Content sources</p>
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mb-5">Content sources</p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
               Your assistant doesn&apos;t guess — it answers from your approved content
             </h2>
-            <p className="mt-4 text-lg text-slate-600 leading-relaxed">
-              Every answer is grounded in content you control. Publish it in Fork, and the assistant can reference it.
-            </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-5 max-w-3xl">
-            {contentSources.map((source) => (
-              <div
-                key={source.title}
-                className="group rounded-2xl border border-slate-200/80 bg-white p-6 hover:border-primary/20 hover:shadow-sm transition-all"
-              >
-                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/8 text-primary mb-4 group-hover:bg-primary/12 transition-colors">
-                  {source.icon}
+          {/* Pipeline visualization */}
+          <div className="relative max-w-4xl mx-auto">
+            {/* Source nodes */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              {contentSources.map((source) => (
+                <div key={source.title} className="relative text-center rounded-2xl border border-slate-200/80 bg-white p-5">
+                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-primary/8 text-primary mx-auto mb-3">
+                    {source.icon}
+                  </div>
+                  <h3 className="text-sm font-semibold text-slate-900 mb-1">{source.title}</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">{source.desc}</p>
                 </div>
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">{source.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{source.desc}</p>
+              ))}
+            </div>
+
+            {/* Converging arrows */}
+            <div className="flex justify-center mb-8">
+              <div className="flex flex-col items-center gap-2">
+                <div className="flex gap-8 md:gap-20">
+                  <div className="w-px h-6 bg-primary/20" />
+                  <div className="w-px h-6 bg-primary/20" />
+                  <div className="w-px h-6 bg-primary/20" />
+                  <div className="w-px h-6 bg-primary/20" />
+                </div>
+                <div className="w-[200px] md:w-[400px] h-px bg-linear-to-r from-primary/5 via-primary/30 to-primary/5" />
+                <div className="w-px h-6 bg-primary/30" />
               </div>
-            ))}
+            </div>
+
+            {/* AI core */}
+            <div className="flex justify-center mb-8">
+              <div className="inline-flex items-center gap-3 rounded-2xl bg-primary/5 border-2 border-primary/20 px-8 py-5">
+                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary text-white">
+                  <Sparkles className="w-6 h-6" />
+                </div>
+                <div className="text-left">
+                  <div className="text-base font-semibold text-slate-900">Fork AI Assistant</div>
+                  <div className="text-sm text-slate-500">Retrieves, ranks, and responds</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Output arrow */}
+            <div className="flex justify-center mb-8">
+              <div className="w-px h-6 bg-primary/30" />
+            </div>
+
+            {/* Output */}
+            <div className="flex justify-center">
+              <div className="inline-flex items-center gap-3 rounded-full bg-slate-900 text-white px-6 py-3">
+                <MessageSquare className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium">Accurate, policy-specific answers in seconds</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Use cases */}
+      {/* Use cases — side-by-side comparison table */}
       <section className="bg-slate-50/60">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-          <div className="max-w-2xl mb-14">
-            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">Use cases</p>
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mb-5">Use cases</p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
               Built for both sides of the org chart
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl">
-            {/* Managers */}
-            <div className="rounded-2xl border border-slate-200/80 bg-white p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/8">
-                  <Shield className="w-5 h-5 text-primary" />
+          <div className="max-w-4xl mx-auto rounded-2xl border border-slate-200/80 bg-white overflow-hidden">
+            {/* Table header */}
+            <div className="grid grid-cols-2 border-b border-slate-100">
+              <div className="flex items-center gap-3 px-6 md:px-8 py-5 border-r border-slate-100">
+                <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/8">
+                  <Shield className="w-4 h-4 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900">For managers</h3>
+                <span className="text-base font-semibold text-slate-900">For managers</span>
               </div>
-              <ul className="space-y-3">
-                {managerUseCases.map((uc) => (
-                  <li key={uc} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                    <span className="text-sm text-slate-600">{uc}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Employees */}
-            <div className="rounded-2xl border border-slate-200/80 bg-white p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/8">
-                  <Users className="w-5 h-5 text-primary" />
+              <div className="flex items-center gap-3 px-6 md:px-8 py-5">
+                <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/8">
+                  <Users className="w-4 h-4 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900">For employees</h3>
+                <span className="text-base font-semibold text-slate-900">For employees</span>
               </div>
-              <ul className="space-y-3">
-                {employeeUseCases.map((uc) => (
-                  <li key={uc} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                    <span className="text-sm text-slate-600">{uc}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
+            {/* Table rows */}
+            {managerUseCases.map((uc, i) => (
+              <div key={i} className="grid grid-cols-2 border-b border-slate-50 last:border-0">
+                <div className="flex items-start gap-3 px-6 md:px-8 py-4 border-r border-slate-50">
+                  <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                  <span className="text-sm text-slate-600">{uc}</span>
+                </div>
+                <div className="flex items-start gap-3 px-6 md:px-8 py-4">
+                  <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                  <span className="text-sm text-slate-600">{employeeUseCases[i] || ''}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Integration / platform embed */}
-      <section>
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-          <div className="max-w-2xl mb-14">
-            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">Platform integration</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-              Embedded where your team already works
-            </h2>
-            <p className="mt-4 text-lg text-slate-600 leading-relaxed">
-              No separate app. No browser extension. The AI assistant lives inside Fork — on both web and mobile.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {[
-              { icon: <LayoutDashboard className="w-5 h-5 text-primary" />, title: 'Web dashboard', desc: 'Accessible from the assistant panel inside your Fork dashboard' },
-              { icon: <Smartphone className="w-5 h-5 text-primary" />, title: 'Mobile app', desc: 'Available on iOS and Android from the You tab header' },
-              { icon: <Lock className="w-5 h-5 text-primary" />, title: 'Company-isolated', desc: 'Your data is never shared across organizations' },
-              { icon: <Zap className="w-5 h-5 text-primary" />, title: 'Retrieval-based AI', desc: 'Powered by intelligent retrieval, not generic generation' },
-            ].map((item) => (
-              <div key={item.title} className="rounded-xl border border-slate-200 bg-white p-5">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/8 mb-3">
-                  {item.icon}
+      {/* Platform integration — horizontal inline strip */}
+      <section className="border-y border-slate-200/80">
+        <div className="max-w-5xl mx-auto px-6 py-14 md:py-16">
+          <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12">
+            <div className="shrink-0 md:max-w-[280px]">
+              <h2 className="text-2xl font-bold tracking-tight text-slate-900">
+                Embedded where your team already works
+              </h2>
+            </div>
+            <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-6 md:border-l md:border-slate-200/80 md:pl-12">
+              {[
+                { icon: <LayoutDashboard className="w-4 h-4 text-primary" />, title: 'Web dashboard', desc: 'Inside your Fork dashboard' },
+                { icon: <Smartphone className="w-4 h-4 text-primary" />, title: 'Mobile app', desc: 'iOS & Android' },
+                { icon: <Lock className="w-4 h-4 text-primary" />, title: 'Company-isolated', desc: 'Never shared across orgs' },
+                { icon: <Zap className="w-4 h-4 text-primary" />, title: 'Retrieval-based', desc: 'Not generic generation' },
+              ].map((item) => (
+                <div key={item.title} className="flex items-start gap-3">
+                  <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/8 shrink-0 mt-0.5">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-semibold text-slate-900">{item.title}</h3>
+                    <p className="text-xs text-slate-500">{item.desc}</p>
+                  </div>
                 </div>
-                <h3 className="text-sm font-semibold text-slate-900 mb-1">{item.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>

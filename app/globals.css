@@ -194,7 +194,7 @@
     bottom: 0.15rem;
     height: 2px;
     border-radius: 9999px;
-    background: rgba(99, 102, 241, 1);
+    background: #020817;
     transform: scaleX(0.2);
     opacity: 0;
     transition: transform 220ms ease, opacity 220ms ease;
@@ -235,7 +235,166 @@
     background-size: 220px 220px;
     background-repeat: repeat;
   }
+  /* ── Floating shapes background ── */
+  .shapes-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
 
+  .shapes-bg li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    background: rgba(99, 102, 241, 0.07);
+    animation: float-up 25s linear infinite;
+    bottom: -160px;
+  }
+
+  /* Square variant (default — homepage) */
+  .shapes-square li {
+    border-radius: 0;
+  }
+
+  /* Triangle variant (products) */
+  .shapes-triangle li {
+    background: transparent;
+    width: 0 !important;
+    height: 0 !important;
+    border-left: var(--tri-size, 40px) solid transparent;
+    border-right: var(--tri-size, 40px) solid transparent;
+    border-bottom: calc(var(--tri-size, 40px) * 1.73) solid rgba(99, 102, 241, 0.07);
+  }
+
+  .shapes-triangle li:nth-child(1)  { --tri-size: 40px; }
+  .shapes-triangle li:nth-child(2)  { --tri-size: 10px; }
+  .shapes-triangle li:nth-child(3)  { --tri-size: 11px; }
+  .shapes-triangle li:nth-child(4)  { --tri-size: 30px; }
+  .shapes-triangle li:nth-child(5)  { --tri-size: 10px; }
+  .shapes-triangle li:nth-child(6)  { --tri-size: 55px; }
+  .shapes-triangle li:nth-child(7)  { --tri-size: 70px; }
+  .shapes-triangle li:nth-child(8)  { --tri-size: 13px; }
+  .shapes-triangle li:nth-child(9)  { --tri-size: 8px; }
+  .shapes-triangle li:nth-child(10) { --tri-size: 70px; }
+
+  /* Circle variant (solutions) */
+  .shapes-circle li {
+    border-radius: 50%;
+  }
+
+  /* Rounded variant — soft rounded cubes */
+  .shapes-rounded li {
+    border-radius: 22%;
+  }
+
+  /* Diamond variant — rotated squares */
+  .shapes-diamond li {
+    border-radius: 0;
+    animation-name: float-up-diamond !important;
+  }
+
+  /* Hexagon variant — clip-path hexagons */
+  .shapes-hexagon li {
+    border-radius: 0;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  }
+
+  /* Question-mark variant — floating "?" glyphs */
+  .shapes-question li {
+    background: transparent !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: rgba(99, 102, 241, 0.10);
+    line-height: 1;
+  }
+  .shapes-question li::after {
+    content: '?';
+    font-size: inherit;
+  }
+  .shapes-question li:nth-child(1)  { font-size: 80px;  }
+  .shapes-question li:nth-child(2)  { font-size: 24px;  }
+  .shapes-question li:nth-child(3)  { font-size: 28px;  }
+  .shapes-question li:nth-child(4)  { font-size: 64px;  }
+  .shapes-question li:nth-child(5)  { font-size: 24px;  }
+  .shapes-question li:nth-child(6)  { font-size: 100px; }
+  .shapes-question li:nth-child(7)  { font-size: 130px; }
+  .shapes-question li:nth-child(8)  { font-size: 30px;  }
+  .shapes-question li:nth-child(9)  { font-size: 20px;  }
+  .shapes-question li:nth-child(10) { font-size: 130px; }
+
+  /* Sparkle / AI variant — floating ✦ stars */
+  .shapes-sparkle li {
+    background: transparent !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    color: rgba(99, 102, 241, 0.12);
+    line-height: 1;
+  }
+  .shapes-sparkle li::after {
+    content: '✦';
+    font-size: inherit;
+  }
+  .shapes-sparkle li:nth-child(odd)::after  { content: '✦'; }
+  .shapes-sparkle li:nth-child(even)::after { content: '✧'; }
+  .shapes-sparkle li:nth-child(1)  { font-size: 60px;  }
+  .shapes-sparkle li:nth-child(2)  { font-size: 20px;  }
+  .shapes-sparkle li:nth-child(3)  { font-size: 24px;  }
+  .shapes-sparkle li:nth-child(4)  { font-size: 48px;  }
+  .shapes-sparkle li:nth-child(5)  { font-size: 18px;  }
+  .shapes-sparkle li:nth-child(6)  { font-size: 80px;  }
+  .shapes-sparkle li:nth-child(7)  { font-size: 110px; }
+  .shapes-sparkle li:nth-child(8)  { font-size: 26px;  }
+  .shapes-sparkle li:nth-child(9)  { font-size: 16px;  }
+  .shapes-sparkle li:nth-child(10) { font-size: 100px; }
+
+  .shapes-bg li:nth-child(1)  { left: 25%; width: 80px;  height: 80px;  animation-delay: 0s;  }
+  .shapes-bg li:nth-child(2)  { left: 10%; width: 20px;  height: 20px;  animation-delay: 2s;  animation-duration: 12s; }
+  .shapes-bg li:nth-child(3)  { left: 70%; width: 22px;  height: 22px;  animation-delay: 4s;  }
+  .shapes-bg li:nth-child(4)  { left: 40%; width: 60px;  height: 60px;  animation-delay: 0s;  animation-duration: 18s; }
+  .shapes-bg li:nth-child(5)  { left: 65%; width: 20px;  height: 20px;  animation-delay: 0s;  }
+  .shapes-bg li:nth-child(6)  { left: 75%; width: 110px; height: 110px; animation-delay: 3s;  }
+  .shapes-bg li:nth-child(7)  { left: 35%; width: 140px; height: 140px; animation-delay: 7s;  }
+  .shapes-bg li:nth-child(8)  { left: 50%; width: 26px;  height: 26px;  animation-delay: 15s; animation-duration: 45s; }
+  .shapes-bg li:nth-child(9)  { left: 20%; width: 16px;  height: 16px;  animation-delay: 2s;  animation-duration: 35s; }
+  .shapes-bg li:nth-child(10) { left: 85%; width: 140px; height: 140px; animation-delay: 0s;  animation-duration: 11s; }
+
+  @keyframes float-up {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-1200px) rotate(720deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes float-up-diamond {
+    0% {
+      transform: translateY(0) rotate(45deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-1200px) rotate(765deg);
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .shapes-bg li {
+      animation: none !important;
+      opacity: 0.5;
+    }
+  }
   /* Slow ambient gradient drift */
   .gradient-drift-1 {
     animation: drift-1 25s ease-in-out infinite;

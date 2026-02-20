@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import BlobBackground from '@/components/visual/BlobBackground'
 import {
   ArrowRight,
   CalendarClock,
@@ -38,6 +39,7 @@ import {
   MessageSquare,
   Bot,
   PenLine,
+  Sparkles,
 } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
@@ -341,7 +343,13 @@ export default function FeaturesPage() {
   return (
     <main>
       {/* Hero */}
-      <section>
+      <section className="relative pt-20"
+        style={{
+          backgroundImage: "radial-gradient(circle,#dee3e8 1px,transparent 0)",
+          backgroundSize: "20px 20px",
+        }}
+      >
+        <BlobBackground variant="triangle" />
         <div className="max-w-5xl mx-auto px-6 pt-4 pb-16 md:pt-28 md:pb-20">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-slate-900">
@@ -368,63 +376,127 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      {/* Feature sections */}
-      {sections.map((section, idx) => (
-        <section
-          key={section.id}
-          id={section.id}
-          className={idx % 2 === 0 ? 'bg-slate-50/60' : ''}
-        >
-          <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-            <div className="max-w-2xl mb-14">
-              <div className="inline-flex items-center gap-2 text-sm font-semibold text-primary uppercase tracking-wider mb-3">
-                {section.icon}
-                {section.label}
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-                {section.headline}
-              </h2>
-              <p className="mt-4 text-lg text-slate-600 leading-relaxed">
-                {section.description}
-              </p>
-            </div>
+      {/* Feature sections — 3 cycling layouts */}
+      {sections.map((section, idx) => {
+        const layout = idx % 3 // 0 = bento, 1 = dark rows, 2 = alternating cards
+        const isDark = layout === 1
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {section.features.map((f) => (
-                <div key={f.title} className="flex flex-col">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/8 mb-4">
-                    {f.icon}
-                  </div>
-                  <h3 className="text-base font-semibold text-slate-900 mb-2">{f.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{f.desc}</p>
+        return (
+          <section
+            key={section.id}
+            id={section.id}
+            className={isDark ? 'bg-slate-900 relative overflow-hidden' : layout === 0 ? 'bg-slate-50/60' : ''}
+          >
+            {isDark && <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 rounded-full blur-[120px]" />}
+            <div className="max-w-5xl mx-auto px-6 py-20 md:py-28 relative">
+              <div className={`max-w-2xl mb-14 ${layout === 0 ? '' : ''}`}>
+                <div className={`inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-medium mb-4 ${isDark ? 'bg-white/10 border border-white/10 text-white/70' : 'bg-primary/5 border border-primary/10 text-primary'}`}>
+                  {section.icon}
+                  {section.label}
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      ))}
+                <h2 className={`text-3xl md:text-4xl font-bold tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                  {section.headline}
+                </h2>
+                <p className={`mt-4 text-lg leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+                  {section.description}
+                </p>
+              </div>
 
-      {/* CTA */}
+              {/* Layout A: Bento grid */}
+              {layout === 0 && (
+                <>
+                  <div className="grid md:grid-cols-2 gap-5 mb-5">
+                    {section.features.slice(0, 2).map((f) => (
+                      <div key={f.title} className="group rounded-2xl border border-slate-200/80 bg-white p-8 md:p-10 hover:border-primary/20 hover:shadow-sm transition-all">
+                        <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/8 mb-5">{f.icon}</div>
+                        <h3 className="text-xl font-semibold text-slate-900 mb-3">{f.title}</h3>
+                        <p className="text-base text-slate-600 leading-relaxed">{f.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {section.features.slice(2).map((f) => (
+                      <div key={f.title} className="group rounded-2xl border border-slate-200/80 bg-white p-5 hover:border-primary/20 hover:shadow-sm transition-all">
+                        <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/8 mb-3">{f.icon}</div>
+                        <h3 className="text-sm font-semibold text-slate-900 mb-1">{f.title}</h3>
+                        <p className="text-xs text-slate-500 leading-relaxed">{f.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
+
+              {/* Layout B: Dark numbered row cards */}
+              {layout === 1 && (
+                <div className="space-y-3">
+                  {section.features.map((f, fi) => (
+                    <div key={f.title} className="flex items-center gap-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5 hover:border-primary/30 hover:bg-white/8 transition-all group">
+                      <span className="text-3xl font-bold text-white/10 tabular-nums shrink-0 w-10 text-right">{String(fi + 1).padStart(2, '0')}</span>
+                      <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/15 shrink-0 group-hover:bg-primary/25 transition-colors">{f.icon}</div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-sm font-semibold text-white mb-1">{f.title}</h3>
+                        <p className="text-sm text-slate-400 leading-relaxed">{f.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Layout C: Alternating row cards */}
+              {layout === 2 && (
+                <div className="space-y-5">
+                  {section.features.map((f, fi) => (
+                    <div key={f.title} className="rounded-2xl border border-slate-200/80 bg-white overflow-hidden">
+                      <div className={`grid md:grid-cols-[1fr_1.5fr] ${fi % 2 === 1 ? 'md:direction-rtl' : ''}`}>
+                        <div className={`flex flex-col justify-center p-6 md:p-8 ${fi % 2 === 1 ? 'md:order-2 md:direction-ltr' : ''}`}>
+                          <div className="flex items-center gap-3 mb-3">
+                            <span className="text-3xl font-bold text-primary/10 tabular-nums">{String(fi + 1).padStart(2, '0')}</span>
+                            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/8">{f.icon}</div>
+                          </div>
+                          <h3 className="text-lg font-semibold text-slate-900">{f.title}</h3>
+                        </div>
+                        <div className={`bg-slate-50/60 p-6 md:p-8 flex items-center ${fi % 2 === 1 ? 'md:order-1 md:direction-ltr' : ''}`}>
+                          <p className="text-sm text-slate-600 leading-relaxed">{f.desc}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </section>
+        )
+      })}
+
+      {/* CTA — gradient-border card */}
       <section className="bg-slate-900">
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
-            See Fork in action
-          </h2>
-          <p className="text-lg text-slate-400 mb-10 max-w-xl mx-auto">
-            Start your free 7-day trial and experience every feature with your own team.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="https://app.forkhr.com/register" target="_blank">
-              <Button size="lg" className="text-base px-8 h-12 bg-white text-slate-900 hover:bg-slate-100">
-                Start free trial
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-            <Link href="/pricing">
-              <Button variant="outline" size="lg" className="text-base px-8 h-12 border-slate-700 text-slate-300 bg-slate-800 hover:bg-slate-900 hover:text-white">
-                View pricing
-              </Button>
-            </Link>
+        <div className="max-w-3xl mx-auto px-6 py-20 md:py-28">
+          <div className="relative rounded-3xl p-px bg-linear-to-br from-primary/60 via-white/10 to-primary/30">
+            <div className="rounded-[calc(1.5rem-1px)] bg-slate-900 px-8 py-14 md:px-14 md:py-20 text-center relative overflow-hidden">
+              <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-primary/20 rounded-full blur-[100px] pointer-events-none" />
+              <p className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 border border-primary/20 px-3 py-1 text-xs font-medium text-primary mb-6 relative">
+                <Sparkles className="w-3 h-3" /> Free 7-day trial
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4 relative">
+                See Fork in action
+              </h2>
+              <p className="text-lg text-slate-400 mb-10 max-w-md mx-auto relative">
+                Start your free trial and experience every feature with your own team.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center relative">
+                <Link href="https://app.forkhr.com/register" target="_blank">
+                  <Button size="lg" className="text-base px-8 h-12 bg-white text-slate-900 hover:bg-slate-100">
+                    Start free trial
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+                <Link href="/pricing">
+                  <Button variant="outline" size="lg" className="text-base px-8 h-12 border-slate-700 text-slate-300 bg-slate-800 hover:bg-slate-900 hover:text-white">
+                    View pricing
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

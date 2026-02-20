@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import BlobBackground from '@/components/visual/BlobBackground'
 
 export const metadata: Metadata = {
   title: 'About — Fork | Our Mission & Team',
@@ -34,7 +35,7 @@ const values = [
       'Workforce management is complex. The tools you use to manage it shouldn\'t be. We obsess over removing friction from every workflow.',
   },
   {
-    title: 'Built for operators',
+    title: 'Built for operators by operators',
     description:
       'We design for the people who actually run the day-to-day — shift managers, HR leads, and small business owners — not enterprise procurement teams.',
   },
@@ -54,7 +55,15 @@ export default function AboutPage() {
   return (
     <main>
       {/* Hero */}
-      <section>
+      <section className="relative pt-[80px]"
+        style={{
+          backgroundImage: "radial-gradient(circle,#dee3e8 1px,transparent 0)",
+          backgroundSize: "20px 20px",
+        }}
+      >
+        <BlobBackground
+          variant="hexagon"
+        />
         <div className="max-w-5xl mx-auto px-6 pt-4 pb-4 md:pt-28 md:pb-20">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-slate-900">
@@ -102,7 +111,6 @@ export default function AboutPage() {
       <section>
         <div className="max-w-5xl mx-auto px-6 py-12 md:py-28">
           <div className="max-w-2xl mb-16">
-            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">Values</p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
               What we stand for
             </h2>
