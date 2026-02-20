@@ -350,7 +350,7 @@ export default function FeaturesPage() {
         }}
       >
         <BlobBackground variant="triangle" />
-        <div className="max-w-5xl mx-auto px-6 pt-4 pb-16 md:pt-28 md:pb-20">
+        <div className="max-w-5xl mx-auto px-6 pt-12 pb-16 md:pt-28 md:pb-20">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-slate-900">
               Everything you need to run your team, in one place

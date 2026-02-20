@@ -106,7 +106,7 @@ export default function FranchisePage() {
         }}
       >
         <BlobBackground variant="circle" />
-        <div className="max-w-5xl mx-auto px-6 pt-4 pb-16 md:pt-28 md:pb-20">
+        <div className="max-w-5xl mx-auto px-6 pt-12 pb-16 md:pt-28 md:pb-20">
           <nav className="inline-flex items-center gap-1.5 text-sm mb-5">
             <Link href="/products" className="text-slate-400 hover:text-primary transition-colors">Solutions</Link>
             <ChevronRight className="w-3.5 h-3.5 text-slate-300" />

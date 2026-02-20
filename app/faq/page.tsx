@@ -224,9 +224,9 @@ export default function FAQPage() {
         }}
       >
         <BlobBackground variant="question" />
-        <div className="max-w-5xl mx-auto px-6 py-4 pb-0 md:py-20 md:text-center">
+        <div className="max-w-5xl mx-auto px-6 pt-12 pb-0 md:py-20 md:text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-slate-900">
-            Frequently asked questions
+            FAQs<span className="text-primary">.</span>
           </h1>
           <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Everything you need to know about Fork.<br/>Can&apos;t find an answer?{' '}
@@ -281,7 +281,7 @@ export default function FAQPage() {
               </Button>
             </Link>
             <a href="mailto:support@forkhr.com">
-              <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-600 text-slate-300 hover:bg-slate-800 hover:text-white">
+              <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-600 text-slate-300 bg-transparent hover:bg-slate-800 hover:text-white">
                 Contact support
               </Button>
             </a>
