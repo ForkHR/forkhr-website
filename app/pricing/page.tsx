@@ -83,6 +83,8 @@ const tiers = [
       'AI assistant',
       'Training courses',
       'Incident reports',
+      'Waste cost tracking',
+      'Maintenance logs',
       'Termination records',
       'Advanced analytics & reports',
       'Priority support',

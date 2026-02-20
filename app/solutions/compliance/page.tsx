@@ -222,7 +222,7 @@ export default function CompliancePage() {
                 Fork eliminates these risks by ensuring every document is collected, signed, and tracked — with automated reminders before anything expires.
               </p>
             </div>
-            <div className="shrink-0 flex flex-col items-center justify-center bg-white rounded-xl p-6 border border-slate-200 min-w-[180px]">
+            <div className="shrink-0 flex flex-col items-center justify-center bg-white rounded-xl p-6 border border-slate-200 min-w-[180px] md:w-auto w-full">
               <Users className="w-8 h-8 text-primary mb-2" />
               <div className="text-sm text-slate-500">Average savings per location</div>
               <div className="text-3xl font-bold text-primary mt-1">$4,200</div>
