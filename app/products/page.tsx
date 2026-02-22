@@ -40,21 +40,28 @@ import {
   Bot,
   PenLine,
   Sparkles,
+  ShieldAlert,
+  Scale,
+  Gavel,
+  UserX,
+  Search,
+  Brain,
+  FileCheck,
 } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Products — Fork | Scheduling, Time Tracking, HR, FAQs, Maintenance & Waste Control',
+  title: 'Products — Fork | Scheduling, Time Tracking, HR, Incidents, Violations & More',
   description:
-    'Explore all Fork products: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, training, company FAQs, maintenance logs, and waste control.',
+    'Explore all Fork products: shift scheduling, time & attendance, paperless onboarding, document management, incidents & violations, surveys, recognition, training, company FAQs, maintenance logs, and waste control.',
   alternates: {
     canonical: '/products',
   },
   openGraph: {
-    title: 'Products — Fork | Scheduling, Time Tracking, HR, FAQs, Maintenance & Waste Control',
+    title: 'Products — Fork | Scheduling, Time Tracking, HR, Incidents, Violations & More',
     description:
-      'Explore all Fork products: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, training, company FAQs, maintenance logs, and waste control.',
+      'Explore all Fork products: shift scheduling, time & attendance, paperless onboarding, document management, incidents & violations, surveys, recognition, training, company FAQs, maintenance logs, and waste control.',
     url: 'https://forkhr.com/products',
     images: ['/og-image.png'],
     type: 'website',
@@ -168,19 +175,89 @@ const sections = [
         desc: 'Build forms for any HR process using a drag-and-drop form builder.',
       },
       {
-        icon: <FileWarning className="w-5 h-5 text-primary" />,
-        title: 'Incident reports',
-        desc: 'Document workplace incidents with structured reports. Maintain a safe and compliant work environment.',
-      },
-      {
-        icon: <FileText className="w-5 h-5 text-primary" />,
-        title: 'Termination records',
-        desc: 'Keep complete offboarding documentation, final notices, and exit checklists in one secure place.',
-      },
-      {
         icon: <Shield className="w-5 h-5 text-primary" />,
         title: 'Hiring & job postings',
         desc: 'Post openings, track applicants, and move candidates through your pipeline — all in one place.',
+      },
+    ],
+  },
+  {
+    id: 'incidents',
+    label: 'Incidents',
+    icon: <ShieldAlert className="w-5 h-5" />,
+    headline: 'Document workplace incidents with structured reports and AI insights',
+    description:
+      'Give managers a structured way to report workplace injuries, safety events, and other incidents. Attach evidence, assign witnesses, and let AI analyze every report so nothing gets overlooked.',
+    features: [
+      {
+        icon: <AlertTriangle className="w-5 h-5 text-primary" />,
+        title: 'Structured incident reports',
+        desc: 'Document injuries, safety events, and workplace incidents with structured forms. Classify each report by type and severity.',
+      },
+      {
+        icon: <Brain className="w-5 h-5 text-primary" />,
+        title: 'AI-powered analysis',
+        desc: 'Fork\'s AI summarizes every incident, flags severity, identifies potential legal risk, and recommends follow-up actions automatically.',
+      },
+      {
+        icon: <Search className="w-5 h-5 text-primary" />,
+        title: 'Review & resolution workflow',
+        desc: 'Move incidents through draft → in-review → under-investigation → resolved. Track who reviewed each report and when it was closed.',
+      },
+      {
+        icon: <Camera className="w-5 h-5 text-primary" />,
+        title: 'Evidence & documentation',
+        desc: 'Attach photos, files, and links to any report. Upload supporting documents during creation or add them later as the investigation progresses.',
+      },
+      {
+        icon: <History className="w-5 h-5 text-primary" />,
+        title: 'Full audit trail',
+        desc: 'Every status change, review, and update is logged with timestamps and user attribution — giving you a tamper-proof history for audits and legal protection.',
+      },
+      {
+        icon: <FileCheck className="w-5 h-5 text-primary" />,
+        title: 'PDF report generation',
+        desc: 'Generate professional incident reports as PDFs — ready for legal review, insurance claims, or internal records.',
+      },
+    ],
+  },
+  {
+    id: 'violations-terminations',
+    label: 'Violations & Terminations',
+    icon: <Gavel className="w-5 h-5" />,
+    headline: 'Track employee violations and manage terminations in one place',
+    description:
+      'Record policy violations, issue disciplinary actions, and build a documented trail that leads to fair, compliant terminations when needed. AI analyzes every case to flag risk and recommend next steps.',
+    features: [
+      {
+        icon: <Gavel className="w-5 h-5 text-primary" />,
+        title: 'Employee violation tracking',
+        desc: 'Record policy violations with the employee involved, violated policy, witnesses, and source. Keep a compliant paper trail for every event.',
+      },
+      {
+        icon: <Scale className="w-5 h-5 text-primary" />,
+        title: 'Disciplinary action management',
+        desc: 'Record verbal warnings, written notices, suspensions, and more. Link disciplinary actions directly to the violation with effective dates.',
+      },
+      {
+        icon: <UserX className="w-5 h-5 text-primary" />,
+        title: 'Termination records',
+        desc: 'When violations lead to termination, create structured termination records with related violations, approval workflows, and offboarding details.',
+      },
+      {
+        icon: <Brain className="w-5 h-5 text-primary" />,
+        title: 'AI-powered analysis',
+        desc: 'Fork\'s AI summarizes every violation and termination, flags severity and legal risk, identifies policies involved, and recommends actions.',
+      },
+      {
+        icon: <History className="w-5 h-5 text-primary" />,
+        title: 'Full audit trail',
+        desc: 'Every status change, review, and disciplinary action is logged with timestamps and user attribution — tamper-proof records for legal protection.',
+      },
+      {
+        icon: <FileCheck className="w-5 h-5 text-primary" />,
+        title: 'PDF report generation',
+        desc: 'Generate professional violation and termination reports as PDFs — ready for legal review or HR records.',
       },
     ],
   },

@@ -61,8 +61,13 @@ const pillars = [
   },
   {
     icon: <Shield className="w-5 h-5" />,
-    title: 'Compliance & Incidents',
-    description: 'AI-assisted incident reports, employment forms, and secure records to reduce legal risk.',
+    title: 'Incidents & Compliance',
+    description: 'AI-assisted workplace incident reports, structured forms, evidence tracking, and secure records to reduce legal risk.',
+  },
+  {
+    icon: <Users className="w-5 h-5" />,
+    title: 'Violations & Terminations',
+    description: 'Track employee policy violations, issue disciplinary actions, and manage terminations with a complete audit trail.',
   },
   {
     icon: <Wrench className="w-5 h-5" />,
@@ -113,7 +118,7 @@ const features = [
   {
     icon: <Zap className="w-5 h-5 text-primary" />,
     title: 'Run tighter daily operations',
-    items: ['Recurring checklists per location', 'Maintenance tracking with cost logging', 'Waste control with item catalogs', 'Custom forms for any workflow', 'Incident reports with AI analysis'],
+    items: ['Recurring checklists per location', 'Maintenance tracking with cost logging', 'Waste control with item catalogs', 'Incident reports & violation tracking with AI', 'Violation-to-termination workflow'],
   },
 ]
 

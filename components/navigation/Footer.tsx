@@ -8,6 +8,8 @@ const productLinks = [
   { label: 'Time tracking', href: '/products#time-tracking' },
   { label: 'HR & onboarding', href: '/products#hr-onboarding' },
   { label: 'Team engagement', href: '/products#team-engagement' },
+  { label: 'Incidents', href: '/products#incidents' },
+  { label: 'Violations & terminations', href: '/products#violations-terminations' },
   { label: 'Maintenance logs', href: '/products#maintenance-logs' },
   { label: 'Company FAQs', href: '/products#company-faqs' },
   { label: 'Waste control', href: '/products#waste-control' },

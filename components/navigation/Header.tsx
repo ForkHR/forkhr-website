@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '../ui/button'
-import { ArrowRight, ChevronDown, Calendar, Clock, Umbrella, FileText, ClipboardCheck, UserPlus, FolderOpen, Briefcase, AlertTriangle, UserX, Megaphone, Star, BarChart3, BookOpen, Library, ClipboardList, Wrench, Trash2, Scale, Store, MapPin, Heart, Zap, HelpCircle, BotMessageSquare } from 'lucide-react'
+import { ArrowRight, ChevronDown, Calendar, Clock, Umbrella, FileText, ClipboardCheck, UserPlus, FolderOpen, Briefcase, AlertTriangle, UserX, Megaphone, Star, BarChart3, BookOpen, Library, ClipboardList, Wrench, Trash2, Scale, Store, MapPin, Heart, Zap, HelpCircle, BotMessageSquare, Gavel, ShieldAlert } from 'lucide-react'
 import {
   Sheet,
   SheetContent,
@@ -32,8 +32,9 @@ const productGroups = [
       { name: 'Employment Forms', desc: 'Digital W-4, I-9 and custom forms', icon: FileText, href: '/products#hr-onboarding' },
       { name: 'Documents', desc: 'Organize and request employee documents', icon: FolderOpen, href: '/products#hr-onboarding' },
       { name: 'Hiring', desc: 'Post jobs and track applicants', icon: Briefcase, href: '/hiring' },
-      { name: 'Incidents', desc: 'Document and track workplace incidents', icon: AlertTriangle, href: '/products#hr-onboarding' },
-      { name: 'Termination', desc: 'Offboarding records and exit checklists', icon: UserX, href: '/products#hr-onboarding' },
+      { name: 'Incidents', desc: 'Document and track workplace incidents', icon: AlertTriangle, href: '/products#incidents' },
+      { name: 'Violations', desc: 'Record policy violations and disciplinary actions', icon: Gavel, href: '/products#violations-terminations' },
+      { name: 'Termination', desc: 'Offboarding records linked to violations', icon: UserX, href: '/products#violations-terminations' },
     ],
   },
   {

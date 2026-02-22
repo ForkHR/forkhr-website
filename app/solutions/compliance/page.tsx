@@ -13,6 +13,7 @@ import {
   CheckCircle2,
   Users,
   Sparkles,
+  Gavel,
 } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
@@ -20,7 +21,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Compliance & Legal — Fork | Stay Audit-Ready with Digital Workforce Records',
   description:
-    'Eliminate compliance gaps with digital onboarding, e-signatures, incident reports, document expiry alerts, and a complete audit trail. Fork keeps your team compliant without the paperwork.',
+    'Eliminate compliance gaps with digital onboarding, e-signatures, incident reports, employee violation tracking, document expiry alerts, and a complete audit trail. Fork keeps your team compliant without the paperwork.',
   alternates: {
     canonical: '/solutions/compliance',
   },
@@ -61,7 +62,7 @@ const benefits = [
   {
     icon: <AlertTriangle className="w-5 h-5 text-primary" />,
     title: 'Structured incident reporting',
-    desc: 'Document workplace incidents with structured forms, attach evidence, and maintain a tamper-proof timeline for every event.',
+    desc: 'Document workplace injuries and safety events with structured forms, attach evidence, and maintain a tamper-proof timeline for every incident.',
   },
   {
     icon: <Shield className="w-5 h-5 text-primary" />,
@@ -70,8 +71,8 @@ const benefits = [
   },
   {
     icon: <FileText className="w-5 h-5 text-primary" />,
-    title: 'Termination & offboarding records',
-    desc: 'Maintain final notices, exit checklists, and termination documentation in one secure, organized location.',
+    title: 'Violations, terminations & offboarding',
+    desc: 'Track employee violations, link them to disciplinary actions and terminations, and maintain final notices and exit checklists in one secure location.',
   },
   {
     icon: <Clock className="w-5 h-5 text-primary" />,
@@ -85,6 +86,7 @@ const complianceAreas = [
   { icon: <CheckCircle2 className="w-4 h-4" />, label: 'W-4 collection' },
   { icon: <CheckCircle2 className="w-4 h-4" />, label: 'Food handler permits' },
   { icon: <CheckCircle2 className="w-4 h-4" />, label: 'OSHA incident logs' },
+  { icon: <CheckCircle2 className="w-4 h-4" />, label: 'Employee violations' },
   { icon: <CheckCircle2 className="w-4 h-4" />, label: 'Alcohol serving certs' },
   { icon: <CheckCircle2 className="w-4 h-4" />, label: 'Non-disclosure agreements' },
   { icon: <CheckCircle2 className="w-4 h-4" />, label: 'Employee handbooks' },
@@ -124,7 +126,7 @@ export default function CompliancePage() {
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
-            <Link href="/products#hr-onboarding">
+            <Link href="/products#incidents-violations">
               <Button variant="outline" size="lg" className="text-base px-8 h-12">
                 Learn more
               </Button>
