@@ -176,7 +176,7 @@ export default function AIAssistantPage() {
         }}
       >
         <BlobBackground variant="sparkle"/>
-        <div className="max-w-5xl mx-auto px-6 pt-4 pb-16 md:pt-28 md:pb-20">
+        <div className="max-w-5xl mx-auto px-6 pt-12 pb-16 md:pt-28 md:pb-20">
           <nav className="inline-flex items-center gap-1.5 text-sm mb-5">
             <Link href="/products" className="text-slate-400 hover:text-primary transition-colors">Products</Link>
             <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
@@ -203,7 +203,7 @@ export default function AIAssistantPage() {
             </Link>
             <Link href="#how-it-works">
               <Button variant="outline" size="lg" className="text-base px-8 h-12">
-                See how it works
+                Read more
               </Button>
             </Link>
           </div>

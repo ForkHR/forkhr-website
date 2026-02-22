@@ -151,9 +151,9 @@ export default function PricingPage() {
         <BlobBackground
           variant="rounded"
         />
-        <div className="max-w-5xl mx-auto px-6 pt-4 pb-0 md:pt-20 md:text-center">
+        <div className="max-w-5xl mx-auto px-6 pt-12 pb-0 md:pt-20 md:text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-slate-900">
-            One price per location.<br/>Unlimited team members.
+            Simple pricing<span className="text-primary">.</span>
           </h1>
           <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
             No per-user fees, no hidden costs. Pick the plan that matches how you manage your team today.

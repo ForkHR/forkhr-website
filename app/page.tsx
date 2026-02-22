@@ -161,7 +161,7 @@ export default function Home() {
       >
         <BlobBackground/>
         <section className="relative overflow-hidden">
-          <div className="max-w-5xl mx-auto px-6 pt-4 pb-12 md:pt-20 md:pb-24">
+          <div className="max-w-5xl mx-auto px-6 pt-12 pb-12 md:pt-20 md:pb-24">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-4">
                 <span className="relative flex h-2 w-2">

@@ -64,10 +64,10 @@ export default function AboutPage() {
         <BlobBackground
           variant="hexagon"
         />
-        <div className="max-w-5xl mx-auto px-6 pt-4 pb-4 md:pt-28 md:pb-20">
+        <div className="max-w-5xl mx-auto px-6 pt-12 pb-4 md:pt-28 md:pb-20">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-slate-900">
-              Workforce management shouldn&apos;t be this hard
+              About us<span className="text-primary">.</span>
             </h1>
             <p className="mt-6 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl">
               We started Fork because we saw teams drowning in spreadsheets, group texts, and paper timesheets — and we knew there was a better way.
