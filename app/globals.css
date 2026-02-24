@@ -100,6 +100,10 @@
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
   }
+
+  h1, h2, h3, h4, h5, h6, .text-5xl {
+    font-family: var(--font-libre), sans-serif;
+  }
 }
 
 .bg-blur {

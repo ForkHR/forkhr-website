@@ -499,7 +499,7 @@ export default function Home() {
               {/* Decorative glow */}
               <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-primary/20 rounded-full blur-[100px] pointer-events-none" />
 
-              <p className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 border border-primary/20 px-3 py-1 text-xs font-medium text-primary mb-6 relative">
+              <p className="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-primary/20 px-3 py-1 text-xs font-medium text-white mb-6 relative">
                 <Sparkles className="w-3 h-3" />Free 7-day trial
               </p>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4 relative">

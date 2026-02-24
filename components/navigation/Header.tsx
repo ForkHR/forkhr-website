@@ -169,7 +169,7 @@ const Header = () => {
                   </Link>
 
                   <div className={cn(
-                    'absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200',
+                    'absolute top-full left-50 -translate-x-1/2 pt-3 transition-all duration-200',
                     activeDropdown === 'products' ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'
                   )}>
                     <div className="w-[720px] rounded-2xl bg-white border border-slate-200/80 shadow-[0_20px_60px_rgba(2,6,23,0.12)] p-4">
