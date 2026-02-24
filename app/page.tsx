@@ -5,25 +5,25 @@ import type { Metadata } from 'next'
 import BlobBackground from '@/components/visual/BlobBackground'
 
 export const metadata: Metadata = {
-  title: 'Fork — AI-Powered Restaurant Operations Platform',
+  title: 'Fork — All-in-One AI-Powered Workforce Management & Operations Platform',
   description:
-    'The AI-powered operating system for restaurant teams. Scheduling, training, checklists, compliance, and an AI assistant trained on your company knowledge — one platform, every location.',
+    'The AI-powered operating system for multi-location frontline businesses — from cafés and gyms to retail and grocery. Scheduling, training, checklists, compliance, and an AI assistant trained on your company knowledge, all in one platform.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Fork — AI-Powered Restaurant Operations Platform',
+    title: 'Fork — All-in-One AI-Powered Workforce Management & Operations Platform',
     description:
-      'The AI-powered operating system for restaurant teams. Scheduling, training, checklists, compliance, and an AI assistant trained on your company knowledge — one platform, every location.',
+      'The AI-powered operating system for multi-location frontline businesses — from cafés and gyms to retail and grocery. Scheduling, training, checklists, compliance, and an AI assistant trained on your company knowledge, all in one platform.',
     url: 'https://forkhr.com',
     images: ['/og-image.png'],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Fork — AI-Powered Restaurant Operations Platform',
+    title: 'Fork — All-in-One AI-Powered Workforce Management & Operations Platform',
     description:
-      'The AI-powered operating system for restaurant teams. Scheduling, training, checklists, compliance, and an AI assistant trained on your company knowledge.',
+      'The AI-powered operating system for multi-location frontline businesses — from cafés and gyms to retail and grocery. Scheduling, training, checklists, compliance, and an AI assistant trained on your company knowledge, all in one platform.',
     images: ['/og-image.png'],
   },
 }
