@@ -283,7 +283,7 @@ const Header = () => {
               <Link href="https://app.forkhr.com/login" target="_blank" className="min-w-0">
                 <Button
                   variant="ghost"
-                  className="text-[15px] text-purple hover:text-purple/80 hover:bg-transparent max-w-[55vw]"
+                  className="text-[15px] text-dark hover:text-dark/80 hover:bg-transparent max-w-[55vw]"
                 >
                   <span className="min-w-0 flex-1 truncate">Sign in</span>
                   <ArrowRight className="w-4 h-4 ml-1 shrink-0" />
@@ -391,12 +391,12 @@ const Header = () => {
                   <SheetFooter className="p-3">
                     <div className="flex flex-1 gap-3">
                       <Link href="https://app.forkhr.com/login" target="_blank" className="flex-1">
-                        <Button variant="secondary" className="text-[15px] text-purple w-full glass-shine">
+                        <Button variant="secondary" className="text-[15px] text-dark hover:text-dark/80 w-full glass-shine">
                           <span className="truncate">Sign in</span>
                         </Button>
                       </Link>
                       <Link href="https://app.forkhr.com/register" target="_blank" className="flex-1">
-                        <Button className="flex-1 w-full bg-purple hover:bg-purple/90 text-white">
+                        <Button className="flex-1 w-full text-white">
                           <span className="truncate">Start free trial</span>
                         </Button>
                       </Link>
