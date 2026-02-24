@@ -155,7 +155,7 @@ export default function Home() {
       {/* Hero */}
       <div className="relative pt-20"
         style={{
-          backgroundImage: "radial-gradient(circle,#dee3e8 1px,transparent 0)",
+          backgroundImage: "radial-gradient(circle,#DDD8CA 1px,transparent 0)",
           backgroundSize: "20px 20px",
         }}
       >
@@ -171,11 +171,11 @@ export default function Home() {
                 Now available on iOS &amp; Android
               </div>
 
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08] text-slate-900">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08] text-warm-900">
                   All-in-One<br/>Workforce<br/>Management<span className="text-primary">.</span>
               </h1>
 
-              <p className="md:mt-6 mt-4 text-md md:text-xl text-slate-600 max-w-2xl leading-relaxed">
+              <p className="md:mt-6 mt-4 text-md md:text-xl text-warm-600 max-w-2xl leading-relaxed">
                 Fork turns your SOPs, training materials, and company policies into an AI that supports every employee on every shift — combined with scheduling, timecards, checklists, and compliance in one platform.
               </p>
 
@@ -188,12 +188,12 @@ export default function Home() {
                 </Link>
                 <Link href="/ai-assistant">
                   <Button variant="outline" size="lg" className="text-sm sm:text-base px-5 sm:px-8 h-10 sm:h-12">
-                    See the AI in action
+                    Lear more
                   </Button>
                 </Link>
               </div>
 
-              <p className="mt-4 text-sm text-slate-400">
+              <p className="mt-4 text-sm text-warm-400">
                 Free 7-day trial · Cancel anytime
               </p>
             </div>
@@ -203,12 +203,12 @@ export default function Home() {
         {/* Social proof bar — styled pills */}
         <section>
           <div className="max-w-5xl mx-auto px-6 py-12 md:py-16">
-            <p className="text-sm font-medium text-slate-400 text-center mb-6">
+            <p className="text-sm font-medium text-warm-400 text-center mb-6">
               Built for teams in
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               {segments.map((s) => (
-                <span key={s} className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 shadow-sm">
+                <span key={s} className="inline-flex items-center gap-2 rounded-full border border-warm-200 bg-white px-4 py-2 text-sm font-medium text-warm-600 shadow-sm">
                   {s}
                 </span>
               ))}
@@ -218,19 +218,19 @@ export default function Home() {
       </div>
 
       {/* AI Showcase — centered chat mockup */}
-      <section className="bg-slate-900 relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 rounded-full blur-[120px]" />
+      <section className="bg-plum relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-lavender/10 rounded-full blur-[120px]" />
 
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-28 relative">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <p className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-3.5 py-1.5 text-xs font-medium text-white/70 mx-auto mb-5">
-              <Sparkles className="w-3.5 h-3.5 text-primary" />
+              <Sparkles className="w-3.5 h-3.5 text-lavender" />
               AI Assistant
             </p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
               An AI that actually knows your restaurant
             </h2>
-            <p className="mt-4 text-lg text-slate-400 leading-relaxed">
+            <p className="mt-4 text-lg text-warm-400 leading-relaxed">
               Fork&apos;s AI is trained on your company&apos;s own content — FAQs, training courses, knowledge library, and policies. Not generic. Not hallucinating. Your knowledge, on demand.
             </p>
           </div>
@@ -240,12 +240,12 @@ export default function Home() {
             <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden">
               {/* Chat header */}
               <div className="flex items-center gap-3 px-5 py-3.5 border-b border-white/6">
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/20">
-                  <BotMessageSquare className="w-4 h-4 text-primary" />
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-lavender/20">
+                  <BotMessageSquare className="w-4 h-4 text-lavender" />
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-white">Fork AI</div>
-                  <div className="text-xs text-slate-500">Trained on your company content</div>
+                  <div className="text-xs text-warm-500">Trained on your company content</div>
                 </div>
               </div>
 
@@ -254,19 +254,19 @@ export default function Home() {
                 {aiExamples.map((ex) => (
                   <div key={ex.role} className="space-y-3">
                     <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-slate-700 flex items-center justify-center shrink-0 mt-0.5">
-                        <Users className="w-3 h-3 text-slate-400" />
+                      <div className="w-6 h-6 rounded-full bg-plum-600 flex items-center justify-center shrink-0 mt-0.5">
+                        <Users className="w-3 h-3 text-warm-400" />
                       </div>
                       <div>
-                        <span className="text-[10px] font-medium text-slate-500 uppercase tracking-wider">{ex.role}</span>
-                        <p className="text-sm text-slate-300 mt-0.5">{ex.question}</p>
+                        <span className="text-[10px] font-medium text-warm-500 uppercase tracking-wider">{ex.role}</span>
+                        <p className="text-sm text-warm-300 mt-0.5">{ex.question}</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3 pl-9">
-                      <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
-                        <Sparkles className="w-3 h-3 text-white" />
+                      <div className="w-6 h-6 rounded-full bg-lavender/20 flex items-center justify-center shrink-0 mt-0.5">
+                        <Sparkles className="w-3 h-3 text-lavender" />
                       </div>
-                      <p className="text-sm text-slate-400 leading-relaxed bg-white/3 rounded-xl px-4 py-3 border border-white/6">{ex.answer}</p>
+                      <p className="text-sm text-warm-400 leading-relaxed bg-white/3 rounded-xl px-4 py-3 border border-white/6">{ex.answer}</p>
                     </div>
                   </div>
                 ))}
@@ -281,16 +281,16 @@ export default function Home() {
               { title: 'Role-aware responses', desc: 'Owners, managers, and employees get answers matched to their role and permissions.' },
               { title: 'Smart escalation', desc: 'When AI can\'t answer, it escalates to the right manager with full context attached.' },
             ].map((c) => (
-              <div key={c.title} className="bg-slate-900 p-6">
+              <div key={c.title} className="bg-plum p-6">
                 <h4 className="text-sm font-semibold text-white mb-2">{c.title}</h4>
-                <p className="text-sm text-slate-500 leading-relaxed">{c.desc}</p>
+                <p className="text-sm text-warm-500 leading-relaxed">{c.desc}</p>
               </div>
             ))}
           </div>
 
           <div className="mt-10 text-center">
             <Link href="/ai-assistant">
-              <Button variant="outline" className="px-8 border-slate-700 text-slate-300 bg-slate-800 hover:bg-slate-900 hover:text-white">
+              <Button variant="outline" className="px-8 border-plum-600 text-warm-300 bg-plum-800 hover:bg-plum hover:text-white">
                 Learn more about the AI
                 <ArrowUpRight className="w-4 h-4 ml-2" />
               </Button>
@@ -300,14 +300,14 @@ export default function Home() {
       </section>
 
       {/* Platform overview — bento grid */}
-      <section className="bg-slate-50/60">
+      <section className="bg-warm-100/60">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mx-auto mb-5">Platform</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-warm-900">
               Everything your team needs, nothing it doesn&apos;t
             </h2>
-            <p className="mt-4 text-lg text-slate-600 leading-relaxed">
+            <p className="mt-4 text-lg text-warm-600 leading-relaxed">
               From AI-powered support to daily checklists — built to run consistently, compliantly, and efficiently.
             </p>
           </div>
@@ -317,13 +317,13 @@ export default function Home() {
             {pillars.slice(0, 2).map((p) => (
               <div
                 key={p.title}
-                className="group rounded-2xl border border-slate-200/80 bg-white p-8 md:p-10 hover:border-primary/20 hover:shadow-sm transition-all"
+                className="group rounded-2xl border border-warm-200/80 bg-white p-8 md:p-10 hover:border-primary/20 hover:shadow-sm transition-all"
               >
                 <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/8 text-primary mb-5">
                   {p.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-3">{p.title}</h3>
-                <p className="text-base text-slate-600 leading-relaxed">{p.description}</p>
+                <h3 className="text-xl font-semibold text-warm-900 mb-3">{p.title}</h3>
+                <p className="text-base text-warm-600 leading-relaxed">{p.description}</p>
               </div>
             ))}
           </div>
@@ -333,29 +333,29 @@ export default function Home() {
             {pillars.slice(2, 5).map((p) => (
               <div
                 key={p.title}
-                className="group rounded-2xl border border-slate-200/80 bg-white p-6 hover:border-primary/20 hover:shadow-sm transition-all"
+                className="group rounded-2xl border border-warm-200/80 bg-white p-6 hover:border-primary/20 hover:shadow-sm transition-all"
               >
                 <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/8 text-primary mb-4">
                   {p.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">{p.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{p.description}</p>
+                <h3 className="text-lg font-semibold text-warm-900 mb-2">{p.title}</h3>
+                <p className="text-sm text-warm-600 leading-relaxed">{p.description}</p>
               </div>
             ))}
           </div>
 
           {/* Bento: 4 compact cards */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
             {pillars.slice(5).map((p) => (
               <div
                 key={p.title}
-                className="group rounded-2xl border border-slate-200/80 bg-white p-5 hover:border-primary/20 hover:shadow-sm transition-all"
+                className="group rounded-2xl border border-warm-200/80 bg-white p-5 hover:border-primary/20 hover:shadow-sm transition-all"
               >
                 <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/8 text-primary mb-3">
                   {p.icon}
                 </div>
-                <h3 className="text-sm font-semibold text-slate-900 mb-1">{p.title}</h3>
-                <p className="text-xs text-slate-500 leading-relaxed">{p.description}</p>
+                <h3 className="text-sm font-semibold text-warm-900 mb-1">{p.title}</h3>
+                <p className="text-xs text-warm-500 leading-relaxed">{p.description}</p>
               </div>
             ))}
           </div>
@@ -371,22 +371,66 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Metrics — asymmetric hero stat layout */}
+      <section className="bg-charcoal relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-amber/10 rounded-full blur-[120px]" />
+
+        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28 relative">
+          <div className="grid md:grid-cols-[1.2fr_1fr] gap-12 md:gap-16 items-center">
+            {/* Left — hero stat */}
+            <div>
+              <p className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-3.5 py-1.5 text-xs font-medium text-white/70 mb-6">
+                By the numbers
+              </p>
+              <div className="text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight leading-none mb-4">
+                10<span className="text-amber">hrs</span>
+              </div>
+              <p className="text-xl text-warm-400 leading-relaxed max-w-md">
+                Saved per manager on scheduling and admin, every single week.
+              </p>
+              <p className="text-xs text-warm-600 mt-6">
+                Based on average results reported by teams using Fork for 90+ days.
+              </p>
+            </div>
+
+            {/* Right — supporting stats stacked */}
+            <div className="space-y-4">
+              {[
+                { metric: '90%', label: 'Faster employee onboarding with digital forms and checklists', icon: <FileText className="w-5 h-5" /> },
+                { metric: '$4,800', label: 'Average annual savings per location on operational costs', icon: <Shield className="w-5 h-5" /> },
+                { metric: '70%', label: 'Fewer repetitive questions with AI-powered answers', icon: <BotMessageSquare className="w-5 h-5" /> },
+              ].map((m) => (
+                <div key={m.label} className="flex items-center gap-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5 hover:border-amber/30 hover:bg-white/8 transition-all group">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-amber/15 text-amber shrink-0 group-hover:bg-amber/25 transition-colors">
+                    {m.icon}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-warm-400 leading-relaxed">{m.label}</p>
+                  </div>
+                  <div className="text-2xl font-bold text-white shrink-0">{m.metric}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Feature details — alternating rows with numbered accent */}
       <section>
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mx-auto mb-5">Features</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-warm-900">
               Built for how you actually work
             </h2>
-            <p className="mt-4 text-lg text-slate-600 leading-relaxed">
+            <p className="mt-4 text-lg text-warm-600 leading-relaxed">
               Every feature maps to a real operational need — from AI-powered answers to daily checklists.
             </p>
           </div>
 
           <div className="space-y-6">
             {features.map((f, i) => (
-              <div key={f.title} className="rounded-2xl border border-slate-200/80 bg-white overflow-hidden">
+              <div key={f.title} className="rounded-2xl border border-warm-200/80 bg-white overflow-hidden">
                 <div className={`grid md:grid-cols-[1fr_1.5fr] ${i % 2 === 1 ? 'md:direction-rtl' : ''}`}>
                   {/* Left — label area */}
                   <div className={`flex flex-col justify-center p-8 md:p-10 ${i % 2 === 1 ? 'md:order-2 md:direction-ltr' : ''}`}>
@@ -396,16 +440,16 @@ export default function Home() {
                         {f.icon}
                       </div>
                     </div>
-                    <h3 className="text-xl font-semibold text-slate-900">{f.title}</h3>
+                    <h3 className="text-xl font-semibold text-warm-900">{f.title}</h3>
                   </div>
 
                   {/* Right — checklist */}
-                  <div className={`bg-slate-50/60 p-8 md:p-10 ${i % 2 === 1 ? 'md:order-1 md:direction-ltr' : ''}`}>
+                  <div className={`bg-warm-100/60 p-8 md:p-10 ${i % 2 === 1 ? 'md:order-1 md:direction-ltr' : ''}`}>
                     <ul className="space-y-3">
                       {f.items.map((item) => (
                         <li key={item} className="flex items-start gap-3">
                           <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                          <span className="text-sm text-slate-600">{item}</span>
+                          <span className="text-sm text-warm-600">{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -417,12 +461,47 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Final CTA — gradient-border card */}
+      <section className="bg-forest-700">
+        <div className="max-w-3xl mx-auto px-6 py-20 md:py-28">
+          <div className="relative rounded-3xl p-px bg-linear-to-br from-lime-accent/40 via-white/10 to-lime-accent/20">
+            <div className="rounded-[calc(1.5rem-1px)] bg-forest-700 px-8 py-14 md:px-14 md:py-20 text-center relative overflow-hidden">
+              {/* Decorative glow */}
+              <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-lime-accent/15 rounded-full blur-[100px] pointer-events-none" />
+
+              <p className="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-lime-accent/20 px-3 py-1 text-xs font-medium text-white mb-6 relative">
+                <Sparkles className="w-3 h-3" />Free 7-day trial
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4 relative">
+                Ready to give your business<br className="hidden md:block" /> an AI-powered brain?
+              </h2>
+              <p className="text-lg text-warm-400 mb-10 max-w-md mx-auto relative">
+                Join operators who run smarter with Fork. Start your free trial today.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center relative">
+                <Link href="https://app.forkhr.com/register" target="_blank">
+                  <Button size="lg" className="text-base px-8 h-12 bg-white text-warm-900 hover:bg-warm-100">
+                    Start free trial
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+                <Link href="/pricing">
+                  <Button variant="outline" size="lg" className="text-base px-8 h-12 border-forest-600 text-warm-300 bg-forest-800 hover:bg-forest-700 hover:text-white">
+                    View pricing
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* How it works — horizontal stepper with connecting line */}
-      <section className="bg-slate-50/60">
+      <section className="bg-warm-100/60">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mx-auto mb-5">How it works</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-warm-900">
               Up and running in under an hour
             </h2>
           </div>
@@ -438,89 +517,10 @@ export default function Home() {
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white border-2 border-primary/20 shadow-sm relative z-10 mb-6">
                     <span className="text-xl font-bold text-primary">{s.step}</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-slate-900 mb-2">{s.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed max-w-[280px] mx-auto">{s.description}</p>
+                  <h3 className="text-lg font-semibold text-warm-900 mb-2">{s.title}</h3>
+                  <p className="text-sm text-warm-600 leading-relaxed max-w-[280px] mx-auto">{s.description}</p>
                 </div>
               ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Metrics — asymmetric hero stat layout */}
-      <section className="bg-slate-900 relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/15 rounded-full blur-[120px]" />
-
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28 relative">
-          <div className="grid md:grid-cols-[1.2fr_1fr] gap-12 md:gap-16 items-center">
-            {/* Left — hero stat */}
-            <div>
-              <p className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-3.5 py-1.5 text-xs font-medium text-white/70 mb-6">
-                By the numbers
-              </p>
-              <div className="text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight leading-none mb-4">
-                10<span className="text-primary">hrs</span>
-              </div>
-              <p className="text-xl text-slate-400 leading-relaxed max-w-md">
-                Saved per manager on scheduling and admin, every single week.
-              </p>
-              <p className="text-xs text-slate-600 mt-6">
-                Based on average results reported by teams using Fork for 90+ days.
-              </p>
-            </div>
-
-            {/* Right — supporting stats stacked */}
-            <div className="space-y-4">
-              {[
-                { metric: '90%', label: 'Faster employee onboarding with digital forms and checklists', icon: <FileText className="w-5 h-5" /> },
-                { metric: '$4,800', label: 'Average annual savings per location on operational costs', icon: <Shield className="w-5 h-5" /> },
-                { metric: '70%', label: 'Fewer repetitive questions with AI-powered answers', icon: <BotMessageSquare className="w-5 h-5" /> },
-              ].map((m) => (
-                <div key={m.label} className="flex items-center gap-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5 hover:border-primary/30 hover:bg-white/8 transition-all group">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/15 text-primary shrink-0 group-hover:bg-primary/25 transition-colors">
-                    {m.icon}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm text-slate-400 leading-relaxed">{m.label}</p>
-                  </div>
-                  <div className="text-2xl font-bold text-white shrink-0">{m.metric}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA — gradient-border card */}
-      <section className="bg-slate-900">
-        <div className="max-w-3xl mx-auto px-6 py-20 md:py-28">
-          <div className="relative rounded-3xl p-px bg-linear-to-br from-primary/60 via-white/10 to-primary/30">
-            <div className="rounded-[calc(1.5rem-1px)] bg-slate-900 px-8 py-14 md:px-14 md:py-20 text-center relative overflow-hidden">
-              {/* Decorative glow */}
-              <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-primary/20 rounded-full blur-[100px] pointer-events-none" />
-
-              <p className="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-primary/20 px-3 py-1 text-xs font-medium text-white mb-6 relative">
-                <Sparkles className="w-3 h-3" />Free 7-day trial
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4 relative">
-                Ready to give your business<br className="hidden md:block" /> an AI-powered brain?
-              </h2>
-              <p className="text-lg text-slate-400 mb-10 max-w-md mx-auto relative">
-                Join operators who run smarter with Fork. Start your free trial today.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center relative">
-                <Link href="https://app.forkhr.com/register" target="_blank">
-                  <Button size="lg" className="text-base px-8 h-12 bg-white text-slate-900 hover:bg-slate-100">
-                    Start free trial
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
-                <Link href="/pricing">
-                  <Button variant="outline" size="lg" className="text-base px-8 h-12 border-slate-700 text-slate-300 bg-slate-800 hover:bg-slate-900 hover:text-white">
-                    View pricing
-                  </Button>
-                </Link>
-              </div>
             </div>
           </div>
         </div>

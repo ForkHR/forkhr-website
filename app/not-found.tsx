@@ -6,8 +6,8 @@ export default function NotFound() {
   return (
     <main className="max-w-5xl mx-auto px-4 md:px-6 py-32 text-center">
       <p className="text-7xl font-bold text-primary mb-4">404</p>
-      <h1 className="text-2xl font-semibold text-slate-900 mb-3">Page not found</h1>
-      <p className="text-slate-500 mb-8 max-w-md mx-auto">
+      <h1 className="text-2xl font-semibold text-warm-900 mb-3">Page not found</h1>
+      <p className="text-warm-500 mb-8 max-w-md mx-auto">
         The page you&apos;re looking for doesn&apos;t exist or has been moved.
       </p>
       <Link href="/">

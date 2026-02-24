@@ -144,7 +144,7 @@ export default function PricingPage() {
       {/* Hero */}
       <section className="relative pt-[80px]"
         style={{
-          backgroundImage: "radial-gradient(circle,#dee3e8 1px,transparent 0)",
+          backgroundImage: "radial-gradient(circle,#DDD8CA 1px,transparent 0)",
           backgroundSize: "20px 20px",
         }}
       >
@@ -152,13 +152,13 @@ export default function PricingPage() {
           variant="rounded"
         />
         <div className="max-w-5xl mx-auto px-6 pt-12 pb-0 md:pt-20 md:text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-slate-900">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-warm-900">
             Simple pricing<span className="text-primary">.</span>
           </h1>
-          <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-4 text-lg text-warm-600 max-w-2xl mx-auto leading-relaxed">
             No per-user fees, no hidden costs. Pick the plan that matches how you manage your team today.
           </p>
-          <p className="mt-2 text-sm text-slate-400">
+          <p className="mt-2 text-sm text-warm-400">
             All plans include a free 7-day trial · Cancel anytime
           </p>
         </div>
@@ -173,11 +173,11 @@ export default function PricingPage() {
                   className={`rounded-2xl p-6 flex flex-col border ${
                     tier.highlighted
                       ? 'border-primary border-3 shadow-md ring-1 ring-primary/10'
-                      : 'border-slate-200'
+                      : 'border-warm-200'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-semibold text-slate-900">{tier.name}</h3>
+                    <h3 className="text-xl font-semibold text-warm-900">{tier.name}</h3>
                     {tier.highlighted && (
                       <span className="bg-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full">
                         Most popular
@@ -186,11 +186,11 @@ export default function PricingPage() {
                   </div>
 
                   <div className="flex items-end gap-1 mb-2">
-                    <span className="text-5xl font-bold text-slate-900">${tier.price}</span>
-                    <span className="text-sm text-slate-500 mb-1.5">/mo per location</span>
+                    <span className="text-5xl font-bold text-warm-900">${tier.price}</span>
+                    <span className="text-sm text-warm-500 mb-1.5">/mo per location</span>
                   </div>
 
-                  <p className="text-sm text-slate-600 mb-6">{tier.description}</p>
+                  <p className="text-sm text-warm-600 mb-6">{tier.description}</p>
 
                   <Link href="https://app.forkhr.com/register" target="_blank" className="mb-6">
                     <Button
@@ -202,14 +202,14 @@ export default function PricingPage() {
                     </Button>
                   </Link>
 
-                  <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
+                  <div className="text-xs font-semibold text-warm-500 uppercase tracking-wider mb-3">
                     What&apos;s included
                   </div>
                   <ul className="space-y-2.5 flex-1">
                     {tier.features.map((f) => (
                       <li key={f} className="flex items-start gap-2.5">
                         <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                        <span className="text-sm text-slate-700">{f}</span>
+                        <span className="text-sm text-warm-700">{f}</span>
                       </li>
                     ))}
                   </ul>
@@ -221,9 +221,9 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-slate-50/60">
+      <section className="bg-warm-100/60">
         <div className="max-w-3xl mx-auto px-6 py-20 md:py-28">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-warm-900 mb-10">
             Frequently asked questions
           </h2>
           <Accordion type="single" collapsible className="w-full">
@@ -232,7 +232,7 @@ export default function PricingPage() {
                 <AccordionTrigger className="text-left text-base font-medium">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-slate-600">
+                <AccordionContent className="text-warm-600">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>
@@ -242,16 +242,16 @@ export default function PricingPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-slate-900">
+      <section className="bg-plum">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24 text-center">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
             Try Fork free for 7 days
           </h2>
-          <p className="text-lg text-slate-400 mb-8 max-w-xl mx-auto">
+          <p className="text-lg text-warm-400 mb-8 max-w-xl mx-auto">
             No credit card required. Set up your first location in minutes.
           </p>
           <Link href="https://app.forkhr.com/register" target="_blank">
-            <Button size="lg" className="text-base px-8 h-12 bg-white text-slate-900 hover:bg-slate-100">
+            <Button size="lg" className="text-base px-8 h-12 bg-white text-warm-900 hover:bg-warm-100">
               Start free trial
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>

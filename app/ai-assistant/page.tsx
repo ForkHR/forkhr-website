@@ -171,26 +171,26 @@ export default function AIAssistantPage() {
       {/* Hero */}
       <section className="relative pt-[80px]"
         style={{
-          backgroundImage: "radial-gradient(circle,#dee3e8 1px,transparent 0)",
+          backgroundImage: "radial-gradient(circle,#DDD8CA 1px,transparent 0)",
           backgroundSize: "20px 20px",
         }}
       >
         <BlobBackground variant="sparkle"/>
         <div className="max-w-5xl mx-auto px-6 pt-12 pb-16 md:pt-28 md:pb-20">
           <nav className="inline-flex items-center gap-1.5 text-sm mb-5">
-            <Link href="/products" className="text-slate-400 hover:text-primary transition-colors">Products</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
+            <Link href="/products" className="text-warm-400 hover:text-primary transition-colors">Products</Link>
+            <ChevronRight className="w-3.5 h-3.5 text-warm-300" />
             <span className="inline-flex items-center gap-1.5 font-semibold text-primary bg-primary/6 rounded-full px-3 py-0.5">
               <BotMessageSquare className="w-3.5 h-3.5" />
               AI Assistant
             </span>
           </nav>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-slate-900 max-w-3xl">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-warm-900 max-w-3xl">
             Your Company&apos;s Knowledge<span className="text-primary">.</span> Instantly Accessible<span className="text-primary">.</span>
           </h1>
 
-          <p className="mt-6 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl">
+          <p className="mt-6 text-lg md:text-xl text-warm-600 leading-relaxed max-w-2xl">
             An AI assistant trained on your company&apos;s internal content — delivering accurate, policy-aware answers to managers and employees in seconds. No generic responses. No hallucinations. Just your knowledge, on demand.
           </p>
 
@@ -208,7 +208,7 @@ export default function AIAssistantPage() {
             </Link>
           </div>
 
-          <div className="mt-6 inline-flex items-center gap-2 text-sm text-slate-400">
+          <div className="mt-6 inline-flex items-center gap-2 text-sm text-warm-400">
             <Crown className="w-4 h-4 text-primary" />
             Available on the Premium plan
           </div>
@@ -216,7 +216,7 @@ export default function AIAssistantPage() {
       </section>
 
       {/* Problem section — dark with numbered pain points */}
-      <section className="bg-slate-900 relative overflow-hidden">
+      <section className="bg-charcoal relative overflow-hidden">
         <div className="absolute -top-20 -right-40 w-[500px] h-[500px] bg-red-500/5 rounded-full blur-[100px]" />
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-28 relative">
           <div className="grid md:grid-cols-[1fr_1.4fr] gap-12 md:gap-16 items-start">
@@ -227,7 +227,7 @@ export default function AIAssistantPage() {
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
                 Your team has questions. The answers exist — they&apos;re just hard to find.
               </h2>
-              <p className="mt-4 text-lg text-slate-400 leading-relaxed">
+              <p className="mt-4 text-lg text-warm-400 leading-relaxed">
                 Every company has policies, procedures, and training materials. The problem is that employees can&apos;t find what they need — and managers spend hours repeating the same answers.
               </p>
             </div>
@@ -237,7 +237,7 @@ export default function AIAssistantPage() {
                   <span className="text-2xl font-bold text-red-500/30 shrink-0 w-8 tabular-nums">{String(i + 1).padStart(2, '0')}</span>
                   <div>
                     <h3 className="text-base font-semibold text-white mb-1">{p.problem}</h3>
-                    <p className="text-sm text-slate-500 leading-relaxed">{p.detail}</p>
+                    <p className="text-sm text-warm-500 leading-relaxed">{p.detail}</p>
                   </div>
                 </div>
               ))}
@@ -251,10 +251,10 @@ export default function AIAssistantPage() {
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mb-5">How it works</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-warm-900">
               Three steps to a smarter support experience
             </h2>
-            <p className="mt-4 text-lg text-slate-600 leading-relaxed">
+            <p className="mt-4 text-lg text-warm-600 leading-relaxed">
               No configuration. No prompt engineering. Just publish your content and the assistant handles the rest.
             </p>
           </div>
@@ -279,11 +279,11 @@ export default function AIAssistantPage() {
                       <div className="w-px h-8 bg-primary/20" />
                     </div>
                   )}
-                  <h3 className="text-lg font-semibold text-slate-900 mb-2">{s.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed mb-4">{s.description}</p>
+                  <h3 className="text-lg font-semibold text-warm-900 mb-2">{s.title}</h3>
+                  <p className="text-sm text-warm-600 leading-relaxed mb-4">{s.description}</p>
                   <div className="flex flex-wrap justify-center gap-2">
                     {s.sources.map((source) => (
-                      <span key={source} className="inline-flex items-center gap-1.5 text-xs bg-slate-100 text-slate-500 rounded-full px-2.5 py-1">
+                      <span key={source} className="inline-flex items-center gap-1.5 text-xs bg-warm-100 text-warm-500 rounded-full px-2.5 py-1">
                         <CheckCircle2 className="w-3 h-3 text-primary shrink-0" />
                         {source}
                       </span>
@@ -297,14 +297,14 @@ export default function AIAssistantPage() {
       </section>
 
       {/* Feature highlights — bento grid with varying sizes */}
-      <section className="bg-slate-50/60">
+      <section className="bg-warm-100/60">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mb-5">Features</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-warm-900">
               Built for accuracy, not novelty
             </h2>
-            <p className="mt-4 text-lg text-slate-600 leading-relaxed">
+            <p className="mt-4 text-lg text-warm-600 leading-relaxed">
               Every design decision behind the AI assistant is about delivering correct, company-specific answers — not impressing with generic AI tricks.
             </p>
           </div>
@@ -312,23 +312,23 @@ export default function AIAssistantPage() {
           {/* Bento grid — 2 large + 4 small */}
           <div className="grid md:grid-cols-2 gap-5 mb-5">
             {features.slice(0, 2).map((f) => (
-              <div key={f.title} className="rounded-2xl border border-slate-200/80 bg-white p-8 md:p-10">
+              <div key={f.title} className="rounded-2xl border border-warm-200/80 bg-white p-8 md:p-10">
                 <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/8 mb-5">
                   {f.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-3">{f.title}</h3>
-                <p className="text-base text-slate-600 leading-relaxed">{f.desc}</p>
+                <h3 className="text-xl font-semibold text-warm-900 mb-3">{f.title}</h3>
+                <p className="text-base text-warm-600 leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {features.slice(2).map((f) => (
-              <div key={f.title} className="rounded-2xl border border-slate-200/80 bg-white p-6">
+              <div key={f.title} className="rounded-2xl border border-warm-200/80 bg-white p-6">
                 <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/8 mb-4">
                   {f.icon}
                 </div>
-                <h3 className="text-sm font-semibold text-slate-900 mb-1.5">{f.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{f.desc}</p>
+                <h3 className="text-sm font-semibold text-warm-900 mb-1.5">{f.title}</h3>
+                <p className="text-sm text-warm-500 leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
@@ -340,7 +340,7 @@ export default function AIAssistantPage() {
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mb-5">Content sources</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-warm-900">
               Your assistant doesn&apos;t guess — it answers from your approved content
             </h2>
           </div>
@@ -350,12 +350,12 @@ export default function AIAssistantPage() {
             {/* Source nodes */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
               {contentSources.map((source) => (
-                <div key={source.title} className="relative text-center rounded-2xl border border-slate-200/80 bg-white p-5">
+                <div key={source.title} className="relative text-center rounded-2xl border border-warm-200/80 bg-white p-5">
                   <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-primary/8 text-primary mx-auto mb-3">
                     {source.icon}
                   </div>
-                  <h3 className="text-sm font-semibold text-slate-900 mb-1">{source.title}</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed">{source.desc}</p>
+                  <h3 className="text-sm font-semibold text-warm-900 mb-1">{source.title}</h3>
+                  <p className="text-xs text-warm-500 leading-relaxed">{source.desc}</p>
                 </div>
               ))}
             </div>
@@ -381,8 +381,8 @@ export default function AIAssistantPage() {
                   <Sparkles className="w-6 h-6" />
                 </div>
                 <div className="text-left">
-                  <div className="text-base font-semibold text-slate-900">Fork AI Assistant</div>
-                  <div className="text-sm text-slate-500">Retrieves, ranks, and responds</div>
+                  <div className="text-base font-semibold text-warm-900">Fork AI Assistant</div>
+                  <div className="text-sm text-warm-500">Retrieves, ranks, and responds</div>
                 </div>
               </div>
             </div>
@@ -394,8 +394,8 @@ export default function AIAssistantPage() {
 
             {/* Output */}
             <div className="flex justify-center">
-              <div className="inline-flex items-center gap-3 rounded-full bg-slate-900 text-white px-6 py-3">
-                <MessageSquare className="w-4 h-4 text-primary" />
+              <div className="inline-flex items-center gap-3 rounded-full bg-charcoal text-white px-6 py-3">
+                <MessageSquare className="w-4 h-4 text-lavender" />
                 <span className="text-sm font-medium">Accurate, policy-specific answers in seconds</span>
               </div>
             </div>
@@ -404,41 +404,41 @@ export default function AIAssistantPage() {
       </section>
 
       {/* Use cases — side-by-side comparison table */}
-      <section className="bg-slate-50/60">
+      <section className="bg-warm-100/60">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mb-5">Use cases</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-warm-900">
               Built for both sides of the org chart
             </h2>
           </div>
 
-          <div className="max-w-4xl mx-auto rounded-2xl border border-slate-200/80 bg-white overflow-hidden">
+          <div className="max-w-4xl mx-auto rounded-2xl border border-warm-200/80 bg-white overflow-hidden">
             {/* Table header */}
-            <div className="grid grid-cols-2 border-b border-slate-100">
-              <div className="flex items-center gap-3 px-6 md:px-8 py-5 border-r border-slate-100">
+            <div className="grid grid-cols-2 border-b border-warm-100">
+              <div className="flex items-center gap-3 px-6 md:px-8 py-5 border-r border-warm-100">
                 <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/8">
                   <Shield className="w-4 h-4 text-primary" />
                 </div>
-                <span className="text-base font-semibold text-slate-900">For managers</span>
+                <span className="text-base font-semibold text-warm-900">For managers</span>
               </div>
               <div className="flex items-center gap-3 px-6 md:px-8 py-5">
                 <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/8">
                   <Users className="w-4 h-4 text-primary" />
                 </div>
-                <span className="text-base font-semibold text-slate-900">For employees</span>
+                <span className="text-base font-semibold text-warm-900">For employees</span>
               </div>
             </div>
             {/* Table rows */}
             {managerUseCases.map((uc, i) => (
-              <div key={i} className="grid grid-cols-2 border-b border-slate-50 last:border-0">
-                <div className="flex items-start gap-3 px-6 md:px-8 py-4 border-r border-slate-50">
+              <div key={i} className="grid grid-cols-2 border-b border-warm-50 last:border-0">
+                <div className="flex items-start gap-3 px-6 md:px-8 py-4 border-r border-warm-50">
                   <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                  <span className="text-sm text-slate-600">{uc}</span>
+                  <span className="text-sm text-warm-600">{uc}</span>
                 </div>
                 <div className="flex items-start gap-3 px-6 md:px-8 py-4">
                   <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                  <span className="text-sm text-slate-600">{employeeUseCases[i] || ''}</span>
+                  <span className="text-sm text-warm-600">{employeeUseCases[i] || ''}</span>
                 </div>
               </div>
             ))}
@@ -447,15 +447,15 @@ export default function AIAssistantPage() {
       </section>
 
       {/* Platform integration — horizontal inline strip */}
-      <section className="border-y border-slate-200/80">
+      <section className="border-y border-warm-200/80">
         <div className="max-w-5xl mx-auto px-6 py-14 md:py-16">
           <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12">
             <div className="shrink-0 md:max-w-[280px]">
-              <h2 className="text-2xl font-bold tracking-tight text-slate-900">
+              <h2 className="text-2xl font-bold tracking-tight text-warm-900">
                 Embedded where your team already works
               </h2>
             </div>
-            <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-6 md:border-l md:border-slate-200/80 md:pl-12">
+            <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-6 md:border-l md:border-warm-200/80 md:pl-12">
               {[
                 { icon: <LayoutDashboard className="w-4 h-4 text-primary" />, title: 'Web dashboard', desc: 'Inside your Fork dashboard' },
                 { icon: <Smartphone className="w-4 h-4 text-primary" />, title: 'Mobile app', desc: 'iOS & Android' },
@@ -467,8 +467,8 @@ export default function AIAssistantPage() {
                     {item.icon}
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-slate-900">{item.title}</h3>
-                    <p className="text-xs text-slate-500">{item.desc}</p>
+                    <h3 className="text-sm font-semibold text-warm-900">{item.title}</h3>
+                    <p className="text-xs text-warm-500">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -478,27 +478,27 @@ export default function AIAssistantPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-slate-900">
+      <section className="bg-plum">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-28 text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-4 py-1.5 text-sm font-medium text-white/70 mb-6">
-            <Crown className="w-4 h-4 text-primary" />
+            <Crown className="w-4 h-4 text-lavender" />
             Premium plan is required
           </div>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
             Turn your company knowledge into a living assistant
           </h2>
-          <p className="text-lg text-slate-400 mb-10 max-w-xl mx-auto">
+          <p className="text-lg text-warm-400 mb-10 max-w-xl mx-auto">
             Stop answering the same questions. Let your AI assistant handle it — trained on the content you already have.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="https://app.forkhr.com/register" target="_blank">
-              <Button size="lg" className="text-base px-8 h-12 bg-white text-slate-900 hover:bg-slate-100">
+              <Button size="lg" className="text-base px-8 h-12 bg-white text-warm-900 hover:bg-warm-100">
                 Start free trial
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
             <Link href="/pricing">
-              <Button variant="outline" size="lg" className="text-base px-8 h-12 border-slate-700 text-slate-300 bg-slate-800 hover:bg-slate-900 hover:text-white">
+              <Button variant="outline" size="lg" className="text-base px-8 h-12 border-plum-600 text-warm-300 bg-plum-800 hover:bg-plum hover:text-white">
                 View pricing
               </Button>
             </Link>

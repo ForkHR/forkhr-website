@@ -219,16 +219,16 @@ export default function FAQPage() {
       {/* Hero */}
       <section className="relative pt-[80px]"
         style={{
-          backgroundImage: "radial-gradient(circle,#dee3e8 1px,transparent 0)",
+          backgroundImage: "radial-gradient(circle,#DDD8CA 1px,transparent 0)",
           backgroundSize: "20px 20px",
         }}
       >
         <BlobBackground variant="question" />
         <div className="max-w-5xl mx-auto px-6 pt-12 pb-0 md:py-20 md:text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-slate-900">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-warm-900">
             FAQs<span className="text-primary">.</span>
           </h1>
-          <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-4 text-lg text-warm-600 max-w-2xl mx-auto leading-relaxed">
             Everything you need to know about Fork.<br/>Can&apos;t find an answer?{' '}
             <a href="mailto:support@forkhr.com" className="text-primary hover:underline font-semibold">
               Reach out to our team
@@ -243,7 +243,7 @@ export default function FAQPage() {
           <div className="space-y-12">
             {faqCategories.map((category, catIdx) => (
               <div key={catIdx}>
-                <h2 className="text-xl md:text-2xl font-bold tracking-tight text-slate-900 mb-4">
+                <h2 className="text-xl md:text-2xl font-bold tracking-tight text-warm-900 mb-4">
                   {category.title}
                 </h2>
                 <Accordion type="single" collapsible className="w-full">
@@ -252,7 +252,7 @@ export default function FAQPage() {
                       <AccordionTrigger className="text-left text-base font-medium">
                         {faq.q}
                       </AccordionTrigger>
-                      <AccordionContent className="text-slate-600">
+                      <AccordionContent className="text-warm-600">
                         {faq.a}
                       </AccordionContent>
                     </AccordionItem>
@@ -265,23 +265,23 @@ export default function FAQPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-slate-900">
+      <section className="bg-charcoal">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24 text-center">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
             Still have questions?
           </h2>
-          <p className="text-lg text-slate-400 mb-8 max-w-xl mx-auto">
+          <p className="text-lg text-warm-400 mb-8 max-w-xl mx-auto">
             Start your free 7-day trial or reach out to our team — we&apos;re happy to help.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="https://app.forkhr.com/register" target="_blank">
-              <Button size="lg" className="text-base px-8 h-12 bg-white text-slate-900 hover:bg-slate-100">
+              <Button size="lg" className="text-base px-8 h-12 bg-white text-warm-900 hover:bg-warm-100">
                 Start free trial
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
             <a href="mailto:support@forkhr.com">
-              <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-600 text-slate-300 bg-transparent hover:bg-slate-800 hover:text-white">
+              <Button size="lg" variant="outline" className="text-base px-8 h-12 border-charcoal-600 text-warm-300 bg-transparent hover:bg-charcoal-800 hover:text-white">
                 Contact support
               </Button>
             </a>
