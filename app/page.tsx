@@ -188,7 +188,7 @@ export default function Home() {
                 </Link>
                 <Link href="/ai-assistant">
                   <Button variant="outline" size="lg" className="text-sm sm:text-base px-5 sm:px-8 h-10 sm:h-12">
-                    Lear more
+                    Learn more
                   </Button>
                 </Link>
               </div>
