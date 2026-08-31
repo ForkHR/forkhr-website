@@ -23,11 +23,12 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicy() {
     return (
-        <main className="max-w-5xl mx-auto pt-12 mt-[80px] w-full px-4 md:px-6 py-10 md:py-20 min-h-screen fade-in-up wrap-anywhere overflow-x-hidden">
-            <div className="text-5xl md:text-7xl font-semibold ">
+        <main className="pt-16">
+            <div className="max-w-5xl mx-auto w-full px-4 md:px-6 pt-12 pb-10 md:pt-20 md:pb-20 min-h-screen wrap-anywhere overflow-x-hidden">
+            <div className="text-5xl md:text-6xl font-semibold tracking-tight text-warm-950">
                 Privacy Policy<span className="text-primary">.</span>
             </div>
-            <div className="text-xl mt-10">
+            <div className="text-lg text-warm-600 mt-6">
                 Effective as of Jun 20, 2025
             </div>
             <div className="py-10">
@@ -256,6 +257,7 @@ export default function PrivacyPolicy() {
                         <strong>support@forkhr.com</strong>
                     </a>
                 </div>
+            </div>
             </div>
         </main>
     )

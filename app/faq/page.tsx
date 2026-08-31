@@ -7,8 +7,8 @@ import {
 import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-import type { Metadata } from 'next'
 import BlobBackground from '@/components/visual/BlobBackground'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'FAQ — Fork | Frequently Asked Questions',
@@ -210,49 +210,47 @@ export default function FAQPage() {
   }
 
   return (
-    <main>
+    <main className="pt-16">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
       />
 
       {/* Hero */}
-      <section className="relative pt-[80px]"
-        style={{
-          backgroundImage: "radial-gradient(circle,#DDD8CA 1px,transparent 0)",
-          backgroundSize: "20px 20px",
-        }}
-      >
+      <section className="relative overflow-hidden border-b border-warm-100">
         <BlobBackground variant="question" />
-        <div className="max-w-5xl mx-auto px-6 pt-12 pb-0 md:py-20 md:text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-warm-900">
-            FAQs<span className="text-primary">.</span>
-          </h1>
-          <p className="mt-4 text-lg text-warm-600 max-w-2xl mx-auto leading-relaxed">
-            Everything you need to know about Fork.<br/>Can&apos;t find an answer?{' '}
-            <a href="mailto:support@forkhr.com" className="text-primary hover:underline font-semibold">
-              Reach out to our team
-            </a>.
-          </p>
+        <div className="relative max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-32 md:pb-24">
+          <div className="max-w-2xl">
+            <span className="eyebrow mb-4">Support</span>
+            <h1 className="text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-warm-950">
+              FAQs.
+            </h1>
+            <p className="mt-4 text-lg text-warm-600 leading-relaxed">
+              Everything you need to know about Fork.<br/>Can&apos;t find an answer?{' '}
+              <a href="mailto:support@forkhr.com" className="font-medium text-forest-600 hover:text-forest-700 transition-colors">
+                Reach out to our team
+              </a>.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* FAQ Categories */}
-      <section>
-        <div className="max-w-3xl mx-auto px-6 py-12 md:py-20">
-          <div className="space-y-12">
+      <section className="border-b border-warm-100">
+        <div className="max-w-3xl mx-auto px-6 py-20 md:py-28">
+          <div className="space-y-14">
             {faqCategories.map((category, catIdx) => (
               <div key={catIdx}>
-                <h2 className="text-xl md:text-2xl font-bold tracking-tight text-warm-900 mb-4">
+                <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-warm-950 mb-4">
                   {category.title}
                 </h2>
-                <Accordion type="single" collapsible className="w-full">
+                <Accordion type="single" collapsible className="w-full border-t border-warm-100">
                   {category.faqs.map((faq, i) => (
-                    <AccordionItem key={i} value={`${catIdx}-${i}`}>
-                      <AccordionTrigger className="text-left text-base font-medium">
+                    <AccordionItem key={i} value={`${catIdx}-${i}`} className="border-warm-100 last:border-b">
+                      <AccordionTrigger className="text-left text-base font-medium text-warm-950 hover:no-underline hover:text-warm-600 py-5">
                         {faq.q}
                       </AccordionTrigger>
-                      <AccordionContent className="text-warm-600">
+                      <AccordionContent className="text-[15px] text-warm-600 leading-relaxed">
                         {faq.a}
                       </AccordionContent>
                     </AccordionItem>
@@ -265,26 +263,28 @@ export default function FAQPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-charcoal">
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-24 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
-            Still have questions?
-          </h2>
-          <p className="text-lg text-warm-400 mb-8 max-w-xl mx-auto">
-            Start your free 7-day trial or reach out to our team — we&apos;re happy to help.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="https://app.forkhr.com/register" target="_blank">
-              <Button size="lg" className="text-base px-8 h-12 bg-white text-warm-900 hover:bg-warm-100">
-                Start free trial
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-            <a href="mailto:support@forkhr.com">
-              <Button size="lg" variant="outline" className="text-base px-8 h-12 border-charcoal-600 text-warm-300 bg-transparent hover:bg-charcoal-800 hover:text-white">
-                Contact support
-              </Button>
-            </a>
+      <section className="bg-warm-950">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-5">
+              Still have questions?
+            </h2>
+            <p className="text-lg text-warm-400 mb-10 max-w-lg">
+              Start your free 7-day trial or reach out to our team — we&apos;re happy to help.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="https://app.forkhr.com/register" target="_blank">
+                <Button size="lg" className="text-base px-7 h-12 bg-white text-warm-950 hover:bg-warm-100">
+                  Start free trial
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+              <a href="mailto:support@forkhr.com">
+                <Button size="lg" variant="outline" className="text-base px-7 h-12 border-warm-700 bg-transparent text-warm-200 hover:bg-warm-900 hover:text-white">
+                  Contact support
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </section>

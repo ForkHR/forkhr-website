@@ -34,7 +34,7 @@ const companyLinks = [
 
 const Footer = () => {
   return (
-    <footer className="border-t border-warm-200 bg-white/60 backdrop-blur-sm">
+    <footer className="border-t border-warm-200 bg-white">
       <div className="max-w-5xl mx-auto px-4 md:px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-8">
           {/* Brand column */}
@@ -65,36 +65,36 @@ const Footer = () => {
             <div className="mt-2">
               <iframe src="https://status.forkhr.com/badge?theme=light" width="250" height="30" scrolling="no"></iframe>
             </div>
-            {/* App store badges */}
-            <div className="flex items-center gap-3 mt-2">
+            {/* App store links */}
+            <div className="flex items-center gap-2 mt-2">
               <a
                 href="https://apps.apple.com/us/app/fork-hr-scheduling/id6754656709"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="opacity-80 hover:opacity-100 transition-opacity"
+                className="inline-flex items-center rounded-lg border border-warm-200 px-3 py-1.5 text-[13px] font-medium text-warm-600 hover:text-warm-950 hover:border-warm-300 transition-colors"
               >
-                <img src="/assets/footer-appstore.png" alt="Download on the App Store" className="h-9" />
+                App Store
               </a>
               <a
                 href="https://play.google.com/store/apps/details?id=com.forkhr.fork"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="opacity-80 hover:opacity-100 transition-opacity"
+                className="inline-flex items-center rounded-lg border border-warm-200 px-3 py-1.5 text-[13px] font-medium text-warm-600 hover:text-warm-950 hover:border-warm-300 transition-colors"
               >
-                <img src="/assets/footer-googleplay.png" alt="Get it on Google Play" className="h-9" />
+                Google Play
               </a>
             </div>
           </div>
 
           {/* Product links */}
           <div>
-            <h4 className="text-sm font-semibold text-warm-900 mb-4">Product</h4>
+            <h4 className="text-[13px] font-semibold text-warm-950 mb-4">Product</h4>
             <ul className="space-y-3">
               {productLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-warm-500 hover:text-primary transition-colors"
+                    className="text-sm text-warm-500 hover:text-warm-950 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -105,13 +105,13 @@ const Footer = () => {
 
           {/* Solutions links */}
           <div>
-            <h4 className="text-sm font-semibold text-warm-900 mb-4">Solutions</h4>
+            <h4 className="text-[13px] font-semibold text-warm-950 mb-4">Solutions</h4>
             <ul className="space-y-3">
               {solutionLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-warm-500 hover:text-primary transition-colors"
+                    className="text-sm text-warm-500 hover:text-warm-950 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -122,13 +122,13 @@ const Footer = () => {
 
           {/* Company links */}
           <div>
-            <h4 className="text-sm font-semibold text-warm-900 mb-4">Company</h4>
+            <h4 className="text-[13px] font-semibold text-warm-950 mb-4">Company</h4>
             <ul className="space-y-3">
               {companyLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-warm-500 hover:text-primary transition-colors"
+                    className="text-sm text-warm-500 hover:text-warm-950 transition-colors"
                   >
                     {link.label}
                   </Link>

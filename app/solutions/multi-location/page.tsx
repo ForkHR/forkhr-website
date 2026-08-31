@@ -1,19 +1,17 @@
 import { Button } from '@/components/ui/button'
-import BlobBackground from '@/components/visual/BlobBackground'
 import {
   ArrowRight,
   ChevronRight,
-  MapPin,
-  Store,
   BarChart3,
   Users,
   Clock,
   Shield,
   Eye,
   Globe2,
-  Sparkles,
+  CheckCircle2,
 } from 'lucide-react'
 import Link from 'next/link'
+import BlobBackground from '@/components/visual/BlobBackground'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -48,32 +46,32 @@ const stats = [
 
 const benefits = [
   {
-    icon: <Globe2 className="w-5 h-5 text-primary" />,
+    icon: <Globe2 className="w-5 h-5" />,
     title: 'One dashboard for all locations',
     desc: 'View and manage every location from a single login. Switch between sites instantly, compare performance, and push updates across your entire organization.',
   },
   {
-    icon: <Clock className="w-5 h-5 text-primary" />,
+    icon: <Clock className="w-5 h-5" />,
     title: 'Unified scheduling',
     desc: 'Build and publish schedules for all locations. See labor costs side-by-side, move employees between sites if needed, and prevent scheduling conflicts across units.',
   },
   {
-    icon: <Shield className="w-5 h-5 text-primary" />,
+    icon: <Shield className="w-5 h-5" />,
     title: 'Consistent compliance across sites',
     desc: 'Apply company-wide policies to every location automatically. Track which sites have completed required forms, training, and certifications — flag gaps before audits.',
   },
   {
-    icon: <BarChart3 className="w-5 h-5 text-primary" />,
+    icon: <BarChart3 className="w-5 h-5" />,
     title: 'Location comparison reports',
     desc: 'Compare labor costs, overtime, waste, checklist completion, and more across every location. Spot underperforming sites and share best practices from top performers.',
   },
   {
-    icon: <Users className="w-5 h-5 text-primary" />,
+    icon: <Users className="w-5 h-5" />,
     title: 'Role-based access controls',
     desc: 'Give GMs access to their location. Give district managers access to their region. Give owners access to everything. Fine-grained permissions by role and location.',
   },
   {
-    icon: <Eye className="w-5 h-5 text-primary" />,
+    icon: <Eye className="w-5 h-5" />,
     title: 'Real-time activity feed',
     desc: 'See what is happening across your network in real time — new hires, completed checklists, submitted forms, clock-ins, maintenance requests, and more.',
   },
@@ -89,39 +87,31 @@ const challenges = [
 
 export default function MultiLocationPage() {
   return (
-    <main>
+    <main className="pt-16">
       {/* Hero */}
-      <section className="relative pt-20"
-        style={{
-          backgroundImage: "radial-gradient(circle,#DDD8CA 1px,transparent 0)",
-          backgroundSize: "20px 20px",
-        }}
-      >
+      <section className="relative overflow-hidden border-b border-warm-100">
         <BlobBackground variant="circle" />
-        <div className="max-w-5xl mx-auto px-6 pt-12 pb-16 md:pt-28 md:pb-20">
-          <nav className="inline-flex items-center gap-1.5 text-sm mb-5">
-            <Link href="/products" className="text-warm-400 hover:text-primary transition-colors">Solutions</Link>
+        <div className="relative max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-32 md:pb-24">
+          <nav className="flex items-center gap-1.5 text-sm mb-8">
+            <Link href="/products" className="text-warm-500 hover:text-warm-950 transition-colors">Solutions</Link>
             <ChevronRight className="w-3.5 h-3.5 text-warm-300" />
-            <span className="inline-flex items-center gap-1.5 font-semibold text-primary bg-primary/6 rounded-full px-3 py-0.5">
-              <MapPin className="w-3.5 h-3.5" />
-              Multi-Location
-            </span>
+            <span className="font-medium text-warm-950">Multi-Location</span>
           </nav>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-warm-900 max-w-3xl">
+          <h1 className="text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-warm-950 max-w-3xl">
             Manage every location without being at every location
           </h1>
           <p className="mt-6 text-lg md:text-xl text-warm-600 leading-relaxed max-w-2xl">
             Running 2 locations is twice the work. Running 10 shouldn&apos;t be 10×. Fork centralizes schedules, compliance, and performance data so you can oversee your entire operation from one screen.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-wrap gap-4">
             <Link href="https://app.forkhr.com/register" target="_blank">
-              <Button size="lg" className="text-base px-8 h-12">
+              <Button size="lg" className="text-base px-6 h-11">
                 Start free trial
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
             </Link>
             <Link href="/products">
-              <Button variant="outline" size="lg" className="text-base px-8 h-12">
+              <Button variant="outline" size="lg" className="text-base px-6 h-11">
                 Learn more
               </Button>
             </Link>
@@ -129,22 +119,51 @@ export default function MultiLocationPage() {
         </div>
       </section>
 
-      {/* Stats — asymmetric hero stat + row cards */}
-      <section className="bg-warm-100/60">
-        <div className="max-w-5xl mx-auto px-6 py-16 md:py-20">
-          <div className="grid md:grid-cols-[1.2fr_1fr] gap-10 md:gap-16 items-center">
+      {/* Stats */}
+      <section className="bg-warm-50 border-b border-warm-100">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
+          <div className="grid md:grid-cols-[1.1fr_1fr] gap-12 md:gap-20 items-center">
             <div>
-              <div className="text-6xl md:text-7xl font-bold text-primary tracking-tight leading-none mb-3">{stats[0].value}</div>
-              <div className="text-lg font-semibold text-warm-900 mb-1">{stats[0].label}</div>
-              <div className="text-sm text-warm-500">{stats[0].detail}</div>
+              <div className="text-6xl md:text-7xl font-semibold text-warm-950 tracking-tight leading-none mb-4">{stats[0].value}</div>
+              <p className="text-xl text-warm-600 leading-relaxed max-w-md">{stats[0].label}</p>
+              <p className="text-sm text-warm-400 mt-2">{stats[0].detail}</p>
             </div>
-            <div className="space-y-3">
+            <div className="divide-y divide-warm-200/70">
               {stats.slice(1).map((stat) => (
-                <div key={stat.label} className="flex items-center gap-5 rounded-2xl border border-warm-200/80 bg-white p-5">
-                  <div className="text-3xl font-bold text-primary shrink-0">{stat.value}</div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-sm font-semibold text-warm-900">{stat.label}</div>
-                    <div className="text-xs text-warm-500">{stat.detail}</div>
+                <div key={stat.label} className="flex items-baseline justify-between gap-6 py-5">
+                  <div>
+                    <p className="text-[15px] font-medium text-warm-950">{stat.label}</p>
+                    <p className="text-sm text-warm-500 mt-0.5">{stat.detail}</p>
+                  </div>
+                  <div className="text-3xl font-semibold text-warm-950 tracking-tight shrink-0">{stat.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="border-b border-warm-100">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 md:gap-20 items-start">
+            <div className="md:sticky md:top-28">
+              <span className="eyebrow mb-4">What you get</span>
+              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
+                Built for multi-unit operators
+              </h2>
+              <p className="mt-4 text-lg text-warm-600 leading-relaxed">
+                Whether you run 3 restaurants or 300 retail stores, Fork scales with your business and keeps every location connected.
+              </p>
+            </div>
+
+            <div className="divide-y divide-warm-200/70">
+              {benefits.map((b) => (
+                <div key={b.title} className="flex items-start gap-5 py-6 first:pt-0 last:pb-0">
+                  <div className="mt-0.5 shrink-0 text-forest-600">{b.icon}</div>
+                  <div>
+                    <h3 className="text-base font-semibold text-warm-950">{b.title}</h3>
+                    <p className="mt-1 text-[15px] text-warm-600 leading-relaxed">{b.desc}</p>
                   </div>
                 </div>
               ))}
@@ -153,63 +172,29 @@ export default function MultiLocationPage() {
         </div>
       </section>
 
-      {/* Benefits — bento grid */}
-      <section>
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
+      {/* Before & After */}
+      <section className="bg-warm-50 border-b border-warm-100">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
           <div className="max-w-2xl mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-warm-900">
-              Built for multi-unit operators
-            </h2>
-            <p className="mt-4 text-lg text-warm-600 leading-relaxed">
-              Whether you run 3 restaurants or 300 retail stores, Fork scales with your business and keeps every location connected.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-5 mb-5">
-            {benefits.slice(0, 2).map((b) => (
-              <div key={b.title} className="group rounded-2xl border border-warm-200/80 bg-white p-8 md:p-10 hover:border-primary/20 hover:shadow-sm transition-all">
-                <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/8 mb-5">{b.icon}</div>
-                <h3 className="text-xl font-semibold text-warm-900 mb-3">{b.title}</h3>
-                <p className="text-base text-warm-600 leading-relaxed">{b.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {benefits.slice(2).map((b) => (
-              <div key={b.title} className="group rounded-2xl border border-warm-200/80 bg-white p-5 hover:border-primary/20 hover:shadow-sm transition-all">
-                <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/8 mb-3">{b.icon}</div>
-                <h3 className="text-sm font-semibold text-warm-900 mb-1">{b.title}</h3>
-                <p className="text-xs text-warm-500 leading-relaxed">{b.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Before & After — dark comparison table */}
-      <section className="bg-plum relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-lavender/10 rounded-full blur-[120px]" />
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28 relative">
-          <div className="max-w-2xl mb-10">
-            <p className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-3.5 py-1.5 text-xs font-medium text-white/70 mb-4">Before & After</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
+            <span className="eyebrow mb-4">Before & After</span>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
               Before Fork vs. after Fork
             </h2>
-            <p className="mt-4 text-lg text-warm-400 leading-relaxed">
+            <p className="mt-4 text-lg text-warm-600 leading-relaxed">
               Multi-location management doesn&apos;t have to mean more chaos. Here&apos;s how operators describe the difference.
             </p>
           </div>
 
-          <div className="space-y-3 max-w-3xl">
+          <div className="divide-y divide-warm-200/70">
             {challenges.map((c) => (
-              <div key={c.before} className="grid grid-cols-1 sm:grid-cols-2 gap-px rounded-2xl overflow-hidden">
-                <div className="bg-red-950/40 border border-red-500/10 px-5 py-4 rounded-t-2xl sm:rounded-l-2xl sm:rounded-tr-none">
-                  <div className="text-[10px] font-semibold uppercase text-red-400 tracking-wider mb-1">Before</div>
-                  <div className="text-sm text-warm-300">{c.before}</div>
+              <div key={c.before} className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4 py-6 first:pt-0 last:pb-0">
+                <div>
+                  <div className="text-[11px] font-medium uppercase tracking-wider text-warm-400 mb-1.5">Before</div>
+                  <div className="text-[15px] text-warm-600 leading-relaxed">{c.before}</div>
                 </div>
-                <div className="bg-green-950/30 border border-green-500/10 px-5 py-4 rounded-b-2xl sm:rounded-r-2xl sm:rounded-bl-none">
-                  <div className="text-[10px] font-semibold uppercase text-green-400 tracking-wider mb-1">After</div>
-                  <div className="text-sm text-warm-300">{c.after}</div>
+                <div>
+                  <div className="text-[11px] font-medium uppercase tracking-wider text-forest-600 mb-1.5">After</div>
+                  <div className="text-[15px] text-warm-600 leading-relaxed">{c.after}</div>
                 </div>
               </div>
             ))}
@@ -218,50 +203,48 @@ export default function MultiLocationPage() {
       </section>
 
       {/* Industries */}
-      <section>
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-warm-900 mb-8 text-center">
-            Trusted by multi-unit teams in
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
-            {['Restaurant groups', 'Retail chains', 'Hotel networks', 'Healthcare systems', 'Fitness chains', 'Franchise networks'].map((ind) => (
-              <div key={ind} className="flex items-center gap-2 text-sm text-warm-700 font-medium bg-white rounded-lg px-4 py-3 border border-warm-200">
-                <Store className="w-4 h-4 text-primary shrink-0" />
-                {ind}
-              </div>
-            ))}
+      <section className="border-b border-warm-100">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
+          <div className="max-w-2xl mb-10">
+            <span className="eyebrow mb-4">Industries</span>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
+              Trusted by multi-unit teams in
+            </h2>
           </div>
+          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3">
+            {['Restaurant groups', 'Retail chains', 'Hotel networks', 'Healthcare systems', 'Fitness chains', 'Franchise networks'].map((ind) => (
+              <li key={ind} className="flex items-start gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-forest-500 mt-0.5 shrink-0" />
+                <span className="text-[15px] text-warm-600">{ind}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      {/* CTA — gradient-border card */}
-      <section className="bg-charcoal">
-        <div className="max-w-3xl mx-auto px-6 py-20 md:py-28">
-          <div className="relative rounded-3xl p-px bg-linear-to-br from-amber/40 via-white/10 to-amber/20">
-            <div className="rounded-[calc(1.5rem-1px)] bg-charcoal px-8 py-14 md:px-14 md:py-20 text-center relative overflow-hidden">
-              <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-amber/15 rounded-full blur-[100px] pointer-events-none" />
-              <p className="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-amber/20 px-3 py-1 text-xs font-medium text-white mb-6 relative">
-                <Sparkles className="w-3 h-3" /> No credit card required
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4 relative">
-                See all your locations in one place
-              </h2>
-              <p className="text-lg text-warm-400 mb-10 max-w-md mx-auto relative">
-                Start your free 7-day trial and connect all your locations in minutes.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center relative">
-                <Link href="https://app.forkhr.com/register" target="_blank">
-                  <Button size="lg" className="text-base px-8 h-12 bg-white text-warm-900 hover:bg-warm-100">
-                    Start free trial
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
-                <Link href="/pricing">
-                  <Button variant="outline" size="lg" className="text-base px-8 h-12 border-charcoal-600 text-warm-300 bg-charcoal-800 hover:bg-charcoal hover:text-white">
-                    View pricing
-                  </Button>
-                </Link>
-              </div>
+      {/* Final CTA */}
+      <section className="bg-warm-950">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <div className="max-w-2xl">
+            <span className="eyebrow text-lime-accent mb-4">No credit card required</span>
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-5">
+              See all your locations in one place
+            </h2>
+            <p className="text-lg text-warm-400 mb-10 max-w-lg">
+              Start your free 7-day trial and connect all your locations in minutes.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="https://app.forkhr.com/register" target="_blank">
+                <Button size="lg" className="text-base px-7 h-12 bg-white text-warm-950 hover:bg-warm-100">
+                  Start free trial
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+              <Link href="/pricing">
+                <Button variant="outline" size="lg" className="text-base px-7 h-12 border-warm-700 bg-transparent text-warm-200 hover:bg-warm-900 hover:text-white">
+                  View pricing
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

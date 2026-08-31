@@ -23,8 +23,8 @@ import {
   Zap,
 } from 'lucide-react'
 import Link from 'next/link'
-import type { Metadata } from 'next'
 import BlobBackground from '@/components/visual/BlobBackground'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'AI Assistant — Fork | Company-Trained AI for Workforce Management',
@@ -72,21 +72,21 @@ const painPoints = [
 const steps = [
   {
     step: '01',
-    icon: <BookOpen className="w-5 h-5 text-primary" />,
+    icon: <BookOpen className="w-5 h-5 text-forest-600" />,
     title: 'You build your content',
     description: 'Add your company FAQs, training courses, and text library resources inside Fork. The AI assistant automatically indexes everything you publish.',
     sources: ['Company FAQs', 'Training courses', 'Text library', 'Product documentation'],
   },
   {
     step: '02',
-    icon: <Search className="w-5 h-5 text-primary" />,
+    icon: <Search className="w-5 h-5 text-forest-600" />,
     title: 'Smart retrieval — not guessing',
     description: 'When someone asks a question, the assistant searches your company-specific content first. It prioritizes your FAQs, library, and courses — and falls back to product documentation only when needed.',
     sources: ['Keyword-based retrieval', 'Priority-ranked sources', 'No hallucinations', 'Escalation when unsure'],
   },
   {
     step: '03',
-    icon: <MessageSquare className="w-5 h-5 text-primary" />,
+    icon: <MessageSquare className="w-5 h-5 text-forest-600" />,
     title: 'Instant, accurate answers',
     description: 'Employees and managers get step-by-step guidance, policy-specific answers, and role-aware responses — in seconds. If the AI can\'t answer, it escalates to your support team or manager.',
     sources: ['Policy-specific answers', 'Role-aware responses', 'Human escalation built-in', '24/7 availability'],
@@ -95,32 +95,32 @@ const steps = [
 
 const features = [
   {
-    icon: <Sparkles className="w-5 h-5 text-primary" />,
+    icon: <Sparkles className="w-5 h-5 text-forest-600" />,
     title: 'Company-aware AI',
     desc: 'Answers are sourced from your published content — FAQs, library, courses, and documentation. Not generic internet answers.',
   },
   {
-    icon: <UserCog className="w-5 h-5 text-primary" />,
+    icon: <UserCog className="w-5 h-5 text-forest-600" />,
     title: 'Role-based intelligence',
     desc: 'The assistant adapts responses based on the user\'s role. Owners get billing guidance. Managers get team management help. Employees get self-service instructions.',
   },
   {
-    icon: <Crown className="w-5 h-5 text-primary" />,
+    icon: <Crown className="w-5 h-5 text-forest-600" />,
     title: 'Plan-aware responses',
     desc: 'If a user asks about a feature restricted to a higher plan, the assistant clearly explains which plan is required — no confusion.',
   },
   {
-    icon: <RefreshCw className="w-5 h-5 text-primary" />,
+    icon: <RefreshCw className="w-5 h-5 text-forest-600" />,
     title: 'Real-time knowledge sync',
     desc: 'Publish a new FAQ or update a training course — the assistant picks it up on the next conversation. No manual retraining.',
   },
   {
-    icon: <Lock className="w-5 h-5 text-primary" />,
+    icon: <Lock className="w-5 h-5 text-forest-600" />,
     title: 'Secure company isolation',
     desc: 'Each company\'s content is strictly isolated. Your data is never shared across organizations or used to train other models.',
   },
   {
-    icon: <ArrowUpRight className="w-5 h-5 text-primary" />,
+    icon: <ArrowUpRight className="w-5 h-5 text-forest-600" />,
     title: 'Escalation to human support',
     desc: 'When the AI can\'t find the answer, it offers to escalate — either to your support team or directly to the employee\'s manager via email.',
   },
@@ -128,22 +128,22 @@ const features = [
 
 const contentSources = [
   {
-    icon: <HelpCircle className="w-6 h-6 text-primary" />,
+    icon: <HelpCircle className="w-5 h-5 text-forest-600" />,
     title: 'Company FAQs',
     desc: 'Published FAQ collections with question-answer pairs. The assistant prioritizes these for policy questions.',
   },
   {
-    icon: <BookOpen className="w-6 h-6 text-primary" />,
+    icon: <BookOpen className="w-5 h-5 text-forest-600" />,
     title: 'Training courses',
     desc: 'Course modules with sections, steps, and descriptions. Great for procedure and process questions.',
   },
   {
-    icon: <Library className="w-6 h-6 text-primary" />,
+    icon: <Library className="w-5 h-5 text-forest-600" />,
     title: 'Text library',
     desc: 'Company-published documents and text resources — handbooks, policies, guides, and more.',
   },
   {
-    icon: <FileText className="w-6 h-6 text-primary" />,
+    icon: <FileText className="w-5 h-5 text-forest-600" />,
     title: 'Product documentation',
     desc: 'Built-in Fork platform knowledge for app navigation, feature usage, and permissions.',
   },
@@ -167,76 +167,68 @@ const employeeUseCases = [
 
 export default function AIAssistantPage() {
   return (
-    <main>
+    <main className="pt-16">
       {/* Hero */}
-      <section className="relative pt-[80px]"
-        style={{
-          backgroundImage: "radial-gradient(circle,#DDD8CA 1px,transparent 0)",
-          backgroundSize: "20px 20px",
-        }}
-      >
-        <BlobBackground variant="sparkle"/>
-        <div className="max-w-5xl mx-auto px-6 pt-12 pb-16 md:pt-28 md:pb-20">
-          <nav className="inline-flex items-center gap-1.5 text-sm mb-5">
-            <Link href="/products" className="text-warm-400 hover:text-primary transition-colors">Products</Link>
+      <section className="relative overflow-hidden border-b border-warm-100">
+        <BlobBackground variant="sparkle" />
+        <div className="relative max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-32 md:pb-24">
+          <nav className="inline-flex items-center gap-1.5 text-sm mb-8">
+            <Link href="/products" className="text-warm-500 hover:text-warm-950 transition-colors">Products</Link>
             <ChevronRight className="w-3.5 h-3.5 text-warm-300" />
-            <span className="inline-flex items-center gap-1.5 font-semibold text-primary bg-primary/6 rounded-full px-3 py-0.5">
-              <BotMessageSquare className="w-3.5 h-3.5" />
+            <span className="inline-flex items-center gap-1.5 font-medium text-warm-950">
+              <BotMessageSquare className="w-3.5 h-3.5 text-forest-600" />
               AI Assistant
             </span>
           </nav>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-warm-900 max-w-3xl">
-            Your Company&apos;s Knowledge<span className="text-primary">.</span> Instantly Accessible<span className="text-primary">.</span>
+          <h1 className="text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-warm-950 max-w-3xl">
+            Your Company&apos;s Knowledge<span className="text-forest-500">.</span> Instantly Accessible<span className="text-forest-500">.</span>
           </h1>
 
           <p className="mt-6 text-lg md:text-xl text-warm-600 leading-relaxed max-w-2xl">
             An AI assistant trained on your company&apos;s internal content — delivering accurate, policy-aware answers to managers and employees in seconds. No generic responses. No hallucinations. Just your knowledge, on demand.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-wrap gap-4">
             <Link href="https://app.forkhr.com/register" target="_blank">
-              <Button size="lg" className="text-base px-8 h-12">
+              <Button size="lg" className="text-base px-6 h-11">
                 Get started
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
             </Link>
             <Link href="#how-it-works">
-              <Button variant="outline" size="lg" className="text-base px-8 h-12">
+              <Button variant="outline" size="lg" className="text-base px-6 h-11">
                 Read more
               </Button>
             </Link>
           </div>
 
           <div className="mt-6 inline-flex items-center gap-2 text-sm text-warm-400">
-            <Crown className="w-4 h-4 text-primary" />
+            <Crown className="w-4 h-4 text-forest-600" />
             Available on the Premium plan
           </div>
         </div>
       </section>
 
-      {/* Problem section — dark with numbered pain points */}
-      <section className="bg-charcoal relative overflow-hidden">
-        <div className="absolute -top-20 -right-40 w-[500px] h-[500px] bg-red-500/5 rounded-full blur-[100px]" />
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28 relative">
+      {/* Problem section — numbered pain points */}
+      <section className="border-b border-warm-100">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
           <div className="grid md:grid-cols-[1fr_1.4fr] gap-12 md:gap-16 items-start">
             <div>
-              <p className="inline-flex items-center gap-2 rounded-full bg-red-500/10 border border-red-500/20 px-3.5 py-1.5 text-xs font-medium text-red-400 mb-5">
-                The problem
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
+              <span className="eyebrow mb-4">The problem</span>
+              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
                 Your team has questions. The answers exist — they&apos;re just hard to find.
               </h2>
-              <p className="mt-4 text-lg text-warm-400 leading-relaxed">
+              <p className="mt-4 text-lg text-warm-600 leading-relaxed">
                 Every company has policies, procedures, and training materials. The problem is that employees can&apos;t find what they need — and managers spend hours repeating the same answers.
               </p>
             </div>
-            <div className="space-y-0">
+            <div className="divide-y divide-warm-100 border-t border-warm-100 md:border-t-0">
               {painPoints.map((p, i) => (
-                <div key={p.problem} className="flex gap-5 py-5 border-b border-white/6 last:border-0">
-                  <span className="text-2xl font-bold text-red-500/30 shrink-0 w-8 tabular-nums">{String(i + 1).padStart(2, '0')}</span>
+                <div key={p.problem} className="flex gap-5 py-5">
+                  <span className="text-[13px] font-medium text-warm-400 tabular-nums shrink-0 w-8 pt-0.5">{String(i + 1).padStart(2, '0')}</span>
                   <div>
-                    <h3 className="text-base font-semibold text-white mb-1">{p.problem}</h3>
+                    <h3 className="text-base font-semibold text-warm-950 mb-1">{p.problem}</h3>
                     <p className="text-sm text-warm-500 leading-relaxed">{p.detail}</p>
                   </div>
                 </div>
@@ -246,12 +238,12 @@ export default function AIAssistantPage() {
         </div>
       </section>
 
-      {/* How it works — horizontal stepper with connecting line */}
-      <section id="how-it-works">
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mb-5">How it works</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-warm-900">
+      {/* How it works */}
+      <section id="how-it-works" className="border-b border-warm-100">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <div className="max-w-2xl mb-14">
+            <span className="eyebrow mb-4">How it works</span>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
               Three steps to a smarter support experience
             </h2>
             <p className="mt-4 text-lg text-warm-600 leading-relaxed">
@@ -259,49 +251,32 @@ export default function AIAssistantPage() {
             </p>
           </div>
 
-          {/* Stepper */}
-          <div className="relative">
-            {/* Connecting line (desktop) */}
-            <div className="hidden md:block absolute top-8 left-[calc(16.66%+20px)] right-[calc(16.66%+20px)] h-px bg-linear-to-r from-primary/20 via-primary/40 to-primary/20" />
-
-            <div className="grid md:grid-cols-3 gap-12 md:gap-8">
-              {steps.map((s, i) => (
-                <div key={s.step} className="relative text-center">
-                  {/* Step circle */}
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white border-2 border-primary/20 shadow-sm relative z-10 mb-6">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10">
-                      {s.icon}
-                    </div>
-                  </div>
-                  {/* Arrow between steps (mobile) */}
-                  {i < steps.length - 1 && (
-                    <div className="md:hidden flex justify-center -mt-3 mb-3">
-                      <div className="w-px h-8 bg-primary/20" />
-                    </div>
-                  )}
-                  <h3 className="text-lg font-semibold text-warm-900 mb-2">{s.title}</h3>
-                  <p className="text-sm text-warm-600 leading-relaxed mb-4">{s.description}</p>
-                  <div className="flex flex-wrap justify-center gap-2">
-                    {s.sources.map((source) => (
-                      <span key={source} className="inline-flex items-center gap-1.5 text-xs bg-warm-100 text-warm-500 rounded-full px-2.5 py-1">
-                        <CheckCircle2 className="w-3 h-3 text-primary shrink-0" />
-                        {source}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="grid md:grid-cols-3 gap-10 md:gap-8">
+            {steps.map((s) => (
+              <div key={s.step} className="border-t-2 border-warm-950 pt-6">
+                <span className="text-[13px] font-medium text-warm-400 tabular-nums">{s.step}</span>
+                <h3 className="mt-2 text-lg font-semibold text-warm-950 mb-2">{s.title}</h3>
+                <p className="text-[15px] text-warm-600 leading-relaxed mb-5">{s.description}</p>
+                <ul className="space-y-2.5">
+                  {s.sources.map((source) => (
+                    <li key={source} className="flex items-start gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-forest-500 mt-0.5 shrink-0" />
+                      <span className="text-[15px] text-warm-600">{source}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Feature highlights — bento grid with varying sizes */}
-      <section className="bg-warm-100/60">
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mb-5">Features</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-warm-900">
+      {/* Feature highlights */}
+      <section className="border-b border-warm-100">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <div className="max-w-2xl mb-14">
+            <span className="eyebrow mb-4">Features</span>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
               Built for accuracy, not novelty
             </h2>
             <p className="mt-4 text-lg text-warm-600 leading-relaxed">
@@ -309,25 +284,11 @@ export default function AIAssistantPage() {
             </p>
           </div>
 
-          {/* Bento grid — 2 large + 4 small */}
-          <div className="grid md:grid-cols-2 gap-5 mb-5">
-            {features.slice(0, 2).map((f) => (
-              <div key={f.title} className="rounded-2xl border border-warm-200/80 bg-white p-8 md:p-10">
-                <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/8 mb-5">
-                  {f.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-warm-900 mb-3">{f.title}</h3>
-                <p className="text-base text-warm-600 leading-relaxed">{f.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {features.slice(2).map((f) => (
-              <div key={f.title} className="rounded-2xl border border-warm-200/80 bg-white p-6">
-                <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/8 mb-4">
-                  {f.icon}
-                </div>
-                <h3 className="text-sm font-semibold text-warm-900 mb-1.5">{f.title}</h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-warm-200 border border-warm-200 rounded-xl overflow-hidden">
+            {features.map((f) => (
+              <div key={f.title} className="bg-white p-7 hover:bg-warm-50 transition-colors">
+                <div className="mb-4">{f.icon}</div>
+                <h3 className="text-[15px] font-semibold text-warm-950 mb-1.5">{f.title}</h3>
                 <p className="text-sm text-warm-500 leading-relaxed">{f.desc}</p>
               </div>
             ))}
@@ -335,110 +296,75 @@ export default function AIAssistantPage() {
         </div>
       </section>
 
-      {/* Content sources — visual pipeline flow */}
-      <section>
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mb-5">Content sources</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-warm-900">
+      {/* Content sources */}
+      <section className="border-b border-warm-100">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <div className="max-w-2xl mb-14">
+            <span className="eyebrow mb-4">Content sources</span>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
               Your assistant doesn&apos;t guess — it answers from your approved content
             </h2>
           </div>
 
-          {/* Pipeline visualization */}
-          <div className="relative max-w-4xl mx-auto">
-            {/* Source nodes */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-              {contentSources.map((source) => (
-                <div key={source.title} className="relative text-center rounded-2xl border border-warm-200/80 bg-white p-5">
-                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-primary/8 text-primary mx-auto mb-3">
-                    {source.icon}
-                  </div>
-                  <h3 className="text-sm font-semibold text-warm-900 mb-1">{source.title}</h3>
-                  <p className="text-xs text-warm-500 leading-relaxed">{source.desc}</p>
-                </div>
-              ))}
-            </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-warm-200 border border-warm-200 rounded-xl overflow-hidden">
+            {contentSources.map((source) => (
+              <div key={source.title} className="bg-white p-7 hover:bg-warm-50 transition-colors">
+                <div className="mb-4">{source.icon}</div>
+                <h3 className="text-[15px] font-semibold text-warm-950 mb-1.5">{source.title}</h3>
+                <p className="text-sm text-warm-500 leading-relaxed">{source.desc}</p>
+              </div>
+            ))}
+          </div>
 
-            {/* Converging arrows */}
-            <div className="flex justify-center mb-8">
-              <div className="flex flex-col items-center gap-2">
-                <div className="flex gap-8 md:gap-20">
-                  <div className="w-px h-6 bg-primary/20" />
-                  <div className="w-px h-6 bg-primary/20" />
-                  <div className="w-px h-6 bg-primary/20" />
-                  <div className="w-px h-6 bg-primary/20" />
-                </div>
-                <div className="w-[200px] md:w-[400px] h-px bg-linear-to-r from-primary/5 via-primary/30 to-primary/5" />
-                <div className="w-px h-6 bg-primary/30" />
+          <div className="mt-8 flex flex-col md:flex-row md:items-center gap-x-8 gap-y-4 border border-warm-200 rounded-xl p-7">
+            <div className="flex items-center gap-3 shrink-0">
+              <Sparkles className="w-5 h-5 text-forest-600" />
+              <div>
+                <div className="text-[15px] font-semibold text-warm-950">Fork AI Assistant</div>
+                <div className="text-sm text-warm-500">Retrieves, ranks, and responds</div>
               </div>
             </div>
-
-            {/* AI core */}
-            <div className="flex justify-center mb-8">
-              <div className="inline-flex items-center gap-3 rounded-2xl bg-primary/5 border-2 border-primary/20 px-8 py-5">
-                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary text-white">
-                  <Sparkles className="w-6 h-6" />
-                </div>
-                <div className="text-left">
-                  <div className="text-base font-semibold text-warm-900">Fork AI Assistant</div>
-                  <div className="text-sm text-warm-500">Retrieves, ranks, and responds</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Output arrow */}
-            <div className="flex justify-center mb-8">
-              <div className="w-px h-6 bg-primary/30" />
-            </div>
-
-            {/* Output */}
-            <div className="flex justify-center">
-              <div className="inline-flex items-center gap-3 rounded-full bg-charcoal text-white px-6 py-3">
-                <MessageSquare className="w-4 h-4 text-lavender" />
-                <span className="text-sm font-medium">Accurate, policy-specific answers in seconds</span>
-              </div>
+            <ArrowRight className="hidden md:block w-4 h-4 text-warm-400 shrink-0" />
+            <div className="flex items-center gap-3">
+              <MessageSquare className="w-4 h-4 text-forest-600 shrink-0" />
+              <span className="text-[15px] text-warm-600">Accurate, policy-specific answers in seconds</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Use cases — side-by-side comparison table */}
-      <section className="bg-warm-100/60">
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mb-5">Use cases</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-warm-900">
+      <section className="bg-warm-50 border-b border-warm-100">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <div className="max-w-2xl mb-14">
+            <span className="eyebrow mb-4">Use cases</span>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
               Built for both sides of the org chart
             </h2>
           </div>
 
-          <div className="max-w-4xl mx-auto rounded-2xl border border-warm-200/80 bg-white overflow-hidden">
+          <div className="rounded-xl border border-warm-200 bg-white overflow-hidden">
             {/* Table header */}
-            <div className="grid grid-cols-2 border-b border-warm-100">
-              <div className="flex items-center gap-3 px-6 md:px-8 py-5 border-r border-warm-100">
-                <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/8">
-                  <Shield className="w-4 h-4 text-primary" />
-                </div>
-                <span className="text-base font-semibold text-warm-900">For managers</span>
+            <div className="grid grid-cols-2 border-b border-warm-200">
+              <div className="flex items-center gap-3 px-6 md:px-8 py-5 border-r border-warm-200">
+                <Shield className="w-5 h-5 text-forest-600" />
+                <span className="text-base font-semibold text-warm-950">For managers</span>
               </div>
               <div className="flex items-center gap-3 px-6 md:px-8 py-5">
-                <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/8">
-                  <Users className="w-4 h-4 text-primary" />
-                </div>
-                <span className="text-base font-semibold text-warm-900">For employees</span>
+                <Users className="w-5 h-5 text-forest-600" />
+                <span className="text-base font-semibold text-warm-950">For employees</span>
               </div>
             </div>
             {/* Table rows */}
             {managerUseCases.map((uc, i) => (
-              <div key={i} className="grid grid-cols-2 border-b border-warm-50 last:border-0">
-                <div className="flex items-start gap-3 px-6 md:px-8 py-4 border-r border-warm-50">
-                  <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                  <span className="text-sm text-warm-600">{uc}</span>
+              <div key={i} className="grid grid-cols-2 border-b border-warm-100 last:border-0">
+                <div className="flex items-start gap-3 px-6 md:px-8 py-4 border-r border-warm-100">
+                  <CheckCircle2 className="w-4 h-4 text-forest-500 mt-0.5 shrink-0" />
+                  <span className="text-[15px] text-warm-600">{uc}</span>
                 </div>
                 <div className="flex items-start gap-3 px-6 md:px-8 py-4">
-                  <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                  <span className="text-sm text-warm-600">{employeeUseCases[i] || ''}</span>
+                  <CheckCircle2 className="w-4 h-4 text-forest-500 mt-0.5 shrink-0" />
+                  <span className="text-[15px] text-warm-600">{employeeUseCases[i] || ''}</span>
                 </div>
               </div>
             ))}
@@ -447,27 +373,25 @@ export default function AIAssistantPage() {
       </section>
 
       {/* Platform integration — horizontal inline strip */}
-      <section className="border-y border-warm-200/80">
-        <div className="max-w-5xl mx-auto px-6 py-14 md:py-16">
+      <section className="border-b border-warm-100">
+        <div className="max-w-6xl mx-auto px-6 py-14 md:py-16">
           <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12">
             <div className="shrink-0 md:max-w-[280px]">
-              <h2 className="text-2xl font-bold tracking-tight text-warm-900">
+              <h2 className="text-2xl font-semibold tracking-tight text-warm-950">
                 Embedded where your team already works
               </h2>
             </div>
-            <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-6 md:border-l md:border-warm-200/80 md:pl-12">
+            <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-6 md:border-l md:border-warm-100 md:pl-12">
               {[
-                { icon: <LayoutDashboard className="w-4 h-4 text-primary" />, title: 'Web dashboard', desc: 'Inside your Fork dashboard' },
-                { icon: <Smartphone className="w-4 h-4 text-primary" />, title: 'Mobile app', desc: 'iOS & Android' },
-                { icon: <Lock className="w-4 h-4 text-primary" />, title: 'Company-isolated', desc: 'Never shared across orgs' },
-                { icon: <Zap className="w-4 h-4 text-primary" />, title: 'Retrieval-based', desc: 'Not generic generation' },
+                { icon: <LayoutDashboard className="w-5 h-5 text-forest-600" />, title: 'Web dashboard', desc: 'Inside your Fork dashboard' },
+                { icon: <Smartphone className="w-5 h-5 text-forest-600" />, title: 'Mobile app', desc: 'iOS & Android' },
+                { icon: <Lock className="w-5 h-5 text-forest-600" />, title: 'Company-isolated', desc: 'Never shared across orgs' },
+                { icon: <Zap className="w-5 h-5 text-forest-600" />, title: 'Retrieval-based', desc: 'Not generic generation' },
               ].map((item) => (
                 <div key={item.title} className="flex items-start gap-3">
-                  <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/8 shrink-0 mt-0.5">
-                    {item.icon}
-                  </div>
+                  <div className="shrink-0 mt-0.5">{item.icon}</div>
                   <div>
-                    <h3 className="text-sm font-semibold text-warm-900">{item.title}</h3>
+                    <h3 className="text-sm font-semibold text-warm-950">{item.title}</h3>
                     <p className="text-xs text-warm-500">{item.desc}</p>
                   </div>
                 </div>
@@ -478,30 +402,29 @@ export default function AIAssistantPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-plum">
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-4 py-1.5 text-sm font-medium text-white/70 mb-6">
-            <Crown className="w-4 h-4 text-lavender" />
-            Premium plan is required
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
-            Turn your company knowledge into a living assistant
-          </h2>
-          <p className="text-lg text-warm-400 mb-10 max-w-xl mx-auto">
-            Stop answering the same questions. Let your AI assistant handle it — trained on the content you already have.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="https://app.forkhr.com/register" target="_blank">
-              <Button size="lg" className="text-base px-8 h-12 bg-white text-warm-900 hover:bg-warm-100">
-                Start free trial
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-            <Link href="/pricing">
-              <Button variant="outline" size="lg" className="text-base px-8 h-12 border-plum-600 text-warm-300 bg-plum-800 hover:bg-plum hover:text-white">
-                View pricing
-              </Button>
-            </Link>
+      <section className="bg-warm-950">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <div className="max-w-2xl">
+            <span className="eyebrow text-lime-accent mb-4">Premium plan is required</span>
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-5">
+              Turn your company knowledge into a living assistant
+            </h2>
+            <p className="text-lg text-warm-400 mb-10 max-w-lg">
+              Stop answering the same questions. Let your AI assistant handle it — trained on the content you already have.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="https://app.forkhr.com/register" target="_blank">
+                <Button size="lg" className="text-base px-7 h-12 bg-white text-warm-950 hover:bg-warm-100">
+                  Start free trial
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+              <Link href="/pricing">
+                <Button variant="outline" size="lg" className="text-base px-7 h-12 border-warm-700 bg-transparent text-warm-200 hover:bg-warm-900 hover:text-white">
+                  View pricing
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

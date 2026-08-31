@@ -1,9 +1,7 @@
 import { Button } from '@/components/ui/button'
-import BlobBackground from '@/components/visual/BlobBackground'
 import {
   ArrowRight,
   ChevronRight,
-  Scale,
   FileSignature,
   FolderOpen,
   AlertTriangle,
@@ -12,10 +10,9 @@ import {
   FileText,
   CheckCircle2,
   Users,
-  Sparkles,
-  Gavel,
 } from 'lucide-react'
 import Link from 'next/link'
+import BlobBackground from '@/components/visual/BlobBackground'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -50,32 +47,32 @@ const stats = [
 
 const benefits = [
   {
-    icon: <FileSignature className="w-5 h-5 text-primary" />,
+    icon: <FileSignature className="w-5 h-5" />,
     title: 'Digital onboarding with e-signatures',
     desc: 'New hires complete W-4, I-9, and custom employment forms online before day one. Legally-binding e-signatures are captured and stored automatically.',
   },
   {
-    icon: <FolderOpen className="w-5 h-5 text-primary" />,
+    icon: <FolderOpen className="w-5 h-5" />,
     title: 'Document management with expiry tracking',
     desc: 'Upload, request, and organize certifications, licenses, and employee documents. Set expiration dates and get reminders before they lapse.',
   },
   {
-    icon: <AlertTriangle className="w-5 h-5 text-primary" />,
+    icon: <AlertTriangle className="w-5 h-5" />,
     title: 'Structured incident reporting',
     desc: 'Document workplace injuries and safety events with structured forms, attach evidence, and maintain a tamper-proof timeline for every incident.',
   },
   {
-    icon: <Shield className="w-5 h-5 text-primary" />,
+    icon: <Shield className="w-5 h-5" />,
     title: 'Complete audit trail',
     desc: 'Every action — document upload, signature, status change — is logged with timestamps and user attribution. Always ready for inspection.',
   },
   {
-    icon: <FileText className="w-5 h-5 text-primary" />,
+    icon: <FileText className="w-5 h-5" />,
     title: 'Violations, terminations & offboarding',
     desc: 'Track employee violations, link them to disciplinary actions and terminations, and maintain final notices and exit checklists in one secure location.',
   },
   {
-    icon: <Clock className="w-5 h-5 text-primary" />,
+    icon: <Clock className="w-5 h-5" />,
     title: 'Automated compliance reminders',
     desc: 'Fork notifies managers when documents expire, forms are incomplete, or onboarding steps are overdue — so nothing slips through.',
   },
@@ -95,39 +92,31 @@ const complianceAreas = [
 
 export default function CompliancePage() {
   return (
-    <main>
+    <main className="pt-16">
       {/* Hero */}
-      <section className="relative pt-20"
-        style={{
-          backgroundImage: "radial-gradient(circle,#DDD8CA 1px,transparent 0)",
-          backgroundSize: "20px 20px",
-        }}
-      >
+      <section className="relative overflow-hidden border-b border-warm-100">
         <BlobBackground variant="circle" />
-        <div className="max-w-5xl mx-auto px-6 pt-12 pb-16 md:pt-28 md:pb-20">
-          <nav className="inline-flex items-center gap-1.5 text-sm mb-5">
-            <Link href="/products" className="text-warm-400 hover:text-primary transition-colors">Solutions</Link>
+        <div className="relative max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-32 md:pb-24">
+          <nav className="flex items-center gap-1.5 text-sm mb-8">
+            <Link href="/products" className="text-warm-500 hover:text-warm-950 transition-colors">Solutions</Link>
             <ChevronRight className="w-3.5 h-3.5 text-warm-300" />
-            <span className="inline-flex items-center gap-1.5 font-semibold text-primary bg-primary/6 rounded-full px-3 py-0.5">
-              <Scale className="w-3.5 h-3.5" />
-              Compliance & Legal
-            </span>
+            <span className="font-medium text-warm-950">Compliance & Legal</span>
           </nav>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-warm-900 max-w-3xl">
+          <h1 className="text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-warm-950 max-w-3xl">
             Stay compliant without the filing cabinets
           </h1>
           <p className="mt-6 text-lg md:text-xl text-warm-600 leading-relaxed max-w-2xl">
             Audits, inspections, and legal requirements shouldn&apos;t keep you up at night. Fork digitizes every compliance workflow — from onboarding paperwork to incident reports — so you&apos;re always audit-ready.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-wrap gap-4">
             <Link href="https://app.forkhr.com/register" target="_blank">
-              <Button size="lg" className="text-base px-8 h-12">
+              <Button size="lg" className="text-base px-6 h-11">
                 Start free trial
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
             </Link>
             <Link href="/products#incidents-violations">
-              <Button variant="outline" size="lg" className="text-base px-8 h-12">
+              <Button variant="outline" size="lg" className="text-base px-6 h-11">
                 Learn more
               </Button>
             </Link>
@@ -135,22 +124,51 @@ export default function CompliancePage() {
         </div>
       </section>
 
-      {/* Stats — asymmetric hero stat + row cards */}
-      <section className="bg-warm-100/60">
-        <div className="max-w-5xl mx-auto px-6 py-16 md:py-20">
-          <div className="grid md:grid-cols-[1.2fr_1fr] gap-10 md:gap-16 items-center">
+      {/* Stats */}
+      <section className="bg-warm-50 border-b border-warm-100">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
+          <div className="grid md:grid-cols-[1.1fr_1fr] gap-12 md:gap-20 items-center">
             <div>
-              <div className="text-6xl md:text-7xl font-bold text-primary tracking-tight leading-none mb-3">{stats[0].value}</div>
-              <div className="text-lg font-semibold text-warm-900 mb-1">{stats[0].label}</div>
-              <div className="text-sm text-warm-500">{stats[0].detail}</div>
+              <div className="text-6xl md:text-7xl font-semibold text-warm-950 tracking-tight leading-none mb-4">{stats[0].value}</div>
+              <p className="text-xl text-warm-600 leading-relaxed max-w-md">{stats[0].label}</p>
+              <p className="text-sm text-warm-400 mt-2">{stats[0].detail}</p>
             </div>
-            <div className="space-y-3">
+            <div className="divide-y divide-warm-200/70">
               {stats.slice(1).map((stat) => (
-                <div key={stat.label} className="flex items-center gap-5 rounded-2xl border border-warm-200/80 bg-white p-5">
-                  <div className="text-3xl font-bold text-primary shrink-0">{stat.value}</div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-sm font-semibold text-warm-900">{stat.label}</div>
-                    <div className="text-xs text-warm-500">{stat.detail}</div>
+                <div key={stat.label} className="flex items-baseline justify-between gap-6 py-5">
+                  <div>
+                    <p className="text-[15px] font-medium text-warm-950">{stat.label}</p>
+                    <p className="text-sm text-warm-500 mt-0.5">{stat.detail}</p>
+                  </div>
+                  <div className="text-3xl font-semibold text-warm-950 tracking-tight shrink-0">{stat.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What you get */}
+      <section className="border-b border-warm-100">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 md:gap-20 items-start">
+            <div className="md:sticky md:top-28">
+              <span className="eyebrow mb-4">What you get</span>
+              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
+                What Fork does for compliance
+              </h2>
+              <p className="mt-4 text-lg text-warm-600 leading-relaxed">
+                Replace binders, spreadsheets, and paper forms with a system that tracks everything automatically and alerts you before deadlines.
+              </p>
+            </div>
+
+            <div className="divide-y divide-warm-200/70">
+              {benefits.map((b) => (
+                <div key={b.title} className="flex items-start gap-5 py-6 first:pt-0 last:pb-0">
+                  <div className="mt-0.5 shrink-0 text-forest-600">{b.icon}</div>
+                  <div>
+                    <h3 className="text-base font-semibold text-warm-950">{b.title}</h3>
+                    <p className="mt-1 text-[15px] text-warm-600 leading-relaxed">{b.desc}</p>
                   </div>
                 </div>
               ))}
@@ -159,62 +177,33 @@ export default function CompliancePage() {
         </div>
       </section>
 
-      {/* What you get — bento grid */}
-      <section>
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-          <div className="max-w-2xl mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-warm-900">
-              What Fork does for compliance
-            </h2>
-            <p className="mt-4 text-lg text-warm-600 leading-relaxed">
-              Replace binders, spreadsheets, and paper forms with a system that tracks everything automatically and alerts you before deadlines.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-5 mb-5">
-            {benefits.slice(0, 2).map((b) => (
-              <div key={b.title} className="group rounded-2xl border border-warm-200/80 bg-white p-8 md:p-10 hover:border-primary/20 hover:shadow-sm transition-all">
-                <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/8 mb-5">{b.icon}</div>
-                <h3 className="text-xl font-semibold text-warm-900 mb-3">{b.title}</h3>
-                <p className="text-base text-warm-600 leading-relaxed">{b.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {benefits.slice(2).map((b) => (
-              <div key={b.title} className="group rounded-2xl border border-warm-200/80 bg-white p-5 hover:border-primary/20 hover:shadow-sm transition-all">
-                <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/8 mb-3">{b.icon}</div>
-                <h3 className="text-sm font-semibold text-warm-900 mb-1">{b.title}</h3>
-                <p className="text-xs text-warm-500 leading-relaxed">{b.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Compliance areas */}
-      <section className="bg-warm-100/60">
-        <div className="max-w-5xl mx-auto px-6 py-16 md:py-20">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-warm-900 mb-8 text-center">
-            Compliance areas Fork covers
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-            {complianceAreas.map((area) => (
-              <div key={area.label} className="flex items-center gap-2 text-sm text-warm-700 font-medium bg-white rounded-lg px-4 py-3 border border-warm-200">
-                <span className="text-primary">{area.icon}</span>
-                {area.label}
-              </div>
-            ))}
+      <section className="bg-warm-50 border-b border-warm-100">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
+          <div className="max-w-2xl mb-10">
+            <span className="eyebrow mb-4">Coverage</span>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
+              Compliance areas Fork covers
+            </h2>
           </div>
+          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3">
+            {complianceAreas.map((area) => (
+              <li key={area.label} className="flex items-start gap-2.5">
+                <span className="text-forest-500 mt-0.5 shrink-0">{area.icon}</span>
+                <span className="text-[15px] text-warm-600">{area.label}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       {/* ROI callout */}
-      <section>
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-          <div className="bg-primary/5 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-start gap-8">
-            <div className="flex-1">
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-warm-900 mb-4">
+      <section className="border-b border-warm-100">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <div className="grid md:grid-cols-[1.5fr_1fr] gap-12 md:gap-20 items-start">
+            <div>
+              <span className="eyebrow mb-4">Why it matters</span>
+              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950 mb-4">
                 The cost of non-compliance
               </h2>
               <p className="text-warm-600 leading-relaxed mb-4">
@@ -224,44 +213,39 @@ export default function CompliancePage() {
                 Fork eliminates these risks by ensuring every document is collected, signed, and tracked — with automated reminders before anything expires.
               </p>
             </div>
-            <div className="shrink-0 flex flex-col items-center justify-center bg-white rounded-xl p-6 border border-warm-200 min-w-[180px] md:w-auto w-full">
-              <Users className="w-8 h-8 text-primary mb-2" />
+            <div className="md:border-l md:border-warm-200 md:pl-12 md:pt-2">
+              <Users className="w-5 h-5 text-forest-600 mb-3" />
               <div className="text-sm text-warm-500">Average savings per location</div>
-              <div className="text-3xl font-bold text-primary mt-1">$4,200</div>
-              <div className="text-xs text-warm-400">per year in avoided penalties</div>
+              <div className="text-3xl font-semibold text-warm-950 tracking-tight mt-1">$4,200</div>
+              <div className="text-xs text-warm-400 mt-1">per year in avoided penalties</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA — gradient-border card */}
-      <section className="bg-plum">
-        <div className="max-w-3xl mx-auto px-6 py-20 md:py-28">
-          <div className="relative rounded-3xl p-px bg-linear-to-br from-lavender/40 via-white/10 to-lavender/20">
-            <div className="rounded-[calc(1.5rem-1px)] bg-plum px-8 py-14 md:px-14 md:py-20 text-center relative overflow-hidden">
-              <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-lavender/15 rounded-full blur-[100px] pointer-events-none" />
-              <p className="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-lavender/20 px-3 py-1 text-xs font-medium text-white mb-6 relative">
-                <Sparkles className="w-3 h-3" /> No credit card required
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4 relative">
-                Make compliance automatic
-              </h2>
-              <p className="text-lg text-warm-400 mb-10 max-w-md mx-auto relative">
-                Start your free 7-day trial and see how Fork keeps your workforce records organized, signed, and always audit-ready.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center relative">
-                <Link href="https://app.forkhr.com/register" target="_blank">
-                  <Button size="lg" className="text-base px-8 h-12 bg-white text-warm-900 hover:bg-warm-100">
-                    Start free trial
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
-                <Link href="/pricing">
-                  <Button variant="outline" size="lg" className="text-base px-8 h-12 border-plum-600 text-warm-300 bg-plum-800 hover:bg-plum hover:text-white">
-                    View pricing
-                  </Button>
-                </Link>
-              </div>
+      {/* Final CTA */}
+      <section className="bg-warm-950">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <div className="max-w-2xl">
+            <span className="eyebrow text-lime-accent mb-4">No credit card required</span>
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-5">
+              Make compliance automatic
+            </h2>
+            <p className="text-lg text-warm-400 mb-10 max-w-lg">
+              Start your free 7-day trial and see how Fork keeps your workforce records organized, signed, and always audit-ready.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="https://app.forkhr.com/register" target="_blank">
+                <Button size="lg" className="text-base px-7 h-12 bg-white text-warm-950 hover:bg-warm-100">
+                  Start free trial
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+              <Link href="/pricing">
+                <Button variant="outline" size="lg" className="text-base px-7 h-12 border-warm-700 bg-transparent text-warm-200 hover:bg-warm-900 hover:text-white">
+                  View pricing
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

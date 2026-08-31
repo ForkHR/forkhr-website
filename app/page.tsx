@@ -1,8 +1,8 @@
 import { Button } from '@/components/ui/button'
-import { ArrowRight, CalendarClock, ClockIcon, FileText, Users, BookOpen, Shield, CheckCircle2, Wrench, Trash2, BotMessageSquare, ClipboardCheck, Sparkles, Zap, ArrowUpRight } from 'lucide-react'
+import { ArrowRight, CalendarClock, ClockIcon, FileText, Users, BookOpen, Shield, CheckCircle2, Wrench, Trash2, BotMessageSquare, ClipboardCheck, Sparkles, Zap } from 'lucide-react'
 import Link from 'next/link'
-import type { Metadata } from 'next'
 import BlobBackground from '@/components/visual/BlobBackground'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Fork — All-in-One AI-Powered Workforce Management & Operations Platform',
@@ -101,22 +101,18 @@ const aiExamples = [
 
 const features = [
   {
-    icon: <BotMessageSquare className="w-5 h-5 text-primary" />,
     title: 'AI that knows your business',
     items: ['Trained on your FAQs, courses & library', 'Role-aware responses for every position', 'Escalates to managers when needed', 'Gets smarter as you add content', 'Works on web and mobile'],
   },
   {
-    icon: <CalendarClock className="w-5 h-5 text-primary" />,
     title: 'Build schedules in minutes',
     items: ['Drag-and-drop shift builder', 'Employee availability & shift swaps', 'Shift tasks, breaks & notes', 'One-click schedule publishing', 'Real-time timesheet tracking'],
   },
   {
-    icon: <BookOpen className="w-5 h-5 text-primary" />,
     title: 'Train once, deploy everywhere',
     items: ['Courses with video, quizzes & certificates', 'Role-based training assignments', 'Completion tracking & prerequisites', 'Knowledge library for SOPs & policies', 'Content auto-indexed by AI'],
   },
   {
-    icon: <Zap className="w-5 h-5 text-primary" />,
     title: 'Run tighter daily operations',
     items: ['Recurring checklists per location', 'Maintenance tracking with cost logging', 'Waste control with item catalogs', 'Incident reports & violation tracking with AI', 'Violation-to-termination workflow'],
   },
@@ -151,97 +147,120 @@ const segments = [
 
 export default function Home() {
   return (
-    <main>
+    <main className="pt-16">
       {/* Hero */}
-      <div className="relative pt-20"
-        style={{
-          backgroundImage: "radial-gradient(circle,#DDD8CA 1px,transparent 0)",
-          backgroundSize: "20px 20px",
-        }}
-      >
-        <BlobBackground/>
-        <section className="relative overflow-hidden">
-          <div className="max-w-5xl mx-auto px-6 pt-12 pb-12 md:pt-20 md:pb-24">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-4">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-                </span>
-                Now available on iOS &amp; Android
-              </div>
-
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08] text-warm-900">
-                  All-in-One<br/>Workforce<br/>Management<span className="text-primary">.</span>
-              </h1>
-
-              <p className="md:mt-6 mt-4 text-md md:text-xl text-warm-600 max-w-2xl leading-relaxed">
-                Fork turns your SOPs, training materials, and company policies into an AI that supports every employee on every shift — combined with scheduling, timecards, checklists, and compliance in one platform.
-              </p>
-
-              <div className="mt-4 sm:mt-10 flex flex-row gap-3 sm:gap-4">
-                <Link href="https://app.forkhr.com/register" target="_blank">
-                  <Button size="lg" className="text-sm sm:text-base px-5 sm:px-8 h-10 sm:h-12">
-                    Start free trial
-                    <ArrowRight className="w-4 h-4 ml-1.5 sm:ml-2" />
-                  </Button>
-                </Link>
-                <Link href="/ai-assistant">
-                  <Button variant="outline" size="lg" className="text-sm sm:text-base px-5 sm:px-8 h-10 sm:h-12">
-                    Learn more
-                  </Button>
-                </Link>
-              </div>
-
-              <p className="mt-4 text-sm text-warm-400">
-                Free 7-day trial · Cancel anytime
-              </p>
+      <section className="relative overflow-hidden border-b border-warm-100">
+        <BlobBackground />
+        <div className="relative max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-32 md:pb-24">
+          <div className="max-w-3xl">
+            <div className="inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 mb-8 text-sm">
+              <span className="inline-flex items-center rounded-full bg-forest-50 px-2.5 py-0.5 text-[13px] font-semibold text-forest-600">
+                New
+              </span>
+              <span className="font-medium text-warm-600">Fork is now on iOS &amp; Android</span>
+              <span className="hidden sm:block w-px h-3.5 bg-warm-200" />
+              <span className="inline-flex items-center gap-2.5">
+                <a
+                  href="https://apps.apple.com/us/app/fork-hr-scheduling/id6754656709"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-forest-600 hover:text-forest-700 transition-colors"
+                >
+                  App Store
+                </a>
+                <span className="text-warm-300">·</span>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.forkhr.fork"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-forest-600 hover:text-forest-700 transition-colors"
+                >
+                  Google Play
+                </a>
+              </span>
             </div>
-          </div>
-        </section>
 
-        {/* Social proof bar — styled pills */}
-        <section>
-          <div className="max-w-5xl mx-auto px-6 py-12 md:py-16">
-            <p className="text-sm font-medium text-warm-400 text-center mb-6">
-              Built for teams in
+            <h1 className="text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-warm-950">
+              Stop running your business from group chats and spreadsheets
+            </h1>
+
+            <p className="mt-6 text-lg md:text-xl text-warm-600 max-w-2xl leading-relaxed">
+              Schedules, checklists, training, maintenance, waste, and HR — every part of the day in one app, so nothing slips and nobody has to chase you for answers.
             </p>
-            <div className="flex flex-wrap justify-center gap-3">
+
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <Link href="https://app.forkhr.com/register" target="_blank">
+                <Button size="lg" className="text-base px-6 h-11">
+                  Start free trial
+                  <ArrowRight className="w-4 h-4 ml-1.5" />
+                </Button>
+              </Link>
+              <Link href="/products">
+                <Button variant="outline" size="lg" className="text-base px-6 h-11">
+                  Explore the platform
+                </Button>
+              </Link>
+            </div>
+
+            <p className="mt-5 text-sm text-warm-400">
+              Free 7-day trial · No credit card required · Cancel anytime
+            </p>
+          </div>
+
+          {/* Segments */}
+          <div className="mt-20 pt-8 border-t border-warm-100">
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+              <span className="text-[13px] font-medium text-warm-400">Built for teams in</span>
               {segments.map((s) => (
-                <span key={s} className="inline-flex items-center gap-2 rounded-full border border-warm-200 bg-white px-4 py-2 text-sm font-medium text-warm-600 shadow-sm">
+                <span key={s} className="text-[13px] font-medium text-warm-600">
                   {s}
                 </span>
               ))}
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
 
-      {/* AI Showcase — centered chat mockup */}
-      <section className="bg-plum relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-lavender/10 rounded-full blur-[120px]" />
+      {/* AI Showcase */}
+      <section className="bg-warm-950">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+            <div className="max-w-lg">
+              <span className="eyebrow text-lime-accent mb-4">AI Assistant</span>
+              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">
+                An AI that actually knows your business
+              </h2>
+              <p className="mt-5 text-lg text-warm-400 leading-relaxed">
+                Fork&apos;s AI is trained on your company&apos;s own content — FAQs, training courses, knowledge library, and policies. Not generic. Not hallucinating. Your knowledge, on demand.
+              </p>
 
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28 relative">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-3.5 py-1.5 text-xs font-medium text-white/70 mx-auto mb-5">
-              <Sparkles className="w-3.5 h-3.5 text-lavender" />
-              AI Assistant
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
-              An AI that actually knows your restaurant
-            </h2>
-            <p className="mt-4 text-lg text-warm-400 leading-relaxed">
-              Fork&apos;s AI is trained on your company&apos;s own content — FAQs, training courses, knowledge library, and policies. Not generic. Not hallucinating. Your knowledge, on demand.
-            </p>
-          </div>
+              <dl className="mt-10 space-y-7">
+                {[
+                  { title: 'Trained on your content', desc: 'AI indexes your FAQs, courses, and library automatically. No prompt engineering needed.' },
+                  { title: 'Role-aware responses', desc: 'Owners, managers, and employees get answers matched to their role and permissions.' },
+                  { title: 'Smart escalation', desc: 'When AI can\'t answer, it escalates to the right manager with full context attached.' },
+                ].map((c) => (
+                  <div key={c.title} className="border-l-2 border-warm-800 pl-5">
+                    <dt className="text-[15px] font-semibold text-white">{c.title}</dt>
+                    <dd className="mt-1 text-[15px] text-warm-400 leading-relaxed">{c.desc}</dd>
+                  </div>
+                ))}
+              </dl>
 
-          {/* Chat mockup */}
-          <div className="max-w-2xl mx-auto mb-14">
-            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden">
-              {/* Chat header */}
-              <div className="flex items-center gap-3 px-5 py-3.5 border-b border-white/6">
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-lavender/20">
-                  <BotMessageSquare className="w-4 h-4 text-lavender" />
+              <Link
+                href="/ai-assistant"
+                className="mt-10 inline-flex items-center gap-1.5 text-[15px] font-medium text-lime-accent hover:text-white transition-colors"
+              >
+                Learn more about the AI
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            {/* Chat mockup */}
+            <div className="rounded-xl border border-warm-800 bg-warm-900/60 overflow-hidden">
+              <div className="flex items-center gap-3 px-5 py-3.5 border-b border-warm-800">
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-lime-accent/10">
+                  <BotMessageSquare className="w-4 h-4 text-lime-accent" />
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-white">Fork AI</div>
@@ -249,12 +268,11 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Messages */}
               <div className="p-5 space-y-5">
                 {aiExamples.map((ex) => (
                   <div key={ex.role} className="space-y-3">
                     <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-plum-600 flex items-center justify-center shrink-0 mt-0.5">
+                      <div className="w-6 h-6 rounded-full bg-warm-800 flex items-center justify-center shrink-0 mt-0.5">
                         <Users className="w-3 h-3 text-warm-400" />
                       </div>
                       <div>
@@ -263,48 +281,25 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3 pl-9">
-                      <div className="w-6 h-6 rounded-full bg-lavender/20 flex items-center justify-center shrink-0 mt-0.5">
-                        <Sparkles className="w-3 h-3 text-lavender" />
+                      <div className="w-6 h-6 rounded-full bg-lime-accent/10 flex items-center justify-center shrink-0 mt-0.5">
+                        <Sparkles className="w-3 h-3 text-lime-accent" />
                       </div>
-                      <p className="text-sm text-warm-400 leading-relaxed bg-white/3 rounded-xl px-4 py-3 border border-white/6">{ex.answer}</p>
+                      <p className="text-sm text-warm-400 leading-relaxed bg-warm-900 rounded-lg px-4 py-3 border border-warm-800">{ex.answer}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-
-          {/* AI capabilities — horizontal strip */}
-          <div className="grid sm:grid-cols-3 gap-px bg-white/6 rounded-2xl overflow-hidden">
-            {[
-              { title: 'Trained on your content', desc: 'AI indexes your FAQs, courses, and library automatically. No prompt engineering needed.' },
-              { title: 'Role-aware responses', desc: 'Owners, managers, and employees get answers matched to their role and permissions.' },
-              { title: 'Smart escalation', desc: 'When AI can\'t answer, it escalates to the right manager with full context attached.' },
-            ].map((c) => (
-              <div key={c.title} className="bg-plum p-6">
-                <h4 className="text-sm font-semibold text-white mb-2">{c.title}</h4>
-                <p className="text-sm text-warm-500 leading-relaxed">{c.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10 text-center">
-            <Link href="/ai-assistant">
-              <Button variant="outline" className="px-8 border-plum-600 text-warm-300 bg-plum-800 hover:bg-plum hover:text-white">
-                Learn more about the AI
-                <ArrowUpRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* Platform overview — bento grid */}
-      <section className="bg-warm-100/60">
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mx-auto mb-5">Platform</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-warm-900">
+      {/* Platform overview */}
+      <section className="border-b border-warm-100">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <div className="max-w-2xl mb-14">
+            <span className="eyebrow mb-4">Platform</span>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
               Everything your team needs, nothing it doesn&apos;t
             </h2>
             <p className="mt-4 text-lg text-warm-600 leading-relaxed">
@@ -312,102 +307,54 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Bento: 2 large hero cards */}
-          <div className="grid md:grid-cols-2 gap-5 mb-5">
-            {pillars.slice(0, 2).map((p) => (
-              <div
-                key={p.title}
-                className="group rounded-2xl border border-warm-200/80 bg-white p-8 md:p-10 hover:border-primary/20 hover:shadow-sm transition-all"
-              >
-                <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/8 text-primary mb-5">
-                  {p.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-warm-900 mb-3">{p.title}</h3>
-                <p className="text-base text-warm-600 leading-relaxed">{p.description}</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-warm-200 border border-warm-200 rounded-xl overflow-hidden">
+            {pillars.map((p) => (
+              <div key={p.title} className="bg-white p-7 hover:bg-warm-50 transition-colors">
+                <div className="text-forest-600 mb-4">{p.icon}</div>
+                <h3 className="text-[15px] font-semibold text-warm-950 mb-1.5">{p.title}</h3>
+                <p className="text-sm text-warm-500 leading-relaxed">{p.description}</p>
               </div>
             ))}
-          </div>
-
-          {/* Bento: 3 medium cards */}
-          <div className="grid sm:grid-cols-3 gap-5 mb-5">
-            {pillars.slice(2, 5).map((p) => (
-              <div
-                key={p.title}
-                className="group rounded-2xl border border-warm-200/80 bg-white p-6 hover:border-primary/20 hover:shadow-sm transition-all"
+            {/* Filler cell keeps the grid rectangular */}
+            <div className="bg-white p-7 flex items-end sm:col-span-2 lg:col-span-2">
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-1.5 text-[15px] font-medium text-forest-600 hover:text-forest-700 transition-colors"
               >
-                <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/8 text-primary mb-4">
-                  {p.icon}
-                </div>
-                <h3 className="text-lg font-semibold text-warm-900 mb-2">{p.title}</h3>
-                <p className="text-sm text-warm-600 leading-relaxed">{p.description}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Bento: 4 compact cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
-            {pillars.slice(5).map((p) => (
-              <div
-                key={p.title}
-                className="group rounded-2xl border border-warm-200/80 bg-white p-5 hover:border-primary/20 hover:shadow-sm transition-all"
-              >
-                <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/8 text-primary mb-3">
-                  {p.icon}
-                </div>
-                <h3 className="text-sm font-semibold text-warm-900 mb-1">{p.title}</h3>
-                <p className="text-xs text-warm-500 leading-relaxed">{p.description}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <Link href="/products">
-              <Button variant="outline" className="px-8">
                 Explore all products
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Metrics — asymmetric hero stat layout */}
-      <section className="bg-charcoal relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-amber/10 rounded-full blur-[120px]" />
-
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28 relative">
-          <div className="grid md:grid-cols-[1.2fr_1fr] gap-12 md:gap-16 items-center">
-            {/* Left — hero stat */}
+      {/* Metrics */}
+      <section className="border-b border-warm-100">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
+          <div className="grid md:grid-cols-[1.1fr_1fr] gap-12 md:gap-20 items-center">
             <div>
-              <p className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-3.5 py-1.5 text-xs font-medium text-white/70 mb-6">
-                By the numbers
-              </p>
-              <div className="text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight leading-none mb-4">
-                10<span className="text-amber">hrs</span>
+              <span className="eyebrow mb-4">By the numbers</span>
+              <div className="text-6xl md:text-7xl font-semibold text-warm-950 tracking-tight leading-none mb-4">
+                10 hrs<span className="text-forest-500">/wk</span>
               </div>
-              <p className="text-xl text-warm-400 leading-relaxed max-w-md">
+              <p className="text-xl text-warm-600 leading-relaxed max-w-md">
                 Saved per manager on scheduling and admin, every single week.
               </p>
-              <p className="text-xs text-warm-600 mt-6">
+              <p className="text-xs text-warm-400 mt-6">
                 Based on average results reported by teams using Fork for 90+ days.
               </p>
             </div>
 
-            {/* Right — supporting stats stacked */}
-            <div className="space-y-4">
+            <div className="divide-y divide-warm-100">
               {[
-                { metric: '90%', label: 'Faster employee onboarding with digital forms and checklists', icon: <FileText className="w-5 h-5" /> },
-                { metric: '$4,800', label: 'Average annual savings per location on operational costs', icon: <Shield className="w-5 h-5" /> },
-                { metric: '70%', label: 'Fewer repetitive questions with AI-powered answers', icon: <BotMessageSquare className="w-5 h-5" /> },
+                { metric: '90%', label: 'Faster employee onboarding with digital forms and checklists' },
+                { metric: '$4,800', label: 'Average annual savings per location on operational costs' },
+                { metric: '70%', label: 'Fewer repetitive questions with AI-powered answers' },
               ].map((m) => (
-                <div key={m.label} className="flex items-center gap-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5 hover:border-amber/30 hover:bg-white/8 transition-all group">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-amber/15 text-amber shrink-0 group-hover:bg-amber/25 transition-colors">
-                    {m.icon}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm text-warm-400 leading-relaxed">{m.label}</p>
-                  </div>
-                  <div className="text-2xl font-bold text-white shrink-0">{m.metric}</div>
+                <div key={m.label} className="flex items-baseline justify-between gap-6 py-5">
+                  <p className="text-[15px] text-warm-600 leading-relaxed">{m.label}</p>
+                  <div className="text-3xl font-semibold text-warm-950 tracking-tight shrink-0">{m.metric}</div>
                 </div>
               ))}
             </div>
@@ -415,12 +362,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Feature details — alternating rows with numbered accent */}
-      <section>
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mx-auto mb-5">Features</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-warm-900">
+      {/* Feature details */}
+      <section className="border-b border-warm-100">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <div className="max-w-2xl mb-14">
+            <span className="eyebrow mb-4">Features</span>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
               Built for how you actually work
             </h2>
             <p className="mt-4 text-lg text-warm-600 leading-relaxed">
@@ -428,99 +375,71 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="divide-y divide-warm-100 border-t border-warm-100">
             {features.map((f, i) => (
-              <div key={f.title} className="rounded-2xl border border-warm-200/80 bg-white overflow-hidden">
-                <div className={`grid md:grid-cols-[1fr_1.5fr] ${i % 2 === 1 ? 'md:direction-rtl' : ''}`}>
-                  {/* Left — label area */}
-                  <div className={`flex flex-col justify-center p-8 md:p-10 ${i % 2 === 1 ? 'md:order-2 md:direction-ltr' : ''}`}>
-                    <div className="flex items-center gap-4 mb-4">
-                      <span className="text-4xl font-bold text-primary/10 tabular-nums">{String(i + 1).padStart(2, '0')}</span>
-                      <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/8">
-                        {f.icon}
-                      </div>
-                    </div>
-                    <h3 className="text-xl font-semibold text-warm-900">{f.title}</h3>
-                  </div>
-
-                  {/* Right — checklist */}
-                  <div className={`bg-warm-100/60 p-8 md:p-10 ${i % 2 === 1 ? 'md:order-1 md:direction-ltr' : ''}`}>
-                    <ul className="space-y-3">
-                      {f.items.map((item) => (
-                        <li key={item} className="flex items-start gap-3">
-                          <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                          <span className="text-sm text-warm-600">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+              <div key={f.title} className="grid md:grid-cols-[1fr_1.5fr] gap-6 md:gap-12 py-10">
+                <div>
+                  <span className="text-[13px] font-medium text-warm-400 tabular-nums">{String(i + 1).padStart(2, '0')}</span>
+                  <h3 className="mt-2 text-xl font-semibold text-warm-950">{f.title}</h3>
                 </div>
+                <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+                  {f.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-forest-500 mt-0.5 shrink-0" />
+                      <span className="text-[15px] text-warm-600">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Final CTA — gradient-border card */}
-      <section className="bg-forest-700">
-        <div className="max-w-3xl mx-auto px-6 py-20 md:py-28">
-          <div className="relative rounded-3xl p-px bg-linear-to-br from-lime-accent/40 via-white/10 to-lime-accent/20">
-            <div className="rounded-[calc(1.5rem-1px)] bg-forest-700 px-8 py-14 md:px-14 md:py-20 text-center relative overflow-hidden">
-              {/* Decorative glow */}
-              <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-lime-accent/15 rounded-full blur-[100px] pointer-events-none" />
-
-              <p className="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-lime-accent/20 px-3 py-1 text-xs font-medium text-white mb-6 relative">
-                <Sparkles className="w-3 h-3" />Free 7-day trial
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4 relative">
-                Ready to give your business<br className="hidden md:block" /> an AI-powered brain?
-              </h2>
-              <p className="text-lg text-warm-400 mb-10 max-w-md mx-auto relative">
-                Join operators who run smarter with Fork. Start your free trial today.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center relative">
-                <Link href="https://app.forkhr.com/register" target="_blank">
-                  <Button size="lg" className="text-base px-8 h-12 bg-white text-warm-900 hover:bg-warm-100">
-                    Start free trial
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
-                <Link href="/pricing">
-                  <Button variant="outline" size="lg" className="text-base px-8 h-12 border-forest-600 text-warm-300 bg-forest-800 hover:bg-forest-700 hover:text-white">
-                    View pricing
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How it works — horizontal stepper with connecting line */}
-      <section className="bg-warm-100/60">
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mx-auto mb-5">How it works</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-warm-900">
+      {/* How it works */}
+      <section className="border-b border-warm-100">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <div className="max-w-2xl mb-14">
+            <span className="eyebrow mb-4">How it works</span>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
               Up and running in under an hour
             </h2>
           </div>
 
-          <div className="relative">
-            {/* Connecting line (desktop) */}
-            <div className="hidden md:block absolute top-8 left-[calc(16.66%+20px)] right-[calc(16.66%+20px)] h-px bg-linear-to-r from-primary/10 via-primary/30 to-primary/10" />
+          <div className="grid md:grid-cols-3 gap-10 md:gap-8">
+            {steps.map((s) => (
+              <div key={s.step} className="border-t-2 border-warm-950 pt-6">
+                <span className="text-[13px] font-medium text-warm-400 tabular-nums">{s.step}</span>
+                <h3 className="mt-2 text-lg font-semibold text-warm-950 mb-2">{s.title}</h3>
+                <p className="text-[15px] text-warm-600 leading-relaxed">{s.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <div className="grid md:grid-cols-3 gap-12 md:gap-8">
-              {steps.map((s) => (
-                <div key={s.step} className="relative text-center">
-                  {/* Step circle */}
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white border-2 border-primary/20 shadow-sm relative z-10 mb-6">
-                    <span className="text-xl font-bold text-primary">{s.step}</span>
-                  </div>
-                  <h3 className="text-lg font-semibold text-warm-900 mb-2">{s.title}</h3>
-                  <p className="text-sm text-warm-600 leading-relaxed max-w-[280px] mx-auto">{s.description}</p>
-                </div>
-              ))}
+      {/* Final CTA */}
+      <section className="bg-warm-950">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-5">
+              Ready to run your operations on Fork?
+            </h2>
+            <p className="text-lg text-warm-400 mb-10 max-w-lg">
+              Join operators who run smarter with Fork. Start your free 7-day trial today — no credit card required.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="https://app.forkhr.com/register" target="_blank">
+                <Button size="lg" className="text-base px-7 h-12 bg-white text-warm-950 hover:bg-warm-100">
+                  Start free trial
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+              <Link href="/pricing">
+                <Button variant="outline" size="lg" className="text-base px-7 h-12 border-warm-700 bg-transparent text-warm-200 hover:bg-warm-900 hover:text-white">
+                  View pricing
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
