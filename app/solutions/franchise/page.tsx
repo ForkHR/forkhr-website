@@ -17,14 +17,14 @@ import { CTA_PRIMARY, REGISTER_URL } from '@/lib/site'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Franchise & Brand Consistency — Fork | Standardize Operations Across Every Franchise',
+  title: 'Franchise Operations Software: Same Procedures, Training and Schedules at Every Unit | Fork',
   description:
     'Ensure every franchise location follows the same processes, training standards, and compliance requirements. Fork gives franchisors the tools to maintain brand consistency at scale.',
   alternates: {
     canonical: '/solutions/franchise',
   },
   openGraph: {
-    title: 'Franchise & Brand Consistency — Fork | Standardize Operations Across Every Franchise',
+    title: 'Franchise Operations Software: Same Procedures, Training and Schedules at Every Unit | Fork',
     description:
       'Ensure every franchise location follows the same processes, training standards, and compliance requirements.',
     url: 'https://forkhr.com/solutions/franchise',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Franchise & Brand Consistency — Fork',
+    title: 'Franchise Operations Software | Fork',
     description:
       'Ensure every franchise location follows the same processes, training standards, and compliance requirements.',
     images: ['/og-image.png'],
@@ -102,9 +102,9 @@ export default function FranchisePage() {
         <Backdrop />
         <div className="relative max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-32 md:pb-24">
           <nav className="flex items-center gap-1.5 text-sm mb-8">
-            <Link href="/products" className="text-warm-500 hover:text-warm-950 transition-colors">Solutions</Link>
+            <Link href="/solutions" className="text-warm-500 hover:text-warm-950 transition-colors">Solutions</Link>
             <ChevronRight className="w-3.5 h-3.5 text-warm-300" />
-            <span className="font-medium text-warm-950">Franchise &amp; Brand</span>
+            <span className="font-medium text-warm-950">Franchises</span>
           </nav>
           <h1 className="text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-warm-950 max-w-3xl">
             Your brand, consistently executed at every location

@@ -17,14 +17,14 @@ import { CTA_PRIMARY, REGISTER_URL } from '@/lib/site'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Employee Retention — Fork | Reduce Turnover, Keep Your Best People',
+  title: 'Reduce Employee Turnover in Restaurants and Retail: Recognition, Surveys, Fair Schedules | Fork',
   description:
     'Reduce employee turnover with recognition programs, pulse surveys, training tools, and fair scheduling. Fork helps you build teams that stay.',
   alternates: {
     canonical: '/solutions/employee-retention',
   },
   openGraph: {
-    title: 'Employee Retention — Fork | Reduce Turnover, Keep Your Best People',
+    title: 'Reduce Employee Turnover in Restaurants and Retail: Recognition, Surveys, Fair Schedules | Fork',
     description:
       'Reduce employee turnover with recognition programs, pulse surveys, training tools, and fair scheduling.',
     url: 'https://forkhr.com/solutions/employee-retention',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Employee Retention — Fork | Reduce Turnover',
+    title: 'Reduce Employee Turnover | Fork',
     description:
       'Reduce employee turnover with recognition programs, pulse surveys, training tools, and fair scheduling.',
     images: ['/og-image.png'],
@@ -102,9 +102,9 @@ export default function EmployeeRetentionPage() {
         <Backdrop />
         <div className="relative max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-32 md:pb-24">
           <nav className="flex items-center gap-1.5 text-sm mb-8">
-            <Link href="/products" className="text-warm-500 hover:text-warm-950 transition-colors">Solutions</Link>
+            <Link href="/solutions" className="text-warm-500 hover:text-warm-950 transition-colors">Solutions</Link>
             <ChevronRight className="w-3.5 h-3.5 text-warm-300" />
-            <span className="font-medium text-warm-950">Employee Retention</span>
+            <span className="font-medium text-warm-950">Employee retention</span>
           </nav>
           <h1 className="text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-warm-950 max-w-3xl">
             Keep your best people — and stop paying to replace them

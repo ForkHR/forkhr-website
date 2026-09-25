@@ -1,8 +1,11 @@
 import type { MetadataRoute } from 'next'
+import { SOLUTIONS } from '@/lib/solutions'
 
 const baseUrl = 'https://forkhr.com'
 
-const pages: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'] }[] = [
+type Page = { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'] }
+
+const pages: Page[] = [
   { path: '', priority: 1, changeFrequency: 'weekly' },
   { path: '/products', priority: 0.9, changeFrequency: 'weekly' },
   { path: '/pricing', priority: 0.9, changeFrequency: 'monthly' },
@@ -11,10 +14,12 @@ const pages: { path: string; priority: number; changeFrequency: MetadataRoute.Si
   { path: '/supply', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/ai-assistant', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/hiring', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/solutions', priority: 0.8, changeFrequency: 'monthly' },
+  ...SOLUTIONS.map((s): Page => ({ path: `/solutions/${s.slug}`, priority: 0.8, changeFrequency: 'monthly' })),
   { path: '/solutions/compliance', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/solutions/operational-efficiency', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/solutions/multi-location', priority: 0.7, changeFrequency: 'monthly' },
-  { path: '/solutions/employee-retention', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/solutions/employee-retention', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/solutions/franchise', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/about', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/faq', priority: 0.6, changeFrequency: 'monthly' },

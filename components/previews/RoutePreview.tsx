@@ -26,10 +26,12 @@ export default function RoutePreview({ className }: { className?: string }) {
   return (
     <div ref={ref} className={cn('grid text-warm-950 @lg:grid-cols-[1.15fr_1fr]', className)}>
       {/* Map */}
-      <div className="relative border-b border-warm-100 bg-[#F6F7F9] @lg:border-b-0 @lg:border-r">
+      <div className="relative flex items-center border-b border-warm-100 bg-[#F6F7F9] @lg:border-b-0 @lg:border-r">
         <div className="absolute left-3 top-3 z-10 flex items-center gap-2 rounded-full bg-white/90 px-2.5 py-1 text-[10.5px] font-medium shadow-sm ring-1 ring-warm-200">
           <Truck className="h-3 w-3 text-warm-500" /> Van 1 · Luis · 4 stops
         </div>
+        {/* Wrapper hugs the drawing, so the van's percentages map to the viewBox */}
+        <div className="relative w-full">
         <svg viewBox={`0 0 ${W} ${H}`} className="block h-auto w-full" aria-hidden="true">
           {/* streets */}
           <g stroke="#E4E4E7" strokeWidth="6" strokeLinecap="round">
@@ -78,6 +80,7 @@ export default function RoutePreview({ className }: { className?: string }) {
           style={{ left: `${(truck.x / W) * 100}%`, top: `${(truck.y / H) * 100}%` }}
         >
           <Truck className="h-3 w-3" />
+        </div>
         </div>
       </div>
 

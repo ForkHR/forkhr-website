@@ -70,7 +70,7 @@ const kinds = [
   { icon: <Target className="h-4 w-4" />, name: 'Project', hint: 'One-off work where the time each stage takes matters: tasks, policy reviews.', views: 'Board · timeline · list · table' },
 ]
 
-const templates = ['Opening & closing', 'Temperature checks', 'Waste log', 'Cash count', 'Equipment care', 'Incident tracker', 'Batch production', 'Cleaning rota', 'Health inspection prep']
+const templates = ['Shift routines', 'Temperature checks', 'Waste', 'Cash log', 'Cleaning', 'Equipment care', 'Incident tracker', 'Batch production', 'Coffee bar', 'Menu items', 'Requests', 'Expenses', 'Projects']
 
 const moved = [
   {

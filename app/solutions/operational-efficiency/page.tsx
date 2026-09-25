@@ -12,11 +12,11 @@ const description =
   'Run a tighter operation with SOPs for opening, closing, temperature and waste logs, stock counts that feed orders, and labor read against sales. Fork shows where the day leaks time and money.'
 
 export const metadata: Metadata = {
-  title: 'Operational Efficiency — Fork | SOPs, stock counts and labor against sales',
+  title: 'Restaurant Labor & Food Cost Control Software: SOPs, Stock Counts, Labor vs. Sales | Fork',
   description,
   alternates: { canonical: '/solutions/operational-efficiency' },
-  openGraph: { title: 'Operational Efficiency — Fork', description, url: 'https://forkhr.com/solutions/operational-efficiency', images: ['/og-image.png'], type: 'website' },
-  twitter: { card: 'summary_large_image', title: 'Operational Efficiency — Fork', description, images: ['/og-image.png'] },
+  openGraph: { title: 'Labor & Food Cost Control | Fork', description, url: 'https://forkhr.com/solutions/operational-efficiency', images: ['/og-image.png'], type: 'website' },
+  twitter: { card: 'summary_large_image', title: 'Labor & Food Cost Control | Fork', description, images: ['/og-image.png'] },
 }
 
 const stats = [
@@ -69,8 +69,8 @@ export default function OperationalEfficiencyPage() {
   return (
     <main className="pt-16">
       <Hero
-        crumb={{ label: 'Solutions', href: '/products', current: 'Operational efficiency' }}
-        title="Run a tighter operation, spend less doing it"
+        crumb={{ label: 'Solutions', href: '/solutions', current: 'Labor & food cost control' }}
+        title="Cut labor and food costs without a spreadsheet"
         lede="Skipped checklists, unlogged waste, over-ordering and overtime cost more than they look. Fork puts procedures, counts and labor numbers on the phone of the person doing the work, so you see where the day leaks and fix it."
         secondaryHref="/sops"
         secondaryLabel="Explore SOPs"

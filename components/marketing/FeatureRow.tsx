@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Check } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { Window } from '@/components/previews/bits'
+import { Phone, Window } from '@/components/previews/bits'
 import type { TierKey } from '@/lib/catalog'
 import PlanBadge from './PlanBadge'
 
@@ -22,6 +22,7 @@ export default function FeatureRow({
   href,
   hrefLabel = 'Learn more',
   plan,
+  frame = 'window',
   className,
   children,
 }: {
@@ -36,6 +37,7 @@ export default function FeatureRow({
   href?: string
   hrefLabel?: string
   plan?: TierKey
+  frame?: 'window' | 'phone'
   className?: string
   children?: ReactNode
 }) {
@@ -71,7 +73,13 @@ export default function FeatureRow({
             )}
           </div>
           <div className={cn(flip && 'lg:order-1')}>
-            <Window title={previewTitle}>{preview}</Window>
+            {frame === 'phone' ? (
+              <div className="flex justify-center">
+                <Phone>{preview}</Phone>
+              </div>
+            ) : (
+              <Window title={previewTitle}>{preview}</Window>
+            )}
           </div>
         </div>
       </div>

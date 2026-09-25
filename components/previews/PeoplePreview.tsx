@@ -6,7 +6,25 @@ import { IconTile, Initials, Pill, Progress, SectionLabel } from './bits'
 import { useInView, useSequence } from './useSequence'
 
 // A new hire's first week: onboarding tasks, signed forms and a contract, documents with expiry.
-export default function PeoplePreview({ className }: { className?: string }) {
+const VARIANTS = {
+  food: {
+    role: 'Barista · Main St · started Monday',
+    docs: [
+      { name: 'Food handler card', sub: 'Expires Mar 2027' },
+      { name: "Driver's license", sub: 'Expires in 12 days' },
+    ],
+  },
+  fitness: {
+    role: 'Front desk · Downtown · started Monday',
+    docs: [
+      { name: 'CPR & AED certification', sub: 'Expires Mar 2027' },
+      { name: 'Personal trainer certification', sub: 'Expires in 12 days' },
+    ],
+  },
+}
+
+export default function PeoplePreview({ className, variant = 'food' }: { className?: string; variant?: keyof typeof VARIANTS }) {
+  const v = VARIANTS[variant]
   const { ref, inView } = useInView<HTMLDivElement>()
   const step = useSequence(6, { inView, ms: [450, 450, 450, 450, 900, 1000], holdMs: 3000 })
   const pct = step >= 5 ? 75 : 62
@@ -17,7 +35,7 @@ export default function PeoplePreview({ className }: { className?: string }) {
         <Initials name="Jordan Lee" size={34} />
         <div className="min-w-0 flex-1">
           <div className="text-[13px] font-semibold">Jordan Lee</div>
-          <div className="text-[10.5px] text-warm-500">Barista · Main St · started Monday</div>
+          <div className="text-[10.5px] text-warm-500">{v.role}</div>
         </div>
         <Pill tone="brand">Onboarding</Pill>
       </div>
@@ -70,8 +88,8 @@ export default function PeoplePreview({ className }: { className?: string }) {
           <FolderOpen />
         </IconTile>
         <div className="min-w-0 flex-1">
-          <div className="text-[12px] font-semibold">Food handler card</div>
-          <div className="text-[10.5px] text-warm-500">Expires Mar 2027</div>
+          <div className="text-[12px] font-semibold">{v.docs[0].name}</div>
+          <div className="text-[10.5px] text-warm-500">{v.docs[0].sub}</div>
         </div>
         <Pill tone="ok">Valid</Pill>
       </div>
@@ -80,8 +98,8 @@ export default function PeoplePreview({ className }: { className?: string }) {
           <FolderOpen />
         </IconTile>
         <div className="min-w-0 flex-1">
-          <div className="text-[12px] font-semibold">Driver&apos;s license</div>
-          <div className="text-[10.5px] text-warm-500">{step >= 6 ? 'Renewal requested · reminder sent' : 'Expires in 12 days'}</div>
+          <div className="text-[12px] font-semibold">{v.docs[1].name}</div>
+          <div className="text-[10.5px] text-warm-500">{step >= 6 ? 'Renewal requested · reminder sent' : v.docs[1].sub}</div>
         </div>
         <Pill tone={step >= 6 ? 'brand' : 'warn'}>{step >= 6 ? 'Requested' : 'Expiring'}</Pill>
       </div>

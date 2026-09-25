@@ -3,8 +3,11 @@ import { ArrowRight } from 'lucide-react'
 import { Button } from '../ui/button'
 import Logo from './Logo'
 import { APP_STORE_URL, CTA_PRIMARY, GOOGLE_PLAY_URL, JOBS_URL, LOGIN_URL, REGISTER_URL, SITE_DESCRIPTION } from '@/lib/site'
+import { ALL_SOLUTION_LINKS } from '@/lib/solutions'
 
-const columns = [
+type FooterLink = { label: string; href: string; external?: boolean }
+
+const columns: { title: string; links: FooterLink[] }[] = [
   {
     title: 'Team',
     links: [
@@ -37,10 +40,14 @@ const columns = [
     ],
   },
   {
+    title: 'Solutions',
+    links: [{ label: 'All solutions', href: '/solutions' }, ...ALL_SOLUTION_LINKS.map((l) => ({ label: l.label, href: l.href }))],
+  },
+  {
     title: 'Company',
     links: [
       { label: 'Pricing', href: '/pricing' },
-      { label: 'Solutions', href: '/solutions/operational-efficiency' },
+      { label: 'Pricing for AI agents', href: '/pricing.md' },
       { label: 'About', href: '/about' },
       { label: 'FAQ', href: '/faq' },
       { label: 'Privacy policy', href: '/privacy-policy' },
@@ -53,7 +60,7 @@ const Footer = () => {
   return (
     <footer className="border-t border-warm-200 bg-white">
       <div className="mx-auto max-w-6xl px-4 py-16 md:px-6">
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-6 md:gap-8">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-7 md:gap-6">
           <div className="col-span-2 flex flex-col gap-5">
             <Link href="/" className="text-warm-950" aria-label="Fork home">
               <Logo height={28} />
@@ -90,8 +97,8 @@ const Footer = () => {
               <h4 className="mb-4 text-[13px] font-semibold text-warm-950">{col.title}</h4>
               <ul className="space-y-3">
                 {col.links.map((link) => (
-                  <li key={link.href}>
-                    {'external' in link && link.external ? (
+                  <li key={link.href + link.label}>
+                    {link.external ? (
                       <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-sm text-warm-500 transition-colors hover:text-warm-950">
                         {link.label}
                       </a>
@@ -116,6 +123,9 @@ const Footer = () => {
             <Link href="/terms-of-service" className="text-xs text-warm-400 transition-colors hover:text-warm-600">
               Terms
             </Link>
+            <a href="/llms.txt" className="text-xs text-warm-400 transition-colors hover:text-warm-600">
+              llms.txt
+            </a>
           </div>
         </div>
       </div>

@@ -1,57 +1,43 @@
 import type { ComponentType } from 'react'
-import {
-  BookOpen,
-  BotMessageSquare,
-  Briefcase,
-  CalendarDays,
-  ClipboardCheck,
-  Clock,
-  FileSignature,
-  Heart,
-  Landmark,
-  MapPin,
-  Megaphone,
-  MessageSquare,
-  Package,
-  PieChart,
-  Receipt,
-  Scale,
-  ScanBarcode,
-  Store,
-  Truck,
-  Umbrella,
-  Users,
-  Zap,
-} from 'lucide-react'
+import { BookOpen, BotMessageSquare, Briefcase, CalendarDays, ClipboardCheck, Clock, FileSignature, Landmark, Megaphone, MessageSquare, Package, PieChart, Receipt, ScanBarcode, Truck } from 'lucide-react'
+import type { PreviewKey } from '@/lib/solutions'
 
 export type NavItem = {
   name: string
   desc: string
   icon: ComponentType<{ className?: string }>
   href: string
-  badge?: string
 }
 
-export type NavGroup = {
+export type ProductGroup = {
   label: string
+  pitch: string
+  preview: PreviewKey
+  previewTitle: string
+  free?: boolean
   items: NavItem[]
 }
 
-/* Mirrors the areas of the app: Team · Operations · Supply · Sales */
-export const productGroups: NavGroup[] = [
+/* Three columns, one per side of the business; the fourth column of the menu is the live demo. */
+export const productGroups: ProductGroup[] = [
   {
     label: 'Team',
+    pitch: 'Schedules that publish to every phone, timecards from the kiosk, chat by location.',
+    preview: 'schedule',
+    previewTitle: 'Fork · Schedule',
     items: [
-      { name: 'Schedule', desc: 'Build the week, publish to every phone', icon: CalendarDays, href: '/products#schedule' },
-      { name: 'Timecards', desc: 'Kiosk, phone or GPS clock-in', icon: Clock, href: '/products#timecards' },
-      { name: 'Time off', desc: 'Requests, balances, on the schedule', icon: Umbrella, href: '/products#timecards' },
+      { name: 'Schedule', desc: 'Open shifts, trades, availability', icon: CalendarDays, href: '/products#schedule' },
+      { name: 'Timecards & time off', desc: 'Kiosk, phone or GPS clock-in', icon: Clock, href: '/products#timecards' },
       { name: 'Chat', desc: 'Channels by location and job', icon: MessageSquare, href: '/products#chat' },
-      { name: 'Hiring', desc: 'Public job board and pipeline', icon: Briefcase, href: '/hiring' },
       { name: 'People & HR', desc: 'Onboarding, forms, documents, contracts', icon: FileSignature, href: '/products#people' },
+      { name: 'Hiring', desc: 'Public job board and pipeline', icon: Briefcase, href: '/hiring' },
     ],
   },
   {
     label: 'Operations',
+    pitch: 'Every opening, closing and temp check done the same way, and a feed people confirm they read.',
+    preview: 'sops',
+    previewTitle: 'Fork · SOPs',
     items: [
       { name: 'SOPs & checklists', desc: 'Opening, closing, temps, waste, equipment', icon: ClipboardCheck, href: '/sops' },
       { name: 'Feed', desc: 'Announcements, recognitions, surveys', icon: Megaphone, href: '/products#feed' },
@@ -61,29 +47,18 @@ export const productGroups: NavGroup[] = [
     ],
   },
   {
-    label: 'Supply',
+    label: 'Supply & Sales',
+    pitch: 'Order from vendors, sell to customers and get paid online. Free, whether or not they use Fork.',
+    preview: 'invoice',
+    previewTitle: 'Fork · Sales',
+    free: true,
     items: [
-      { name: 'Order from vendors', desc: 'One-time and standing orders', icon: Package, href: '/supply', badge: 'Free' },
-      { name: 'Vendor chat', desc: 'Email bridge for vendors not on Fork', icon: MessageSquare, href: '/supply#chat', badge: 'Free' },
+      { name: 'Order from vendors', desc: 'One-time and standing orders', icon: Package, href: '/supply' },
+      { name: 'Vendor & customer chat', desc: 'Email bridge for anyone not on Fork', icon: MessageSquare, href: '/supply#chat' },
       { name: 'Stock counts', desc: 'Par levels and reorder suggestions', icon: ScanBarcode, href: '/supply#inventory' },
-      { name: 'Vendor market', desc: 'Find vendors that deliver to you', icon: Store, href: '/supply#market', badge: 'Free' },
+      { name: 'Sell through Fork', desc: 'Catalog, customers, orders', icon: Receipt, href: '/sales' },
+      { name: 'Invoices & payments', desc: 'Card or bank, no account needed', icon: Landmark, href: '/sales#payments' },
+      { name: 'Delivery routes', desc: 'Optimized stops, proof of delivery', icon: Truck, href: '/sales#routes' },
     ],
   },
-  {
-    label: 'Sales',
-    items: [
-      { name: 'Sell through Fork', desc: 'Catalog, customers, orders', icon: Receipt, href: '/sales', badge: 'Free' },
-      { name: 'Invoices & payments', desc: 'Card or bank, no account needed', icon: Landmark, href: '/sales#payments', badge: 'Free' },
-      { name: 'Delivery routes', desc: 'Optimized stops, proof of delivery', icon: Truck, href: '/sales#routes', badge: 'Free' },
-      { name: 'Customer chat', desc: 'Every customer, on Fork or not', icon: Users, href: '/sales#chat', badge: 'Free' },
-    ],
-  },
-]
-
-export const solutions: NavItem[] = [
-  { name: 'Compliance & legal', desc: 'Signed forms, acknowledged policies, a paper trail for every case', icon: Scale, href: '/solutions/compliance' },
-  { name: 'Operational efficiency', desc: 'SOPs, stock counts and labor against sales, every day', icon: Zap, href: '/solutions/operational-efficiency' },
-  { name: 'Multi-location', desc: 'One plan, one login, every site side by side', icon: MapPin, href: '/solutions/multi-location' },
-  { name: 'Employee retention', desc: 'Fair schedules, recognition, surveys and training', icon: Heart, href: '/solutions/employee-retention' },
-  { name: 'Franchise & brand', desc: 'The same procedures and training at every location', icon: Store, href: '/solutions/franchise' },
 ]

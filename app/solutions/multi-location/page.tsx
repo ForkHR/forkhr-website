@@ -17,14 +17,14 @@ import { CTA_PRIMARY, REGISTER_URL } from '@/lib/site'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Multi-Location Management — Fork | Run Every Location from One Dashboard',
+  title: 'Multi-Location Restaurant & Retail Management Software: Every Site Side by Side | Fork',
   description:
     'Manage schedules, compliance, and performance across all your locations from one place. Fork gives multi-unit operators full visibility without the travel.',
   alternates: {
     canonical: '/solutions/multi-location',
   },
   openGraph: {
-    title: 'Multi-Location Management — Fork | Run Every Location from One Dashboard',
+    title: 'Multi-Location Restaurant & Retail Management Software: Every Site Side by Side | Fork',
     description:
       'Manage schedules, compliance, and performance across all your locations from one place.',
     url: 'https://forkhr.com/solutions/multi-location',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Multi-Location Management — Fork',
+    title: 'Multi-Location Management Software | Fork',
     description:
       'Manage schedules, compliance, and performance across all your locations from one place.',
     images: ['/og-image.png'],
@@ -95,9 +95,9 @@ export default function MultiLocationPage() {
         <Backdrop />
         <div className="relative max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-32 md:pb-24">
           <nav className="flex items-center gap-1.5 text-sm mb-8">
-            <Link href="/products" className="text-warm-500 hover:text-warm-950 transition-colors">Solutions</Link>
+            <Link href="/solutions" className="text-warm-500 hover:text-warm-950 transition-colors">Solutions</Link>
             <ChevronRight className="w-3.5 h-3.5 text-warm-300" />
-            <span className="font-medium text-warm-950">Multi-Location</span>
+            <span className="font-medium text-warm-950">Multi-location</span>
           </nav>
           <h1 className="text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-warm-950 max-w-3xl">
             Manage every location without being at every location
