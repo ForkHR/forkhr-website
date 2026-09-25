@@ -63,7 +63,7 @@ const Header = () => {
                   <ChevronDown className={cn('h-3.5 w-3.5 transition-transform duration-200', activeDropdown === 'products' && 'rotate-180')} />
                 </Link>
                 <div className={cn(panel('products'), 'left-0')}>
-                  <div className="w-[960px] rounded-2xl border border-warm-200 bg-white p-5 shadow-[0_24px_60px_-20px_rgba(9,9,11,0.25)]">
+                  <div className="w-[1060px] rounded-2xl border border-warm-200 bg-white p-5 shadow-[0_24px_60px_-20px_rgba(9,9,11,0.25)]">
                     <div className="grid grid-cols-4 gap-6">
                       {productGroups.map((group) => (
                         <div key={group.label}>
