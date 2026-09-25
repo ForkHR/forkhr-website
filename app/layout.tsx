@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/navigation/Header";
 import Footer from "@/components/navigation/Footer";
+import { SITE_DESCRIPTION } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,12 +15,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteTitle = "Fork — Run the whole business from one app";
+
 export const metadata: Metadata = {
   title: {
-    default: "Fork - AI-Powered All-in-One Workforce Management Platform",
+    default: siteTitle,
     template: "%s | Fork",
   },
-  description: "AI-Powered All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.",
+  description: SITE_DESCRIPTION,
   alternates: {
     canonical: '/',
   },
@@ -28,16 +31,16 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://forkhr.com'),
   openGraph: {
-    title: "Fork - AI-Powered All-in-One Workforce Management Platform",
-    description: "AI-Powered All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.",
+    title: siteTitle,
+    description: SITE_DESCRIPTION,
     images: ['/og-image.png'],
     type: 'website',
     siteName: 'Fork',
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Fork - AI-Powered All-in-One Workforce Management Platform",
-    description: "AI-Powered All-in-one workforce management platform for scheduling, time tracking, HR onboarding, and engagement. Built for teams in Restaurants & Cafés, Retail Stores, Hotels & Hospitality, Healthcare Clinics, Fitness & Gyms, and Franchises.",
+    title: siteTitle,
+    description: SITE_DESCRIPTION,
     images: ['/og-image.png'],
   },
 };

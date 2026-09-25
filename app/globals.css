@@ -25,6 +25,7 @@
 
   /* ── Font ── */
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* ── Neutral scale (cool gray — "warm" name kept for compat) ── */
   --color-warm-50:  #FAFAFA;
@@ -52,6 +53,25 @@
   --color-forest-900: #1E3A8A;
   --color-forest-950: #172554;
 
+  /* ── Status tones used inside the product demos ── */
+  --color-ok-50:  #ECFDF5;
+  --color-ok-100: #D1FAE5;
+  --color-ok-500: #10B981;
+  --color-ok-600: #059669;
+  --color-ok-700: #047857;
+  --color-warn-50:  #FFFBEB;
+  --color-warn-100: #FEF3C7;
+  --color-warn-500: #F59E0B;
+  --color-warn-600: #D97706;
+  --color-warn-700: #B45309;
+  --color-bad-50:  #FEF2F2;
+  --color-bad-100: #FEE2E2;
+  --color-bad-500: #EF4444;
+  --color-bad-600: #DC2626;
+  --color-bad-700: #B91C1C;
+  --color-plum-100: #EDE9FE;
+  --color-plum-600: #7C3AED;
+
   /* ── Single accent on dark sections (legacy names all map here) ── */
   --color-lime-accent: #60A5FA;
   --color-lavender: #60A5FA;
@@ -60,7 +80,6 @@
   /* ── Dark section surfaces (legacy plum/charcoal names → one neutral dark) ── */
   --color-plum:     #0B0C0E;
   --color-plum-800: #17181B;
-  --color-plum-600: #232529;
   --color-charcoal:     #0B0C0E;
   --color-charcoal-800: #17181B;
   --color-charcoal-600: #232529;
@@ -119,6 +138,10 @@
     border-color: hsl(var(--border));
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
@@ -129,6 +152,16 @@
   h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.02em;
     text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
@@ -142,7 +175,7 @@
     animation: fadeInUp 0.3s ease-out;
   }
 
-  /* Small uppercase eyebrow label (Stripe-style section kicker) */
+  /* Small uppercase eyebrow label (section kicker) */
   .eyebrow {
     display: block;
     font-size: 0.8125rem;
@@ -152,164 +185,137 @@
     color: var(--color-forest-600);
   }
 
-  /* ── Floating shapes hero background ── */
-  .shapes-bg {
+  /* Hero backdrop grids */
+  .bg-dot-grid {
+    background-image: radial-gradient(circle, rgba(9, 9, 11, 0.09) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  .bg-dot-grid-dark {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.10) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  /* Card surface used across marketing sections */
+  .surface {
+    background: #fff;
+    border: 1px solid var(--color-warm-200);
+    border-radius: 1rem;
+  }
+  .surface-hover {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .surface-hover:hover {
+    border-color: var(--color-warm-300);
+    box-shadow: 0 12px 32px -18px rgba(9, 9, 11, 0.25);
+  }
+
+  /* ── Product demo primitives ──
+     Demos are state machines (components/previews/useSequence.ts). Elements carry
+     data-on="true|false" and these classes make the change smooth. */
+  .pv-item {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+  .pv-item[data-on="true"] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .pv-pop {
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.3);
+  }
+  .pv-pop[data-on="true"] {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .pv-slide-r {
+    opacity: 0;
+    transform: translateX(12px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .pv-slide-r[data-on="true"] {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .pv-grow {
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .pv-grow[data-on="true"] {
+    transform: scaleY(1);
+  }
+  .pv-fill {
+    transition: width 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .pv-swap {
+    transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, opacity 0.35s ease;
+  }
+  .pv-fade-in {
+    animation: fade-in 0.4s ease both;
+  }
+
+  /* Live dot */
+  .pv-live {
+    position: relative;
+  }
+  .pv-live::after {
+    content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
+    inset: -3px;
+    border-radius: 9999px;
+    border: 2px solid currentColor;
+    opacity: 0;
+    animation: pv-ping 1.6s ease-out infinite;
   }
 
-  .shapes-bg li {
-    position: absolute;
-    display: block;
-    list-style: none;
-    background: rgba(37, 99, 235, 0.05);
-    animation: float-up 25s linear infinite;
-    bottom: -160px;
+  /* Typing indicator dots */
+  .pv-typing span {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 9999px;
+    background: currentColor;
+    opacity: 0.35;
+    animation: pv-blink 1.2s ease-in-out infinite;
+  }
+  .pv-typing span:nth-child(2) { animation-delay: 0.15s; }
+  .pv-typing span:nth-child(3) { animation-delay: 0.3s; }
+
+  /* Route path drawing (pathLength="100" on the path) */
+  .pv-path {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    transition: stroke-dashoffset 1.2s ease;
+  }
+  .pv-path[data-on="true"] {
+    stroke-dashoffset: 0;
   }
 
-  /* Square variant (default — homepage) */
-  .shapes-square li {
-    border-radius: 0;
+  /* Dashed "not real yet" chip, same visual language as the app */
+  .pv-dashed {
+    border: 1.5px dashed var(--color-warm-300);
+    background: repeating-linear-gradient(135deg, transparent 0 6px, rgba(9, 9, 11, 0.03) 6px 8px);
   }
 
-  /* Triangle variant (products) */
-  .shapes-triangle li {
-    background: transparent;
-    width: 0 !important;
-    height: 0 !important;
-    border-left: var(--tri-size, 40px) solid transparent;
-    border-right: var(--tri-size, 40px) solid transparent;
-    border-bottom: calc(var(--tri-size, 40px) * 1.73) solid rgba(37, 99, 235, 0.05);
+  /* Marquee for the industries strip */
+  .marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 38s linear infinite;
   }
-
-  .shapes-triangle li:nth-child(1)  { --tri-size: 40px; }
-  .shapes-triangle li:nth-child(2)  { --tri-size: 10px; }
-  .shapes-triangle li:nth-child(3)  { --tri-size: 11px; }
-  .shapes-triangle li:nth-child(4)  { --tri-size: 30px; }
-  .shapes-triangle li:nth-child(5)  { --tri-size: 10px; }
-  .shapes-triangle li:nth-child(6)  { --tri-size: 55px; }
-  .shapes-triangle li:nth-child(7)  { --tri-size: 70px; }
-  .shapes-triangle li:nth-child(8)  { --tri-size: 13px; }
-  .shapes-triangle li:nth-child(9)  { --tri-size: 8px; }
-  .shapes-triangle li:nth-child(10) { --tri-size: 70px; }
-
-  /* Circle variant (solutions) */
-  .shapes-circle li {
-    border-radius: 50%;
-  }
-
-  /* Rounded variant — soft rounded cubes */
-  .shapes-rounded li {
-    border-radius: 22%;
-  }
-
-  /* Diamond variant — rotated squares */
-  .shapes-diamond li {
-    border-radius: 0;
-    animation-name: float-up-diamond !important;
-  }
-
-  /* Hexagon variant — clip-path hexagons */
-  .shapes-hexagon li {
-    border-radius: 0;
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-  }
-
-  /* Question-mark variant — floating "?" glyphs */
-  .shapes-question li {
-    background: transparent !important;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    color: rgba(37, 99, 235, 0.07);
-    line-height: 1;
-  }
-  .shapes-question li::after {
-    content: '?';
-    font-size: inherit;
-  }
-  .shapes-question li:nth-child(1)  { font-size: 80px;  }
-  .shapes-question li:nth-child(2)  { font-size: 24px;  }
-  .shapes-question li:nth-child(3)  { font-size: 28px;  }
-  .shapes-question li:nth-child(4)  { font-size: 64px;  }
-  .shapes-question li:nth-child(5)  { font-size: 24px;  }
-  .shapes-question li:nth-child(6)  { font-size: 100px; }
-  .shapes-question li:nth-child(7)  { font-size: 130px; }
-  .shapes-question li:nth-child(8)  { font-size: 30px;  }
-  .shapes-question li:nth-child(9)  { font-size: 20px;  }
-  .shapes-question li:nth-child(10) { font-size: 130px; }
-
-  /* Sparkle / AI variant — floating ✦ stars */
-  .shapes-sparkle li {
-    background: transparent !important;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    font-weight: 400;
-    color: rgba(37, 99, 235, 0.08);
-    line-height: 1;
-  }
-  .shapes-sparkle li::after {
-    content: '✦';
-    font-size: inherit;
-  }
-  .shapes-sparkle li:nth-child(odd)::after  { content: '✦'; }
-  .shapes-sparkle li:nth-child(even)::after { content: '✧'; }
-  .shapes-sparkle li:nth-child(1)  { font-size: 60px;  }
-  .shapes-sparkle li:nth-child(2)  { font-size: 20px;  }
-  .shapes-sparkle li:nth-child(3)  { font-size: 24px;  }
-  .shapes-sparkle li:nth-child(4)  { font-size: 48px;  }
-  .shapes-sparkle li:nth-child(5)  { font-size: 18px;  }
-  .shapes-sparkle li:nth-child(6)  { font-size: 80px;  }
-  .shapes-sparkle li:nth-child(7)  { font-size: 110px; }
-  .shapes-sparkle li:nth-child(8)  { font-size: 26px;  }
-  .shapes-sparkle li:nth-child(9)  { font-size: 16px;  }
-  .shapes-sparkle li:nth-child(10) { font-size: 100px; }
-
-  .shapes-bg li:nth-child(1)  { left: 25%; width: 80px;  height: 80px;  animation-delay: 0s;  }
-  .shapes-bg li:nth-child(2)  { left: 10%; width: 20px;  height: 20px;  animation-delay: 2s;  animation-duration: 12s; }
-  .shapes-bg li:nth-child(3)  { left: 70%; width: 22px;  height: 22px;  animation-delay: 4s;  }
-  .shapes-bg li:nth-child(4)  { left: 40%; width: 60px;  height: 60px;  animation-delay: 0s;  animation-duration: 18s; }
-  .shapes-bg li:nth-child(5)  { left: 65%; width: 20px;  height: 20px;  animation-delay: 0s;  }
-  .shapes-bg li:nth-child(6)  { left: 75%; width: 110px; height: 110px; animation-delay: 3s;  }
-  .shapes-bg li:nth-child(7)  { left: 35%; width: 140px; height: 140px; animation-delay: 7s;  }
-  .shapes-bg li:nth-child(8)  { left: 50%; width: 26px;  height: 26px;  animation-delay: 15s; animation-duration: 45s; }
-  .shapes-bg li:nth-child(9)  { left: 20%; width: 16px;  height: 16px;  animation-delay: 2s;  animation-duration: 35s; }
-  .shapes-bg li:nth-child(10) { left: 85%; width: 140px; height: 140px; animation-delay: 0s;  animation-duration: 11s; }
-
-  @keyframes float-up {
-    0% {
-      transform: translateY(0) rotate(0deg);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(-1200px) rotate(720deg);
-      opacity: 0;
-    }
-  }
-
-  @keyframes float-up-diamond {
-    0% {
-      transform: translateY(0) rotate(45deg);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(-1200px) rotate(765deg);
-      opacity: 0;
-    }
+  .marquee:hover {
+    animation-play-state: paused;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .shapes-bg li {
+    .pv-item, .pv-pop, .pv-slide-r, .pv-grow, .pv-fill, .pv-swap, .pv-path {
+      transition: none !important;
+    }
+    .pv-live::after, .pv-typing span, .marquee {
       animation: none !important;
-      opacity: 0.5;
     }
   }
 
@@ -328,243 +334,71 @@
     animation-fill-mode: both;
   }
 
-  .fade-in-0 {
-    animation-name: fade-in;
-  }
-
-  .fade-out-0 {
-    animation-name: fade-out;
-  }
-
-  .zoom-in-90 {
-    animation-name: zoom-in;
-    animation-timing-function: ease-out;
-  }
-
-  .zoom-in-95 {
-    animation-name: zoom-in-95;
-  }
-
-  .zoom-out-95 {
-    animation-name: zoom-out-95;
-  }
-
-  .slide-in-from-top {
-    animation-name: slide-in-from-top;
-  }
-
-  .slide-in-from-bottom {
-    animation-name: slide-in-from-bottom;
-  }
-
-  .slide-in-from-left {
-    animation-name: slide-in-from-left;
-  }
-
-  .slide-in-from-right {
-    animation-name: slide-in-from-right;
-  }
-
-  .slide-out-to-top {
-    animation-name: slide-out-to-top;
-  }
-
-  .slide-out-to-bottom {
-    animation-name: slide-out-to-bottom;
-  }
-
-  .slide-out-to-left {
-    animation-name: slide-out-to-left;
-  }
-
-  .slide-out-to-right {
-    animation-name: slide-out-to-right;
-  }
-
-  .duration-250 {
-    animation-duration: 250ms;
-  }
-
-  .animate-accordion-down {
-    animation: accordion-down 0.2s ease-out;
-  }
-
-  .animate-accordion-up {
-    animation: accordion-up 0.2s ease-out;
-  }
+  .fade-in-0 { animation-name: fade-in; }
+  .fade-out-0 { animation-name: fade-out; }
+  .zoom-in-90 { animation-name: zoom-in; animation-timing-function: ease-out; }
+  .zoom-in-95 { animation-name: zoom-in-95; }
+  .zoom-out-95 { animation-name: zoom-out-95; }
+  .slide-in-from-top { animation-name: slide-in-from-top; }
+  .slide-in-from-bottom { animation-name: slide-in-from-bottom; }
+  .slide-in-from-left { animation-name: slide-in-from-left; }
+  .slide-in-from-right { animation-name: slide-in-from-right; }
+  .slide-out-to-top { animation-name: slide-out-to-top; }
+  .slide-out-to-bottom { animation-name: slide-out-to-bottom; }
+  .slide-out-to-left { animation-name: slide-out-to-left; }
+  .slide-out-to-right { animation-name: slide-out-to-right; }
+  .duration-250 { animation-duration: 250ms; }
+  .animate-accordion-down { animation: accordion-down 0.2s ease-out; }
+  .animate-accordion-up { animation: accordion-up 0.2s ease-out; }
 
   /* Keyframes */
   @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(1rem);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(1rem); }
+    to { opacity: 1; transform: translateY(0); }
   }
-
   @keyframes enter {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
   }
-
   @keyframes exit {
-    from {
-      opacity: 1;
-      transform: scale(1);
-    }
-    to {
-      opacity: 0;
-      transform: scale(0.95);
-    }
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.95); }
   }
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fade-out {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-
+  @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes fade-out { from { opacity: 1; } to { opacity: 0; } }
   @keyframes zoom-in {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
   }
-
   @keyframes zoom-in-95 {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
   }
-
   @keyframes zoom-out-95 {
-    from {
-      opacity: 1;
-      transform: scale(1);
-    }
-    to {
-      opacity: 0;
-      transform: scale(0.95);
-    }
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.95); }
   }
+  @keyframes slide-in-from-top { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+  @keyframes slide-in-from-bottom { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  @keyframes slide-in-from-left { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+  @keyframes slide-in-from-right { from { transform: translateX(100%); } to { transform: translateX(0); } }
+  @keyframes slide-out-to-top { from { transform: translateY(0); } to { transform: translateY(-100%); } }
+  @keyframes slide-out-to-bottom { from { transform: translateY(0); } to { transform: translateY(100%); } }
+  @keyframes slide-out-to-left { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+  @keyframes slide-out-to-right { from { transform: translateX(0); } to { transform: translateX(100%); } }
+  @keyframes accordion-down { from { height: 0; } to { height: var(--radix-accordion-content-height); } }
+  @keyframes accordion-up { from { height: var(--radix-accordion-content-height); } to { height: 0; } }
 
-  @keyframes slide-in-from-top {
-    from {
-      transform: translateY(-100%);
-    }
-    to {
-      transform: translateY(0);
-    }
+  @keyframes pv-ping {
+    0% { transform: scale(0.6); opacity: 0.8; }
+    100% { transform: scale(1.8); opacity: 0; }
   }
-
-  @keyframes slide-in-from-bottom {
-    from {
-      transform: translateY(100%);
-    }
-    to {
-      transform: translateY(0);
-    }
+  @keyframes pv-blink {
+    0%, 80%, 100% { opacity: 0.25; transform: translateY(0); }
+    40% { opacity: 1; transform: translateY(-2px); }
   }
-
-  @keyframes slide-in-from-left {
-    from {
-      transform: translateX(-100%);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes slide-in-from-right {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes slide-out-to-top {
-    from {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(-100%);
-    }
-  }
-
-  @keyframes slide-out-to-bottom {
-    from {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(100%);
-    }
-  }
-
-  @keyframes slide-out-to-left {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-100%);
-    }
-  }
-
-  @keyframes slide-out-to-right {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(100%);
-    }
-  }
-
-  @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
-  }
-
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 }

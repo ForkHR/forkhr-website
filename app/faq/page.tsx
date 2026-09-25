@@ -1,38 +1,20 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion'
-import { Button } from '@/components/ui/button'
-import { ArrowRight } from 'lucide-react'
-import Link from 'next/link'
-import BlobBackground from '@/components/visual/BlobBackground'
 import type { Metadata } from 'next'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import Backdrop from '@/components/visual/Backdrop'
+import CtaSection from '@/components/marketing/CtaSection'
+import { GUARANTEE_DAYS, PLATFORM_FEE_BPS, SUPPORT_EMAIL } from '@/lib/site'
+
+const description = 'Answers to common questions about Fork: plans and pricing, scheduling, timecards, SOPs, the feed, ordering from vendors, selling and invoicing, payments, security and support.'
 
 export const metadata: Metadata = {
-  title: 'FAQ — Fork | Frequently Asked Questions',
-  description:
-    'Find answers to common questions about Fork — pricing, features, scheduling, time tracking, HR onboarding, integrations, and more.',
-  alternates: {
-    canonical: '/faq',
-  },
-  openGraph: {
-    title: 'FAQ — Fork | Frequently Asked Questions',
-    description:
-      'Find answers to common questions about Fork — pricing, features, scheduling, time tracking, HR onboarding, integrations, and more.',
-    url: 'https://forkhr.com/faq',
-    images: ['/og-image.png'],
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'FAQ — Fork | Frequently Asked Questions',
-    description:
-      'Find answers to common questions about Fork — pricing, features, scheduling, time tracking, HR onboarding, integrations, and more.',
-    images: ['/og-image.png'],
-  },
+  title: 'FAQ — Fork | Frequently asked questions',
+  description,
+  alternates: { canonical: '/faq' },
+  openGraph: { title: 'FAQ — Fork', description, url: 'https://forkhr.com/faq', images: ['/og-image.png'], type: 'website' },
+  twitter: { card: 'summary_large_image', title: 'FAQ — Fork', description, images: ['/og-image.png'] },
 }
+
+const feePct = (PLATFORM_FEE_BPS / 100).toFixed(1).replace(/\.0$/, '')
 
 const faqCategories = [
   {
@@ -40,154 +22,128 @@ const faqCategories = [
     faqs: [
       {
         q: 'What is Fork?',
-        a: 'Fork is an all-in-one workforce management platform that combines scheduling, time tracking, HR onboarding, team engagement, maintenance logs, and waste control into a single easy-to-use tool. It\'s built for hourly teams in restaurants, retail, hospitality, healthcare, fitness, and franchises.',
+        a: 'Fork is one app for running an hourly-staff business: schedules, timecards and chat for the team; SOPs, a feed and learning that keep every shift consistent; and orders to your vendors and invoices to your customers, even when they are not on Fork. It is used by coffee shops, bakeries, restaurants, food distributors, retail, gyms and franchises.',
       },
       {
         q: 'Who is Fork built for?',
-        a: 'Fork is designed for shift-based and hourly teams — including restaurants & cafés, retail stores, hotels & hospitality, healthcare clinics, fitness & gyms, and franchise organizations. Whether you manage 5 or 500 employees, Fork scales with your team.',
+        a: 'Shift-based and hourly teams, and the businesses that supply them. Whether you run one café, a bakery that delivers to twenty shops, or a franchise with fifty locations, the same app fits.',
       },
       {
         q: 'Is Fork available on mobile?',
-        a: 'Yes. Fork is available on iOS (App Store) and Android (Google Play). Employees can view schedules, clock in/out, access documents, and receive updates from their phones.',
+        a: 'Yes. Fork is on iOS and Android. Employees see their schedule, clock in, run checklists, read the feed and chat from their phone. Managers can do almost everything from the phone too; reports open in the app from the web.',
       },
       {
         q: 'How do I get started?',
-        a: 'Sign up for a free 7-day trial — no credit card required. Add your locations, invite your team, and you\'re up and running in minutes.',
+        a: 'Sign up, add your locations, vendors and customers, and invite the team. Ordering and selling are free from day one; team tools start when you pick a plan.',
       },
     ],
   },
   {
-    title: 'Pricing & Billing',
+    title: 'Plans & billing',
     faqs: [
       {
         q: 'How much does Fork cost?',
-        a: 'Fork pricing starts at $39/month per location on the Essential plan. The Pro plan is $79/month and Premium is $129/month. All plans include unlimited employees — no per-user fees.',
+        a: 'Ordering from vendors, selling to customers, invoicing and vendor chat are free. Team tools are priced per location: Essential $39, Pro $79 and Premium $129 per location per month, with unlimited employees on every plan.',
       },
       {
         q: 'Is there a free trial?',
-        a: 'Yes. Every plan comes with a free 7-day trial. No credit card is required to start.',
-      },
-      {
-        q: 'Can I switch plans later?',
-        a: 'Yes — upgrade or downgrade anytime from your account settings. Changes take effect on your next billing cycle.',
+        a: `There is no time-limited trial. Use the Free plan as long as you like. When you move to a paid plan you get a ${GUARANTEE_DAYS}-day money-back guarantee from the first charge.`,
       },
       {
         q: 'Are there per-user fees?',
-        a: 'No. Pricing is per location, with unlimited employees on every plan.',
+        a: 'No. You pay per active location. Every employee at that location is included.',
       },
       {
-        q: 'What payment methods do you accept?',
-        a: 'All major credit cards (Visa, Mastercard, Amex, Discover) and PayPal.',
+        q: 'Can I switch plans or cancel?',
+        a: 'Yes. Upgrade or downgrade anytime from billing settings. There are no long-term contracts. If you cancel, your company moves to the Free plan at the end of the paid period and keeps all its data.',
       },
       {
-        q: 'Can I cancel anytime?',
-        a: 'Yes. There are no long-term contracts. You can cancel your subscription at any time from your account settings.',
+        q: 'Is there a referral program?',
+        a: 'Yes. Share your code. When a business you refer starts a paid plan, you both receive a month of that location\'s plan price as credit, for up to ten locations per referral.',
       },
     ],
   },
   {
-    title: 'Scheduling',
+    title: 'Scheduling & timecards',
     faqs: [
       {
         q: 'How does scheduling work?',
-        a: 'Fork provides a drag-and-drop schedule builder where you can create and publish weekly schedules. Employees get notified automatically and can view their shifts on the app.',
+        a: 'Build the week by dragging shifts, with availability and approved time off visible as you go. Publish once and everyone gets a push notification. Open shifts can be claimed by eligible people, and trades are approved by a manager.',
       },
-      {
-        q: 'Can employees request time off?',
-        a: 'Yes. Employees can submit time-off requests through the app, and managers can approve or deny them directly from the dashboard.',
-      },
-      {
-        q: 'Does Fork support shift swaps?',
-        a: 'Yes. Employees can request shift swaps with coworkers, and managers can approve them with one click.',
-      },
-      {
-        q: 'Can I set employee availability?',
-        a: 'Yes. Employees can set their weekly availability, and Fork will flag scheduling conflicts automatically when you build the schedule.',
-      },
-    ],
-  },
-  {
-    title: 'Time Tracking',
-    faqs: [
       {
         q: 'How do employees clock in?',
-        a: 'Employees can clock in via the mobile app, a shared terminal device, or GPS-enabled devices. Fork supports geo-fenced clock-in to ensure employees are on-site.',
+        a: 'From their phone, from a tablet set up as a kiosk with PINs, or with GPS fences per location. Punches are checked against the scheduled shift and flagged when late or when a break is missed.',
       },
       {
         q: 'Can I export timesheets for payroll?',
-        a: 'Yes. Fork generates payroll-ready timesheet exports that can be downloaded and imported into your payroll provider.',
+        a: 'Yes. Approve the week and export it for your payroll provider. Labor cost and labor % are shown live, and against sales if you connect Square.',
       },
       {
-        q: 'Does Fork track breaks?',
-        a: 'Yes. Break tracking is built in. Managers can configure break rules and employees can clock in and out of breaks through the app.',
+        q: 'Can employees request time off?',
+        a: 'Yes. Requests land in the manager\'s inbox with a one-tap approve. Balances are tracked per employee and approved time off shows on the schedule automatically.',
       },
     ],
   },
   {
-    title: 'HR & Onboarding',
+    title: 'SOPs, feed & learning',
     faqs: [
       {
-        q: 'What onboarding features are included?',
-        a: 'Fork supports paperless onboarding with digital W-4 and I-9 forms, e-signatures, document storage, expiration tracking, onboarding checklists, and custom employment forms.',
+        q: 'What are SOPs in Fork?',
+        a: 'Boards, procedures and runs. A board holds a status flow and, optionally, the things it is about (fridges, machines, products). A procedure is the checklist or log with its steps and triggers. A run is one execution on a phone, with photos, temperatures, signatures and timestamps.',
       },
       {
-        q: 'Can I store employee documents?',
-        a: 'Yes. You can securely upload and organize employee documents like certifications, licenses, and signed forms. Fork also sends expiration alerts so nothing gets missed.',
+        q: 'Where did waste control, maintenance logs and incident reports go?',
+        a: 'They are SOP boards now: a waste log, an equipment care board and an incident tracker. They share steps, triggers, photos and reports with every other procedure. Old links redirect to the SOPs page.',
       },
       {
-        q: 'Does Fork handle hiring and job postings?',
-        a: 'Yes. You can create job postings, track applicants, and manage the hiring pipeline directly within Fork.',
+        q: 'What is the feed?',
+        a: 'The home tab on every phone. Announcements with confirmations and read receipts, recognitions with badges, and surveys, all with reactions and comments. You can attach files, links, an SOP or a shift to a post.',
+      },
+      {
+        q: 'Can I assign training courses and policies?',
+        a: 'Yes. Courses with video and quizzes, versioned policies that need a signed acknowledgement, a shared library and FAQs all live in the Learn tab. Completion and acknowledgements are tracked per employee.',
       },
     ],
   },
   {
-    title: 'Engagement & Training',
+    title: 'Supply & sales',
     faqs: [
       {
-        q: 'What engagement tools does Fork offer?',
-        a: 'Fork includes company-wide announcements, employee surveys, peer recognition & kudos, a shared resource library, and training course assignments to keep your team connected and motivated.',
+        q: 'Do my vendors need to be on Fork?',
+        a: 'No. Add a vendor by name and email. Orders go out as an email with a PDF, and your chat messages to that vendor are emailed too. Their reply lands back in the conversation. If they join Fork later, it becomes an in-app chat.',
       },
       {
-        q: 'Can I assign training courses?',
-        a: 'Yes. Create or upload training courses and assign them to employees. Track completion progress from the dashboard.',
+        q: 'Do my customers need a Fork account to be invoiced?',
+        a: 'No. Customers get the invoice by email with a pay link, and the PDF carries a QR code. They pay by card or US bank transfer without signing up. If they do sign up later with the same email, they can claim their account and order in the app.',
       },
       {
-        q: 'How do employee surveys work?',
-        a: 'Managers can create and publish surveys to collect team feedback. Responses are anonymous by default, and results are displayed in real-time.',
+        q: 'How do I get paid?',
+        a: 'Payments run through Stripe. Once your account is set up, card and bank payments on your invoices are paid out to your bank. Paid, failed and refunded states sync back onto the order.',
+      },
+      {
+        q: 'What does selling cost?',
+        a: `Selling is free. When a customer pays online, Fork keeps a ${feePct}% platform fee on the pre-tax amount and Stripe charges its processing fee. Invoices settled outside Fork carry no fee.`,
+      },
+      {
+        q: 'What about stock counts?',
+        a: 'Count lists per location with a par level on each item. Shortfalls become a suggested order for the right vendor. Stock counts are part of Essential and up.',
       },
     ],
   },
   {
-    title: 'Operations',
-    faqs: [
-      {
-        q: 'What are maintenance logs?',
-        a: 'Maintenance logs let you track equipment issues from report to resolution. Log problems, assign priority levels, track repair costs, and keep a full audit trail.',
-      },
-      {
-        q: 'What is waste control?',
-        a: 'Fork\'s waste control feature lets you log waste in real time, track associated costs automatically, and generate reports to identify patterns and reduce losses.',
-      },
-      {
-        q: 'Can I create custom forms and checklists?',
-        a: 'Yes. Fork includes a drag-and-drop form builder for custom forms, plus daily task checklists that can be assigned to shifts or roles.',
-      },
-    ],
-  },
-  {
-    title: 'Security & Support',
+    title: 'Security & support',
     faqs: [
       {
         q: 'Is my data secure?',
-        a: 'Yes. Fork uses industry-standard encryption, secure cloud infrastructure, and role-based access controls to protect your data. We take security and privacy seriously.',
+        a: 'Yes. Fork uses encrypted connections, secure cloud infrastructure and role-based permissions. Payments are processed by Stripe; Fork never stores card or bank details. Assistant content is isolated per company and never used to train other models.',
       },
       {
         q: 'How do I contact support?',
-        a: 'You can reach our support team at support@forkhr.com. Premium plan customers receive priority support with faster response times.',
+        a: `Email ${SUPPORT_EMAIL}. Premium customers get priority support.`,
       },
       {
-        q: 'Does Fork offer an API or integrations?',
-        a: 'We are continuously expanding our integration options. Contact support@forkhr.com to discuss your specific integration needs.',
+        q: 'Does Fork integrate with my POS?',
+        a: `Square today: sales sync every 20 minutes for the sales vs. labor report. Email ${SUPPORT_EMAIL} about other systems.`,
       },
     ],
   },
@@ -195,99 +151,71 @@ const faqCategories = [
 
 export default function FAQPage() {
   const allFaqs = faqCategories.flatMap((cat) => cat.faqs)
-
   const jsonLdFaq = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: allFaqs.map((faq) => ({
       '@type': 'Question',
       name: faq.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.a,
-      },
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
     })),
   }
 
   return (
     <main className="pt-16">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }} />
 
-      {/* Hero */}
       <section className="relative overflow-hidden border-b border-warm-100">
-        <BlobBackground variant="question" />
-        <div className="relative max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-32 md:pb-24">
+        <Backdrop />
+        <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-12 md:pb-24 md:pt-28">
           <div className="max-w-2xl">
             <span className="eyebrow mb-4">Support</span>
-            <h1 className="text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-warm-950">
-              FAQs.
-            </h1>
-            <p className="mt-4 text-lg text-warm-600 leading-relaxed">
-              Everything you need to know about Fork.<br/>Can&apos;t find an answer?{' '}
-              <a href="mailto:support@forkhr.com" className="font-medium text-forest-600 hover:text-forest-700 transition-colors">
-                Reach out to our team
-              </a>.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Categories */}
-      <section className="border-b border-warm-100">
-        <div className="max-w-3xl mx-auto px-6 py-20 md:py-28">
-          <div className="space-y-14">
-            {faqCategories.map((category, catIdx) => (
-              <div key={catIdx}>
-                <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-warm-950 mb-4">
-                  {category.title}
-                </h2>
-                <Accordion type="single" collapsible className="w-full border-t border-warm-100">
-                  {category.faqs.map((faq, i) => (
-                    <AccordionItem key={i} value={`${catIdx}-${i}`} className="border-warm-100 last:border-b">
-                      <AccordionTrigger className="text-left text-base font-medium text-warm-950 hover:no-underline hover:text-warm-600 py-5">
-                        {faq.q}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-[15px] text-warm-600 leading-relaxed">
-                        {faq.a}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-warm-950">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-5">
-              Still have questions?
-            </h2>
-            <p className="text-lg text-warm-400 mb-10 max-w-lg">
-              Start your free 7-day trial or reach out to our team — we&apos;re happy to help.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="https://app.forkhr.com/register" target="_blank">
-                <Button size="lg" className="text-base px-7 h-12 bg-white text-warm-950 hover:bg-warm-100">
-                  Start free trial
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
-              <a href="mailto:support@forkhr.com">
-                <Button size="lg" variant="outline" className="text-base px-7 h-12 border-warm-700 bg-transparent text-warm-200 hover:bg-warm-900 hover:text-white">
-                  Contact support
-                </Button>
+            <h1 className="text-5xl font-semibold leading-[1.05] tracking-tight text-warm-950 md:text-6xl">Questions, answered.</h1>
+            <p className="mt-4 text-lg leading-relaxed text-warm-600">
+              Everything you need to know about Fork. Can&apos;t find it?{' '}
+              <a href={`mailto:${SUPPORT_EMAIL}`} className="font-medium text-forest-600 transition-colors hover:text-forest-700">
+                Ask our team
               </a>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-warm-100">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+          <div className="grid gap-12 lg:grid-cols-[220px_1fr] lg:gap-16">
+            <nav className="hidden lg:block">
+              <ul className="sticky top-28 space-y-1">
+                {faqCategories.map((c) => (
+                  <li key={c.title}>
+                    <a href={`#${c.title.toLowerCase().replace(/[^a-z]+/g, '-')}`} className="block rounded-lg px-3 py-2 text-[14px] font-medium text-warm-600 transition-colors hover:bg-warm-50 hover:text-warm-950">
+                      {c.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <div className="max-w-3xl space-y-14">
+              {faqCategories.map((category) => (
+                <div key={category.title} id={category.title.toLowerCase().replace(/[^a-z]+/g, '-')} className="scroll-mt-28">
+                  <h2 className="mb-4 text-xl font-semibold tracking-tight text-warm-950 md:text-2xl">{category.title}</h2>
+                  <Accordion type="single" collapsible className="w-full border-t border-warm-100">
+                    {category.faqs.map((faq, i) => (
+                      <AccordionItem key={i} value={`${category.title}-${i}`} className="border-warm-100 last:border-b">
+                        <AccordionTrigger className="py-5 text-left text-base font-medium text-warm-950 hover:text-warm-600 hover:no-underline">{faq.q}</AccordionTrigger>
+                        <AccordionContent className="text-[15px] leading-relaxed text-warm-600">{faq.a}</AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
+
+      <CtaSection eyebrow="Still have questions?" title="Try it, or ask us" lede="Start on the Free plan and see the app with your own vendors and customers, or email support and a person will answer." secondaryHref={`mailto:${SUPPORT_EMAIL}`} secondaryLabel="Contact support" />
     </main>
   )
 }

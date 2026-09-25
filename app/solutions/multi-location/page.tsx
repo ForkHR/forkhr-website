@@ -11,7 +11,9 @@ import {
   CheckCircle2,
 } from 'lucide-react'
 import Link from 'next/link'
-import BlobBackground from '@/components/visual/BlobBackground'
+import Backdrop from '@/components/visual/Backdrop'
+import CtaSection from '@/components/marketing/CtaSection'
+import { CTA_PRIMARY, REGISTER_URL } from '@/lib/site'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -63,7 +65,7 @@ const benefits = [
   {
     icon: <BarChart3 className="w-5 h-5" />,
     title: 'Location comparison reports',
-    desc: 'Compare labor costs, overtime, waste, checklist completion, and more across every location. Spot underperforming sites and share best practices from top performers.',
+    desc: 'Compare labor cost, overtime, waste, SOP completion and purchasing across every location. Spot underperforming sites and share best practices from top performers.',
   },
   {
     icon: <Users className="w-5 h-5" />,
@@ -73,7 +75,7 @@ const benefits = [
   {
     icon: <Eye className="w-5 h-5" />,
     title: 'Real-time activity feed',
-    desc: 'See what is happening across your network in real time — new hires, completed checklists, submitted forms, clock-ins, maintenance requests, and more.',
+    desc: 'See what is happening across your network in real time — new hires, completed SOP runs, submitted forms, clock-ins, vendor orders and more.',
   },
 ]
 
@@ -90,7 +92,7 @@ export default function MultiLocationPage() {
     <main className="pt-16">
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-warm-100">
-        <BlobBackground variant="circle" />
+        <Backdrop />
         <div className="relative max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-32 md:pb-24">
           <nav className="flex items-center gap-1.5 text-sm mb-8">
             <Link href="/products" className="text-warm-500 hover:text-warm-950 transition-colors">Solutions</Link>
@@ -104,9 +106,9 @@ export default function MultiLocationPage() {
             Running 2 locations is twice the work. Running 10 shouldn&apos;t be 10×. Fork centralizes schedules, compliance, and performance data so you can oversee your entire operation from one screen.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="https://app.forkhr.com/register" target="_blank">
+            <Link href={REGISTER_URL} target="_blank">
               <Button size="lg" className="text-base px-6 h-11">
-                Start free trial
+                {CTA_PRIMARY}
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
             </Link>
@@ -222,33 +224,7 @@ export default function MultiLocationPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="bg-warm-950">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-          <div className="max-w-2xl">
-            <span className="eyebrow text-lime-accent mb-4">No credit card required</span>
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-5">
-              See all your locations in one place
-            </h2>
-            <p className="text-lg text-warm-400 mb-10 max-w-lg">
-              Start your free 7-day trial and connect all your locations in minutes.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="https://app.forkhr.com/register" target="_blank">
-                <Button size="lg" className="text-base px-7 h-12 bg-white text-warm-950 hover:bg-warm-100">
-                  Start free trial
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
-              <Link href="/pricing">
-                <Button variant="outline" size="lg" className="text-base px-7 h-12 border-warm-700 bg-transparent text-warm-200 hover:bg-warm-900 hover:text-white">
-                  View pricing
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CtaSection title="Every location, one login" lede="One company-wide plan, one schedule tool, one set of SOPs. Compare sites side by side from your phone." />
     </main>
   )
 }

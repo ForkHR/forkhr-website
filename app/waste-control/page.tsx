@@ -1,5 +1,6 @@
-import { redirect } from 'next/navigation'
+import { redirect } from "next/navigation"
 
+// Old URL kept alive for links and search results.
 export default function WasteControlRedirect() {
-  redirect('/products#waste-control')
+  redirect("/sops#logs")
 }

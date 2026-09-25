@@ -1,148 +1,81 @@
-import { Button } from '@/components/ui/button'
-import { ArrowRight, CalendarClock, ClockIcon, FileText, Users, BookOpen, Shield, CheckCircle2, Wrench, Trash2, BotMessageSquare, ClipboardCheck, Sparkles, Zap } from 'lucide-react'
-import Link from 'next/link'
-import BlobBackground from '@/components/visual/BlobBackground'
 import type { Metadata } from 'next'
+import Link from 'next/link'
+import { ArrowRight, Landmark, Mail, Monitor, Smartphone, Store } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import Backdrop from '@/components/visual/Backdrop'
+import FeatureRow from '@/components/marketing/FeatureRow'
+import SectionHeading from '@/components/marketing/SectionHeading'
+import Segments from '@/components/marketing/Segments'
+import PricingTeaser from '@/components/marketing/PricingTeaser'
+import CtaSection from '@/components/marketing/CtaSection'
+import PlanBadge from '@/components/marketing/PlanBadge'
+import { AiPreview, FeedPreview, InvoicePreview, ProductTour, SchedulePreview, SopsPreview, TimecardsPreview, VendorChatPreview } from '@/components/previews'
+import { APP_STORE_URL, CTA_NOTE, CTA_PRIMARY, GOOGLE_PLAY_URL, REGISTER_URL, SITE_DESCRIPTION } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Fork — All-in-One AI-Powered Workforce Management & Operations Platform',
-  description:
-    'The AI-powered operating system for multi-location frontline businesses — from cafés and gyms to retail and grocery. Scheduling, training, checklists, compliance, and an AI assistant trained on your company knowledge, all in one platform.',
-  alternates: {
-    canonical: '/',
-  },
+  title: 'Fork — Run the whole business from one app',
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: '/' },
   openGraph: {
-    title: 'Fork — All-in-One AI-Powered Workforce Management & Operations Platform',
-    description:
-      'The AI-powered operating system for multi-location frontline businesses — from cafés and gyms to retail and grocery. Scheduling, training, checklists, compliance, and an AI assistant trained on your company knowledge, all in one platform.',
+    title: 'Fork — Run the whole business from one app',
+    description: SITE_DESCRIPTION,
     url: 'https://forkhr.com',
     images: ['/og-image.png'],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Fork — All-in-One AI-Powered Workforce Management & Operations Platform',
-    description:
-      'The AI-powered operating system for multi-location frontline businesses — from cafés and gyms to retail and grocery. Scheduling, training, checklists, compliance, and an AI assistant trained on your company knowledge, all in one platform.',
+    title: 'Fork — Run the whole business from one app',
+    description: SITE_DESCRIPTION,
     images: ['/og-image.png'],
   },
 }
 
-const pillars = [
+const sides = [
   {
-    icon: <BotMessageSquare className="w-5 h-5" />,
-    title: 'AI Assistant',
-    description: 'An AI trained on your SOPs, FAQs, training, and policies. Instant, role-aware answers for every employee, on every shift.',
+    title: 'Your team',
+    desc: 'Schedule, timecards, time off, chat, hiring and HR. Everyone knows when they work, and you know what it costs.',
+    href: '/products#schedule',
+    preview: <TimecardsPreview />,
   },
   {
-    icon: <CalendarClock className="w-5 h-5" />,
-    title: 'Scheduling',
-    description: 'Drag-and-drop shift builder with availability, open shifts, shift swaps, and one-click publishing.',
+    title: 'Every shift, the same way',
+    desc: 'SOPs for opening, closing and temperature checks, a feed people confirm they read, training, and an assistant that answers from your own content.',
+    href: '/sops',
+    preview: <SopsPreview />,
   },
   {
-    icon: <ClockIcon className="w-5 h-5" />,
-    title: 'Time & Attendance',
-    description: 'Terminal, mobile, and GPS clock-in. Real-time timesheets and payroll-ready exports.',
-  },
-  {
-    icon: <BookOpen className="w-5 h-5" />,
-    title: 'Training & Courses',
-    description: 'Full LMS with video, quizzes, certificates, and prerequisites. Train once, deploy to every location.',
-  },
-  {
-    icon: <ClipboardCheck className="w-5 h-5" />,
-    title: 'Checklists & SOPs',
-    description: 'Opening, closing, cleaning, and prep checklists — assigned by location, tracked by shift.',
-  },
-  {
-    icon: <FileText className="w-5 h-5" />,
-    title: 'HR & Onboarding',
-    description: 'Paperless onboarding with W-4, I-9, e-signatures, document storage, and expiration tracking.',
-  },
-  {
-    icon: <Shield className="w-5 h-5" />,
-    title: 'Incidents & Compliance',
-    description: 'AI-assisted workplace incident reports, structured forms, evidence tracking, and secure records to reduce legal risk.',
-  },
-  {
-    icon: <Users className="w-5 h-5" />,
-    title: 'Violations & Terminations',
-    description: 'Track employee policy violations, issue disciplinary actions, and manage terminations with a complete audit trail.',
-  },
-  {
-    icon: <Wrench className="w-5 h-5" />,
-    title: 'Maintenance Logs',
-    description: 'Track equipment issues from report to resolution with priority levels, cost tracking, and audit trails.',
-  },
-  {
-    icon: <Trash2 className="w-5 h-5" />,
-    title: 'Waste Control',
-    description: 'Log waste in real time, track costs automatically, and use reports to find patterns and cut losses.',
+    title: 'Suppliers and customers',
+    desc: 'Order from vendors, chat with them by email, sell to your own customers and get paid online. Free, whether or not they use Fork.',
+    href: '/sales',
+    preview: <InvoicePreview />,
   },
 ]
 
-const aiExamples = [
-  {
-    role: 'New hire',
-    question: 'Where do I find the opening checklist?',
-    answer: 'Your opening checklist is pinned in the Checklists section. It covers: unlock doors, check equipment temps, verify prep list, and stock front-of-house.',
-  },
-  {
-    role: 'Kitchen staff',
-    question: 'What temp should chicken reach?',
-    answer: 'Per your Food Safety Training: internal temperature must reach 165°F (74°C). Always verify with a calibrated thermometer before serving.',
-  },
-  {
-    role: 'Manager',
-    question: 'What\'s our protocol for a no-show?',
-    answer: 'Per company policy: 1. Attempt contact within 15 min. 2. Cover shift from available staff. 3. Log incident if unreachable after 1 hour. 4. Follow up next business day.',
-  },
-]
-
-const features = [
-  {
-    title: 'AI that knows your business',
-    items: ['Trained on your FAQs, courses & library', 'Role-aware responses for every position', 'Escalates to managers when needed', 'Gets smarter as you add content', 'Works on web and mobile'],
-  },
-  {
-    title: 'Build schedules in minutes',
-    items: ['Drag-and-drop shift builder', 'Employee availability & shift swaps', 'Shift tasks, breaks & notes', 'One-click schedule publishing', 'Real-time timesheet tracking'],
-  },
-  {
-    title: 'Train once, deploy everywhere',
-    items: ['Courses with video, quizzes & certificates', 'Role-based training assignments', 'Completion tracking & prerequisites', 'Knowledge library for SOPs & policies', 'Content auto-indexed by AI'],
-  },
-  {
-    title: 'Run tighter daily operations',
-    items: ['Recurring checklists per location', 'Maintenance tracking with cost logging', 'Waste control with item catalogs', 'Incident reports & violation tracking with AI', 'Violation-to-termination workflow'],
-  },
+const integrations = [
+  { icon: <Store className="h-5 w-5" />, title: 'Square', desc: 'Sales synced every 20 minutes for labor % by hour' },
+  { icon: <Landmark className="h-5 w-5" />, title: 'Stripe', desc: 'Card and bank payments on your invoices, paid out to your bank' },
+  { icon: <Mail className="h-5 w-5" />, title: 'Email bridge', desc: 'Vendors and customers off Fork reply from their inbox' },
+  { icon: <Smartphone className="h-5 w-5" />, title: 'iOS & Android', desc: 'Everything the team needs, on their own phone' },
+  { icon: <Monitor className="h-5 w-5" />, title: 'Web & kiosk', desc: 'Managers on any browser, a tablet as the clock-in kiosk' },
 ]
 
 const steps = [
   {
     step: '01',
-    title: 'Set up your team',
-    description: 'Add your locations, invite team members, and configure roles and permissions. Takes about 10 minutes.',
+    title: 'Add locations, vendors and customers',
+    description: 'Import your catalog and customer list from a spreadsheet, connect vendors from the market or add them by email. Ordering and selling are free from day one.',
   },
   {
     step: '02',
-    title: 'Build your first schedule',
-    description: 'Drag and drop shifts, set availability windows, and publish — your team gets notified instantly.',
+    title: 'Invite the team, build the first week',
+    description: 'Everyone installs the app, sets availability and gets the schedule on their phone. Timecards start filling in from the first shift.',
   },
   {
     step: '03',
-    title: 'Run your operations',
-    description: 'Track time, manage documents, send updates, and keep your whole team in sync from one dashboard.',
+    title: 'Turn on SOPs, the feed and learning',
+    description: 'Start from templates for opening, closing and temperature checks. Post the first announcement. Add courses and policies when you are ready.',
   },
-]
-
-const segments = [
-  'Coffee Shops',
-  'Restaurants & Cafés',
-  'Retail Stores',
-  'Hotels & Hospitality',
-  'Fitness & Gyms',
-  'Franchises',
 ]
 
 export default function Home() {
@@ -150,211 +83,243 @@ export default function Home() {
     <main className="pt-16">
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-warm-100">
-        <BlobBackground />
-        <div className="relative max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-32 md:pb-24">
-          <div className="max-w-3xl">
-            <div className="inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 mb-8 text-sm">
-              <span className="inline-flex items-center rounded-full bg-forest-50 px-2.5 py-0.5 text-[13px] font-semibold text-forest-600">
-                New
-              </span>
-              <span className="font-medium text-warm-600">Fork is now on iOS &amp; Android</span>
-              <span className="hidden sm:block w-px h-3.5 bg-warm-200" />
-              <span className="inline-flex items-center gap-2.5">
-                <a
-                  href="https://apps.apple.com/us/app/fork-hr-scheduling/id6754656709"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-forest-600 hover:text-forest-700 transition-colors"
-                >
+        <Backdrop />
+        <div className="relative mx-auto max-w-6xl px-6 pb-14 pt-12 md:pb-20 md:pt-20">
+          <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.15fr] lg:gap-14">
+            <div>
+              <Link href="/sales" className="group inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm">
+                <span className="inline-flex items-center rounded-full bg-forest-50 px-2.5 py-0.5 text-[13px] font-semibold text-forest-600">New</span>
+                <span className="font-medium text-warm-600 group-hover:text-warm-950">Sell through Fork: invoice customers and get paid online</span>
+                <ArrowRight className="h-3.5 w-3.5 text-warm-400 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+
+              <h1 className="mt-7 text-5xl font-semibold leading-[1.02] tracking-tight text-warm-950 md:text-6xl lg:text-[4.25rem]">
+                Run the whole business from one app.
+              </h1>
+
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-warm-600 md:text-xl">
+                Schedules, timecards and chat for your team. SOPs and a feed that keep every shift consistent. Orders to your vendors and invoices to your customers, even when they&apos;re not on Fork.
+              </p>
+
+              <div className="mt-9 flex flex-wrap items-center gap-4">
+                <Link href={REGISTER_URL} target="_blank">
+                  <Button size="lg" className="h-11 px-6 text-base">
+                    {CTA_PRIMARY}
+                    <ArrowRight className="ml-1.5 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/products">
+                  <Button variant="outline" size="lg" className="h-11 px-6 text-base">
+                    See the platform
+                  </Button>
+                </Link>
+              </div>
+
+              <p className="mt-5 text-sm text-warm-400">{CTA_NOTE}</p>
+
+              <div className="mt-6 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[13px]">
+                <span className="text-warm-400">Also on</span>
+                <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className="font-medium text-warm-700 transition-colors hover:text-warm-950">
                   App Store
                 </a>
                 <span className="text-warm-300">·</span>
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.forkhr.fork"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-forest-600 hover:text-forest-700 transition-colors"
-                >
+                <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer" className="font-medium text-warm-700 transition-colors hover:text-warm-950">
                   Google Play
                 </a>
-              </span>
+              </div>
             </div>
 
-            <h1 className="text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-warm-950">
-              Stop running your business from group chats and spreadsheets
-            </h1>
-
-            <p className="mt-6 text-lg md:text-xl text-warm-600 max-w-2xl leading-relaxed">
-              Schedules, checklists, training, maintenance, waste, and HR — every part of the day in one app, so nothing slips and nobody has to chase you for answers.
-            </p>
-
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link href="https://app.forkhr.com/register" target="_blank">
-                <Button size="lg" className="text-base px-6 h-11">
-                  Start free trial
-                  <ArrowRight className="w-4 h-4 ml-1.5" />
-                </Button>
-              </Link>
-              <Link href="/products">
-                <Button variant="outline" size="lg" className="text-base px-6 h-11">
-                  Explore the platform
-                </Button>
-              </Link>
-            </div>
-
-            <p className="mt-5 text-sm text-warm-400">
-              Free 7-day trial · No credit card required · Cancel anytime
-            </p>
+            <ProductTour />
           </div>
 
-          {/* Segments */}
-          <div className="mt-20 pt-8 border-t border-warm-100">
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-              <span className="text-[13px] font-medium text-warm-400">Built for teams in</span>
-              {segments.map((s) => (
-                <span key={s} className="text-[13px] font-medium text-warm-600">
-                  {s}
-                </span>
-              ))}
-            </div>
+          <div className="mt-16 border-t border-warm-100 pt-8">
+            <Segments />
           </div>
         </div>
       </section>
 
-      {/* AI Showcase */}
-      <section className="bg-warm-950">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-          <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
-            <div className="max-w-lg">
-              <span className="eyebrow text-lime-accent mb-4">AI Assistant</span>
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">
-                An AI that actually knows your business
-              </h2>
-              <p className="mt-5 text-lg text-warm-400 leading-relaxed">
-                Fork&apos;s AI is trained on your company&apos;s own content — FAQs, training courses, knowledge library, and policies. Not generic. Not hallucinating. Your knowledge, on demand.
-              </p>
+      {/* Three sides */}
+      <section className="border-b border-warm-100">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+          <SectionHeading
+            eyebrow="One app"
+            title="Three sides of the business. One place they meet."
+            lede="Most tools stop at the schedule. Fork also runs the procedures your team follows and the orders and invoices that keep the doors open."
+          />
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            {sides.map((s) => (
+              <Link key={s.title} href={s.href} className="surface surface-hover group flex flex-col overflow-hidden">
+                <div className="p-6 pb-0">
+                  <h3 className="text-xl font-semibold tracking-tight text-warm-950">{s.title}</h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-warm-600">{s.desc}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-forest-600">
+                    Explore
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </div>
+                <div className="mt-6 flex-1 bg-warm-100/70 px-4 pt-4">
+                  <div className="@container pointer-events-none h-[250px] overflow-hidden rounded-t-xl border border-b-0 border-warm-200 bg-white shadow-[0_20px_50px_-24px_rgba(9,9,11,0.3)] mask-[linear-gradient(to_bottom,black_75%,transparent)]" aria-hidden="true">
+                    {s.preview}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <dl className="mt-10 space-y-7">
+      {/* Feature tour */}
+      <FeatureRow
+        id="schedule"
+        eyebrow="Scheduling & timecards"
+        plan="essential"
+        title="Build the week in minutes. Publish once."
+        lede="Drag shifts onto the week with availability and time off in view, then publish. Every phone gets a push. Open shifts get claimed, trades get approved, and timecards fill in from the kiosk, the app or GPS."
+        bullets={[
+          'Open shifts, trades and availability, handled for you',
+          'Kiosk, phone and GPS clock-in with late and break flags',
+          'Approve the week and export it for payroll',
+          'Labor cost and labor % against your Square sales',
+        ]}
+        preview={<SchedulePreview />}
+        previewTitle="Fork · Schedule · Main St"
+        href="/products#schedule"
+        hrefLabel="See scheduling and timecards"
+      />
+
+      <FeatureRow
+        id="feed"
+        flip
+        eyebrow="Feed"
+        plan="essential"
+        title="Announcements people confirm they read"
+        lede="Post once, to a location or the whole company, and see who confirmed, who reacted and who replied. Recognitions and surveys live in the same feed, so it is the one screen everyone opens."
+        bullets={[
+          'Pinned announcements with confirmations and read receipts',
+          'Recognitions with badges, reactions and comments',
+          'Surveys, anonymous or named, with results by location',
+          'Attach files, links, an SOP or a shift to any post',
+        ]}
+        preview={<FeedPreview />}
+        previewTitle="Fork · Feed"
+        href="/products#feed"
+        hrefLabel="See the feed"
+      />
+
+      <FeatureRow
+        id="sops"
+        eyebrow="SOPs"
+        plan="premium"
+        title="Every opening, closing and temp check, done the same way"
+        lede="Boards for routines, logs and workflows. Procedures whose steps ask for a photo, a temperature, a count or a signature. Runs that are scheduled, triggered by a shift or started with a QR scan, and reported by location."
+        bullets={[
+          'Opening and closing checklists, temperature and waste logs, cash counts',
+          'Equipment care routines and incident boards',
+          'A failed check schedules a recheck and blocks completion until it is fixed',
+          'Reports on what was missed, where, and by whom',
+        ]}
+        preview={<SopsPreview />}
+        previewTitle="Fork · SOPs · Opening checklist"
+        href="/sops"
+        hrefLabel="Explore SOPs"
+      />
+
+      <FeatureRow
+        id="supply"
+        flip
+        eyebrow="Supply"
+        plan="free"
+        title="Talk to your vendors where the order lives"
+        lede="Every vendor gets one conversation next to its orders. If they are on Fork, it is a chat. If not, your message goes out as an email and their reply lands in the thread. Orders, standing orders and stock counts sit right beside it."
+        bullets={[
+          'One-time and standing orders, emailed to the vendor',
+          'Vendor replies by email show up in the chat, attachments included',
+          'Stock counts with par levels turn shortfalls into an order',
+          'Free, with unlimited vendors and catalog items',
+        ]}
+        preview={<VendorChatPreview />}
+        previewTitle="Fork · Chat · Bluebird Dairy"
+        href="/supply"
+        hrefLabel="Explore supply"
+      />
+
+      <FeatureRow
+        id="sales"
+        eyebrow="Sales"
+        plan="free"
+        title="Sell, invoice and get paid. Your customers never need an account."
+        lede="Add your catalog and customers, take orders or let standing orders create themselves, deliver on an optimized route, and invoice. Customers pay by card or bank transfer from the emailed link or the QR code on the PDF. Payouts land in your bank."
+        bullets={[
+          'Customer-specific catalogs and price lists',
+          'Invoices with a pay link and QR code, PDF included',
+          'Card and US bank payments through Stripe, paid out to you',
+          'Delivery routes with proof of delivery on every stop',
+        ]}
+        preview={<InvoicePreview />}
+        previewTitle="Fork · Sales · Order S-2088"
+        href="/sales"
+        hrefLabel="Explore selling through Fork"
+      />
+
+      {/* AI */}
+      <section className="relative overflow-hidden bg-warm-950">
+        <Backdrop tone="dark" glow={false} />
+        <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+            <div className="max-w-lg">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="eyebrow text-lime-accent">AI assistant</span>
+                <PlanBadge tier="premium" className="border-warm-700 bg-transparent text-warm-300 hover:border-warm-500 hover:text-white" />
+              </div>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">Ask about your business in plain English</h2>
+              <p className="mt-5 text-lg leading-relaxed text-warm-400">
+                The assistant answers from your schedule, policies, FAQs, courses and library. Not the internet. It drafts messages and schedules, and hands off to a manager when it should not decide on its own.
+              </p>
+              <dl className="mt-10 space-y-6">
                 {[
-                  { title: 'Trained on your content', desc: 'AI indexes your FAQs, courses, and library automatically. No prompt engineering needed.' },
-                  { title: 'Role-aware responses', desc: 'Owners, managers, and employees get answers matched to their role and permissions.' },
-                  { title: 'Smart escalation', desc: 'When AI can\'t answer, it escalates to the right manager with full context attached.' },
+                  { title: 'Trained on your content', desc: 'Publish a policy or an FAQ and the next conversation knows it. No prompt engineering, no retraining.' },
+                  { title: 'Role-aware', desc: 'Owners, managers and employees get answers matched to what they are allowed to see and do.' },
+                  { title: 'Knows when to escalate', desc: 'When it cannot answer, it hands off to the right manager with the context attached.' },
                 ].map((c) => (
                   <div key={c.title} className="border-l-2 border-warm-800 pl-5">
                     <dt className="text-[15px] font-semibold text-white">{c.title}</dt>
-                    <dd className="mt-1 text-[15px] text-warm-400 leading-relaxed">{c.desc}</dd>
+                    <dd className="mt-1 text-[15px] leading-relaxed text-warm-400">{c.desc}</dd>
                   </div>
                 ))}
               </dl>
-
-              <Link
-                href="/ai-assistant"
-                className="mt-10 inline-flex items-center gap-1.5 text-[15px] font-medium text-lime-accent hover:text-white transition-colors"
-              >
-                Learn more about the AI
-                <ArrowRight className="w-4 h-4" />
+              <Link href="/ai-assistant" className="mt-10 inline-flex items-center gap-1.5 text-[15px] font-medium text-lime-accent transition-colors hover:text-white">
+                Learn more about the assistant
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-
-            {/* Chat mockup */}
-            <div className="rounded-xl border border-warm-800 bg-warm-900/60 overflow-hidden">
-              <div className="flex items-center gap-3 px-5 py-3.5 border-b border-warm-800">
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-lime-accent/10">
-                  <BotMessageSquare className="w-4 h-4 text-lime-accent" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-white">Fork AI</div>
-                  <div className="text-xs text-warm-500">Trained on your company content</div>
-                </div>
-              </div>
-
-              <div className="p-5 space-y-5">
-                {aiExamples.map((ex) => (
-                  <div key={ex.role} className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-warm-800 flex items-center justify-center shrink-0 mt-0.5">
-                        <Users className="w-3 h-3 text-warm-400" />
-                      </div>
-                      <div>
-                        <span className="text-[10px] font-medium text-warm-500 uppercase tracking-wider">{ex.role}</span>
-                        <p className="text-sm text-warm-300 mt-0.5">{ex.question}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3 pl-9">
-                      <div className="w-6 h-6 rounded-full bg-lime-accent/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <Sparkles className="w-3 h-3 text-lime-accent" />
-                      </div>
-                      <p className="text-sm text-warm-400 leading-relaxed bg-warm-900 rounded-lg px-4 py-3 border border-warm-800">{ex.answer}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <div className="@container overflow-hidden rounded-xl border border-warm-800 bg-warm-900/60">
+              <AiPreview dark />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Platform overview */}
+      {/* Numbers */}
       <section className="border-b border-warm-100">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-          <div className="max-w-2xl mb-14">
-            <span className="eyebrow mb-4">Platform</span>
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
-              Everything your team needs, nothing it doesn&apos;t
-            </h2>
-            <p className="mt-4 text-lg text-warm-600 leading-relaxed">
-              From AI-powered support to daily checklists — built to run consistently, compliantly, and efficiently.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-warm-200 border border-warm-200 rounded-xl overflow-hidden">
-            {pillars.map((p) => (
-              <div key={p.title} className="bg-white p-7 hover:bg-warm-50 transition-colors">
-                <div className="text-forest-600 mb-4">{p.icon}</div>
-                <h3 className="text-[15px] font-semibold text-warm-950 mb-1.5">{p.title}</h3>
-                <p className="text-sm text-warm-500 leading-relaxed">{p.description}</p>
-              </div>
-            ))}
-            {/* Filler cell keeps the grid rectangular */}
-            <div className="bg-white p-7 flex items-end sm:col-span-2 lg:col-span-2">
-              <Link
-                href="/products"
-                className="inline-flex items-center gap-1.5 text-[15px] font-medium text-forest-600 hover:text-forest-700 transition-colors"
-              >
-                Explore all products
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Metrics */}
-      <section className="border-b border-warm-100">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
-          <div className="grid md:grid-cols-[1.1fr_1fr] gap-12 md:gap-20 items-center">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+          <div className="grid items-center gap-12 md:grid-cols-[1.1fr_1fr] md:gap-20">
             <div>
               <span className="eyebrow mb-4">By the numbers</span>
-              <div className="text-6xl md:text-7xl font-semibold text-warm-950 tracking-tight leading-none mb-4">
+              <div className="mb-4 text-6xl font-semibold leading-none tracking-tight text-warm-950 md:text-7xl">
                 10 hrs<span className="text-forest-500">/wk</span>
               </div>
-              <p className="text-xl text-warm-600 leading-relaxed max-w-md">
-                Saved per manager on scheduling and admin, every single week.
-              </p>
-              <p className="text-xs text-warm-400 mt-6">
-                Based on average results reported by teams using Fork for 90+ days.
-              </p>
+              <p className="max-w-md text-xl leading-relaxed text-warm-600">Saved per manager on scheduling, ordering and admin, every week.</p>
+              <p className="mt-6 text-xs text-warm-400">Based on average results reported by teams using Fork for 90+ days.</p>
             </div>
-
             <div className="divide-y divide-warm-100">
               {[
-                { metric: '90%', label: 'Faster employee onboarding with digital forms and checklists' },
-                { metric: '$4,800', label: 'Average annual savings per location on operational costs' },
-                { metric: '70%', label: 'Fewer repetitive questions with AI-powered answers' },
+                { metric: '90%', label: 'Faster onboarding with forms, guides and documents on a phone' },
+                { metric: '$4,800', label: 'Average annual savings per location on operating costs' },
+                { metric: '70%', label: 'Fewer repeat questions once FAQs feed the assistant' },
               ].map((m) => (
                 <div key={m.label} className="flex items-baseline justify-between gap-6 py-5">
-                  <p className="text-[15px] text-warm-600 leading-relaxed">{m.label}</p>
-                  <div className="text-3xl font-semibold text-warm-950 tracking-tight shrink-0">{m.metric}</div>
+                  <p className="text-[15px] leading-relaxed text-warm-600">{m.label}</p>
+                  <div className="shrink-0 text-3xl font-semibold tracking-tight text-warm-950">{m.metric}</div>
                 </div>
               ))}
             </div>
@@ -362,34 +327,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Feature details */}
-      <section className="border-b border-warm-100">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-          <div className="max-w-2xl mb-14">
-            <span className="eyebrow mb-4">Features</span>
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
-              Built for how you actually work
-            </h2>
-            <p className="mt-4 text-lg text-warm-600 leading-relaxed">
-              Every feature maps to a real operational need — from AI-powered answers to daily checklists.
-            </p>
-          </div>
-
-          <div className="divide-y divide-warm-100 border-t border-warm-100">
-            {features.map((f, i) => (
-              <div key={f.title} className="grid md:grid-cols-[1fr_1.5fr] gap-6 md:gap-12 py-10">
-                <div>
-                  <span className="text-[13px] font-medium text-warm-400 tabular-nums">{String(i + 1).padStart(2, '0')}</span>
-                  <h3 className="mt-2 text-xl font-semibold text-warm-950">{f.title}</h3>
-                </div>
-                <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
-                  {f.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-forest-500 mt-0.5 shrink-0" />
-                      <span className="text-[15px] text-warm-600">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+      {/* Works with */}
+      <section className="border-b border-warm-100 bg-warm-50">
+        <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+          <SectionHeading eyebrow="Fits what you already use" title="No new hardware. No one forced to sign up." />
+          <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-warm-200 bg-warm-200 sm:grid-cols-2 lg:grid-cols-5">
+            {integrations.map((i) => (
+              <div key={i.title} className="bg-white p-6">
+                <div className="mb-3 text-forest-600">{i.icon}</div>
+                <h3 className="text-[15px] font-semibold text-warm-950">{i.title}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-warm-500">{i.desc}</p>
               </div>
             ))}
           </div>
@@ -398,52 +345,22 @@ export default function Home() {
 
       {/* How it works */}
       <section className="border-b border-warm-100">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-          <div className="max-w-2xl mb-14">
-            <span className="eyebrow mb-4">How it works</span>
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
-              Up and running in under an hour
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-10 md:gap-8">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+          <SectionHeading eyebrow="How it works" title="Up and running in an afternoon" lede="Start with the free parts. Add the team tools when you are ready." />
+          <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
             {steps.map((s) => (
               <div key={s.step} className="border-t-2 border-warm-950 pt-6">
-                <span className="text-[13px] font-medium text-warm-400 tabular-nums">{s.step}</span>
-                <h3 className="mt-2 text-lg font-semibold text-warm-950 mb-2">{s.title}</h3>
-                <p className="text-[15px] text-warm-600 leading-relaxed">{s.description}</p>
+                <span className="text-[13px] font-medium tabular-nums text-warm-400">{s.step}</span>
+                <h3 className="mb-2 mt-2 text-lg font-semibold text-warm-950">{s.title}</h3>
+                <p className="text-[15px] leading-relaxed text-warm-600">{s.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="bg-warm-950">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-5">
-              Ready to run your operations on Fork?
-            </h2>
-            <p className="text-lg text-warm-400 mb-10 max-w-lg">
-              Join operators who run smarter with Fork. Start your free 7-day trial today — no credit card required.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="https://app.forkhr.com/register" target="_blank">
-                <Button size="lg" className="text-base px-7 h-12 bg-white text-warm-950 hover:bg-warm-100">
-                  Start free trial
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
-              <Link href="/pricing">
-                <Button variant="outline" size="lg" className="text-base px-7 h-12 border-warm-700 bg-transparent text-warm-200 hover:bg-warm-900 hover:text-white">
-                  View pricing
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PricingTeaser />
+      <CtaSection />
     </main>
   )
 }

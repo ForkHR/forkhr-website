@@ -1,515 +1,313 @@
-import { Button } from '@/components/ui/button'
-import {
-  ArrowRight,
-  CalendarClock,
-  ClockIcon,
-  FileText,
-  Users,
-  BookOpen,
-  Shield,
-  CheckCircle2,
-  MapPin,
-  Smartphone,
-  Send,
-  ArrowLeftRight,
-  Coffee,
-  Timer,
-  FolderOpen,
-  FileSignature,
-  UserPlus,
-  BarChart3,
-  Bell,
-  Star,
-  Wrench,
-  ClipboardList,
-  AlertTriangle,
-  DollarSign,
-  History,
-  Camera,
-  Trash2,
-  Package,
-  TrendingDown,
-  PieChart,
-  Tag,
-  HelpCircle,
-  ListOrdered,
-  Eye,
-  MessageSquare,
-  Bot,
-  PenLine,
-  ShieldAlert,
-  Scale,
-  Gavel,
-  UserX,
-  Search,
-  Brain,
-  FileCheck,
-} from 'lucide-react'
-import Link from 'next/link'
-import BlobBackground from '@/components/visual/BlobBackground'
 import type { Metadata } from 'next'
+import Link from 'next/link'
+import {
+  BookOpen,
+  BotMessageSquare,
+  Briefcase,
+  CalendarDays,
+  ClipboardCheck,
+  Clock,
+  FileSignature,
+  Megaphone,
+  MessageSquare,
+  Package,
+  PieChart,
+  Receipt,
+} from 'lucide-react'
+import Hero from '@/components/marketing/Hero'
+import FeatureRow from '@/components/marketing/FeatureRow'
+import CtaSection from '@/components/marketing/CtaSection'
+import {
+  AiPreview,
+  ChatPreview,
+  FeedPreview,
+  HiringPreview,
+  InvoicePreview,
+  LearnPreview,
+  PeoplePreview,
+  ReportPreview,
+  SchedulePreview,
+  SopsPreview,
+  SupplyPreview,
+  TimecardsPreview,
+} from '@/components/previews'
+
+const description =
+  'Every Fork product: scheduling, timecards, chat, feed, SOPs and checklists, learning, people & HR, hiring, ordering from vendors, selling and invoicing customers, reports and the AI assistant.'
 
 export const metadata: Metadata = {
-  title: 'Products — Fork | Scheduling, Time Tracking, HR, Incidents, Violations & More',
-  description:
-    'Explore all Fork products: shift scheduling, time & attendance, paperless onboarding, document management, incidents & violations, surveys, recognition, training, company FAQs, maintenance logs, and waste control.',
-  alternates: {
-    canonical: '/products',
-  },
+  title: 'Products — Fork | Scheduling, SOPs, Feed, Supply, Sales & More',
+  description,
+  alternates: { canonical: '/products' },
   openGraph: {
-    title: 'Products — Fork | Scheduling, Time Tracking, HR, Incidents, Violations & More',
-    description:
-      'Explore all Fork products: shift scheduling, time & attendance, paperless onboarding, document management, incidents & violations, surveys, recognition, training, company FAQs, maintenance logs, and waste control.',
+    title: 'Products — Fork | Scheduling, SOPs, Feed, Supply, Sales & More',
+    description,
     url: 'https://forkhr.com/products',
     images: ['/og-image.png'],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Products — Fork | Scheduling, Time Tracking, HR, FAQs, Maintenance & Waste Control',
-    description:
-      'Explore all Fork products: shift scheduling, time & attendance, paperless onboarding, document management, surveys, recognition, training, company FAQs, maintenance logs, and waste control.',
+    title: 'Products — Fork | Scheduling, SOPs, Feed, Supply, Sales & More',
+    description,
     images: ['/og-image.png'],
   },
 }
 
-const sections = [
-  {
-    id: 'scheduling',
-    label: 'Scheduling',
-    icon: <CalendarClock className="w-5 h-5" />,
-    headline: 'Build and share schedules your team can rely on',
-    description:
-      'Create weekly schedules in minutes with drag-and-drop. Your team sees updates instantly on web or mobile — no more texting schedules or printing spreadsheets.',
-    features: [
-      {
-        icon: <Send className="w-5 h-5 text-forest-600" />,
-        title: 'Instant schedule publishing',
-        desc: 'Build your schedule, hit publish, and every team member gets notified immediately. No emails, no printouts.',
-      },
-      {
-        icon: <CalendarClock className="w-5 h-5 text-forest-600" />,
-        title: 'Always up to date',
-        desc: 'Edits sync in real time. When you move a shift, your team sees the change instantly on their phone.',
-      },
-      {
-        icon: <Timer className="w-5 h-5 text-forest-600" />,
-        title: 'Weekly availability',
-        desc: 'Employees set when they can work. You see availability at a glance while building the schedule.',
-      },
-      {
-        icon: <CheckCircle2 className="w-5 h-5 text-forest-600" />,
-        title: 'Shift tasks & notes',
-        desc: 'Attach checklists and instructions to each shift so your team knows exactly what to do.',
-      },
-      {
-        icon: <ArrowLeftRight className="w-5 h-5 text-forest-600" />,
-        title: 'Open shifts & shift swaps',
-        desc: 'Post open shifts for your team to claim. Approve swap requests with one tap.',
-      },
-      {
-        icon: <Coffee className="w-5 h-5 text-forest-600" />,
-        title: 'Time-off requests',
-        desc: 'Employees request time off in the app. You approve or decline — and the schedule updates automatically.',
-      },
-    ],
-  },
-  {
-    id: 'time-tracking',
-    label: 'Time & Attendance',
-    icon: <ClockIcon className="w-5 h-5" />,
-    headline: 'Accurate time tracking without expensive hardware',
-    description:
-      'Turn any tablet, phone, or computer into a clock-in terminal. Timesheets are filled automatically and ready for payroll.',
-    features: [
-      {
-        icon: <Smartphone className="w-5 h-5 text-forest-600" />,
-        title: 'Clock-in from any device',
-        desc: 'Use an iPad, Android tablet, or computer as a clock-in terminal. Assign PINs and go — no costly hardware.',
-      },
-      {
-        icon: <Timer className="w-5 h-5 text-forest-600" />,
-        title: 'Real-time timesheets',
-        desc: 'Every clock-in and clock-out is recorded instantly. Managers can review and edit entries at any time.',
-      },
-      {
-        icon: <MapPin className="w-5 h-5 text-forest-600" />,
-        title: 'GPS clock-in',
-        desc: 'Set up geo-fenced locations so employees can only clock in when they are on-site.',
-      },
-      {
-        icon: <Users className="w-5 h-5 text-forest-600" />,
-        title: 'Live team status',
-        desc: 'See who is clocked in, on break, or clocked out — in real time across all your locations.',
-      },
-    ],
-  },
-  {
-    id: 'hr-onboarding',
-    label: 'HR & Onboarding',
-    icon: <FileText className="w-5 h-5" />,
-    headline: 'Paperless HR that keeps you compliant',
-    description:
-      'Digitize onboarding, manage documents, and handle employment forms — so nothing falls through the cracks.',
-    features: [
-      {
-        icon: <UserPlus className="w-5 h-5 text-forest-600" />,
-        title: 'Paperless onboarding',
-        desc: 'New hires complete W-4, I-9, and custom forms online before their first day. No more chasing paperwork.',
-      },
-      {
-        icon: <FolderOpen className="w-5 h-5 text-forest-600" />,
-        title: 'Document management',
-        desc: 'Upload, request, and organize employee documents. Set expiration reminders so certifications never lapse.',
-      },
-      {
-        icon: <FileSignature className="w-5 h-5 text-forest-600" />,
-        title: 'E-signatures',
-        desc: 'Collect legally-binding signatures on any document — right from the app.',
-      },
-      {
-        icon: <FileText className="w-5 h-5 text-forest-600" />,
-        title: 'Custom forms',
-        desc: 'Build forms for any HR process using a drag-and-drop form builder.',
-      },
-      {
-        icon: <Shield className="w-5 h-5 text-forest-600" />,
-        title: 'Hiring & job postings',
-        desc: 'Post openings, track applicants, and move candidates through your pipeline — all in one place.',
-      },
-    ],
-  },
-  {
-    id: 'incidents',
-    label: 'Incidents',
-    icon: <ShieldAlert className="w-5 h-5" />,
-    headline: 'Document workplace incidents with structured reports and AI insights',
-    description:
-      'Give managers a structured way to report workplace injuries, safety events, and other incidents. Attach evidence, assign witnesses, and let AI analyze every report so nothing gets overlooked.',
-    features: [
-      {
-        icon: <AlertTriangle className="w-5 h-5 text-forest-600" />,
-        title: 'Structured incident reports',
-        desc: 'Document injuries, safety events, and workplace incidents with structured forms. Classify each report by type and severity.',
-      },
-      {
-        icon: <Brain className="w-5 h-5 text-forest-600" />,
-        title: 'AI-powered analysis',
-        desc: 'Fork\'s AI summarizes every incident, flags severity, identifies potential legal risk, and recommends follow-up actions automatically.',
-      },
-      {
-        icon: <Search className="w-5 h-5 text-forest-600" />,
-        title: 'Review & resolution workflow',
-        desc: 'Move incidents through draft → in-review → under-investigation → resolved. Track who reviewed each report and when it was closed.',
-      },
-      {
-        icon: <Camera className="w-5 h-5 text-forest-600" />,
-        title: 'Evidence & documentation',
-        desc: 'Attach photos, files, and links to any report. Upload supporting documents during creation or add them later as the investigation progresses.',
-      },
-      {
-        icon: <History className="w-5 h-5 text-forest-600" />,
-        title: 'Full audit trail',
-        desc: 'Every status change, review, and update is logged with timestamps and user attribution — giving you a tamper-proof history for audits and legal protection.',
-      },
-      {
-        icon: <FileCheck className="w-5 h-5 text-forest-600" />,
-        title: 'PDF report generation',
-        desc: 'Generate professional incident reports as PDFs — ready for legal review, insurance claims, or internal records.',
-      },
-    ],
-  },
-  {
-    id: 'violations-terminations',
-    label: 'Violations & Terminations',
-    icon: <Gavel className="w-5 h-5" />,
-    headline: 'Track employee violations and manage terminations in one place',
-    description:
-      'Record policy violations, issue disciplinary actions, and build a documented trail that leads to fair, compliant terminations when needed. AI analyzes every case to flag risk and recommend next steps.',
-    features: [
-      {
-        icon: <Gavel className="w-5 h-5 text-forest-600" />,
-        title: 'Employee violation tracking',
-        desc: 'Record policy violations with the employee involved, violated policy, witnesses, and source. Keep a compliant paper trail for every event.',
-      },
-      {
-        icon: <Scale className="w-5 h-5 text-forest-600" />,
-        title: 'Disciplinary action management',
-        desc: 'Record verbal warnings, written notices, suspensions, and more. Link disciplinary actions directly to the violation with effective dates.',
-      },
-      {
-        icon: <UserX className="w-5 h-5 text-forest-600" />,
-        title: 'Termination records',
-        desc: 'When violations lead to termination, create structured termination records with related violations, approval workflows, and offboarding details.',
-      },
-      {
-        icon: <Brain className="w-5 h-5 text-forest-600" />,
-        title: 'AI-powered analysis',
-        desc: 'Fork\'s AI summarizes every violation and termination, flags severity and legal risk, identifies policies involved, and recommends actions.',
-      },
-      {
-        icon: <History className="w-5 h-5 text-forest-600" />,
-        title: 'Full audit trail',
-        desc: 'Every status change, review, and disciplinary action is logged with timestamps and user attribution — tamper-proof records for legal protection.',
-      },
-      {
-        icon: <FileCheck className="w-5 h-5 text-forest-600" />,
-        title: 'PDF report generation',
-        desc: 'Generate professional violation and termination reports as PDFs — ready for legal review or HR records.',
-      },
-    ],
-  },
-  {
-    id: 'team-engagement',
-    label: 'Team Engagement',
-    icon: <Users className="w-5 h-5" />,
-    headline: 'Keep your team connected, informed, and motivated',
-    description:
-      'Surveys, announcements, recognition, and training tools that reduce turnover and build a stronger workplace culture.',
-    features: [
-      {
-        icon: <BarChart3 className="w-5 h-5 text-forest-600" />,
-        title: 'Employee surveys',
-        desc: 'Create custom surveys or use templates to gather feedback on satisfaction, engagement, and working conditions.',
-      },
-      {
-        icon: <Bell className="w-5 h-5 text-forest-600" />,
-        title: 'Company updates',
-        desc: 'Share news, policy changes, and events. Track who has read each update.',
-      },
-      {
-        icon: <Star className="w-5 h-5 text-forest-600" />,
-        title: 'Peer recognition',
-        desc: 'Let team members give kudos to each other. Celebrate wins and boost morale across the team.',
-      },
-      {
-        icon: <BookOpen className="w-5 h-5 text-forest-600" />,
-        title: 'Training courses',
-        desc: 'Assign courses, track completion, and make sure every team member has the skills they need.',
-      },
-      {
-        icon: <FolderOpen className="w-5 h-5 text-forest-600" />,
-        title: 'Shared resource library',
-        desc: 'Centralize policies, handbooks, and how-to guides. Your team can access everything from the app.',
-      },
-    ],
-  },  {
-    id: 'maintenance-logs',
-    label: 'Maintenance Logs',
-    icon: <Wrench className="w-5 h-5" />,
-    headline: 'Track equipment issues before they become costly problems',
-    description:
-      'Log maintenance requests, track repairs from report to resolution, and keep a complete history of every piece of equipment across all your locations.',
-    features: [
-      {
-        icon: <ClipboardList className="w-5 h-5 text-forest-600" />,
-        title: 'Structured logging',
-        desc: 'Log issues with category, item, priority, and description. Assign to locations and track status from draft to completed.',
-      },
-      {
-        icon: <AlertTriangle className="w-5 h-5 text-forest-600" />,
-        title: 'Priority levels',
-        desc: 'Flag issues as low, medium, high, or urgent so your team knows what to fix first.',
-      },
-      {
-        icon: <DollarSign className="w-5 h-5 text-forest-600" />,
-        title: 'Cost tracking',
-        desc: 'Record estimated and actual repair costs. Build a clear picture of maintenance spend over time.',
-      },
-      {
-        icon: <Camera className="w-5 h-5 text-forest-600" />,
-        title: 'Photo documentation',
-        desc: 'Attach photos to the issue report and the resolution. Visual proof makes handoffs effortless.',
-      },
-      {
-        icon: <History className="w-5 h-5 text-forest-600" />,
-        title: 'Full audit trail',
-        desc: 'Every status change is logged with who made it and when — giving you a complete history of every repair.',
-      },
-      {
-        icon: <Wrench className="w-5 h-5 text-forest-600" />,
-        title: 'Vendor management',
-        desc: 'Record vendor names on each log so you always know who handled the repair.',
-      },
-    ],
-  },
-  {
-    id: 'company-faqs',
-    label: 'Company FAQs',
-    icon: <HelpCircle className="w-5 h-5" />,
-    headline: 'Give your team instant answers to common questions',
-    description:
-      'Create, organize, and publish FAQs for your company. Employees find answers on their own — and your AI assistant uses them to respond smarter.',
-    features: [
-      {
-        icon: <PenLine className="w-5 h-5 text-forest-600" />,
-        title: 'Create & manage FAQs',
-        desc: 'Build FAQ collections with a simple editor. Add questions, write answers, and organize them into groups.',
-      },
-      {
-        icon: <ListOrdered className="w-5 h-5 text-forest-600" />,
-        title: 'Organized by topic',
-        desc: 'Group FAQs by title and description so employees can quickly find what they need.',
-      },
-      {
-        icon: <Eye className="w-5 h-5 text-forest-600" />,
-        title: 'Draft & publish workflow',
-        desc: 'Keep FAQs in draft until they\'re ready. Publish when you want your team to see them — unpublish anytime.',
-      },
-      {
-        icon: <MessageSquare className="w-5 h-5 text-forest-600" />,
-        title: 'Employee self-service',
-        desc: 'Published FAQs are visible to all employees so they can find answers without messaging a manager.',
-      },
-      {
-        icon: <Bot className="w-5 h-5 text-forest-600" />,
-        title: 'AI-powered answers',
-        desc: 'Your published FAQs feed directly into Fork\'s AI assistant, so it gives accurate, company-specific responses.',
-      },
-      {
-        icon: <Shield className="w-5 h-5 text-forest-600" />,
-        title: 'Manager controls',
-        desc: 'Only managers with the right permissions can create, edit, or delete FAQs — keeping your knowledge base consistent.',
-      },
-    ],
-  },
-  {
-    id: 'waste-control',
-    label: 'Waste Control',
-    icon: <Trash2 className="w-5 h-5" />,
-    headline: 'Reduce waste, track costs, and improve operations',
-    description:
-      'Give your team a fast way to log waste as it happens. Track every item, reason, and cost — then use reports to find patterns and cut losses.',
-    features: [
-      {
-        icon: <Trash2 className="w-5 h-5 text-forest-600" />,
-        title: 'Quick waste logging',
-        desc: 'Employees log waste in seconds from their phone — select the item, enter a quantity, pick a reason, and submit.',
-      },
-      {
-        icon: <Package className="w-5 h-5 text-forest-600" />,
-        title: 'Item catalog',
-        desc: 'Manage a catalog of trackable items with categories, SKUs, and cost-per-unit. Assign items to specific locations.',
-      },
-      {
-        icon: <Tag className="w-5 h-5 text-forest-600" />,
-        title: 'Reason tracking',
-        desc: 'Categorize every waste event — expired, damaged, mistake, end-of-day, burned, or custom reasons — to pinpoint root causes.',
-      },
-      {
-        icon: <DollarSign className="w-5 h-5 text-forest-600" />,
-        title: 'Automatic cost calculation',
-        desc: 'Total waste cost is calculated automatically from item cost and quantity — no manual math required.',
-      },
-      {
-        icon: <TrendingDown className="w-5 h-5 text-forest-600" />,
-        title: 'Waste reports',
-        desc: 'View waste by date, location, category, or reason. Spot trends and take action to reduce losses.',
-      },
-      {
-        icon: <PieChart className="w-5 h-5 text-forest-600" />,
-        title: 'Location comparison',
-        desc: 'Compare waste across locations to identify which sites need attention and share best practices.',
-      },
-    ],
-  },]
+const anchors = [
+  { id: 'schedule', label: 'Schedule', icon: CalendarDays },
+  { id: 'timecards', label: 'Timecards & time off', icon: Clock },
+  { id: 'chat', label: 'Chat', icon: MessageSquare },
+  { id: 'feed', label: 'Feed', icon: Megaphone },
+  { id: 'sops', label: 'SOPs', icon: ClipboardCheck },
+  { id: 'learn', label: 'Learn', icon: BookOpen },
+  { id: 'people', label: 'People & HR', icon: FileSignature },
+  { id: 'hiring', label: 'Hiring', icon: Briefcase },
+  { id: 'supply', label: 'Supply', icon: Package },
+  { id: 'sales', label: 'Sales', icon: Receipt },
+  { id: 'reports', label: 'Reports', icon: PieChart },
+  { id: 'ai', label: 'AI assistant', icon: BotMessageSquare },
+]
 
-export default function FeaturesPage() {
+export default function ProductsPage() {
   return (
     <main className="pt-16">
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-warm-100">
-        <BlobBackground variant="triangle" />
-        <div className="relative max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-32 md:pb-24">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-warm-950">
-              Everything you need to run your team, in one place
-            </h1>
-            <p className="mt-6 text-lg md:text-xl text-warm-600 leading-relaxed max-w-2xl">
-              Fork brings scheduling, time tracking, HR, and engagement together so you can stop switching between tools and start managing your team.
-            </p>
-          </div>
+      <Hero
+        title="Everything between opening and closing, in one app"
+        lede="One app for the team, the operations and the money: schedules, timecards and chat; SOPs, feed and learning; orders to your vendors and invoices to your customers."
+        secondaryHref="/pricing"
+        secondaryLabel="Compare plans"
+        note="Supply and Sales are free. Team tools are one price per location, unlimited employees."
+      />
 
-          {/* Anchor nav */}
-          <div className="mt-12 flex flex-wrap gap-3">
-            {sections.map((s) => (
-              <a
-                key={s.id}
-                href={`#${s.id}`}
-                className="inline-flex items-center gap-2 rounded-lg border border-warm-200 bg-white px-3.5 py-2 text-sm font-medium text-warm-600 hover:border-warm-300 hover:text-warm-950 transition-colors"
-              >
-                {s.icon}
-                {s.label}
-              </a>
-            ))}
-          </div>
+      {/* Anchor nav */}
+      <div className="sticky top-16 z-30 border-b border-warm-100 bg-white/90 backdrop-blur-md">
+        <div className="mx-auto flex max-w-6xl gap-2 overflow-x-auto px-6 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {anchors.map((a) => (
+            <Link
+              key={a.id}
+              href={`#${a.id}`}
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-warm-200 bg-white px-3 py-1.5 text-[13px] font-medium text-warm-600 transition-colors hover:border-warm-300 hover:text-warm-950"
+            >
+              <a.icon className="h-3.5 w-3.5 text-forest-600" />
+              {a.label}
+            </Link>
+          ))}
         </div>
-      </section>
+      </div>
 
-      {/* Product sections */}
-      {sections.map((section, idx) => (
-        <section
-          key={section.id}
-          id={section.id}
-          className={`scroll-mt-16 border-b border-warm-100 ${idx % 2 === 1 ? 'bg-warm-50' : ''}`}
-        >
-          <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-            <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 md:gap-20 items-start">
-              {/* Section header — sticky on desktop */}
-              <div className="md:sticky md:top-28">
-                <span className="eyebrow mb-4">{section.label}</span>
-                <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
-                  {section.headline}
-                </h2>
-                <p className="mt-4 text-lg text-warm-600 leading-relaxed">
-                  {section.description}
-                </p>
-              </div>
+      <FeatureRow
+        id="schedule"
+        eyebrow="Schedule"
+        plan="essential"
+        title="Build and share schedules your team can rely on"
+        lede="Drag shifts onto the week, see availability and approved time off while you do, and publish. Everyone gets a push notification, and the schedule on their phone is always the current one."
+        bullets={[
+          'Weekly templates, copy last week, drag-and-drop edits',
+          'Open shifts anyone eligible can claim, trades a manager approves in a tap',
+          'Availability and approved time off shown while you build',
+          'Shift tasks, notes and flags for late, covering or great work',
+          'Conflicts caught before publishing: overlaps, double-bookings, time off',
+        ]}
+        preview={<SchedulePreview />}
+        previewTitle="Fork · Schedule · Main St"
+      />
 
-              {/* Features — editorial rows, no boxes */}
-              <div className="divide-y divide-warm-200/70">
-                {section.features.map((f) => (
-                  <div key={f.title} className="flex items-start gap-5 py-6 first:pt-0 last:pb-0">
-                    <div className="mt-0.5 shrink-0">{f.icon}</div>
-                    <div>
-                      <h3 className="text-base font-semibold text-warm-950">{f.title}</h3>
-                      <p className="mt-1 text-[15px] text-warm-600 leading-relaxed">{f.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-      ))}
+      <FeatureRow
+        id="timecards"
+        flip
+        eyebrow="Timecards & time off"
+        plan="essential"
+        title="Accurate hours without expensive hardware"
+        lede="Turn any tablet into a clock-in kiosk, or let people clock in from their phone with GPS. Punches are checked against the schedule, breaks and overtime are applied, and the week is one tap from payroll."
+        bullets={[
+          'Kiosk with PINs, phone clock-in, GPS fences per location',
+          'Late, early and missed-break verdicts against the scheduled shift',
+          'Time off requests with balances, approved straight onto the schedule',
+          'Approve the week, export for payroll, see labor cost and labor % live',
+        ]}
+        preview={<TimecardsPreview />}
+        previewTitle="Fork · Timecards · Today"
+      />
 
-      {/* Final CTA */}
-      <section className="bg-warm-950">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-          <div className="max-w-2xl">
-            <span className="eyebrow text-lime-accent mb-4">Free 7-day trial</span>
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-5">
-              See Fork in action
-            </h2>
-            <p className="text-lg text-warm-400 mb-10 max-w-lg">
-              Start your free trial and experience every feature with your own team.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="https://app.forkhr.com/register" target="_blank">
-                <Button size="lg" className="text-base px-7 h-12 bg-white text-warm-950 hover:bg-warm-100">
-                  Start free trial
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
-              <Link href="/pricing">
-                <Button variant="outline" size="lg" className="text-base px-7 h-12 border-warm-700 bg-transparent text-warm-200 hover:bg-warm-900 hover:text-white">
-                  View pricing
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <FeatureRow
+        id="chat"
+        eyebrow="Chat"
+        plan="essential"
+        title="One place to talk, by location and by job"
+        lede="Company, location and job channels are created for you. Direct messages, photos, mentions and read receipts, plus system posts when a schedule is published or an order changes."
+        bullets={[
+          'Channels per location and job, created and kept in sync automatically',
+          'Direct messages, photos, files and read receipts',
+          'Share a shift, an SOP run or an order into a conversation',
+          'Vendor and customer conversations live here too, with the email bridge',
+        ]}
+        preview={<ChatPreview />}
+        previewTitle="Fork · Chat · #main-st"
+      />
+
+      <FeatureRow
+        id="feed"
+        flip
+        eyebrow="Feed"
+        plan="essential"
+        title="Announcements, recognitions and surveys in one feed"
+        lede="The feed is the home tab on every phone. Announcements can be pinned and require confirmation. Recognitions carry badges. Surveys collect answers by location. Everything gets reactions and comments."
+        bullets={[
+          'Announcements to a location or the whole company, with confirmations and read receipts',
+          'Recognitions with badges, tied to shift performance flags',
+          'Surveys, anonymous or named, with results by location and job (Pro)',
+          'Files, links, SOPs and shifts as attachments',
+        ]}
+        preview={<FeedPreview />}
+        previewTitle="Fork · Feed"
+      />
+
+      <FeatureRow
+        id="sops"
+        eyebrow="SOPs & checklists"
+        plan="premium"
+        title="Turn procedures into runs your team completes on a phone"
+        lede="Boards hold the status flow. Procedures hold the steps. Runs are what people do: scheduled, triggered by a shift, or started from a QR code on the fridge. Temperature, waste, cash and equipment logs are boards like any other."
+        bullets={[
+          'Opening and closing checklists, temperature checks, waste and cash logs',
+          'Equipment care routines, incident boards, production batches',
+          'Steps that ask for photos, numbers with a range, signatures, timers or a scan',
+          'Reports per board: what was missed, where, and what it cost',
+        ]}
+        preview={<SopsPreview />}
+        previewTitle="Fork · SOPs · Opening checklist"
+        href="/sops"
+        hrefLabel="Explore SOPs in depth"
+      />
+
+      <FeatureRow
+        id="learn"
+        flip
+        eyebrow="Learn"
+        plan="pro"
+        title="Courses, policies, library and FAQs in one tab"
+        lede="Everything someone needs to learn the job, in the tab they actually open. Courses with video and quizzes, policies that need a signature, a library of files by job or location, and FAQs that also feed the assistant."
+        bullets={[
+          'Shared library with folders by job or location, read tracking (Pro)',
+          'Training courses with modules, video, quizzes and certificates (Premium)',
+          'Versioned policies with signed acknowledgements and reminders (Premium)',
+          'Company FAQs, searchable from the app and used by the assistant (Premium)',
+        ]}
+        preview={<LearnPreview />}
+        previewTitle="Fork · Learn"
+      />
+
+      <FeatureRow
+        id="people"
+        eyebrow="People & HR"
+        plan="pro"
+        title="Paperless HR from first day to last"
+        lede="Onboarding guides with the forms, documents and courses a new hire needs, in order. Contracts from templates, e-signed on a phone. Documents with expiry reminders. And when things go wrong, violations and termination records with a fair, documented trail."
+        bullets={[
+          'Onboarding guides with progress per employee',
+          'W-4, I-9 and custom forms filled and signed on a phone',
+          'Documents with expiry reminders and owner-only access',
+          'Contracts and e-signatures from templates (Premium)',
+          'Violations with employee acknowledgement and termination records (Premium)',
+        ]}
+        preview={<PeoplePreview />}
+        previewTitle="Fork · People · Jordan Lee"
+      />
+
+      <FeatureRow
+        id="hiring"
+        flip
+        eyebrow="Hiring"
+        plan="essential"
+        title="Your own job board and a pipeline that ends in onboarding"
+        lede="Post to a branded board at jobs.forkhr.com/your-company. Screen with custom questions, scan resumes with AI, interview, score and hire. The new hire lands in onboarding with their app invite sent."
+        bullets={[
+          'Public, SEO-friendly job board with your branding',
+          'Screening questions and weighted scorecards',
+          'Applied → Interview → Feedback → Result, with automatic emails',
+          'AI resume scan with highlights, red flags and fit (Premium)',
+        ]}
+        preview={<HiringPreview />}
+        previewTitle="Fork · Hiring · Line cook"
+        href="/hiring"
+        hrefLabel="Explore hiring"
+      />
+
+      <FeatureRow
+        id="supply"
+        eyebrow="Supply"
+        plan="free"
+        title="Order from every vendor in one place"
+        lede="Orders to any vendor, whether or not they use Fork. Standing orders that create themselves. Stock counts that suggest what to reorder. And a conversation per vendor that works over email when they are not on Fork."
+        bullets={[
+          'One-time and standing orders, emailed to the vendor with a PDF',
+          'Receive and check in deliveries, log issues, request credits',
+          'Stock counts with par levels and reorder suggestions (Essential)',
+          'Vendor market to find suppliers that deliver to you',
+        ]}
+        preview={<SupplyPreview />}
+        previewTitle="Fork · Supply · Orders"
+        href="/supply"
+        hrefLabel="Explore supply"
+      />
+
+      <FeatureRow
+        id="sales"
+        flip
+        eyebrow="Sales"
+        plan="free"
+        title="Sell to your customers and get paid online"
+        lede="Your catalog, your customers, your orders. Invoice from an order and get paid by card or US bank transfer, from the emailed link or the QR code on the PDF. Customers do not need a Fork account, though they can claim one later."
+        bullets={[
+          'Catalog with images, customer-specific price lists',
+          'Sales orders, standing orders and imports from a spreadsheet',
+          'Invoices with pay link and QR, paid through Stripe, paid out to your bank',
+          'Delivery routes with optimized stops and proof of delivery',
+        ]}
+        preview={<InvoicePreview />}
+        previewTitle="Fork · Sales · Order S-2088"
+        href="/sales"
+        hrefLabel="Explore selling through Fork"
+      />
+
+      <FeatureRow
+        id="reports"
+        eyebrow="Reports"
+        plan="essential"
+        title="The numbers behind the shift"
+        lede="Labor, attendance, purchasing, sales and SOP reports, by location and by period. Connect Square and see labor against sales by the hour."
+        bullets={[
+          'Labor cost, hourly labor cost, employee hours, scheduled vs. actual',
+          'On-time arrival and shift performance (Premium)',
+          'Sales vs. labor with Square sales synced every 20 minutes',
+          'Purchases, product spending, disputes, sales and catalog performance',
+          'SOP reports: overview, routines, waste, cash movement, expenses, staff (Premium)',
+        ]}
+        preview={<ReportPreview />}
+        previewTitle="Fork · Reports · Sales vs. labor"
+      />
+
+      <FeatureRow
+        id="ai"
+        flip
+        eyebrow="AI assistant"
+        plan="premium"
+        title="An assistant that answers from your own content"
+        lede="Ask about the schedule, a policy or a procedure and get an answer sourced from what you published, matched to the person's role. It drafts messages and escalates to a manager when it should."
+        bullets={[
+          'Answers from your policies, FAQs, courses, library and schedule',
+          'Role-aware: owners, managers and employees see what they should',
+          'Drafts announcements, messages and open shifts',
+          'Company-isolated, never used to train other models',
+        ]}
+        preview={<AiPreview />}
+        previewTitle="Fork · Assistant"
+        href="/ai-assistant"
+        hrefLabel="Learn more about the assistant"
+      />
+
+      <CtaSection title="See it with your own team" lede="Ordering and selling are free. Add scheduling, SOPs and the rest when you are ready, from $39 per location per month." />
     </main>
   )
 }

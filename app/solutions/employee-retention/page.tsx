@@ -11,7 +11,9 @@ import {
   Smile,
 } from 'lucide-react'
 import Link from 'next/link'
-import BlobBackground from '@/components/visual/BlobBackground'
+import Backdrop from '@/components/visual/Backdrop'
+import CtaSection from '@/components/marketing/CtaSection'
+import { CTA_PRIMARY, REGISTER_URL } from '@/lib/site'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -97,7 +99,7 @@ export default function EmployeeRetentionPage() {
     <main className="pt-16">
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-warm-100">
-        <BlobBackground variant="circle" />
+        <Backdrop />
         <div className="relative max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-32 md:pb-24">
           <nav className="flex items-center gap-1.5 text-sm mb-8">
             <Link href="/products" className="text-warm-500 hover:text-warm-950 transition-colors">Solutions</Link>
@@ -111,9 +113,9 @@ export default function EmployeeRetentionPage() {
             High turnover is expensive and disruptive. Fork gives you the tools to recognize, train, listen to, and fairly schedule your team — so they actually want to stay.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Link href="https://app.forkhr.com/register" target="_blank">
+            <Link href={REGISTER_URL} target="_blank">
               <Button size="lg" className="text-base px-6 h-11">
-                Start free trial
+                {CTA_PRIMARY}
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
             </Link>
@@ -247,33 +249,7 @@ export default function EmployeeRetentionPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="bg-warm-950">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-          <div className="max-w-2xl">
-            <span className="eyebrow text-lime-accent mb-4">No credit card required</span>
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-5">
-              Build a team that actually wants to stay
-            </h2>
-            <p className="text-lg text-warm-400 mb-10 max-w-lg">
-              Start your free 7-day trial. See the difference in your first month.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="https://app.forkhr.com/register" target="_blank">
-                <Button size="lg" className="text-base px-7 h-12 bg-white text-warm-950 hover:bg-warm-100">
-                  Start free trial
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
-              <Link href="/pricing">
-                <Button variant="outline" size="lg" className="text-base px-7 h-12 border-warm-700 bg-transparent text-warm-200 hover:bg-warm-900 hover:text-white">
-                  View pricing
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CtaSection title="Keep the people you have" lede="Fair schedules, recognition in the feed, surveys and training. Start on Free and add the team tools when you are ready." />
     </main>
   )
 }

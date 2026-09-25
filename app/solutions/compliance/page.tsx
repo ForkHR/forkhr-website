@@ -12,20 +12,22 @@ import {
   Users,
 } from 'lucide-react'
 import Link from 'next/link'
-import BlobBackground from '@/components/visual/BlobBackground'
+import Backdrop from '@/components/visual/Backdrop'
+import CtaSection from '@/components/marketing/CtaSection'
+import { CTA_PRIMARY, REGISTER_URL } from '@/lib/site'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Compliance & Legal — Fork | Stay Audit-Ready with Digital Workforce Records',
   description:
-    'Eliminate compliance gaps with digital onboarding, e-signatures, incident reports, employee violation tracking, document expiry alerts, and a complete audit trail. Fork keeps your team compliant without the paperwork.',
+    'Eliminate compliance gaps with digital onboarding, e-signatures, acknowledged policies, contracts, violation records, document expiry alerts and a complete audit trail. Fork keeps your team compliant without the paperwork.',
   alternates: {
     canonical: '/solutions/compliance',
   },
   openGraph: {
     title: 'Compliance & Legal — Fork | Stay Audit-Ready with Digital Workforce Records',
     description:
-      'Eliminate compliance gaps with digital onboarding, e-signatures, incident reports, document expiry alerts, and a complete audit trail.',
+      'Eliminate compliance gaps with digital onboarding, e-signatures, acknowledged policies, contracts, document expiry alerts and a complete audit trail.',
     url: 'https://forkhr.com/solutions/compliance',
     images: ['/og-image.png'],
     type: 'website',
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Compliance & Legal — Fork | Stay Audit-Ready',
     description:
-      'Eliminate compliance gaps with digital onboarding, e-signatures, incident reports, document expiry alerts, and a complete audit trail.',
+      'Eliminate compliance gaps with digital onboarding, e-signatures, acknowledged policies, contracts, document expiry alerts and a complete audit trail.',
     images: ['/og-image.png'],
   },
 }
@@ -58,8 +60,8 @@ const benefits = [
   },
   {
     icon: <AlertTriangle className="w-5 h-5" />,
-    title: 'Structured incident reporting',
-    desc: 'Document workplace injuries and safety events with structured forms, attach evidence, and maintain a tamper-proof timeline for every incident.',
+    title: 'Incident boards in SOPs',
+    desc: 'Report what happened with severity and photos, move it through review to resolved, and keep every status change with who and when. An incident is a run on a board, next to your other procedures.',
   },
   {
     icon: <Shield className="w-5 h-5" />,
@@ -68,8 +70,8 @@ const benefits = [
   },
   {
     icon: <FileText className="w-5 h-5" />,
-    title: 'Violations, terminations & offboarding',
-    desc: 'Track employee violations, link them to disciplinary actions and terminations, and maintain final notices and exit checklists in one secure location.',
+    title: 'Violations, terminations & contracts',
+    desc: 'Record violations with employee acknowledgement, link them to disciplinary actions and termination records, and send contracts from templates for e-signature, all on one employee record.',
   },
   {
     icon: <Clock className="w-5 h-5" />,
@@ -95,7 +97,7 @@ export default function CompliancePage() {
     <main className="pt-16">
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-warm-100">
-        <BlobBackground variant="circle" />
+        <Backdrop />
         <div className="relative max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-32 md:pb-24">
           <nav className="flex items-center gap-1.5 text-sm mb-8">
             <Link href="/products" className="text-warm-500 hover:text-warm-950 transition-colors">Solutions</Link>
@@ -106,16 +108,16 @@ export default function CompliancePage() {
             Stay compliant without the filing cabinets
           </h1>
           <p className="mt-6 text-lg md:text-xl text-warm-600 leading-relaxed max-w-2xl">
-            Audits, inspections, and legal requirements shouldn&apos;t keep you up at night. Fork digitizes every compliance workflow — from onboarding paperwork to incident reports — so you&apos;re always audit-ready.
+            Audits, inspections and legal requirements shouldn&apos;t keep you up at night. Fork digitizes every compliance workflow, from onboarding paperwork to policy acknowledgements and incident boards, so you&apos;re always audit-ready.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="https://app.forkhr.com/register" target="_blank">
+            <Link href={REGISTER_URL} target="_blank">
               <Button size="lg" className="text-base px-6 h-11">
-                Start free trial
+                {CTA_PRIMARY}
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
             </Link>
-            <Link href="/products#incidents-violations">
+            <Link href="/products#people">
               <Button variant="outline" size="lg" className="text-base px-6 h-11">
                 Learn more
               </Button>
@@ -223,33 +225,7 @@ export default function CompliancePage() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="bg-warm-950">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-          <div className="max-w-2xl">
-            <span className="eyebrow text-lime-accent mb-4">No credit card required</span>
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-5">
-              Make compliance automatic
-            </h2>
-            <p className="text-lg text-warm-400 mb-10 max-w-lg">
-              Start your free 7-day trial and see how Fork keeps your workforce records organized, signed, and always audit-ready.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="https://app.forkhr.com/register" target="_blank">
-                <Button size="lg" className="text-base px-7 h-12 bg-white text-warm-950 hover:bg-warm-100">
-                  Start free trial
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
-              <Link href="/pricing">
-                <Button variant="outline" size="lg" className="text-base px-7 h-12 border-warm-700 bg-transparent text-warm-200 hover:bg-warm-900 hover:text-white">
-                  View pricing
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CtaSection title="Make compliance automatic" lede="Signed forms, acknowledged policies, contracts and a documented trail for every violation, without the filing cabinets." />
     </main>
   )
 }

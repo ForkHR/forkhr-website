@@ -1,5 +1,6 @@
-import { redirect } from 'next/navigation'
+import { redirect } from "next/navigation"
 
+// Old URL kept alive for links and search results.
 export default function ViolationsTerminationsRedirect() {
-  redirect('/products#violations-terminations')
+  redirect("/products#people")
 }

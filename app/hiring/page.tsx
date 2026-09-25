@@ -19,7 +19,8 @@ import {
   Shield,
 } from 'lucide-react'
 import Link from 'next/link'
-import BlobBackground from '@/components/visual/BlobBackground'
+import Backdrop from '@/components/visual/Backdrop'
+import { CTA_PRIMARY, REGISTER_URL } from '@/lib/site'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -99,7 +100,7 @@ export default function HiringPage() {
     <main className="pt-16">
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-warm-100">
-        <BlobBackground variant="diamond" />
+        <Backdrop />
         <div className="relative max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-32 md:pb-24">
           <nav className="inline-flex items-center gap-1.5 text-sm mb-8">
             <Link href="/products" className="text-warm-400 hover:text-warm-950 transition-colors">Products</Link>
@@ -116,7 +117,7 @@ export default function HiringPage() {
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Link href="https://app.forkhr.com/register" target="_blank">
+            <Link href={REGISTER_URL} target="_blank">
               <Button size="lg" className="text-base px-6 h-11">
                 Start hiring
                 <ArrowRight className="w-4 h-4 ml-1.5" />
@@ -130,7 +131,7 @@ export default function HiringPage() {
           </div>
 
           <p className="mt-5 text-sm text-warm-400">
-            Available on all plans · AI resume scanner on Premium
+            Included from Essential · AI resume scanner on Premium
           </p>
         </div>
       </section>
@@ -458,9 +459,9 @@ export default function HiringPage() {
               Post your first job listing in minutes. Start receiving applications today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="https://app.forkhr.com/register" target="_blank">
+              <Link href={REGISTER_URL} target="_blank">
                 <Button size="lg" className="text-base px-7 h-12">
-                  Start free trial
+                  {CTA_PRIMARY}
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
@@ -471,9 +472,9 @@ export default function HiringPage() {
               </Link>
             </div>
             <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-warm-500">
-              <span>Free 7-day trial</span>
+              <span>Included from $39 per location</span>
               <span className="w-1 h-1 rounded-full bg-warm-300" />
-              <span>All plans include hiring</span>
+              <span>Unlimited postings and applicants</span>
               <span className="w-1 h-1 rounded-full bg-warm-300" />
               <span className="inline-flex items-center gap-1"><Crown className="w-3.5 h-3.5 text-forest-600" /> AI scanner on Premium</span>
             </div>
