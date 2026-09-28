@@ -30,5 +30,7 @@ export const SEGMENTS = [
   'Franchises',
 ]
 
+export const SITE_TAGLINE = 'One app for the team, the shifts and the money. Free to order and sell.'
+
 export const SITE_DESCRIPTION =
   'Fork runs the whole business from one app: schedules, timecards and chat for your team, SOPs and a feed that keep every shift consistent, orders to your vendors and invoices to your customers, even when they are not on Fork.'

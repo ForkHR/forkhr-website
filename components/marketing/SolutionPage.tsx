@@ -56,7 +56,7 @@ export default function SolutionPage({ solution }: { solution: Solution }) {
       {/* Day one */}
       <section className="border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-          <SectionHeading eyebrow="What changes on day one" title={`Before and after, for ${solution.name.toLowerCase()}`} />
+          <SectionHeading eyebrow="Day one" title="What changes" />
           <div className="mt-10 overflow-hidden rounded-2xl border border-warm-200 bg-white">
             <div className="hidden grid-cols-[1fr_40px_1fr] border-b border-warm-200 bg-warm-50 px-6 py-3 text-[11px] font-bold uppercase tracking-wider text-warm-400 md:grid">
               <span>Today</span>
@@ -100,7 +100,7 @@ export default function SolutionPage({ solution }: { solution: Solution }) {
           <SectionHeading
             eyebrow="What it costs"
             title={`Pricing for ${solution.name.toLowerCase()}`}
-            lede={`Start on the free plan. Add the team tools when you are ready, one price per location, unlimited employees, ${GUARANTEE_DAYS}-day money-back guarantee.`}
+            lede={`Start free. Add the team tools when ready. ${GUARANTEE_DAYS}-day money-back guarantee.`}
           />
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             <div className="surface flex flex-col p-7">
@@ -161,7 +161,7 @@ export default function SolutionPage({ solution }: { solution: Solution }) {
       <section className="border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid gap-12 md:grid-cols-[1fr_1.6fr] md:gap-16">
-            <SectionHeading eyebrow="Questions" title={solution.kind === 'business' ? `${solution.name} ask us` : `Questions about ${solution.name.toLowerCase()}`} lede="Short answers. Anything else, support@forkhr.com answers within the day." />
+            <SectionHeading eyebrow="Questions" title={solution.kind === 'business' ? `${solution.name} ask us` : `Questions about ${solution.name.toLowerCase()}`} lede="Anything else: support@forkhr.com" />
             <Accordion type="single" collapsible className="w-full border-t border-warm-100">
               {solution.faqs.map((faq, i) => (
                 <AccordionItem key={i} value={`faq-${i}`} className="border-warm-100 last:border-b">
@@ -191,7 +191,7 @@ export default function SolutionPage({ solution }: { solution: Solution }) {
         </section>
       )}
 
-      <CtaSection title={solution.ctaTitle} lede="Ordering and selling are free. Add the team tools when you are ready, from $39 per location per month." />
+      <CtaSection title={solution.ctaTitle} />
     </main>
   )
 }

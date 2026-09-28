@@ -19,14 +19,14 @@ export const metadata: Metadata = {
 }
 
 const included = [
-  { icon: <Store className="h-5 w-5" />, title: 'Vendor market', desc: 'Browse vendors by category, see who delivers to your address and connect in one click. Add any other vendor by name and email.' },
-  { icon: <CalendarClock className="h-5 w-5" />, title: 'Terms per vendor and location', desc: 'Delivery days, order cutoff, lead time, minimum order and free-delivery threshold, so the order form only offers what is possible.' },
-  { icon: <RefreshCw className="h-5 w-5" />, title: 'Standing orders', desc: 'The same order every week, created ahead of time and emailed to the vendor. Change one week without touching the rest.' },
-  { icon: <PackageCheck className="h-5 w-5" />, title: 'Receive and check in', desc: 'Tick items off as the truck is unloaded, log short or damaged items as issues and request a credit from the vendor.' },
-  { icon: <Receipt className="h-5 w-5" />, title: 'Invoices payable', desc: 'Vendor invoices next to the order they belong to, with what is due and when. Pay vendors on Fork in the app.' },
-  { icon: <FileText className="h-5 w-5" />, title: 'Vendor documents', desc: 'Certificates, price lists and agreements kept on the vendor, where the person ordering can find them.' },
-  { icon: <BarChart3 className="h-5 w-5" />, title: 'Purchasing reports', desc: 'Purchases summary, product spending, product usage and disputes, by vendor, location and period.' },
-  { icon: <Truck className="h-5 w-5" />, title: 'Fork Warehouse', desc: 'Order shared essentials from Fork\'s own warehouse when it delivers in your area.' },
+  { icon: <Store className="h-5 w-5" />, title: 'Vendor market', desc: 'See who delivers to you. Connect in a click.' },
+  { icon: <CalendarClock className="h-5 w-5" />, title: 'Terms per vendor', desc: 'Delivery days, cutoffs, minimums.' },
+  { icon: <RefreshCw className="h-5 w-5" />, title: 'Standing orders', desc: 'Same order every week. Change one week only.' },
+  { icon: <PackageCheck className="h-5 w-5" />, title: 'Receive and check in', desc: 'Log short items. Request a credit.' },
+  { icon: <Receipt className="h-5 w-5" />, title: 'Invoices payable', desc: 'Next to the order they belong to.' },
+  { icon: <FileText className="h-5 w-5" />, title: 'Vendor documents', desc: 'Certificates and price lists, on the vendor.' },
+  { icon: <BarChart3 className="h-5 w-5" />, title: 'Purchasing reports', desc: 'Spend by vendor, product and period.' },
+  { icon: <Truck className="h-5 w-5" />, title: 'Fork Warehouse', desc: 'Shared essentials, where it delivers.' },
 ]
 
 export default function SupplyPage() {
@@ -35,8 +35,8 @@ export default function SupplyPage() {
       <Hero
         crumb={{ label: 'Products', href: '/products', current: 'Supply' }}
         plan="free"
-        title="Every vendor order in one place, whether or not the vendor is on Fork"
-        lede="Place one-time and standing orders, chat with vendors over email, receive deliveries, log issues and count stock. Free, with unlimited vendors and catalog items."
+        title="Every vendor order in one place"
+        lede="Vendors on Fork or not. Orders, chat, deliveries and stock counts. Free."
         secondaryHref="#chat"
         secondaryLabel="See vendor chat"
         aside={
@@ -50,13 +50,8 @@ export default function SupplyPage() {
         eyebrow="Orders"
         plan="free"
         title="Orders that write themselves"
-        lede="Build an order from the vendor's catalog, or from what your last count says is short. It goes out as an email with a PDF, the vendor confirms, and you check it in when the truck arrives."
-        bullets={[
-          'One-time orders in a few taps, standing orders on a schedule',
-          'Vendor confirms by reply, in the app or by email, and the status updates',
-          'Delivery days, cutoffs and minimums enforced as you order',
-          'Issues and credits on the delivered order, reflected on the invoice',
-        ]}
+        lede="Build it from the catalog or from what is short. It goes out as email. The vendor confirms."
+        bullets={['One-time and standing orders', 'Cutoffs and minimums enforced as you order', 'Issues and credits on the delivered order']}
         preview={<SupplyPreview />}
         previewTitle="Fork · Supply · Orders"
       />
@@ -67,19 +62,13 @@ export default function SupplyPage() {
         eyebrow="Vendor chat"
         plan="free"
         title="Talk to vendors where the order lives"
-        lede="Each vendor has one conversation next to its orders. If the vendor is on Fork, it is a chat. If not, your message is emailed from the thread and their reply is threaded back, attachments and all. No forwarding, no lost emails."
-        bullets={[
-          'One conversation per vendor, shared by everyone who orders',
-          'Email bridge for vendors who are not on Fork',
-          'Order updates and invoices attached where they were discussed',
-          'Free on every plan',
-        ]}
+        lede="One chat per vendor. Not on Fork? Your message is emailed and the reply comes back as chat."
+        bullets={['Shared by everyone who orders', 'Attachments kept on the thread', 'Free on every plan']}
         preview={<VendorChatPreview role="vendor" />}
         previewTitle="Fork · Chat · Bluebird Dairy"
         className="bg-warm-50"
       />
 
-      {/* Inventory */}
       <section id="inventory" className="scroll-mt-24 border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid items-start gap-12 md:grid-cols-[1fr_1.2fr] md:gap-16">
@@ -89,16 +78,14 @@ export default function SupplyPage() {
                 <PlanBadge tier="essential" />
               </div>
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-warm-950 md:text-4xl">Count on a phone, reorder in a tap</h2>
-              <p className="mt-4 text-lg leading-relaxed text-warm-600">
-                Count lists per location and storage area, with a par level on every item. Shortfalls turn into a suggested order for the right vendor, and counts feed the product usage report.
-              </p>
+              <p className="mt-4 text-lg leading-relaxed text-warm-600">Par levels on every item. Shortfalls become an order.</p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               {[
-                { icon: <ClipboardList className="h-4 w-4" />, t: 'Count lists', d: 'Walk-in, dry storage, bar. Assign a list to a job and a day.' },
-                { icon: <MapPin className="h-4 w-4" />, t: 'Per location', d: 'Each site counts its own stock against its own pars.' },
-                { icon: <RefreshCw className="h-4 w-4" />, t: 'Straight into orders', d: 'What is short goes onto the next order for that vendor.' },
-                { icon: <BarChart3 className="h-4 w-4" />, t: 'Usage over time', d: 'Average purchase volume per day, week or month, per product.' },
+                { icon: <ClipboardList className="h-4 w-4" />, t: 'Count lists', d: 'Walk-in, dry storage, bar.' },
+                { icon: <MapPin className="h-4 w-4" />, t: 'Per location', d: 'Each site, its own pars.' },
+                { icon: <RefreshCw className="h-4 w-4" />, t: 'Straight into orders', d: 'What is short goes on the next order.' },
+                { icon: <BarChart3 className="h-4 w-4" />, t: 'Usage over time', d: 'Per product, per week.' },
               ].map((c) => (
                 <div key={c.t} className="surface p-5">
                   <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-forest-50 text-forest-600">{c.icon}</span>
@@ -111,7 +98,6 @@ export default function SupplyPage() {
         </div>
       </section>
 
-      {/* Included */}
       <section id="market" className="scroll-mt-24 border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <SectionHeading eyebrow="Also included" title="Everything around the order" />
@@ -127,7 +113,7 @@ export default function SupplyPage() {
         </div>
       </section>
 
-      <CtaSection eyebrow="Free plan" title="Move your ordering to Fork this week" lede="Add your vendors by name and email, place the next order from the app, and stop hunting through your inbox for confirmations." />
+      <CtaSection eyebrow="Free plan" title="Move your ordering to Fork this week" lede="Add your vendors by name and email. Place the next order from the app." />
     </main>
   )
 }

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { Button } from '../ui/button'
 import Logo from './Logo'
-import { APP_STORE_URL, CTA_PRIMARY, GOOGLE_PLAY_URL, JOBS_URL, LOGIN_URL, REGISTER_URL, SITE_DESCRIPTION } from '@/lib/site'
+import { APP_STORE_URL, CTA_PRIMARY, GOOGLE_PLAY_URL, JOBS_URL, LOGIN_URL, REGISTER_URL, SITE_TAGLINE } from '@/lib/site'
 import { ALL_SOLUTION_LINKS } from '@/lib/solutions'
 
 type FooterLink = { label: string; href: string; external?: boolean }
@@ -65,7 +65,7 @@ const Footer = () => {
             <Link href="/" className="text-warm-950" aria-label="Fork home">
               <Logo height={28} />
             </Link>
-            <p className="max-w-sm text-sm leading-relaxed text-warm-500">{SITE_DESCRIPTION}</p>
+            <p className="max-w-sm text-sm leading-relaxed text-warm-500">{SITE_TAGLINE}</p>
             <div className="mt-1 flex items-center gap-3">
               <Link href={REGISTER_URL} target="_blank">
                 <Button size="sm">

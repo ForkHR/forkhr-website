@@ -21,7 +21,7 @@ export default function Hero({
   aside,
   primaryLabel = CTA_PRIMARY,
   secondaryHref,
-  secondaryLabel = 'See how it works',
+  secondaryLabel = 'How it works',
   className,
 }: {
   crumb?: { label: string; href: string; current: string }

@@ -21,21 +21,21 @@ export const metadata: Metadata = {
 }
 
 const flow = [
-  { icon: <Tags className="h-4 w-4" />, title: 'Catalog and customers', desc: 'Import both from a spreadsheet. Give each customer their own price list and the items they buy.' },
-  { icon: <Receipt className="h-4 w-4" />, title: 'Orders come in', desc: 'Customers on Fork order in the app. Others call or email and you enter it. Standing orders create themselves.' },
-  { icon: <Truck className="h-4 w-4" />, title: 'Deliver on a route', desc: 'Stops in the best order with ETAs. The driver checks off each stop with a photo.' },
-  { icon: <Landmark className="h-4 w-4" />, title: 'Invoice and get paid', desc: 'One tap turns the order into an invoice with a pay link and QR. Card or bank transfer, paid out to you.' },
+  { icon: <Tags className="h-4 w-4" />, title: 'Catalog and customers', desc: 'Import from a spreadsheet. A price list per customer.' },
+  { icon: <Receipt className="h-4 w-4" />, title: 'Orders come in', desc: 'In the app, by email, or standing orders that create themselves.' },
+  { icon: <Truck className="h-4 w-4" />, title: 'Deliver on a route', desc: 'Stops in the best order. A photo at each one.' },
+  { icon: <Landmark className="h-4 w-4" />, title: 'Invoice and get paid', desc: 'Pay link and QR code. Card or bank. Paid out to you.' },
 ]
 
 const more = [
-  { icon: <Tags className="h-5 w-5" />, title: 'Customer-specific catalogs', desc: 'Every customer sees their items at their prices. Link items so a customer\'s "baguette" is your SKU 1041.' },
-  { icon: <RefreshCw className="h-5 w-5" />, title: 'Standing orders', desc: 'Every Monday, 24 sourdough. Orders are generated ahead of time and emailed for confirmation.' },
-  { icon: <PackageCheck className="h-5 w-5" />, title: 'Issues and credits', desc: 'A short delivery or a damaged crate becomes an issue on the order. Approve a credit and it comes off the invoice.' },
-  { icon: <FileSpreadsheet className="h-5 w-5" />, title: 'Imports', desc: 'Bring customers, catalog items and open orders in from a spreadsheet in one go.' },
-  { icon: <UserCheck className="h-5 w-5" />, title: 'Customers can claim their side', desc: 'A customer who later signs up with the email on file takes over their account and orders in the app. Or keep it under your control.' },
-  { icon: <Boxes className="h-5 w-5" />, title: 'Seller inventory', desc: 'Stock levels per item and location, moved by what you sell and receive.' },
-  { icon: <BarChart3 className="h-5 w-5" />, title: 'Sales and catalog reports', desc: 'Revenue by customer and period, which items move and which do not.' },
-  { icon: <Users className="h-5 w-5" />, title: 'A conversation per customer', desc: 'Chat with customers on Fork, email the rest from the same thread. Replies come back to the chat.' },
+  { icon: <Tags className="h-5 w-5" />, title: 'Price lists per customer', desc: 'Each customer sees their items at their prices.' },
+  { icon: <RefreshCw className="h-5 w-5" />, title: 'Standing orders', desc: 'Every Monday, 24 sourdough. Generated ahead, emailed for confirmation.' },
+  { icon: <PackageCheck className="h-5 w-5" />, title: 'Issues and credits', desc: 'A short case becomes a credit on the invoice.' },
+  { icon: <FileSpreadsheet className="h-5 w-5" />, title: 'Imports', desc: 'Customers, items and open orders from a spreadsheet.' },
+  { icon: <UserCheck className="h-5 w-5" />, title: 'Customers can claim their side', desc: 'Sign up later with the email on file and order in the app.' },
+  { icon: <Boxes className="h-5 w-5" />, title: 'Seller inventory', desc: 'Stock per item and location.' },
+  { icon: <BarChart3 className="h-5 w-5" />, title: 'Sales reports', desc: 'Revenue by customer. Which items move.' },
+  { icon: <Users className="h-5 w-5" />, title: 'A chat per customer', desc: 'On Fork or by email. Replies come back to the thread.' },
 ]
 
 export default function SalesPage() {
@@ -44,11 +44,11 @@ export default function SalesPage() {
       <Hero
         crumb={{ label: 'Products', href: '/products', current: 'Sell through Fork' }}
         plan="free"
-        title="Sell to your customers and get paid, even if they never sign up"
-        lede="Catalog, customers, orders, routes and invoices in one place. Customers pay by card or US bank transfer from an emailed link or the QR code on the PDF, and the money lands in your bank."
+        title="Sell to your customers and get paid. No account needed on their side."
+        lede="Catalog, orders, routes and invoices. Customers pay from a link or a QR code. Money lands in your bank."
         secondaryHref="#payments"
-        secondaryLabel="See how you get paid"
-        note={`Free, with unlimited customers and items. A ${feePct}% platform fee applies only when a customer pays online.`}
+        secondaryLabel="How you get paid"
+        note={`Free. A ${feePct}% fee only when a customer pays online.`}
         aside={
           <Window title="Fork · Sales · Order S-2088">
             <InvoicePreview />
@@ -56,10 +56,9 @@ export default function SalesPage() {
         }
       />
 
-      {/* Flow */}
       <section className="border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="How selling works" title="From order to money in the bank" lede="Built for bakeries, roasters, farms, commissaries and distributors that deliver to other businesses." />
+          <SectionHeading eyebrow="How selling works" title="From order to money in the bank" lede="For bakeries, roasters, farms, commissaries and distributors." />
           <div className="mt-12 grid gap-8 md:grid-cols-4 md:gap-6">
             {flow.map((f, i) => (
               <div key={f.title} className="border-t-2 border-warm-950 pt-5">
@@ -80,14 +79,8 @@ export default function SalesPage() {
         eyebrow="Invoices & payments"
         plan="free"
         title="Invoices that get paid"
-        lede="Turn a delivered order into an invoice. The customer gets an email with the PDF and a pay link; the PDF carries a QR code for the ones who print. They pay by card or US bank transfer, Stripe handles the money, and the payout lands in your bank."
-        bullets={[
-          'Payment terms per customer: prepaid, COD, Net 7, 15, 30 or 60',
-          'Card and US bank transfer through Stripe, reminders included',
-          'Approved credits from delivery issues come off the invoice automatically',
-          'Paid, failed and refunded states sync back to the order, so nothing is chased twice',
-          'Optional sales tax through Stripe Tax',
-        ]}
+        lede="The customer gets an email with a pay link. The PDF carries a QR code. Stripe moves the money to your bank."
+        bullets={['Terms per customer: prepaid, COD, Net 7 to 60', 'Card and US bank transfer', 'Credits come off the invoice automatically']}
         preview={<InvoicePreview />}
         previewTitle="Fork · Sales · Invoice"
         className="bg-warm-50"
@@ -99,13 +92,8 @@ export default function SalesPage() {
         eyebrow="Delivery routes"
         plan="free"
         title="Deliver on the best route"
-        lede="Pick the day's orders and Fork orders the stops, with ETAs. Your driver gets a Deliveries tab on their phone: stop by stop, with a photo at each one as proof of delivery."
-        bullets={[
-          'Stop order optimized on real road distances',
-          'ETAs per stop, service time included',
-          'Proof-of-delivery photos kept on the order',
-          'Orders move to Delivered as the driver checks them off',
-        ]}
+        lede="Pick the orders. Fork orders the stops. The driver checks each one off with a photo."
+        bullets={['Stops ordered on real road distances', 'ETA per stop', 'Proof of delivery kept on the order']}
         preview={<RoutePreview />}
         previewTitle="Fork · Routes · Thu, Sep 25"
       />
@@ -115,22 +103,16 @@ export default function SalesPage() {
         eyebrow="Customer chat"
         plan="free"
         title="Every customer gets a conversation"
-        lede="One thread per customer, next to their orders. Customers on Fork chat in the app. Everyone else gets your message as an email and their reply shows up in the thread, attachments included."
-        bullets={[
-          'Order confirmations and invoices go out from the same conversation',
-          'Replies by email are threaded back into the chat',
-          'Photos and PDFs from either side are kept on the thread',
-          'Turn email off for a customer and the address stays as contact info only',
-        ]}
+        lede="On Fork, it is a chat. Not on Fork, it is an email that comes back as chat."
+        bullets={['Confirmations and invoices from the same thread', 'Replies threaded back, attachments included', 'Email off? The address stays as contact info']}
         preview={<VendorChatPreview role="customer" />}
         previewTitle="Fork · Chat · Corner Café"
         className="bg-warm-50"
       />
 
-      {/* More */}
       <section id="customers" className="scroll-mt-24 border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="Also included" title="The rest of running a wholesale side" />
+          <SectionHeading eyebrow="Also included" title="The rest of the wholesale side" />
           <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-warm-200 bg-warm-200 sm:grid-cols-2 lg:grid-cols-4">
             {more.map((m) => (
               <div key={m.title} className="bg-white p-6">
@@ -143,16 +125,15 @@ export default function SalesPage() {
         </div>
       </section>
 
-      {/* Fees */}
       <section className="border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
           <div className="grid items-start gap-12 md:grid-cols-[1fr_1.2fr] md:gap-16">
-            <SectionHeading eyebrow="What it costs" title="Free to sell. A small fee only when money moves online." lede="The business model is the subscription for team tools. Selling is free so your customers can be on Fork without anyone paying for them." />
+            <SectionHeading eyebrow="What it costs" title="Free to sell. A small fee only when money moves online." />
             <div className="surface divide-y divide-warm-100">
               {[
-                { l: 'Catalog, customers, orders, routes, chat', v: '$0', d: 'Unlimited, on the Free plan' },
-                { l: 'Invoices settled outside Fork', v: '$0', d: 'Mark them paid, no fee' },
-                { l: 'Invoices paid online', v: `${feePct}%`, d: 'Platform fee on the pre-tax amount, plus Stripe\'s processing fee' },
+                { l: 'Catalog, customers, orders, routes, chat', v: '$0', d: 'Unlimited' },
+                { l: 'Invoices settled outside Fork', v: '$0', d: 'Mark them paid' },
+                { l: 'Invoices paid online', v: `${feePct}%`, d: 'On the pre-tax amount, plus Stripe processing' },
               ].map((r) => (
                 <div key={r.l} className="flex items-center justify-between gap-6 px-6 py-5">
                   <div>
@@ -163,14 +144,14 @@ export default function SalesPage() {
                 </div>
               ))}
               <div className="flex items-center gap-2 px-6 py-4 text-sm text-warm-500">
-                <ShieldCheck className="h-4 w-4 text-forest-600" /> Payments are processed by Stripe. Fork never stores card or bank details.
+                <ShieldCheck className="h-4 w-4 text-forest-600" /> Stripe processes payments. Fork never stores card or bank details.
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <CtaSection eyebrow="Free plan" title="Start selling through Fork" lede="Add your catalog and customers today. No card, no clock. Invoice your first order this week." />
+      <CtaSection eyebrow="Free plan" title="Start selling through Fork" lede="Add your catalog and customers today. Invoice your first order this week." />
     </main>
   )
 }

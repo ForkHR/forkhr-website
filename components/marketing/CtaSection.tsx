@@ -8,7 +8,7 @@ import { CTA_PRIMARY, GUARANTEE_DAYS, REGISTER_URL } from '@/lib/site'
 export default function CtaSection({
   eyebrow = 'Get started',
   title = 'Run the whole business from one app',
-  lede = 'Ordering and selling are free. Add your team when you are ready, from $39 per location per month.',
+  lede = 'Free to order and sell. Team plans from $39 per location.',
   secondaryHref = '/pricing',
   secondaryLabel = 'View pricing',
 }: {
@@ -39,7 +39,7 @@ export default function CtaSection({
               </Button>
             </Link>
           </div>
-          <p className="mt-6 text-sm text-warm-500">No card needed for the Free plan · {GUARANTEE_DAYS}-day money-back guarantee on paid plans · Cancel anytime</p>
+          <p className="mt-6 text-sm text-warm-500">No card for Free · {GUARANTEE_DAYS}-day money-back guarantee · Cancel anytime</p>
         </div>
       </div>
     </section>

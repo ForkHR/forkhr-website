@@ -28,21 +28,21 @@ const steps = [
     step: '01',
     icon: <BookOpen className="h-5 w-5 text-forest-600" />,
     title: 'You publish your content',
-    description: 'FAQs, policies, courses and library files inside Fork. The assistant indexes what you publish, nothing else. Nothing to configure.',
+    description: 'FAQs, policies, courses and library files. The assistant indexes what you publish, nothing else.',
     sources: ['Company FAQs', 'Policies and handbook', 'Courses', 'Library files'],
   },
   {
     step: '02',
     icon: <Search className="h-5 w-5 text-forest-600" />,
     title: 'It retrieves, then answers',
-    description: 'A question searches your company content first and ranks it above Fork\'s own product documentation. If nothing matches, it says so instead of guessing.',
+    description: 'Your content first. If nothing matches, it says so instead of guessing.',
     sources: ['Your content ranked first', 'Live schedule and time off data', 'No made-up answers', 'Escalation when unsure'],
   },
   {
     step: '03',
     icon: <MessageSquare className="h-5 w-5 text-forest-600" />,
     title: 'People get an answer, or a draft',
-    description: 'Step-by-step guidance, policy-specific answers, a summary of who is off, or a message ready to post to a channel. Matched to the person\'s role.',
+    description: 'Policy answers, who is off, or a message ready to post. Matched to the person\'s role.',
     sources: ['Role-aware answers', 'Drafts for announcements and messages', 'Hand-off to a manager', 'On every screen, web and mobile'],
   },
 ]
@@ -77,7 +77,7 @@ export default function AIAssistantPage() {
             Your company&apos;s knowledge<span className="text-forest-500">.</span> One question away<span className="text-forest-500">.</span>
           </>
         }
-        lede="An assistant trained on your policies, FAQs, courses and library, with the schedule in view. Accurate, role-aware answers for managers and employees, and a manager one tap away when it should not decide."
+        lede="Answers from your own policies, FAQs, courses and schedule. A manager one tap away when it should not decide."
         secondaryHref="#how-it-works"
         secondaryLabel="How it works"
         aside={
@@ -91,7 +91,7 @@ export default function AIAssistantPage() {
       <section className="border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid items-start gap-12 md:grid-cols-[1fr_1.4fr] md:gap-16">
-            <SectionHeading eyebrow="The problem" title="The answers exist. They are just hard to find." lede="Every company has policies, procedures and training. Employees cannot find them, and managers spend their day repeating them." />
+            <SectionHeading eyebrow="The problem" title="The answers exist. They are just hard to find." lede="Managers spend the day repeating them." />
             <div className="divide-y divide-warm-100 border-t border-warm-100 md:border-t-0">
               {painPoints.map((p, i) => (
                 <div key={p.problem} className="flex gap-5 py-5">
@@ -110,7 +110,7 @@ export default function AIAssistantPage() {
       {/* How it works */}
       <section id="how-it-works" className="scroll-mt-24 border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="How it works" title="Publish once, answer forever" lede="No configuration and no prompt engineering. Publish your content and the assistant does the rest." />
+          <SectionHeading eyebrow="How it works" title="Publish once, answer forever" lede="Nothing to configure." />
           <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
             {steps.map((s) => (
               <div key={s.step} className="border-t-2 border-warm-950 pt-6">
@@ -137,7 +137,7 @@ export default function AIAssistantPage() {
       {/* Features */}
       <section className="border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="Features" title="Built for accuracy, not novelty" lede="Every decision behind the assistant is about giving the right, company-specific answer." />
+          <SectionHeading eyebrow="Features" title="Built for accuracy, not novelty" />
           <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-warm-200 bg-warm-200 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
               <div key={f.title} className="bg-white p-7 transition-colors hover:bg-warm-50">
@@ -153,7 +153,7 @@ export default function AIAssistantPage() {
       {/* Sources */}
       <section className="border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="Content sources" title="It answers from your approved content, in this order" />
+          <SectionHeading eyebrow="Content sources" title="Your content, in this order" />
           <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-warm-200 bg-warm-200 sm:grid-cols-2 lg:grid-cols-4">
             {sources.map((s, i) => (
               <div key={s.title} className="bg-white p-7">
@@ -228,7 +228,7 @@ export default function AIAssistantPage() {
         </div>
       </section>
 
-      <CtaSection eyebrow="Premium" title="Turn your company knowledge into an assistant" lede="Stop answering the same questions. The assistant is part of Premium, together with SOPs, courses, policies and contracts." />
+      <CtaSection eyebrow="Premium" title="Stop answering the same questions" lede="The assistant is part of Premium, with SOPs, courses, policies and contracts." />
     </main>
   )
 }
