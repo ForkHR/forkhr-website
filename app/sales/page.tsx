@@ -5,7 +5,7 @@ import FeatureRow from '@/components/marketing/FeatureRow'
 import SectionHeading from '@/components/marketing/SectionHeading'
 import CtaSection from '@/components/marketing/CtaSection'
 import { InvoicePreview, RoutePreview, VendorChatPreview, Window } from '@/components/previews'
-import { PLATFORM_FEE_BPS } from '@/lib/site'
+import { PLATFORM_FEE_BPS, registerUrl } from '@/lib/site'
 
 const feePct = (PLATFORM_FEE_BPS / 100).toFixed(1).replace(/\.0$/, '')
 
@@ -41,7 +41,7 @@ const more = [
 export default function SalesPage() {
   return (
     <main className="pt-16">
-      <Hero
+      <Hero registerHref={registerUrl({ use: 'sales' })}
         crumb={{ label: 'Products', href: '/products', current: 'Sell through Fork' }}
         plan="free"
         title="Sell to your customers and get paid. No account needed on their side."
@@ -151,7 +151,7 @@ export default function SalesPage() {
         </div>
       </section>
 
-      <CtaSection eyebrow="Free plan" title="Start selling through Fork" lede="Add your catalog and customers today. Invoice your first order this week." />
+      <CtaSection registerHref={registerUrl({ use: 'sales' })} eyebrow="Free plan" title="Start selling through Fork" lede="Add your catalog and customers today. Invoice your first order this week." />
     </main>
   )
 }

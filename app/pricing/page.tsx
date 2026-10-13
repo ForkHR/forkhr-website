@@ -9,7 +9,7 @@ import CtaSection from '@/components/marketing/CtaSection'
 import SectionHeading from '@/components/marketing/SectionHeading'
 import { FEATURE_GROUPS, TIERS, tierIncludes } from '@/lib/catalog'
 import { PRICING_FAQS as faqs } from '@/lib/pricing-faq'
-import { GUARANTEE_DAYS, REFERRAL_REWARD_MONTHS, REGISTER_URL, SUPPORT_EMAIL } from '@/lib/site'
+import { GUARANTEE_DAYS, REFERRAL_REWARD_MONTHS, REGISTER_URL, SUPPORT_EMAIL, registerUrl } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
 const description = `Ordering and selling are free. Team tools from $39 per location per month with unlimited employees and a ${GUARANTEE_DAYS}-day money-back guarantee.`
@@ -82,7 +82,7 @@ export default function PricingPage() {
                   <span className="mb-1.5 text-sm text-warm-500">{tier.price === 0 ? 'forever' : '/mo per location'}</span>
                 </div>
                 <p className="mt-3 text-sm leading-relaxed text-warm-600">{tier.description}</p>
-                <Link href={REGISTER_URL} target="_blank" className="mb-6 mt-6">
+                <Link href={tier.price === 0 ? REGISTER_URL : registerUrl({ plan: tier.key })} target="_blank" className="mb-6 mt-6">
                   <Button className="w-full" variant={tier.popular ? 'default' : 'outline'}>
                     {tier.cta}
                     <ArrowRight className="ml-2 h-4 w-4" />

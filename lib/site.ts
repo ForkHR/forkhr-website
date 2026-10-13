@@ -5,6 +5,18 @@
 export const APP_URL = 'https://app.forkhr.com'
 export const REGISTER_URL = `${APP_URL}/register`
 export const LOGIN_URL = `${APP_URL}/login`
+/**
+ * The app's sign-up carrying what the page already knows: `use` preselects a use on its
+ * "What will you use Fork for?" screen (workplace, purchasing, sales; several with commas),
+ * `plan` the tier its plan screen opens on.
+ */
+export const registerUrl = ({ use, plan }: { use?: string; plan?: string } = {}) => {
+  const q = new URLSearchParams()
+  if (use) q.set('use', use)
+  if (plan) q.set('plan', plan)
+  const s = q.toString()
+  return s ? `${REGISTER_URL}?${s}` : REGISTER_URL
+}
 export const JOBS_URL = 'https://jobs.forkhr.com/'
 export const SUPPORT_EMAIL = 'support@forkhr.com'
 

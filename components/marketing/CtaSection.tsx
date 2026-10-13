@@ -11,12 +11,15 @@ export default function CtaSection({
   lede = 'Free to order and sell. Team plans from $39 per location.',
   secondaryHref = '/pricing',
   secondaryLabel = 'View pricing',
+  registerHref = REGISTER_URL,
 }: {
   eyebrow?: string
   title?: string
   lede?: string
   secondaryHref?: string
   secondaryLabel?: string
+  /** The sign-up link with what the page knows (registerUrl in lib/site: a use, a plan). */
+  registerHref?: string
 }) {
   return (
     <section className="relative overflow-hidden bg-warm-950">
@@ -27,7 +30,7 @@ export default function CtaSection({
           <h2 className="mb-5 text-3xl font-semibold tracking-tight text-white md:text-5xl">{title}</h2>
           <p className="mb-10 max-w-lg text-lg text-warm-400">{lede}</p>
           <div className="flex flex-col gap-4 sm:flex-row">
-            <Link href={REGISTER_URL} target="_blank">
+            <Link href={registerHref} target="_blank">
               <Button size="lg" className="h-12 bg-white px-7 text-base text-warm-950 hover:bg-warm-100">
                 {CTA_PRIMARY}
                 <ArrowRight className="ml-2 h-4 w-4" />

@@ -6,6 +6,7 @@ import SectionHeading from '@/components/marketing/SectionHeading'
 import CtaSection from '@/components/marketing/CtaSection'
 import PlanBadge from '@/components/marketing/PlanBadge'
 import { SupplyPreview, VendorChatPreview, Window } from '@/components/previews'
+import { registerUrl } from '@/lib/site'
 
 const description =
   'Order from every vendor in one place, whether or not they use Fork. One-time and standing orders, vendor chat with an email bridge, deliveries, issues and credits, stock counts with par levels, and a market of vendors that deliver to you. Free.'
@@ -32,7 +33,7 @@ const included = [
 export default function SupplyPage() {
   return (
     <main className="pt-16">
-      <Hero
+      <Hero registerHref={registerUrl({ use: 'purchasing' })}
         crumb={{ label: 'Products', href: '/products', current: 'Supply' }}
         plan="free"
         title="Every vendor order in one place"
@@ -113,7 +114,7 @@ export default function SupplyPage() {
         </div>
       </section>
 
-      <CtaSection eyebrow="Free plan" title="Move your ordering to Fork this week" lede="Add your vendors by name and email. Place the next order from the app." />
+      <CtaSection registerHref={registerUrl({ use: 'purchasing' })} eyebrow="Free plan" title="Move your ordering to Fork this week" lede="Add your vendors by name and email. Place the next order from the app." />
     </main>
   )
 }

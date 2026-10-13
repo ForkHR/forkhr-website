@@ -20,6 +20,7 @@ export default function Hero({
   note,
   aside,
   primaryLabel = CTA_PRIMARY,
+  registerHref = REGISTER_URL,
   secondaryHref,
   secondaryLabel = 'How it works',
   className,
@@ -31,6 +32,8 @@ export default function Hero({
   note?: ReactNode
   aside?: ReactNode
   primaryLabel?: string
+  /** The sign-up link with what the page knows (registerUrl in lib/site: a use, a plan). */
+  registerHref?: string
   secondaryHref?: string
   secondaryLabel?: string
   className?: string
@@ -58,7 +61,7 @@ export default function Hero({
             <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-warm-950 sm:text-5xl md:text-6xl">{title}</h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-warm-600 md:text-xl">{lede}</p>
             <div className="mt-9 flex flex-wrap items-center gap-4">
-              <Link href={REGISTER_URL} target="_blank">
+              <Link href={registerHref} target="_blank">
                 <Button size="lg" className="h-11 px-6 text-base">
                   {primaryLabel}
                   <ArrowRight className="ml-1.5 h-4 w-4" />
