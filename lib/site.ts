@@ -36,6 +36,7 @@ export const SEGMENTS = [
   'Bakeries',
   'Restaurants',
   'Food distributors',
+  'Service providers',
   'Retail stores',
   'Hotels',
   'Gyms & studios',

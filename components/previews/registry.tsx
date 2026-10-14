@@ -14,6 +14,8 @@ import InvoicePreview from './InvoicePreview'
 import RoutePreview from './RoutePreview'
 import ReportPreview from './ReportPreview'
 import AiPreview from './AiPreview'
+import ServiceCallPreview from './ServiceCallPreview'
+import TechnicianPreview from './TechnicianPreview'
 
 /** One place that turns a preview key from lib/solutions into a demo element. */
 export const renderPreview = (key: PreviewKey): ReactNode => {
@@ -47,6 +49,12 @@ export const renderPreview = (key: PreviewKey): ReactNode => {
       return <InvoicePreview />
     case 'route':
       return <RoutePreview />
+    case 'serviceCall':
+      return <ServiceCallPreview />
+    case 'serviceInvoice':
+      return <InvoicePreview variant="service" />
+    case 'technician':
+      return <TechnicianPreview />
     case 'report':
       return <ReportPreview />
     case 'ai':
@@ -57,4 +65,4 @@ export const renderPreview = (key: PreviewKey): ReactNode => {
 }
 
 /** Which frame a key wants: the phone for the mobile-first demos, a window otherwise. */
-export const frameFor = (key: PreviewKey): 'window' | 'phone' => (key === 'sopsPhone' ? 'phone' : 'window')
+export const frameFor = (key: PreviewKey): 'window' | 'phone' => (key === 'sopsPhone' || key === 'technician' ? 'phone' : 'window')

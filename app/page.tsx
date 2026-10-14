@@ -60,9 +60,9 @@ export default function Home() {
         <div className="relative mx-auto max-w-6xl px-6 pb-14 pt-12 md:pb-20 md:pt-20">
           <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.15fr] lg:gap-14">
             <div>
-              <Link href="/sales" className="group inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm">
+              <Link href="/service-providers" className="group inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm">
                 <span className="inline-flex items-center rounded-full bg-forest-50 px-2.5 py-0.5 text-[13px] font-semibold text-forest-600">New</span>
-                <span className="font-medium text-warm-600 group-hover:text-warm-950">Sell through Fork and get paid online</span>
+                <span className="font-medium text-warm-600 group-hover:text-warm-950">Fork for service providers: invoice from the visit</span>
                 <ArrowRight className="h-3.5 w-3.5 text-warm-400 transition-transform group-hover:translate-x-0.5" />
               </Link>
 

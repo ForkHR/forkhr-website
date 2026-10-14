@@ -11,7 +11,7 @@ const body = () => `# Fork
 
 > ${SITE_DESCRIPTION}
 
-Fork is for hourly-staff businesses (coffee shops, bakeries, restaurants, food distributors, retail, gyms, franchises) and the vendors that supply them. Ordering from vendors and selling to customers are free. Team tools are priced per location with unlimited employees and a ${GUARANTEE_DAYS}-day money-back guarantee.
+Fork is for hourly-staff businesses (coffee shops, bakeries, restaurants, food distributors, retail, gyms, franchises) and the vendors and service providers that supply and maintain them. Ordering from vendors and selling to customers are free. Team tools are priced per location with unlimited employees and a ${GUARANTEE_DAYS}-day money-back guarantee.
 
 ## Pricing
 
@@ -23,6 +23,7 @@ Fork is for hourly-staff businesses (coffee shops, bakeries, restaurants, food d
 - [Everything in one place](${base}/products): schedule, timecards, chat, feed, SOPs, learn, people & HR, hiring, supply, sales, reports, AI assistant.
 - [SOPs & checklists](${base}/sops): boards, procedures and runs; opening and closing, temperature, waste and cash logs.
 - [Sell through Fork](${base}/sales): catalog, customers, orders, delivery routes, invoices paid online by card or US bank transfer; customers need no account.
+- [Service providers](${base}/service-providers): service calls for repair and maintenance companies; technician visits with photos, parts, time on site and a signature; maintenance contracts; one call or a month of calls on one invoice paid online; customers need no account.
 - [Supply](${base}/supply): order from vendors, standing orders, vendor chat with email bridge, stock counts.
 - [Hiring](${base}/hiring): public job board, screening questions, AI resume scan, pipeline to onboarding.
 - [AI assistant](${base}/ai-assistant): answers from the company's own policies, FAQs, courses and schedule.

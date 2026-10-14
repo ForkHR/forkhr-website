@@ -35,6 +35,7 @@ const columns: { title: string; links: FooterLink[] }[] = [
       { label: 'Order from vendors', href: '/supply' },
       { label: 'Vendor chat', href: '/supply#chat' },
       { label: 'Sell through Fork', href: '/sales' },
+      { label: 'Service calls', href: '/service-providers' },
       { label: 'Invoices & payments', href: '/sales#payments' },
       { label: 'Delivery routes', href: '/sales#routes' },
     ],

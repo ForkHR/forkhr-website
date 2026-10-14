@@ -12,6 +12,7 @@ const pages: Page[] = [
   { path: '/sops', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/sales', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/supply', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/service-providers', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/ai-assistant', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/hiring', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/solutions', priority: 0.8, changeFrequency: 'monthly' },

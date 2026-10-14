@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { BookOpen, BotMessageSquare, Briefcase, CalendarDays, ClipboardCheck, Clock, FileSignature, Megaphone, MessageSquare, Package, PieChart, Receipt } from 'lucide-react'
+import { BookOpen, BotMessageSquare, Briefcase, CalendarDays, ClipboardCheck, Clock, FileSignature, Megaphone, MessageSquare, Package, PieChart, Receipt, Wrench } from 'lucide-react'
 import Hero from '@/components/marketing/Hero'
 import FeatureRow from '@/components/marketing/FeatureRow'
 import CtaSection from '@/components/marketing/CtaSection'
-import { AiPreview, ChatPreview, FeedPreview, HiringPreview, InvoicePreview, LearnPreview, PeoplePreview, ReportPreview, SchedulePreview, SopsPreview, SupplyPreview, TimecardsPreview } from '@/components/previews'
+import { AiPreview, ChatPreview, FeedPreview, HiringPreview, InvoicePreview, LearnPreview, PeoplePreview, ReportPreview, SchedulePreview, ServiceCallPreview, SopsPreview, SupplyPreview, TimecardsPreview } from '@/components/previews'
 
 const description =
-  'Every Fork product: scheduling, timecards, chat, feed, SOPs and checklists, learning, people & HR, hiring, ordering from vendors, selling and invoicing customers, reports and the AI assistant.'
+  'Every Fork product: scheduling, timecards, chat, feed, SOPs and checklists, learning, people & HR, hiring, ordering from vendors, selling and invoicing customers, service calls, reports and the AI assistant.'
 
 export const metadata: Metadata = {
   title: 'Products — Fork | Scheduling, SOPs, Feed, Supply, Sales & More',
@@ -28,6 +28,7 @@ const anchors = [
   { id: 'hiring', label: 'Hiring', icon: Briefcase },
   { id: 'supply', label: 'Supply', icon: Package },
   { id: 'sales', label: 'Sales', icon: Receipt },
+  { id: 'services', label: 'Service calls', icon: Wrench },
   { id: 'reports', label: 'Reports', icon: PieChart },
   { id: 'ai', label: 'Assistant', icon: BotMessageSquare },
 ]
@@ -173,7 +174,21 @@ export default function ProductsPage() {
       />
 
       <FeatureRow
+        id="services"
+        eyebrow="Service calls"
+        plan="free"
+        title="From the service call to paid"
+        lede="Book a technician, capture the visit, bill from it."
+        bullets={['Photos, parts and a signature on site', 'Maintenance contracts that book themselves', "A month of calls on one invoice"]}
+        preview={<ServiceCallPreview />}
+        previewTitle="Fork · Service calls · #SR-1042"
+        href="/service-providers"
+        hrefLabel="Fork for service providers"
+      />
+
+      <FeatureRow
         id="reports"
+        flip
         eyebrow="Reports"
         plan="essential"
         title="The numbers behind the shift"
@@ -185,7 +200,6 @@ export default function ProductsPage() {
 
       <FeatureRow
         id="ai"
-        flip
         eyebrow="AI assistant"
         plan="premium"
         title="Answers from your own content"

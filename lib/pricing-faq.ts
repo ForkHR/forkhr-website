@@ -7,7 +7,7 @@ export const feePct = (PLATFORM_FEE_BPS / 100).toFixed(1).replace(/\.0$/, '')
 export const PRICING_FAQS: { q: string; a: string }[] = [
   {
     q: 'Is there a free plan?',
-    a: 'Yes. Ordering from vendors, selling to your customers, invoicing, online payments, vendor and customer chat and delivery routes are free, with unlimited vendors, customers, catalog items and locations. No card is needed to start.',
+    a: 'Yes. Ordering from vendors, selling to your customers, service calls, invoicing, online payments, vendor and customer chat and delivery routes are free, with unlimited vendors, customers, catalog items and locations. No card is needed to start.',
   },
   {
     q: 'How does per-location pricing work?',

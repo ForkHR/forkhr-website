@@ -23,6 +23,9 @@ export type PreviewKey =
   | 'customerChat'
   | 'invoice'
   | 'route'
+  | 'serviceCall'
+  | 'serviceInvoice'
+  | 'technician'
   | 'report'
   | 'ai'
 
@@ -618,6 +621,7 @@ export type SolutionLink = { label: string; desc: string; href: string; preview:
 export const SOLUTION_MENU: { business: SolutionLink[]; need: SolutionLink[] } = {
   business: [
     ...SOLUTIONS.filter((s) => s.kind === 'business').map((s) => ({ label: s.menuLabel, desc: s.menuDesc, href: `/solutions/${s.slug}`, preview: s.menuPreview })),
+    { label: 'Service providers', desc: 'Service calls, technician visits, invoices', href: '/service-providers', preview: 'serviceCall' },
     { label: 'Franchises', desc: 'Same procedures and training at every unit', href: '/solutions/franchise', preview: 'learn' },
   ],
   need: [
@@ -632,7 +636,7 @@ export const SOLUTION_MENU: { business: SolutionLink[]; need: SolutionLink[] } =
 
 /** Footer list: everything, including the retention page that is not in the header. */
 export const ALL_SOLUTION_LINKS: SolutionLink[] = [
-  ...SOLUTION_MENU.business,
+  ...SOLUTION_MENU.business.filter((l) => l.href.startsWith('/solutions/')),
   ...SOLUTION_MENU.need.filter((l) => l.href.startsWith('/solutions/')),
   { label: 'Employee retention', desc: 'Fair schedules, recognition, surveys', href: '/solutions/employee-retention', preview: 'feed' },
 ]
@@ -645,6 +649,7 @@ export const SEGMENT_LINKS: Record<string, string> = {
   'Food distributors': '/solutions/food-distributors',
   'Retail stores': '/solutions/retail',
   'Gyms & studios': '/solutions/gyms-studios',
+  'Service providers': '/service-providers',
   Franchises: '/solutions/franchise',
 }
 

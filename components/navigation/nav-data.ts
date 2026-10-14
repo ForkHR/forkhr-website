@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react'
-import { BookOpen, BotMessageSquare, Briefcase, CalendarDays, ClipboardCheck, Clock, FileSignature, Landmark, Megaphone, MessageSquare, Package, PieChart, Receipt, ScanBarcode, Truck } from 'lucide-react'
+import { BookOpen, BotMessageSquare, Briefcase, CalendarDays, ClipboardCheck, Clock, FileSignature, Landmark, Megaphone, MessageSquare, Package, PieChart, Receipt, ScanBarcode, Truck, Wrench } from 'lucide-react'
 import type { PreviewKey } from '@/lib/solutions'
 
 export type NavItem = {
@@ -48,7 +48,7 @@ export const productGroups: ProductGroup[] = [
   },
   {
     label: 'Supply & Sales',
-    pitch: 'Order from vendors, sell to customers and get paid online. Free, whether or not they use Fork.',
+    pitch: 'Order from vendors, sell to customers or run service calls, and get paid online. Free, whether or not they use Fork.',
     preview: 'invoice',
     previewTitle: 'Fork · Sales',
     free: true,
@@ -57,6 +57,7 @@ export const productGroups: ProductGroup[] = [
       { name: 'Vendor & customer chat', desc: 'Email bridge for anyone not on Fork', icon: MessageSquare, href: '/supply#chat' },
       { name: 'Stock counts', desc: 'Par levels and reorder suggestions', icon: ScanBarcode, href: '/supply#inventory' },
       { name: 'Sell through Fork', desc: 'Catalog, customers, orders', icon: Receipt, href: '/sales' },
+      { name: 'Service calls', desc: 'Technician visits, work reports, invoices', icon: Wrench, href: '/service-providers' },
       { name: 'Invoices & payments', desc: 'Card or bank, no account needed', icon: Landmark, href: '/sales#payments' },
       { name: 'Delivery routes', desc: 'Optimized stops, proof of delivery', icon: Truck, href: '/sales#routes' },
     ],
