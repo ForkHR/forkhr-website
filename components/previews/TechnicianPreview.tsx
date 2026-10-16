@@ -61,14 +61,14 @@ export default function TechnicianPreview({ className }: { className?: string })
       </SectionLabel>
       <div className="space-y-2 px-3 pb-3">
         <div className="flex gap-1.5">
-          {[0, 1].map((i) => (
+          {['Before', 'After'].map((label, i) => (
             <span
-              key={i}
+              key={label}
               data-on={step >= 3}
               className="pv-pop flex h-10 flex-1 items-center justify-center gap-1 rounded-md bg-linear-to-br from-warm-200 to-warm-100 text-[9.5px] font-medium text-warm-500"
               style={{ transitionDelay: `${i * 120}ms` }}
             >
-              <Camera className="h-3 w-3" /> After
+              <Camera className="h-3 w-3" /> {label}
             </span>
           ))}
         </div>

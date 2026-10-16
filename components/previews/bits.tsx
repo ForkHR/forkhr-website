@@ -25,13 +25,14 @@ export function Window({
   return (
     <div
       className={cn(
-        mat && (tone === 'dark' ? 'rounded-2xl bg-white/4 p-3 sm:p-5 border border-white/10' : 'rounded-2xl bg-warm-100/80 p-3 sm:p-5 border border-warm-200/70'),
+        mat && (tone === 'dark' ? 'pv-mat rounded-2xl bg-white/4 p-3 sm:p-5 border border-white/10' : 'pv-mat rounded-2xl bg-warm-100/80 p-3 sm:p-5 border border-warm-200/70'),
         className,
       )}
     >
+      {/* pv-mat / pv-window: restyled inside .on-gradient (globals.css) */}
       <div
         aria-hidden="true"
-        className="@container pointer-events-none select-none overflow-hidden rounded-xl border border-warm-200 bg-white text-warm-950 shadow-[0_24px_60px_-28px_rgba(9,9,11,0.35)]"
+        className="pv-window @container pointer-events-none select-none overflow-hidden rounded-xl border border-warm-200 bg-white text-warm-950 shadow-[0_24px_60px_-28px_rgba(9,9,11,0.35)]"
       >
         <div className="flex items-center gap-2 border-b border-warm-100 bg-white px-3 py-2">
           <div className="flex gap-1.5">
@@ -52,18 +53,56 @@ export function Window({
   )
 }
 
-/** A phone body for the mobile-first demos. */
+/**
+ * A phone for the mobile-first demos, drawn like a current iPhone: a metal edge with side
+ * buttons, a thin black bezel, a screen of fixed phone proportions with the status bar around
+ * a Dynamic Island, and the home indicator. The demo fills the screen below the status bar;
+ * a shorter one leaves white space under it, as an app would, a longer one fades out.
+ */
 export function Phone({ children, className }: { children: ReactNode; className?: string }) {
+  const side = 'absolute w-[3px] bg-linear-to-b from-warm-500 to-warm-700'
   return (
-    <div
-      aria-hidden="true"
-      className={cn(
-        'pointer-events-none select-none mx-auto w-[280px] rounded-[2.2rem] border-[7px] border-warm-950 bg-white p-2 shadow-[0_30px_70px_-30px_rgba(9,9,11,0.5)]',
-        className,
-      )}
-    >
-      <div className="mx-auto mb-2 h-5 w-24 rounded-b-2xl bg-warm-950" />
-      <div className="@container overflow-hidden rounded-[1.4rem] bg-white">{children}</div>
+    <div aria-hidden="true" className={cn('pointer-events-none relative mx-auto w-[288px] select-none', className)}>
+      {/* Side buttons: action and volume on the left, power on the right */}
+      <span className={cn(side, '-left-0.5 top-[104px] h-7 rounded-l-xs')} />
+      <span className={cn(side, '-left-0.5 top-[150px] h-12 rounded-l-xs')} />
+      <span className={cn(side, '-left-0.5 top-[206px] h-12 rounded-l-xs')} />
+      <span className={cn(side, '-right-0.5 top-[172px] h-[72px] rounded-r-xs')} />
+
+      {/* Metal edge, then the bezel */}
+      <div className="rounded-[50px] bg-linear-to-b from-warm-400 via-warm-600 to-warm-500 p-0.5 shadow-[0_40px_80px_-32px_rgba(15,23,42,0.55)]">
+        <div className="rounded-[48px] bg-[#0b0b0c] p-[9px]">
+          <div className="relative h-[560px] overflow-hidden rounded-[39px] bg-white">
+            {/* Status bar: the time and the icons each centred beside the Dynamic Island, as on iOS */}
+            <div className="grid h-[46px] grid-cols-[1fr_84px_1fr] items-center pt-1 text-[13px] font-semibold text-warm-950" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
+              <span className="justify-self-center tabular-nums">9:41</span>
+              <span className="h-[26px] w-[84px] rounded-full bg-black" />
+              <span className="flex items-center gap-1 justify-self-center">
+                <svg viewBox="0 0 18 12" className="h-2.5 w-4 fill-current">
+                  <rect x="0" y="8" width="3" height="4" rx="1" />
+                  <rect x="5" y="5.5" width="3" height="6.5" rx="1" />
+                  <rect x="10" y="3" width="3" height="9" rx="1" />
+                  <rect x="15" y="0" width="3" height="12" rx="1" />
+                </svg>
+                <svg viewBox="0 0 16 12" className="h-2.5 w-3.5 fill-current">
+                  <path d="M8 2.6c2.4 0 4.6.9 6.2 2.5l1.3-1.4A10.6 10.6 0 0 0 8 .7 10.6 10.6 0 0 0 .5 3.7l1.3 1.4A8.7 8.7 0 0 1 8 2.6Z" />
+                  <path d="M8 6.2c1.5 0 2.8.6 3.8 1.5l1.3-1.4A7.3 7.3 0 0 0 8 4.3a7.3 7.3 0 0 0-5.1 2l1.3 1.4c1-.9 2.3-1.5 3.8-1.5Z" />
+                  <path d="M8 9.6 9.9 7.7a2.8 2.8 0 0 0-3.8 0L8 9.6Z" />
+                </svg>
+                <span className="relative inline-flex h-[11px] w-[22px] items-center rounded-[3.5px] border border-current/40 p-[1.5px]">
+                  <span className="h-full w-[78%] rounded-[1.5px] bg-current" />
+                  <span className="absolute -right-[3px] top-1/2 h-1 w-[1.5px] -translate-y-1/2 rounded-r-sm bg-current/40" />
+                </span>
+              </span>
+            </div>
+
+            {/* The app */}
+            <div className="@container h-[492px] overflow-hidden mask-[linear-gradient(to_bottom,black_93%,transparent)]">{children}</div>
+
+            <span className="absolute bottom-2 left-1/2 h-[5px] w-[104px] -translate-x-1/2 rounded-full bg-warm-950" />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
@@ -117,7 +156,7 @@ export function AvatarStack({ names, size = 22, max = 5 }: { names: string[]; si
   )
 }
 
-export type PillTone = 'neutral' | 'ok' | 'warn' | 'bad' | 'brand' | 'dark'
+export type PillTone = 'neutral' | 'ok' | 'warn' | 'bad' | 'brand' | 'plum' | 'dark'
 
 const PILL_TONES: Record<PillTone, string> = {
   neutral: 'bg-warm-100 text-warm-600',
@@ -125,6 +164,7 @@ const PILL_TONES: Record<PillTone, string> = {
   warn: 'bg-warn-50 text-warn-700',
   bad: 'bg-bad-50 text-bad-700',
   brand: 'bg-forest-50 text-forest-700',
+  plum: 'bg-plum-50 text-plum-700',
   dark: 'bg-warm-950 text-white',
 }
 
@@ -205,6 +245,17 @@ export function IconTile({ children, tone = 'neutral', size = 30, className }: {
       style={{ width: size, height: size }}
     >
       {children}
+    </span>
+  )
+}
+
+/** A 1–5 rating as five dots, the way a review question reads in the app. */
+export function RatingDots({ value, size = 7, className }: { value: number; size?: number; className?: string }) {
+  return (
+    <span className={cn('inline-flex items-center gap-[3px]', className)}>
+      {[1, 2, 3, 4, 5].map((n) => (
+        <span key={n} className={cn('pv-swap rounded-full', n <= value ? 'bg-warm-950' : 'bg-warm-200')} style={{ width: size, height: size }} />
+      ))}
     </span>
   )
 }

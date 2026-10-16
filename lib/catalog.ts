@@ -61,9 +61,11 @@ export const TIERS: Tier[] = [
     name: 'Pro',
     price: 79,
     tagline: 'For growing teams',
-    description: 'Paperless HR and an engaged team: onboarding, documents, recognitions and surveys.',
+    description: 'Paperless HR and a team that grows: onboarding, documents, performance reviews, recognitions and surveys.',
     bullets: [
       'Everything in Essential',
+      'Performance reviews & raises',
+      'Check-ins, goals & team feedback',
       'Onboarding guides',
       'Employment forms (W-4, I-9)',
       'Employee documents & expiry alerts',
@@ -90,6 +92,7 @@ export const TIERS: Tier[] = [
       'Policies & handbook acknowledgements',
       'Company FAQs',
       'Contracts & e-signatures',
+      'Improvement plans',
       'Violations & termination records',
       'Events with RSVPs',
       'AI assistant',
@@ -150,6 +153,17 @@ export const FEATURE_GROUPS: FeatureGroup[] = [
       { key: 'contracts', label: 'Contracts & e-signatures', minTier: 'premium' },
       { key: 'violations', label: 'Violations', minTier: 'premium' },
       { key: 'termination-records', label: 'Termination records', minTier: 'premium' },
+    ],
+  },
+  {
+    label: 'Performance',
+    features: [
+      { key: 'performance', label: 'Performance reviews, written from the record', minTier: 'pro', note: 'Attendance, shifts, tasks, training and recognition beside every question' },
+      { key: 'performance-cycles', label: 'Automatic 90-day & anniversary reviews', minTier: 'pro' },
+      { key: 'performance-raises', label: 'Raises approved and applied to pay rates', minTier: 'pro' },
+      { key: 'performance-feedback', label: 'Teammate & anonymous manager feedback', minTier: 'pro' },
+      { key: 'performance-checkins', label: 'Check-ins, goals & notes', minTier: 'pro' },
+      { key: 'improvement_plans', label: 'Improvement plans', minTier: 'premium' },
     ],
   },
   {

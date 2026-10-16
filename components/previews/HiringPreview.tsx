@@ -45,7 +45,7 @@ export default function HiringPreview({ className }: { className?: string }) {
           <Pill tone={a.tone}>{a.stage}</Pill>
         </div>
       ))}
-      <div className="px-4 py-2.5 text-[10.5px] text-warm-400">Hire → the applicant becomes an employee with onboarding started</div>
+      <div className="px-4 py-2.5 text-[10.5px] text-warm-400">Hire → their employee profile and app invite, in the same step</div>
     </div>
   )
 }

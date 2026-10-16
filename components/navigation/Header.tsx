@@ -11,7 +11,7 @@ import { CTA_PRIMARY, GUARANTEE_DAYS, LOGIN_URL, REGISTER_URL } from '@/lib/site
 import { SOLUTION_MENU, type PreviewKey, type SolutionLink } from '@/lib/solutions'
 import { renderPreview } from '@/components/previews/registry'
 import Logo from './Logo'
-import { productGroups } from './nav-data'
+import { productGroups, type NavItem } from './nav-data'
 
 /**
  * The live demo panel in a menu: whatever the pointer is on, shown in a small window frame.
@@ -43,6 +43,8 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [productFocus, setProductFocus] = useState(0)
+  // The item under the pointer; its own demo plays, else the group's.
+  const [productItem, setProductItem] = useState<NavItem | null>(null)
   const [solutionFocus, setSolutionFocus] = useState<SolutionLink>(SOLUTION_MENU.business[0])
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
   const dropdownTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -64,11 +66,16 @@ const Header = () => {
   const close = () => setActiveDropdown(null)
 
   const navLink = 'text-[14px] font-medium text-warm-600 hover:text-warm-950 px-3 py-2 rounded-lg transition-colors'
+  // Menus hang from the header itself (the nearest positioned box), centred and never wider than
+  // the viewport. They start right under the nav links; the top padding bridges the pointer.
   const panel = (name: string) =>
-    cn('absolute top-full pt-3 transition-all duration-200', activeDropdown === name ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none')
+    cn(
+      'absolute left-1/2 top-[50px] -translate-x-1/2 pt-4 transition-all duration-200',
+      activeDropdown === name ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none',
+    )
   const focusedGroup = productGroups[productFocus]
 
-  const itemRow = (item: { name: string; desc: string; href: string; icon?: React.ComponentType<{ className?: string }> }, onFocus?: () => void) => (
+  const itemRow = (item: { name: string; desc: string; href: string; badge?: string; icon?: React.ComponentType<{ className?: string }> }, onFocus?: () => void) => (
     <Link
       key={item.href + item.name}
       href={item.href}
@@ -83,7 +90,10 @@ const Header = () => {
         </span>
       )}
       <span className="min-w-0">
-        <span className="block text-[13px] font-semibold text-warm-800 group-hover:text-warm-950">{item.name}</span>
+        <span className="flex items-center gap-1.5 text-[13px] font-semibold text-warm-800 group-hover:text-warm-950">
+          {item.name}
+          {item.badge && <span className="rounded-full bg-forest-50 px-1.5 py-px text-[9.5px] font-bold uppercase tracking-wider text-forest-600">{item.badge}</span>}
+        </span>
         <span className="block text-[11.5px] leading-snug text-warm-500">{item.desc}</span>
       </span>
     </Link>
@@ -101,25 +111,45 @@ const Header = () => {
           <div className="hidden flex-1 items-center justify-between md:flex">
             <nav className="flex items-center gap-1">
               {/* Products */}
-              <div className="relative" onMouseEnter={() => enter('products')} onMouseLeave={leave}>
+              <div onMouseEnter={() => enter('products')} onMouseLeave={leave}>
                 <Link href="/products" className={cn(navLink, 'inline-flex items-center gap-1')}>
                   Products
                   <ChevronDown className={cn('h-3.5 w-3.5 transition-transform duration-200', activeDropdown === 'products' && 'rotate-180')} />
                 </Link>
-                <div className={cn(panel('products'), 'left-0')}>
-                  <div className="w-[920px] rounded-2xl border border-warm-200 bg-white p-4 shadow-[0_24px_60px_-20px_rgba(9,9,11,0.25)]">
+                <div className={panel('products')}>
+                  <div className="w-[min(1100px,calc(100vw-2rem))] rounded-2xl border border-warm-200 bg-white p-4 shadow-[0_24px_60px_-20px_rgba(27,26,25,0.25)]">
                     <div className="grid grid-cols-[1fr_1fr_1.15fr_300px] gap-4">
                       {productGroups.map((group, gi) => (
-                        <div key={group.label} onMouseEnter={() => setProductFocus(gi)} className={cn('rounded-xl p-1 transition-colors', productFocus === gi && 'bg-warm-50/70')}>
+                        <div
+                          key={group.label}
+                          onMouseEnter={() => {
+                            if (productFocus !== gi) setProductItem(null)
+                            setProductFocus(gi)
+                          }}
+                          className={cn('rounded-xl p-1 transition-colors', productFocus === gi && 'bg-warm-50/70')}
+                        >
                           <div className="mb-1.5 flex items-center gap-2 px-2 pt-1 text-[11px] font-semibold uppercase tracking-wider text-warm-400">
                             {group.label}
                             {group.free && <span className="rounded-full bg-ok-50 px-1.5 py-px text-[9px] font-bold tracking-wider text-ok-700">Free plan</span>}
                           </div>
-                          <div className="space-y-0.5">{group.items.map((item) => itemRow(item, () => setProductFocus(gi)))}</div>
+                          <div className="space-y-0.5">
+                            {group.items.map((item) =>
+                              itemRow(item, () => {
+                                setProductFocus(gi)
+                                setProductItem(item)
+                              }),
+                            )}
+                          </div>
                         </div>
                       ))}
                       {activeDropdown === 'products' && (
-                        <MenuDemo preview={focusedGroup.preview} title={focusedGroup.previewTitle} pitch={focusedGroup.pitch} href={focusedGroup.items[0].href} hrefLabel={`Explore ${focusedGroup.label}`} />
+                        <MenuDemo
+                          preview={productItem?.preview ?? focusedGroup.preview}
+                          title={productItem?.previewTitle ?? focusedGroup.previewTitle}
+                          pitch={productItem ? `${productItem.name}: ${productItem.desc.charAt(0).toLowerCase()}${productItem.desc.slice(1)}.` : focusedGroup.pitch}
+                          href={productItem?.href ?? focusedGroup.items[0].href}
+                          hrefLabel={productItem ? `Explore ${productItem.name}` : `Explore ${focusedGroup.label}`}
+                        />
                       )}
                     </div>
                     <div className="mt-3 flex items-center justify-between border-t border-warm-100 px-2 pt-3">
@@ -134,13 +164,13 @@ const Header = () => {
               </div>
 
               {/* Solutions */}
-              <div className="relative" onMouseEnter={() => enter('solutions')} onMouseLeave={leave}>
+              <div onMouseEnter={() => enter('solutions')} onMouseLeave={leave}>
                 <Link href="/solutions" className={cn(navLink, 'inline-flex items-center gap-1')}>
                   Solutions
                   <ChevronDown className={cn('h-3.5 w-3.5 transition-transform duration-200', activeDropdown === 'solutions' && 'rotate-180')} />
                 </Link>
-                <div className={cn(panel('solutions'), 'left-0')}>
-                  <div className="w-[820px] rounded-2xl border border-warm-200 bg-white p-4 shadow-[0_24px_60px_-20px_rgba(9,9,11,0.25)]">
+                <div className={panel('solutions')}>
+                  <div className="w-[min(920px,calc(100vw-2rem))] rounded-2xl border border-warm-200 bg-white p-4 shadow-[0_24px_60px_-20px_rgba(27,26,25,0.25)]">
                     <div className="grid grid-cols-[1fr_1.1fr_300px] gap-4">
                       <div className="rounded-xl p-1">
                         <div className="mb-1.5 px-2 pt-1 text-[11px] font-semibold uppercase tracking-wider text-warm-400">By business</div>
@@ -218,7 +248,10 @@ const Header = () => {
                             <Link key={item.name} href={item.href} onClick={() => setOpen(false)} className="flex items-center gap-3 px-1 py-2.5 text-warm-700">
                               <item.icon className="h-4 w-4 shrink-0 text-forest-600" />
                               <div className="min-w-0">
-                                <div className="text-sm font-medium">{item.name}</div>
+                                <div className="flex items-center gap-1.5 text-sm font-medium">
+                                  {item.name}
+                                  {item.badge && <span className="rounded-full bg-forest-50 px-1.5 py-px text-[9.5px] font-bold uppercase tracking-wider text-forest-600">{item.badge}</span>}
+                                </div>
                                 <div className="text-xs text-warm-500">{item.desc}</div>
                               </div>
                             </Link>

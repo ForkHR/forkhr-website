@@ -20,8 +20,9 @@ Fork is for hourly-staff businesses (coffee shops, bakeries, restaurants, food d
 
 ## Products
 
-- [Everything in one place](${base}/products): schedule, timecards, chat, feed, SOPs, learn, people & HR, hiring, supply, sales, reports, AI assistant.
+- [Everything in one place](${base}/products): schedule, timecards, chat, feed, SOPs, learn, people & HR, performance, hiring, supply, sales, reports, AI assistant.
 - [SOPs & checklists](${base}/sops): boards, procedures and runs; opening and closing, temperature, waste and cash logs.
+- [Performance reviews](${base}/performance): reviews written beside the record Fork already keeps (attendance, shift flags, tasks, SOP runs, training, recognition); automatic 90-day and anniversary reviews; self reviews on a phone; raises approved and applied to the pay rate; teammate feedback and anonymous manager feedback; check-ins, goals and notes. On the Pro plan; improvement plans on Premium.
 - [Sell through Fork](${base}/sales): catalog, customers, orders, delivery routes, invoices paid online by card or US bank transfer; customers need no account.
 - [Service providers](${base}/service-providers): service calls for repair and maintenance companies; technician visits with photos, parts, time on site and a signature; maintenance contracts; one call or a month of calls on one invoice paid online; customers need no account.
 - [Supply](${base}/supply): order from vendors, standing orders, vendor chat with email bridge, stock counts.

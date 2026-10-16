@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { ArrowRight, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Backdrop from '@/components/visual/Backdrop'
+import GradientStage from '@/components/visual/GradientStage'
 import { CTA_PRIMARY, REGISTER_URL } from '@/lib/site'
 import { cn } from '@/lib/utils'
 import type { TierKey } from '@/lib/catalog'
@@ -43,7 +44,7 @@ export default function Hero({
       <Backdrop />
       <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-12 md:pb-24 md:pt-28">
         <div className={cn('grid items-center gap-12', aside && 'lg:grid-cols-[0.9fr_1.1fr]')}>
-          <div className={cn(!aside && 'max-w-3xl')}>
+          <div className={cn('relative z-10', !aside && 'max-w-3xl')}>
             {crumb && (
               <nav className="mb-6 inline-flex items-center gap-1.5 text-sm">
                 <Link href={crumb.href} className="text-warm-500 transition-colors hover:text-warm-950">
@@ -58,7 +59,7 @@ export default function Hero({
                 <PlanBadge tier={plan} />
               </div>
             )}
-            <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-warm-950 sm:text-5xl md:text-6xl">{title}</h1>
+            <h1 className="text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-warm-950 sm:text-5xl md:text-6xl">{title}</h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-warm-600 md:text-xl">{lede}</p>
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <Link href={registerHref} target="_blank">
@@ -77,7 +78,12 @@ export default function Hero({
             </div>
             {note && <p className="mt-5 text-sm text-warm-400">{note}</p>}
           </div>
-          {aside && <div className="min-w-0">{aside}</div>}
+          {aside && (
+            <div className="on-gradient relative min-w-0 lg:static">
+              <GradientStage className="lg:h-[640px]" />
+              <div className="relative">{aside}</div>
+            </div>
+          )}
         </div>
       </div>
     </section>

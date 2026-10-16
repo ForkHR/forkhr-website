@@ -8,14 +8,14 @@ import { useInView, useSequence } from './useSequence'
 // A new hire's first week: onboarding tasks, signed forms and a contract, documents with expiry.
 const VARIANTS = {
   food: {
-    role: 'Barista · Main St · started Monday',
+    role: 'Barista · Main St · starts Monday',
     docs: [
       { name: 'Food handler card', sub: 'Expires Mar 2027' },
       { name: "Driver's license", sub: 'Expires in 12 days' },
     ],
   },
   fitness: {
-    role: 'Front desk · Downtown · started Monday',
+    role: 'Front desk · Downtown · starts Monday',
     docs: [
       { name: 'CPR & AED certification', sub: 'Expires Mar 2027' },
       { name: 'Personal trainer certification', sub: 'Expires in 12 days' },

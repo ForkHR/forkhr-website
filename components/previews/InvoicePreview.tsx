@@ -17,10 +17,10 @@ const VARIANTS = {
     lines: [
       { title: 'Sourdough loaf', detail: money(3.4), mid: '24', amount: 24 * 3.4 },
       { title: 'Butter croissant', detail: money(1.9), mid: '36', amount: 36 * 1.9 },
-      { title: 'Baguette', detail: money(2.6), mid: '18', amount: 18 * 2.6 },
+      { title: 'Baguette', detail: money(2.6), mid: '30', amount: 30 * 2.6 },
     ],
     extra: ['Delivery', 'Free over $150'],
-    terms: 'Net 7 · due Tue, Sep 30',
+    terms: 'Net 7 · due Mon, Oct 6',
   },
   service: {
     customer: 'Harbor Market',

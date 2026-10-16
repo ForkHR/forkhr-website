@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { BookOpen, BotMessageSquare, Briefcase, CalendarDays, ClipboardCheck, Clock, FileSignature, Megaphone, MessageSquare, Package, PieChart, Receipt, Wrench } from 'lucide-react'
+import { BookOpen, BotMessageSquare, Briefcase, CalendarDays, ClipboardCheck, Clock, FileSignature, Megaphone, MessageSquare, Package, PieChart, Receipt, TrendingUp, Wrench } from 'lucide-react'
 import Hero from '@/components/marketing/Hero'
 import FeatureRow from '@/components/marketing/FeatureRow'
 import CtaSection from '@/components/marketing/CtaSection'
-import { AiPreview, ChatPreview, FeedPreview, HiringPreview, InvoicePreview, LearnPreview, PeoplePreview, ReportPreview, SchedulePreview, ServiceCallPreview, SopsPreview, SupplyPreview, TimecardsPreview } from '@/components/previews'
+import { AiPreview, ChatPreview, FeedPreview, HiringPreview, InvoicePreview, LearnPreview, PeoplePreview, PerformancePreview, ReportPreview, SchedulePreview, ServiceCallPreview, SopsPreview, SupplyPreview, TimecardsPreview } from '@/components/previews'
 
 const description =
-  'Every Fork product: scheduling, timecards, chat, feed, SOPs and checklists, learning, people & HR, hiring, ordering from vendors, selling and invoicing customers, service calls, reports and the AI assistant.'
+  'Every Fork product: scheduling, timecards, chat, feed, SOPs and checklists, learning, people & HR, performance reviews, hiring, ordering from vendors, selling and invoicing customers, service calls, reports and the AI assistant.'
 
 export const metadata: Metadata = {
   title: 'Products — Fork | Scheduling, SOPs, Feed, Supply, Sales & More',
@@ -25,6 +25,7 @@ const anchors = [
   { id: 'sops', label: 'SOPs', icon: ClipboardCheck },
   { id: 'learn', label: 'Learn', icon: BookOpen },
   { id: 'people', label: 'People & HR', icon: FileSignature },
+  { id: 'performance', label: 'Performance', icon: TrendingUp },
   { id: 'hiring', label: 'Hiring', icon: Briefcase },
   { id: 'supply', label: 'Supply', icon: Package },
   { id: 'sales', label: 'Sales', icon: Receipt },
@@ -133,8 +134,21 @@ export default function ProductsPage() {
       />
 
       <FeatureRow
-        id="hiring"
+        id="performance"
         flip
+        eyebrow="Performance"
+        plan="pro"
+        title="Reviews written from the record"
+        lede="Attendance, shift flags, tasks and training sit beside every question. Reviews start on their own."
+        bullets={['90-day and anniversary reviews, self reviews on a phone', 'Raises approved and applied to the pay rate', 'Check-ins, goals, team feedback; improvement plans (Premium)']}
+        preview={<PerformancePreview />}
+        previewTitle="Fork · Performance · Maya Chen"
+        href="/performance"
+        hrefLabel="Explore performance"
+      />
+
+      <FeatureRow
+        id="hiring"
         eyebrow="Hiring"
         plan="essential"
         title="Your own job board"
@@ -148,6 +162,7 @@ export default function ProductsPage() {
 
       <FeatureRow
         id="supply"
+        flip
         eyebrow="Supply"
         plan="free"
         title="Every vendor order in one place"
@@ -161,7 +176,6 @@ export default function ProductsPage() {
 
       <FeatureRow
         id="sales"
-        flip
         eyebrow="Sales"
         plan="free"
         title="Sell and get paid online"
@@ -175,6 +189,7 @@ export default function ProductsPage() {
 
       <FeatureRow
         id="services"
+        flip
         eyebrow="Service calls"
         plan="free"
         title="From the service call to paid"
@@ -188,7 +203,6 @@ export default function ProductsPage() {
 
       <FeatureRow
         id="reports"
-        flip
         eyebrow="Reports"
         plan="essential"
         title="The numbers behind the shift"
@@ -200,6 +214,7 @@ export default function ProductsPage() {
 
       <FeatureRow
         id="ai"
+        flip
         eyebrow="AI assistant"
         plan="premium"
         title="Answers from your own content"

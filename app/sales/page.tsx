@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
-import { BarChart3, Boxes, FileSpreadsheet, Landmark, PackageCheck, Receipt, RefreshCw, ShieldCheck, Tags, Truck, UserCheck, Users } from 'lucide-react'
+import { BarChart3, Boxes, FileSpreadsheet, PackageCheck, RefreshCw, ShieldCheck, Tags, UserCheck, Users } from 'lucide-react'
 import Hero from '@/components/marketing/Hero'
 import FeatureRow from '@/components/marketing/FeatureRow'
 import SectionHeading from '@/components/marketing/SectionHeading'
 import CtaSection from '@/components/marketing/CtaSection'
+import DayTimeline, { type DayStop } from '@/components/marketing/DayTimeline'
 import { InvoicePreview, RoutePreview, VendorChatPreview, Window } from '@/components/previews'
 import { PLATFORM_FEE_BPS, registerUrl } from '@/lib/site'
 
@@ -20,11 +21,42 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image', title: 'Sell through Fork', description, images: ['/og-image.png'] },
 }
 
-const flow = [
-  { icon: <Tags className="h-4 w-4" />, title: 'Catalog and customers', desc: 'Import from a spreadsheet. A price list per customer.' },
-  { icon: <Receipt className="h-4 w-4" />, title: 'Orders come in', desc: 'In the app, by email, or standing orders that create themselves.' },
-  { icon: <Truck className="h-4 w-4" />, title: 'Deliver on a route', desc: 'Stops in the best order. A photo at each one.' },
-  { icon: <Landmark className="h-4 w-4" />, title: 'Invoice and get paid', desc: 'Pay link and QR code. Card or bank. Paid out to you.' },
+// Blue Door Bakery's Friday order for Corner Café, which is not on Fork. Times and totals match
+// the demos: the 8:12 → 8:19 thread that adds 12 baguettes ($228.00), the Friday route with
+// Corner Café at 6:40 AM, the invoice sent Mon 6:02 AM and paid Tue 9:40 AM, the Thursday payout.
+const order: DayStop[] = [
+  { kind: 'moment', day: 'Thu', time: '7:00 AM', app: 'Standing orders', where: 'Corner Café', text: "Friday's order was created from Corner Café's standing order.", tag: 'Created', tone: 'brand' },
+  {
+    kind: 'feature',
+    id: 'chat',
+    day: 'Thu',
+    time: '8:12 AM',
+    eyebrow: 'Customer chat',
+    plan: 'free',
+    title: 'Twelve more baguettes, from a reply to an email',
+    lede: "Corner Café isn't on Fork, so the confirmation went out as an email. Their reply came back to the chat, next to the order.",
+    bullets: ['Confirmations and invoices from the same thread', 'Replies threaded back, attachments included', 'Customers can claim their side and order in the app'],
+    preview: <VendorChatPreview role="customer" />,
+    previewTitle: 'Fork · Chat · Corner Café',
+  },
+  { kind: 'moment', day: 'Thu', time: '4:00 PM', app: 'Sales', where: 'Cutoff', text: "Friday's orders are in: 14 customers to deliver.", tag: '14 orders', tone: 'neutral' },
+  {
+    kind: 'feature',
+    id: 'routes',
+    day: 'Fri',
+    time: '5:30 AM',
+    eyebrow: 'Delivery routes',
+    plan: 'free',
+    title: 'The van leaves on the best route',
+    lede: 'Pick the orders and Fork puts the stops in order. The driver works them from the Fork app.',
+    bullets: ['Stops ordered on real road distances', "Each customer's delivery notes and photos", 'Photos and a signature as proof of delivery'],
+    preview: <RoutePreview />,
+    previewTitle: 'Fork · Routes · Fri, Sep 26',
+  },
+  { kind: 'moment', day: 'Fri', time: '6:40 AM', app: 'Routes', where: 'Corner Café', text: 'Delivered. The photo and the signature are on the order.', tag: 'Delivered', tone: 'ok' },
+  { kind: 'moment', day: 'Mon', time: '6:02 AM', app: 'Invoices', where: 'Corner Café', text: 'Invoice emailed to accounts@, with a pay link and a QR code on the PDF.', tag: 'Sent', tone: 'brand' },
+  { kind: 'moment', day: 'Tue', time: '9:40 AM', app: 'Payments', where: 'Corner Café', text: 'Paid by bank transfer: $228.00.', tag: 'Paid', tone: 'ok' },
+  { kind: 'moment', day: 'Thu', time: '9:00 AM', app: 'Payouts', where: 'Stripe', text: 'Paid out to your bank account.', tag: 'Paid out', tone: 'ok' },
 ]
 
 const more = [
@@ -56,20 +88,15 @@ export default function SalesPage() {
         }
       />
 
-      <section className="border-b border-warm-100">
+      <section id="story" className="scroll-mt-24 border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="How selling works" title="From order to money in the bank" lede="For bakeries, roasters, farms, commissaries and distributors." />
-          <div className="mt-12 grid gap-8 md:grid-cols-4 md:gap-6">
-            {flow.map((f, i) => (
-              <div key={f.title} className="border-t-2 border-warm-950 pt-5">
-                <div className="flex items-center gap-2">
-                  <span className="text-[13px] font-medium tabular-nums text-warm-400">0{i + 1}</span>
-                  <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-forest-50 text-forest-600">{f.icon}</span>
-                </div>
-                <h3 className="mt-3 text-lg font-semibold text-warm-950">{f.title}</h3>
-                <p className="mt-1.5 text-[15px] leading-relaxed text-warm-600">{f.desc}</p>
-              </div>
-            ))}
+          <SectionHeading
+            eyebrow="An order on Fork"
+            title="From standing order to money in the bank"
+            lede="Blue Door Bakery's Friday order for Corner Café, which isn't on Fork and never needs to be."
+          />
+          <div className="mt-14 md:mt-16">
+            <DayTimeline stops={order} rail="weeks" />
           </div>
         </div>
       </section>
@@ -83,30 +110,6 @@ export default function SalesPage() {
         bullets={['Terms per customer: prepaid, COD, Net 7 to 60', 'Card and US bank transfer', 'Credits come off the invoice automatically']}
         preview={<InvoicePreview />}
         previewTitle="Fork · Sales · Invoice"
-        className="bg-warm-50"
-      />
-
-      <FeatureRow
-        id="routes"
-        flip
-        eyebrow="Delivery routes"
-        plan="free"
-        title="Deliver on the best route"
-        lede="Pick the orders. Fork orders the stops. The driver checks each one off with a photo."
-        bullets={['Stops ordered on real road distances', 'ETA per stop', 'Proof of delivery kept on the order']}
-        preview={<RoutePreview />}
-        previewTitle="Fork · Routes · Thu, Sep 25"
-      />
-
-      <FeatureRow
-        id="chat"
-        eyebrow="Customer chat"
-        plan="free"
-        title="Every customer gets a conversation"
-        lede="On Fork, it is a chat. Not on Fork, it is an email that comes back as chat."
-        bullets={['Confirmations and invoices from the same thread', 'Replies threaded back, attachments included', 'Email off? The address stays as contact info']}
-        preview={<VendorChatPreview role="customer" />}
-        previewTitle="Fork · Chat · Corner Café"
         className="bg-warm-50"
       />
 

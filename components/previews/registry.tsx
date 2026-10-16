@@ -16,6 +16,15 @@ import ReportPreview from './ReportPreview'
 import AiPreview from './AiPreview'
 import ServiceCallPreview from './ServiceCallPreview'
 import TechnicianPreview from './TechnicianPreview'
+import PerformancePreview from './PerformancePreview'
+import ReviewPhonePreview from './ReviewPhonePreview'
+import ManagerFeedbackPreview from './ManagerFeedbackPreview'
+import CheckInPreview from './CheckInPreview'
+import PlanPreview from './PlanPreview'
+import ApplicantPreview from './ApplicantPreview'
+import LearningPreview from './LearningPreview'
+import ReceivingPreview from './ReceivingPreview'
+import ServiceIssuePreview from './ServiceIssuePreview'
 
 /** One place that turns a preview key from lib/solutions into a demo element. */
 export const renderPreview = (key: PreviewKey): ReactNode => {
@@ -59,10 +68,28 @@ export const renderPreview = (key: PreviewKey): ReactNode => {
       return <ReportPreview />
     case 'ai':
       return <AiPreview />
+    case 'performance':
+      return <PerformancePreview />
+    case 'reviewPhone':
+      return <ReviewPhonePreview />
+    case 'managerFeedback':
+      return <ManagerFeedbackPreview />
+    case 'checkIn':
+      return <CheckInPreview />
+    case 'improvementPlan':
+      return <PlanPreview />
+    case 'applicant':
+      return <ApplicantPreview />
+    case 'learning':
+      return <LearningPreview />
+    case 'receiving':
+      return <ReceivingPreview />
+    case 'serviceIssue':
+      return <ServiceIssuePreview />
     default:
       return null
   }
 }
 
 /** Which frame a key wants: the phone for the mobile-first demos, a window otherwise. */
-export const frameFor = (key: PreviewKey): 'window' | 'phone' => (key === 'sopsPhone' || key === 'technician' ? 'phone' : 'window')
+export const frameFor = (key: PreviewKey): 'window' | 'phone' => (key === 'sopsPhone' || key === 'technician' || key === 'reviewPhone' || key === 'receiving' ? 'phone' : 'window')
