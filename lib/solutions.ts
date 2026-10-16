@@ -28,6 +28,15 @@ export type PreviewKey =
   | 'technician'
   | 'report'
   | 'ai'
+  | 'performance'
+  | 'reviewPhone'
+  | 'managerFeedback'
+  | 'checkIn'
+  | 'improvementPlan'
+  | 'applicant'
+  | 'learning'
+  | 'receiving'
+  | 'serviceIssue'
 
 export type SolutionFeature = {
   eyebrow: string
@@ -275,7 +284,7 @@ export const SOLUTIONS: Solution[] = [
         lede: 'Stops ordered on real roads. The driver checks each off with a photo.',
         bullets: ['ETA per stop', 'Proof of delivery on the order', 'Orders move to Delivered as dropped'],
         preview: 'route',
-        previewTitle: 'Fork · Routes · Thu, Sep 25',
+        previewTitle: 'Fork · Routes · Fri, Sep 26',
       },
       {
         eyebrow: 'Your team',
@@ -638,7 +647,7 @@ export const SOLUTION_MENU: { business: SolutionLink[]; need: SolutionLink[] } =
 export const ALL_SOLUTION_LINKS: SolutionLink[] = [
   ...SOLUTION_MENU.business.filter((l) => l.href.startsWith('/solutions/')),
   ...SOLUTION_MENU.need.filter((l) => l.href.startsWith('/solutions/')),
-  { label: 'Employee retention', desc: 'Fair schedules, recognition, surveys', href: '/solutions/employee-retention', preview: 'feed' },
+  { label: 'Employee retention', desc: 'Fair schedules, recognition, reviews and raises', href: '/solutions/employee-retention', preview: 'performance' },
 ]
 
 /** Industry chips on the home page link to their page when one exists. */

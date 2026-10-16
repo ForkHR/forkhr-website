@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/navigation/Header";
 import Footer from "@/components/navigation/Footer";
 import { SITE_DESCRIPTION } from "@/lib/site";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// The app's own typeface (frontend/src/index.css in the app repo), so the site reads as the
+// product it sells. The optical-size axis gives headlines the display cut and body the text cut.
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
   subsets: ["latin"],
+  axes: ["opsz"],
 });
 
 const geistMono = Geist_Mono({
@@ -72,7 +75,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${bricolage.variable} ${geistMono.variable} antialiased`}
       >
         <div className="relative flex min-h-screen flex-col bg-background">
           <script

@@ -10,6 +10,7 @@ const pages: Page[] = [
   { path: '/products', priority: 0.9, changeFrequency: 'weekly' },
   { path: '/pricing', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/sops', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/performance', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/sales', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/supply', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/service-providers', priority: 0.8, changeFrequency: 'monthly' },

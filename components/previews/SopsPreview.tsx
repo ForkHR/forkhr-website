@@ -29,7 +29,8 @@ export default function SopsPreview({ className }: { className?: string }) {
   const complete = step >= 7
 
   return (
-    <div ref={ref} className={cn('grid text-warm-950 @lg:grid-cols-[170px_1fr]', className)}>
+    // minmax(0, …) tracks: truncated labels must not stretch the grid past a phone-width frame
+    <div ref={ref} className={cn('grid grid-cols-1 text-warm-950 @lg:grid-cols-[170px_minmax(0,1fr)]', className)}>
       {/* Boards */}
       <aside className="hidden border-r border-warm-100 bg-warm-50 @lg:block">
         <div className="px-3 pb-1.5 pt-3 text-[10px] font-bold uppercase tracking-wider text-warm-400">Boards</div>
@@ -48,17 +49,31 @@ export default function SopsPreview({ className }: { className?: string }) {
 
       {/* Run */}
       <div className="relative">
+        {/* Phone-width frames (under @xs) drop the icon and the assignee so the status fits */}
         <div className="flex items-center gap-3 border-b border-warm-100 px-4 py-3">
-          <IconTile tone="brand" size={34}>
+          <IconTile tone="brand" size={34} className="hidden @xs:inline-flex">
             <ClipboardList />
           </IconTile>
           <div className="min-w-0 flex-1">
-            <div className="text-[13px] font-semibold">Opening checklist</div>
-            <div className="flex items-center gap-1.5 text-[11px] text-warm-500">
-              Main St · due 7:30 AM · <Initials name="Maya Chen" size={14} /> Maya
+            <div className="truncate text-[13px] font-semibold">Opening checklist</div>
+            <div className="flex min-w-0 items-center gap-1.5 whitespace-nowrap text-[11px] text-warm-500">
+              <span className="truncate">Main St · due 7:30 AM</span>
+              <span className="hidden items-center gap-1.5 @xs:inline-flex">
+                · <Initials name="Maya Chen" size={14} /> Maya
+              </span>
             </div>
           </div>
-          <Pill tone={complete ? 'ok' : done > 0 ? 'brand' : 'neutral'}>{complete ? 'Completed 7:26 AM' : done > 0 ? 'In progress' : 'Due'}</Pill>
+          <Pill tone={complete ? 'ok' : done > 0 ? 'brand' : 'neutral'}>
+            {complete ? (
+              <>
+                Completed<span className="hidden @xs:inline"> 7:26 AM</span>
+              </>
+            ) : done > 0 ? (
+              'In progress'
+            ) : (
+              'Due'
+            )}
+          </Pill>
         </div>
 
         <div className="flex items-center gap-3 px-4 pt-3">

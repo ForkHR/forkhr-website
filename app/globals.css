@@ -23,22 +23,23 @@
   --color-ring: hsl(var(--ring));
   --radius: var(--radius);
 
-  /* ── Font ── */
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  /* ── Font: Bricolage Grotesque, the app's own typeface ── */
+  --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  /* ── Neutral scale (cool gray — "warm" name kept for compat) ── */
-  --color-warm-50:  #FAFAFA;
-  --color-warm-100: #F4F4F5;
-  --color-warm-200: #E4E4E7;
-  --color-warm-300: #D4D4D8;
-  --color-warm-400: #A1A1AA;
-  --color-warm-500: #71717A;
-  --color-warm-600: #52525B;
-  --color-warm-700: #3F3F46;
-  --color-warm-800: #27272A;
-  --color-warm-900: #18181B;
-  --color-warm-950: #09090B;
+  /* ── Neutral scale: the app's stone greys (frontend/src/index.css: main #f9f8f7,
+        brand-bg #eeebe8, border #d4d1cc, ink #1b1b1b). Barely warm, never cream. ── */
+  --color-warm-50:  #FAF9F7;
+  --color-warm-100: #F2F0ED;
+  --color-warm-200: #E7E4E0;
+  --color-warm-300: #D4D1CC;
+  --color-warm-400: #A8A39D;
+  --color-warm-500: #77726C;
+  --color-warm-600: #59554F;
+  --color-warm-700: #433F3B;
+  --color-warm-800: #2D2A27;
+  --color-warm-900: #211F1D;
+  --color-warm-950: #1B1A19;
 
   /* ── Brand accent scale: blue (name kept for compat) ── */
   --color-forest-50:  #EFF6FF;
@@ -69,20 +70,24 @@
   --color-bad-500: #EF4444;
   --color-bad-600: #DC2626;
   --color-bad-700: #B91C1C;
+  --color-plum-50:  #F5F3FF;
   --color-plum-100: #EDE9FE;
+  --color-plum-200: #DDD6FE;
+  --color-plum-500: #8B5CF6;
   --color-plum-600: #7C3AED;
+  --color-plum-700: #6D28D9;
 
   /* ── Single accent on dark sections (legacy names all map here) ── */
   --color-lime-accent: #60A5FA;
   --color-lavender: #60A5FA;
   --color-amber: #60A5FA;
 
-  /* ── Dark section surfaces (legacy plum/charcoal names → one neutral dark) ── */
-  --color-plum:     #0B0C0E;
-  --color-plum-800: #17181B;
-  --color-charcoal:     #0B0C0E;
-  --color-charcoal-800: #17181B;
-  --color-charcoal-600: #232529;
+  /* ── Dark section surfaces (legacy plum/charcoal names → the ink of the neutral scale) ── */
+  --color-plum:     #1B1A19;
+  --color-plum-800: #262422;
+  --color-charcoal:     #1B1A19;
+  --color-charcoal-800: #262422;
+  --color-charcoal-600: #33302D;
 
   /* ── Purple (legacy — mapped to brand accent) ── */
   --color-purple: #2563EB;
@@ -96,40 +101,40 @@
 
 @layer base {
   :root {
-    /* Main background: white */
+    /* Main background: white; alternate bands are paper (warm-50) */
     --background: 0 0% 100%;
-    --foreground: 240 6% 10%;
+    --foreground: 30 4% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 6% 10%;
+    --card-foreground: 30 4% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 6% 10%;
+    --popover-foreground: 30 4% 10%;
 
-    /* Primary action: near-black */
-    --primary: 240 6% 10%;
+    /* Primary action: the app's ink */
+    --primary: 30 4% 10%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary: light neutral surface */
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 6% 10%;
+    /* Secondary: oat surface */
+    --secondary: 36 16% 94%;
+    --secondary-foreground: 30 4% 10%;
 
     /* Muted text & surfaces */
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
+    --muted: 36 16% 94%;
+    --muted-foreground: 33 5% 45%;
 
     /* Accent: neutral hover surface */
-    --accent: 240 5% 96%;
-    --accent-foreground: 240 6% 10%;
+    --accent: 36 16% 94%;
+    --accent-foreground: 30 4% 10%;
 
     /* Destructive */
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders: hairline gray */
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 240 6% 10%;
+    /* Borders: hairline stone */
+    --border: 34 13% 89%;
+    --input: 34 13% 89%;
+    --ring: 30 4% 10%;
 
     --radius: 0.5rem;
   }
@@ -145,12 +150,17 @@
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
-    font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
-    font-feature-settings: "cv11", "ss01";
+    font-family: var(--font-bricolage), ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-optical-sizing: auto;
+  }
+
+  ::selection {
+    background: var(--color-forest-100);
+    color: var(--color-warm-950);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
     text-wrap: balance;
   }
 
@@ -170,6 +180,28 @@
   backdrop-filter: blur(12px) saturate(150%);
 }
 
+/* Product windows standing on the moving gradient (GradientStage): no oat mat, which would
+   muddy the colour, and a deeper shadow so the white card lifts off it. Unlayered on purpose,
+   so it wins over the mat's utility classes. */
+.on-gradient .pv-mat {
+  background-color: transparent;
+  border-color: transparent;
+}
+/* GradientStage "wave": a band with curved edges, drawn as a mask stretched to the box so it
+   bends the same at any width. The straight shapes use clip-path instead. */
+.stage-wave {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0 22C14 6 34 4 52 16S84 30 100 10L100 84C86 98 66 96 48 84S16 70 0 92Z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0 22C14 6 34 4 52 16S84 30 100 10L100 84C86 98 66 96 48 84S16 70 0 92Z'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+.on-gradient .pv-window {
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 32px 70px -28px rgba(15, 23, 42, 0.5), 0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
 @layer utilities {
   .fade-in-up {
     animation: fadeInUp 0.3s ease-out;
@@ -187,7 +219,7 @@
 
   /* Hero backdrop grids */
   .bg-dot-grid {
-    background-image: radial-gradient(circle, rgba(9, 9, 11, 0.09) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(27, 26, 25, 0.09) 1px, transparent 1px);
     background-size: 22px 22px;
   }
   .bg-dot-grid-dark {
@@ -256,6 +288,11 @@
   .pv-fade-in {
     animation: fade-in 0.4s ease both;
   }
+  /* A bar that grows from the left when it mounts (results that just unlocked) */
+  .pv-bar-in {
+    transform-origin: left;
+    animation: pv-bar-in 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
 
   /* Live dot */
   .pv-live {
@@ -314,7 +351,7 @@
     .pv-item, .pv-pop, .pv-slide-r, .pv-grow, .pv-fill, .pv-swap, .pv-path {
       transition: none !important;
     }
-    .pv-live::after, .pv-typing span, .marquee {
+    .pv-live::after, .pv-typing span, .marquee, .pv-bar-in {
       animation: none !important;
     }
   }
@@ -389,6 +426,10 @@
   @keyframes accordion-down { from { height: 0; } to { height: var(--radix-accordion-content-height); } }
   @keyframes accordion-up { from { height: var(--radix-accordion-content-height); } to { height: 0; } }
 
+  @keyframes pv-bar-in {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
   @keyframes pv-ping {
     0% { transform: scale(0.6); opacity: 0.8; }
     100% { transform: scale(1.8); opacity: 0; }

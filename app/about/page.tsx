@@ -89,7 +89,7 @@ export default function AboutPage() {
       </section>
 
       <section className="relative overflow-hidden bg-warm-950">
-        <Backdrop tone="dark" glow={false} />
+        <Backdrop tone="dark" />
         <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="max-w-2xl">
             <h2 className="mb-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">Questions? We would love to hear from you.</h2>

@@ -9,6 +9,7 @@ import {
   Calendar,
   CheckCircle2,
   Smile,
+  Award,
 } from 'lucide-react'
 import Link from 'next/link'
 import Backdrop from '@/components/visual/Backdrop'
@@ -47,6 +48,11 @@ const stats = [
 ]
 
 const benefits = [
+  {
+    icon: <Award className="w-5 h-5" />,
+    title: 'Reviews and raises that happen on time',
+    desc: 'Automatic 90-day and anniversary reviews, written beside each person’s record of shifts, punctuality and training. An approved raise lands on their pay rate, and the team can give their manager anonymous feedback.',
+  },
   {
     icon: <Star className="w-5 h-5" />,
     title: 'Employee recognition',
@@ -119,9 +125,9 @@ export default function EmployeeRetentionPage() {
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
             </Link>
-            <Link href="/products#team-engagement">
+            <Link href="/performance">
               <Button variant="outline" size="lg" className="text-base px-6 h-11">
-                Learn more
+                See performance reviews
               </Button>
             </Link>
           </div>
@@ -249,7 +255,7 @@ export default function EmployeeRetentionPage() {
         </div>
       </section>
 
-      <CtaSection title="Keep the people you have" lede="Fair schedules, recognition in the feed, surveys and training. Start on Free and add the team tools when you are ready." />
+      <CtaSection title="Keep the people you have" lede="Fair schedules, recognition in the feed, reviews and raises on time, surveys and training. Start on Free and add the team tools when you are ready." />
     </main>
   )
 }

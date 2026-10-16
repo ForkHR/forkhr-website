@@ -85,7 +85,7 @@ const faqCategories = [
     ],
   },
   {
-    title: 'SOPs, feed & learning',
+    title: 'SOPs, feed, learning & reviews',
     faqs: [
       {
         q: 'What are SOPs in Fork?',
@@ -102,6 +102,10 @@ const faqCategories = [
       {
         q: 'Can I assign training courses and policies?',
         a: 'Yes. Courses with video and quizzes, versioned policies that need a signed acknowledgement, a shared library and FAQs all live in the Learn tab. Completion and acknowledgements are tracked per employee.',
+      },
+      {
+        q: 'Does Fork do performance reviews?',
+        a: "Yes, on Pro and Premium. 90-day and anniversary reviews open on their own, and the manager writes each one beside the person's record of shifts, punctuality, tasks, SOP runs and training. Approved raises go on the pay rate; check-ins, goals, teammate and anonymous manager feedback are included, and improvement plans are on Premium.",
       },
     ],
   },

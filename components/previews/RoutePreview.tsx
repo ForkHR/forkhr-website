@@ -87,7 +87,7 @@ export default function RoutePreview({ className }: { className?: string }) {
       {/* Stops */}
       <div>
         <div className="flex items-center justify-between border-b border-warm-100 px-4 py-2.5">
-          <span className="text-[13px] font-semibold">Thu, Sep 25</span>
+          <span className="text-[13px] font-semibold">Fri, Sep 26</span>
           <Pill tone={step >= 5 ? 'ok' : 'brand'}>{step >= 5 ? 'Route complete' : `${delivered}/4 delivered`}</Pill>
         </div>
         <ol>

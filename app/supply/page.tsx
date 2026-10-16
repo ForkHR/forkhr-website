@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import { BarChart3, CalendarClock, ClipboardList, FileText, MapPin, PackageCheck, Receipt, RefreshCw, Store, Truck } from 'lucide-react'
 import Hero from '@/components/marketing/Hero'
-import FeatureRow from '@/components/marketing/FeatureRow'
 import SectionHeading from '@/components/marketing/SectionHeading'
+import DayTimeline, { type DayStop } from '@/components/marketing/DayTimeline'
 import CtaSection from '@/components/marketing/CtaSection'
 import PlanBadge from '@/components/marketing/PlanBadge'
-import { SupplyPreview, VendorChatPreview, Window } from '@/components/previews'
+import { ReceivingPreview, SupplyPreview, VendorChatPreview, Window } from '@/components/previews'
 import { registerUrl } from '@/lib/site'
 
 const description =
@@ -18,6 +18,44 @@ export const metadata: Metadata = {
   openGraph: { title: 'Supply — Fork', description, url: 'https://forkhr.com/supply', images: ['/og-image.png'], type: 'website' },
   twitter: { card: 'summary_large_image', title: 'Supply — Fork', description, images: ['/og-image.png'] },
 }
+
+// A week of one café's ordering. Bluebird Dairy is not on Fork. Names and times match the demos:
+// order #1042 for Thursday 6:30 AM, the 8:12 → 8:19 thread that takes it to 18 gallons, the
+// check-in that flags a short, an extra and a damaged case. For a vendor not on Fork the café
+// records the credit they agreed (orderControllers resolveLineIssue).
+const order: DayStop[] = [
+  { kind: 'moment', day: 'Tue', time: '9:30 PM', app: 'Stock counts', where: 'Main St', text: 'Closing count: whole milk at 4 gallons. Par is 12.', tag: 'Below par', tone: 'warn' },
+  { kind: 'moment', day: 'Tue', time: '9:34 PM', app: 'Supply', where: 'Bluebird Dairy', text: "What was short went on Thursday's order, #1042, and out as an email.", tag: 'Sent', tone: 'brand' },
+  {
+    kind: 'feature',
+    id: 'chat',
+    day: 'Wed',
+    time: '8:12 AM',
+    eyebrow: 'Vendor chat',
+    plan: 'free',
+    title: 'Six more gallons, without a phone call',
+    lede: "One chat per vendor, next to its orders. Bluebird isn't on Fork, so your message went out as an email and their reply came back here.",
+    bullets: ['Shared by everyone who orders', 'Attachments kept on the thread', 'Free on every plan'],
+    preview: <VendorChatPreview role="vendor" />,
+    previewTitle: 'Fork · Chat · Bluebird Dairy',
+  },
+  {
+    kind: 'feature',
+    id: 'receiving',
+    day: 'Thu',
+    time: '6:30 AM',
+    eyebrow: 'Receiving',
+    plan: 'free',
+    title: 'Checked in at the back door, line by line',
+    lede: 'Count what came off the truck on a phone. Short, extra or damaged? Flag it with a photo and say what you want: a credit, a return, or to keep it and pay.',
+    bullets: ['Short, extra, damaged, spoiled or wrong item', 'Every issue goes to the vendor in one message', 'Not on Fork? They get it by email'],
+    preview: <ReceivingPreview />,
+    previewTitle: 'Fork · Order #1042',
+    frame: 'phone',
+  },
+  { kind: 'moment', day: 'Fri', time: '10:15 AM', app: 'Chat', where: 'Bluebird Dairy', text: 'Bluebird replied by email: the butter and the eggs come off the next invoice. Credit recorded on #1042.', tag: 'Credit recorded', tone: 'ok' },
+  { kind: 'moment', day: 'Mon', time: '6:00 AM', app: 'Standing orders', where: 'Fork Warehouse', text: "This week's standing order is ready, the same as every Monday.", tag: 'Standing', tone: 'neutral' },
+]
 
 const included = [
   { icon: <Store className="h-5 w-5" />, title: 'Vendor market', desc: 'See who delivers to you. Connect in a click.' },
@@ -47,28 +85,18 @@ export default function SupplyPage() {
         }
       />
 
-      <FeatureRow
-        eyebrow="Orders"
-        plan="free"
-        title="Orders that write themselves"
-        lede="Build it from the catalog or from what is short. It goes out as email. The vendor confirms."
-        bullets={['One-time and standing orders', 'Cutoffs and minimums enforced as you order', 'Issues and credits on the delivered order']}
-        preview={<SupplyPreview />}
-        previewTitle="Fork · Supply · Orders"
-      />
-
-      <FeatureRow
-        id="chat"
-        flip
-        eyebrow="Vendor chat"
-        plan="free"
-        title="Talk to vendors where the order lives"
-        lede="One chat per vendor. Not on Fork? Your message is emailed and the reply comes back as chat."
-        bullets={['Shared by everyone who orders', 'Attachments kept on the thread', 'Free on every plan']}
-        preview={<VendorChatPreview role="vendor" />}
-        previewTitle="Fork · Chat · Bluebird Dairy"
-        className="bg-warm-50"
-      />
+      <section id="story" className="scroll-mt-24 border-b border-warm-100 bg-warm-50">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+          <SectionHeading
+            eyebrow="An order on Fork"
+            title="From a low count to the next delivery"
+            lede="One week at a café's walk-in. Bluebird Dairy isn't on Fork, and nobody had to pick up the phone."
+          />
+          <div className="mt-14 md:mt-16">
+            <DayTimeline stops={order} rail="weeks" surface="paper" />
+          </div>
+        </div>
+      </section>
 
       <section id="inventory" className="scroll-mt-24 border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">

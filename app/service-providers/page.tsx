@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, CalendarClock, CalendarRange, ClipboardList, FileCheck2, Inbox, Landmark, LifeBuoy, MapPin, MessageSquare, Receipt, Repeat, ShieldCheck, Store, Timer, Users, Wrench } from 'lucide-react'
+import { ArrowRight, CalendarClock, CalendarRange, ClipboardList, FileCheck2, LifeBuoy, MapPin, MessageSquare, Receipt, Repeat, ShieldCheck, Store, Timer, Users } from 'lucide-react'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import Hero from '@/components/marketing/Hero'
 import FeatureRow from '@/components/marketing/FeatureRow'
 import SectionHeading from '@/components/marketing/SectionHeading'
 import CtaSection from '@/components/marketing/CtaSection'
 import PlanBadge from '@/components/marketing/PlanBadge'
-import { InvoicePreview, ServiceCallPreview, TechnicianPreview, Window } from '@/components/previews'
+import DayTimeline, { type DayStop } from '@/components/marketing/DayTimeline'
+import { InvoicePreview, ServiceCallPreview, ServiceIssuePreview, TechnicianPreview, Window } from '@/components/previews'
 import { PLATFORM_FEE_BPS, SUPPORT_EMAIL, registerUrl } from '@/lib/site'
 
 const feePct = (PLATFORM_FEE_BPS / 100).toFixed(1).replace(/\.0$/, '')
@@ -42,11 +43,45 @@ const pains = [
   { before: 'Checks chased for 60 days', after: 'A pay link and QR code on every invoice' },
 ]
 
-const flow = [
-  { icon: <Inbox className="h-4 w-4" />, title: 'The call comes in', desc: 'From your request form, the customer’s Fork app, or a call you log yourself.' },
-  { icon: <CalendarClock className="h-4 w-4" />, title: 'Book the visit', desc: 'An arrival window and a technician. It lands on their phone.' },
-  { icon: <Wrench className="h-4 w-4" />, title: 'Do the work', desc: 'Photos, parts and time on site. The customer signs on the screen.' },
-  { icon: <Landmark className="h-4 w-4" />, title: 'Invoice and get paid', desc: 'Pay link and QR code. Card or bank. Paid out to you.' },
+// One service call for a refrigeration company: Corner Café's walk-in cooler, #SR-1042, not on
+// Fork. Times match the demos: booked for Thu 8–10 AM with Marco, on the way 8:12, arrived 8:31,
+// finished 10:02 and signed by Dana, paid by card Fri 9:40 AM.
+const call: DayStop[] = [
+  { kind: 'moment', day: 'Wed', time: '4:52 PM', app: 'Service requests', where: 'Corner Café', text: 'New request from your form: the walk-in cooler is not holding temperature.', tag: 'New', tone: 'brand' },
+  { kind: 'moment', day: 'Wed', time: '5:10 PM', app: 'Service calls', where: '#SR-1042', text: "Booked for Thursday, 8–10 AM, with Marco. It's already on Marco's phone.", tag: 'Scheduled', tone: 'brand' },
+  { kind: 'moment', day: 'Thu', time: '8:12 AM', app: 'Technician', where: 'Marco Ruiz', text: 'Marco is on the way. Corner Café was told.', tag: 'On the way', tone: 'brand' },
+  {
+    kind: 'feature',
+    id: 'visit',
+    day: 'Thu',
+    time: '8:31 AM',
+    eyebrow: 'Technician app',
+    plan: 'free',
+    title: 'The whole visit on one phone',
+    lede: 'Navigate and call the site from the job. Then photos, parts and time on site, and the manager signs on the screen.',
+    bullets: ['On my way, Arrived, Finish', 'Before and after photos', 'The proof lands on the service call as it happens'],
+    preview: <TechnicianPreview />,
+    previewTitle: 'Fork · Service call',
+    frame: 'phone',
+  },
+  { kind: 'moment', day: 'Thu', time: '10:02 AM', app: 'Service calls', where: 'Corner Café', text: 'Finished and signed by Dana. Two photos and a new evaporator fan motor on the work report.', tag: 'Completed', tone: 'ok' },
+  { kind: 'moment', day: 'Thu', time: '10:05 AM', app: 'Invoices', where: 'Corner Café', text: 'Invoice emailed with a pay link and the work report.', tag: 'Invoiced', tone: 'brand' },
+  { kind: 'moment', day: 'Fri', time: '9:40 AM', app: 'Payments', where: 'Corner Café', text: 'Paid by card from the link, on its way to your bank.', tag: 'Paid', tone: 'ok' },
+  {
+    kind: 'feature',
+    id: 'callbacks',
+    day: 'Mon',
+    time: '9:12 AM',
+    eyebrow: 'Callbacks',
+    plan: 'free',
+    title: "When it isn't fixed, it comes back to the same call",
+    lede: 'Customers on Fork report a problem from their app, with a photo and what they want: another visit, a credit or a refund. The invoice waits until you answer.',
+    bullets: ['Another visit, a credit or a refund', 'A credit comes off the next invoice', 'The customer is told in their app'],
+    preview: <ServiceIssuePreview />,
+    previewTitle: 'Fork · Service calls · #SR-1051',
+  },
+  { kind: 'moment', day: 'Tue', time: '9:05 AM', app: 'Service calls', where: 'Harbor Market', text: 'Revisit done. Fixed, signed for, nothing more to bill.', tag: 'Fixed', tone: 'ok' },
+  { kind: 'moment', day: 'Dec 18', time: '8:00 AM', app: 'Maintenance contracts', where: 'Corner Café', text: 'The quarterly coil cleaning was booked a week ahead, from the contract.', tag: 'Booked', tone: 'neutral' },
 ]
 
 const contracts = [
@@ -149,36 +184,18 @@ export default function ServiceProvidersPage() {
         </div>
       </section>
 
-      <section className="border-b border-warm-100">
+      <section id="story" className="scroll-mt-24 border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="How it works" title="From the call to money in the bank" lede="One service call carries the whole job, start to finish." />
-          <div className="mt-12 grid gap-8 md:grid-cols-4 md:gap-6">
-            {flow.map((f, i) => (
-              <div key={f.title} className="border-t-2 border-warm-950 pt-5">
-                <div className="flex items-center gap-2">
-                  <span className="text-[13px] font-medium tabular-nums text-warm-400">0{i + 1}</span>
-                  <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-forest-50 text-forest-600">{f.icon}</span>
-                </div>
-                <h3 className="mt-3 text-lg font-semibold text-warm-950">{f.title}</h3>
-                <p className="mt-1.5 text-[15px] leading-relaxed text-warm-600">{f.desc}</p>
-              </div>
-            ))}
+          <SectionHeading
+            eyebrow="A service call on Fork"
+            title="From the request to money in the bank"
+            lede="Corner Café's walk-in cooler stops holding temperature on Wednesday afternoon. It is fixed, signed for and paid by Friday. On Monday, a customer on Fork reports a leak came back."
+          />
+          <div className="mt-14 md:mt-16">
+            <DayTimeline stops={call} rail="weeks" />
           </div>
         </div>
       </section>
-
-      <FeatureRow
-        id="visit"
-        eyebrow="Technician app"
-        plan="free"
-        title="The whole visit on one phone"
-        lede="On my way, Arrived, Finish. The proof lands on the service call as it happens."
-        bullets={['Navigate and call the site from the job', 'Photos, parts and time on site', 'The customer signs on the screen']}
-        preview={<TechnicianPreview />}
-        previewTitle="Fork · Service call"
-        frame="phone"
-        className="bg-warm-50"
-      />
 
       <FeatureRow
         id="invoicing"
