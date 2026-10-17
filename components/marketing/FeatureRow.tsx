@@ -22,6 +22,7 @@ export default function FeatureRow({
   href,
   hrefLabel = 'Learn more',
   plan,
+  badge,
   frame = 'window',
   className,
   children,
@@ -37,6 +38,8 @@ export default function FeatureRow({
   href?: string
   hrefLabel?: string
   plan?: TierKey
+  /** A short dark chip before the eyebrow, e.g. "New". */
+  badge?: string
   frame?: 'window' | 'phone'
   className?: string
   children?: ReactNode
@@ -47,6 +50,7 @@ export default function FeatureRow({
         <div className={cn('grid items-center gap-10 lg:grid-cols-[1fr_1.25fr] lg:gap-16', flip && 'lg:grid-cols-[1.25fr_1fr]')}>
           <div className={cn(flip && 'lg:order-2')}>
             <div className="flex flex-wrap items-center gap-3">
+              {badge && <span className="rounded-full bg-warm-950 px-2.5 py-0.5 text-[12px] font-semibold text-white">{badge}</span>}
               {eyebrow && <span className="eyebrow">{eyebrow}</span>}
               {plan && <PlanBadge tier={plan} />}
             </div>

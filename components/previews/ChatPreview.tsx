@@ -18,7 +18,7 @@ export default function ChatPreview({ className }: { className?: string }) {
   const step = useSequence(5, { inView, ms: [500, 900, 900, 1000, 1200], holdMs: 3000 })
 
   return (
-    <div ref={ref} className={cn('grid text-warm-950 @lg:grid-cols-[150px_1fr]', className)}>
+    <div ref={ref} className={cn('grid grid-cols-1 text-warm-950 @lg:grid-cols-[150px_minmax(0,1fr)]', className)}>
       <aside className="hidden border-r border-warm-100 bg-warm-50 @lg:block">
         <div className="px-3 pb-1.5 pt-3 text-[10px] font-bold uppercase tracking-wider text-warm-400">Channels</div>
         {CHANNELS.map((c) => (
@@ -39,9 +39,9 @@ export default function ChatPreview({ className }: { className?: string }) {
 
       <div className="flex flex-col">
         <div className="flex items-center gap-2 border-b border-warm-100 px-4 py-2.5">
-          <Hash className="h-3.5 w-3.5 text-warm-400" />
-          <span className="text-[13px] font-semibold">main-st</span>
-          <span className="text-[10.5px] text-warm-400">· 6 people · everyone scheduled at Main St</span>
+          <Hash className="h-3.5 w-3.5 shrink-0 text-warm-400" />
+          <span className="shrink-0 text-[13px] font-semibold">main-st</span>
+          <span className="min-w-0 truncate text-[10.5px] text-warm-400">· 6 people · everyone scheduled at Main St</span>
         </div>
 
         <div className="min-h-[230px] flex-1 space-y-2.5 bg-warm-50 px-4 py-3">
