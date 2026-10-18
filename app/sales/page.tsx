@@ -5,7 +5,9 @@ import FeatureRow from '@/components/marketing/FeatureRow'
 import SectionHeading from '@/components/marketing/SectionHeading'
 import CtaSection from '@/components/marketing/CtaSection'
 import DayTimeline, { type DayStop } from '@/components/marketing/DayTimeline'
+import IllustrationStory from '@/components/marketing/IllustrationStory'
 import { InvoicePreview, RoutePreview, VendorChatPreview, Window } from '@/components/previews'
+import { SUPPLIER_DAY } from '@/lib/illustrations'
 import { PLATFORM_FEE_BPS, registerUrl } from '@/lib/site'
 
 const feePct = (PLATFORM_FEE_BPS / 100).toFixed(1).replace(/\.0$/, '')
@@ -111,6 +113,14 @@ export default function SalesPage() {
         preview={<InvoicePreview />}
         previewTitle="Fork · Sales · Invoice"
         className="bg-warm-50"
+      />
+
+      <IllustrationStory
+        id="supplier-day"
+        eyebrow="A supplier's Tuesday"
+        title="From the first drop to the payout"
+        lede="Northside Roasters delivers beans, oat milk and cups to cafés around the city. Five moments from one morning."
+        slides={SUPPLIER_DAY}
       />
 
       <section id="customers" className="scroll-mt-24 border-b border-warm-100">

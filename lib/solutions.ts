@@ -66,6 +66,8 @@ export type Solution = {
   heroPreviewTitle: string
   pains: { before: string; after: string }[]
   features: SolutionFeature[]
+  /** A drawn story after the features: 'supplierDay' is Northside Roasters' morning (lib/illustrations.ts). */
+  story?: 'supplierDay'
   pricing: { free: string[]; paidTier: TierKey; paid: string[]; note: string }
   faqs: { q: string; a: string }[]
   related: string[]
@@ -250,6 +252,7 @@ export const SOLUTIONS: Solution[] = [
     plan: 'free',
     heroPreview: 'invoice',
     heroPreviewTitle: 'Fork · Sales · Order S-2088',
+    story: 'supplierDay',
     pains: [
       { before: 'Orders by text, email and voicemail', after: 'One order list' },
       { before: 'Invoices chased for weeks', after: 'Pay link and QR on every invoice' },

@@ -6,9 +6,11 @@ import FeatureRow from './FeatureRow'
 import SectionHeading from './SectionHeading'
 import CtaSection from './CtaSection'
 import PlanBadge from './PlanBadge'
+import IllustrationStory from './IllustrationStory'
 import { Window } from '@/components/previews/bits'
 import { frameFor, renderPreview } from '@/components/previews/registry'
 import { tierByKey } from '@/lib/catalog'
+import { SUPPLIER_DAY } from '@/lib/illustrations'
 import { relatedLink, type Solution } from '@/lib/solutions'
 import { GUARANTEE_DAYS, REGISTER_URL } from '@/lib/site'
 
@@ -93,6 +95,16 @@ export default function SolutionPage({ solution }: { solution: Solution }) {
           hrefLabel={f.hrefLabel}
         />
       ))}
+
+      {solution.story === 'supplierDay' && (
+        <IllustrationStory
+          id="supplier-day"
+          eyebrow="A supplier's Tuesday"
+          title="From the first drop to the payout"
+          lede="Northside Roasters delivers beans, oat milk and cups to cafés around the city. Five moments from one morning."
+          slides={SUPPLIER_DAY}
+        />
+      )}
 
       {/* Pricing for this business */}
       <section id="pricing" className="scroll-mt-24 border-b border-warm-100 bg-warm-50">
