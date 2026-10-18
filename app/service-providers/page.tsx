@@ -204,8 +204,8 @@ export default function ServiceProvidersPage() {
         eyebrow="Proof of work"
         plan="free"
         title="Before and after, signed and billed"
-        lede="Espresso machines too. When a steam wand won't shut off, the photos, the parts and the minutes on site go on the call, the customer signs, and the charges come straight from the visit."
-        bullets={['Before and after photos on every visit', 'Parts and time become the line items', 'The work report goes out with the invoice']}
+        lede="Espresso machines too. When a steam wand won't shut off, the photos, the parts and the minutes on site go on the call, and the customer signs on the technician's phone."
+        bullets={['Before and after photos on every visit', 'Parts go straight onto the charges', 'The work report goes out with the invoice']}
         preview={<IllustrationFrame illustration={SERVICE_VISIT} />}
         previewTitle={SERVICE_VISIT.title}
         frame="none"
