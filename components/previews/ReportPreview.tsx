@@ -48,7 +48,9 @@ export default function ReportPreview({ className, title = 'Sales vs. labor' }: 
         ))}
       </div>
 
-      <div className="flex items-end gap-2 px-4 pb-2 pt-4" style={{ height: 150 }}>
+      {/* Columns stretch to the row's height: the bars are percentages of the space left under the labels,
+          and a column sized to its content would give them nothing to be a percentage of. */}
+      <div className="flex items-stretch gap-2 px-4 pb-2 pt-4" style={{ height: 150 }}>
         {DAYS.map((x, i) => {
           const dayPct = Math.round((x.labor / x.sales) * 100)
           const hot = dayPct > 30
