@@ -5,12 +5,15 @@ import { cn } from '@/lib/utils'
 import { Initials, Pill, SectionLabel, Toast } from './bits'
 import { useInView, useSequence } from './useSequence'
 
-// Today's timecards: scheduled vs punched, the verdict on the punch, hours and cost.
-const ROWS = [
-  { name: 'Maya Chen', scheduled: '7:00 – 3:00', punch: 'In 6:58 · Out 3:01', verdict: 'On time', tone: 'ok' as const, hours: '8h 03m', cost: '$128.80', via: 'kiosk' },
-  { name: 'Luis Ortega', scheduled: '9:00 – 5:00', punch: 'In 9:12 · Out 5:00', verdict: 'Late 12m', tone: 'warn' as const, hours: '7h 48m', cost: '$117.00', via: 'phone' },
-  { name: 'Priya Nair', scheduled: '1:00 – 9:00', punch: 'In 12:57', verdict: 'On the clock', tone: 'brand' as const, hours: '3h 20m', cost: '$60.00', via: 'gps', live: true },
-  { name: 'Jordan Lee', scheduled: '3:00 – 10:00', punch: 'Starts at 3:00 PM', verdict: 'Scheduled', tone: 'neutral' as const, hours: '—', cost: '—', via: 'phone' },
+// Today's timecards: scheduled vs punched, hours and cost, and where each card stands. The
+// statuses are the app's ("Pending", then "Approved" with the toast "Approved 2 timecards";
+// "On the clock"); a timecard carries no on-time verdict, lateness lives in the On-time arrival
+// report, and the week goes out through Export to payroll on the web.
+const ROWS: { name: string; scheduled: string; punch: string; status?: string; tone?: 'ok' | 'warn' | 'brand'; hours: string; cost: string; via: string; live?: boolean }[] = [
+  { name: 'Maya Chen', scheduled: '7:00 – 3:00', punch: 'In 6:58 · Out 3:01', status: 'Pending', tone: 'warn', hours: '8h 03m', cost: '$128.80', via: 'kiosk' },
+  { name: 'Luis Ortega', scheduled: '9:00 – 5:00', punch: 'In 9:12 · Out 5:00', status: 'Pending', tone: 'warn', hours: '7h 48m', cost: '$117.00', via: 'phone' },
+  { name: 'Priya Nair', scheduled: '1:00 – 9:00', punch: 'In 12:57', status: 'On the clock', tone: 'brand', hours: '3h 20m', cost: '$60.00', via: 'gps', live: true },
+  { name: 'Jordan Lee', scheduled: '3:00 – 10:00', punch: 'Starts at 3:00 PM', hours: '—', cost: '—', via: 'phone' },
 ]
 
 const VIA = {
@@ -36,7 +39,7 @@ export default function TimecardsPreview({ className }: { className?: string }) 
         </span>
       </div>
 
-      <SectionLabel right="Scheduled · punched · verdict">Team</SectionLabel>
+      <SectionLabel right="Scheduled · punched · status">Team</SectionLabel>
       <div>
         {ROWS.map((r, i) => (
           <div key={r.name} data-on={step > i} className="pv-item flex items-center gap-3 border-b border-warm-100 px-4 py-2.5 last:border-b-0">
@@ -54,9 +57,11 @@ export default function TimecardsPreview({ className }: { className?: string }) 
                 <span className="tabular-nums">{r.cost}</span>
               </div>
             </div>
-            <Pill tone={r.tone} dot={r.live}>
-              {r.verdict}
-            </Pill>
+            {r.status && (
+              <Pill tone={r.status === 'Pending' && step >= 6 ? 'ok' : r.tone} dot={r.live}>
+                {r.status === 'Pending' && step >= 6 ? 'Approved' : r.status}
+              </Pill>
+            )}
           </div>
         ))}
       </div>
@@ -66,17 +71,17 @@ export default function TimecardsPreview({ className }: { className?: string }) 
         {[
           { l: 'Hours today', v: '19h 11m' },
           { l: 'Labor cost', v: '$305.80' },
-          { l: 'Labor %', v: '27.4%', tone: 'text-ok-600' },
+          { l: 'Overtime', v: '0h' },
         ].map((s) => (
           <div key={s.l} data-on={step >= 5} className="pv-item bg-white px-4 py-2.5">
             <div className="text-warm-400">{s.l}</div>
-            <div className={cn('text-[14px] font-semibold tabular-nums', s.tone)}>{s.v}</div>
+            <div className="text-[14px] font-semibold tabular-nums">{s.v}</div>
           </div>
         ))}
       </div>
 
       <Toast on={step >= 6} className="bottom-[68px]">
-        <Check className="h-3.5 w-3.5 text-ok-500" /> Week approved · exported for payroll
+        <Check className="h-3.5 w-3.5 text-ok-500" /> Approved 2 timecards
       </Toast>
     </div>
   )

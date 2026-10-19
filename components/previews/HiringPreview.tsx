@@ -5,11 +5,13 @@ import { cn } from '@/lib/utils'
 import { IconTile, Initials, Pill, SectionLabel } from './bits'
 import { useInView, useSequence } from './useSequence'
 
-// Hiring: a posting on the public board and the applicants moving through the pipeline.
+// Hiring: a posting on the public board and the applicants moving through the pipeline. Stages
+// are the app's (Applied, Interview, Feedback, Result; a hire shows "Hired"), and the fit labels
+// are the AI summary's.
 const APPLICANTS = [
-  { name: 'Jordan Lee', sub: 'Applied yesterday · 3 yrs experience', stage: 'New', tone: 'neutral' as const, fit: 'Good fit' },
-  { name: 'Sam Patel', sub: 'Interview Thu 2:00 PM', stage: 'Interview', tone: 'warn' as const, fit: 'Excellent fit' },
-  { name: 'Ana Costa', sub: 'Offer sent · starts Oct 6', stage: 'Offer', tone: 'ok' as const, fit: 'Good fit' },
+  { name: 'Jordan Lee', sub: 'Applied yesterday · 3 yrs experience', stage: 'Applied', tone: 'neutral' as const, fit: 'Good fit' },
+  { name: 'Sam Patel', sub: 'Interview Thu 2:00 PM · accepted', stage: 'Interview', tone: 'warn' as const, fit: 'Excellent fit' },
+  { name: 'Ana Costa', sub: 'Hired Sep 30 · part time · $18.00/hr', stage: 'Hired', tone: 'ok' as const, fit: 'Good fit' },
 ]
 
 export default function HiringPreview({ className }: { className?: string }) {

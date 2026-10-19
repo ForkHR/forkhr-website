@@ -5,17 +5,20 @@ import { cn } from '@/lib/utils'
 import { IconTile, Initials, Pill, Progress, SectionLabel } from './bits'
 import { useInView, useSequence } from './useSequence'
 
-// A new hire's first week: onboarding tasks, signed forms and a contract, documents with expiry.
+// A new hire's first week: the onboarding guide's progress, forms and a contract, documents with
+// their expiry dates. Labels are the app's: forms end "Approved", contracts "Signed", policies
+// "Acknowledged" / "Pending", documents "Uploaded" / "Document requested", the HR summary's
+// "Expires soon". Nothing sends expiry reminders, so a manager asks for the new copy.
 const VARIANTS = {
   food: {
-    role: 'Barista · Main St · starts Monday',
+    role: 'Barista · Main St · first week',
     docs: [
       { name: 'Food handler card', sub: 'Expires Mar 2027' },
       { name: "Driver's license", sub: 'Expires in 12 days' },
     ],
   },
   fitness: {
-    role: 'Front desk · Downtown · starts Monday',
+    role: 'Front desk · Downtown · first week',
     docs: [
       { name: 'CPR & AED certification', sub: 'Expires Mar 2027' },
       { name: 'Personal trainer certification', sub: 'Expires in 12 days' },
@@ -37,14 +40,13 @@ export default function PeoplePreview({ className, variant = 'food' }: { classNa
           <div className="text-[13px] font-semibold">Jordan Lee</div>
           <div className="text-[10.5px] text-warm-500">{v.role}</div>
         </div>
-        <Pill tone="brand">Onboarding</Pill>
       </div>
 
       <div className="px-4 pt-3">
         <div className="flex items-center justify-between text-[11px]">
           <span className="font-semibold">First week guide</span>
           <span className="tabular-nums text-warm-500">
-            <span className="font-semibold text-warm-950">{step >= 5 ? 6 : 5}</span> of 8 tasks · {pct}%
+            <span className="font-semibold text-warm-950">{pct}%</span>
           </span>
         </div>
         <Progress value={pct} className="mt-1.5" tone="brand" />
@@ -59,7 +61,7 @@ export default function PeoplePreview({ className, variant = 'food' }: { classNa
           <div className="text-[12px] font-semibold">W-4 and I-9</div>
           <div className="text-[10.5px] text-warm-500">Employment forms · filled on a phone</div>
         </div>
-        <Pill tone="ok">Signed</Pill>
+        <Pill tone="ok">Approved</Pill>
       </div>
       <div data-on={step >= 2} className="pv-item flex items-center gap-3 border-b border-warm-100 px-4 py-2.5">
         <IconTile tone="ok">
@@ -91,7 +93,7 @@ export default function PeoplePreview({ className, variant = 'food' }: { classNa
           <div className="text-[12px] font-semibold">{v.docs[0].name}</div>
           <div className="text-[10.5px] text-warm-500">{v.docs[0].sub}</div>
         </div>
-        <Pill tone="ok">Valid</Pill>
+        <Pill tone="ok">Uploaded</Pill>
       </div>
       <div data-on={step >= 4} className="pv-item flex items-center gap-3 px-4 py-2.5" style={{ transitionDelay: '100ms' }}>
         <IconTile tone={step >= 6 ? 'brand' : 'warn'}>
@@ -99,9 +101,9 @@ export default function PeoplePreview({ className, variant = 'food' }: { classNa
         </IconTile>
         <div className="min-w-0 flex-1">
           <div className="text-[12px] font-semibold">{v.docs[1].name}</div>
-          <div className="text-[10.5px] text-warm-500">{step >= 6 ? 'Renewal requested · reminder sent' : v.docs[1].sub}</div>
+          <div className="text-[10.5px] text-warm-500">{step >= 6 ? 'A new copy is requested' : v.docs[1].sub}</div>
         </div>
-        <Pill tone={step >= 6 ? 'brand' : 'warn'}>{step >= 6 ? 'Requested' : 'Expiring'}</Pill>
+        <Pill tone={step >= 6 ? 'brand' : 'warn'}>{step >= 6 ? 'Document requested' : 'Expires soon'}</Pill>
       </div>
     </div>
   )

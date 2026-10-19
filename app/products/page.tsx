@@ -268,8 +268,8 @@ export default function ProductsPage() {
           eyebrow="Timecards & time off"
           plan="essential"
           title="Any tablet is the clock"
-          lede="Punches are checked against the schedule. The week goes to payroll in a tap."
-          bullets={['Kiosk with PINs, phone, GPS', 'Late and missed-break flags', 'Time off approved onto the schedule']}
+          lede="A PIN on the tablet by the register, or a phone inside the location's radius. Approve the week and export it for payroll."
+          bullets={['Kiosk with PINs, phone with GPS', 'Breaks on the same screen', 'Time off approved onto the schedule']}
           preview={<TimecardsPreview />}
           previewTitle="Fork · Timecards · Today"
         />
@@ -278,10 +278,10 @@ export default function ProductsPage() {
           eyebrow="Chat"
           plan="essential"
           title="One place to talk, by location and job"
-          lede="Channels are created for you. Photos, mentions, read receipts."
-          bullets={['Channels per location and job', 'Direct messages and files', 'Vendor and customer chats, same place']}
+          lede="A group for a location or a job keeps itself up to date: whoever works there is in. Photos, mentions, read receipts."
+          bullets={['Groups by location or job', 'Direct messages and files', 'Vendor and customer chats, same place']}
           preview={<ChatPreview />}
-          previewTitle="Fork · Chat · #main-st"
+          previewTitle="Fork · Chat · Main St team"
         />
       </CardRow>
       <FeatureRow
@@ -305,8 +305,8 @@ export default function ProductsPage() {
           eyebrow="People & HR"
           plan="pro"
           title="Paperless from first day to last"
-          lede="Onboarding guides, forms and contracts signed on a phone, documents that never lapse quietly."
-          bullets={['W-4, I-9 and custom forms', 'Documents with expiry reminders', 'Contracts, violations, records (Premium)']}
+          lede="Onboarding guides, forms and contracts signed on a phone, and documents on file with their expiry dates."
+          bullets={['W-4, I-9, direct deposit and more', 'Documents with expiry dates', 'Contracts, violations, records (Premium)']}
           preview={<PeoplePreview />}
           previewTitle="Fork · People · Jordan Lee"
         />
@@ -316,7 +316,7 @@ export default function ProductsPage() {
           plan="essential"
           title="Your own job board"
           lede="Post, screen, interview, hire. The profile and the app invite come with the hire."
-          bullets={['Public board at jobs.forkhr.com/you', 'Screening questions and scorecards', 'AI resume scan (Premium)']}
+          bullets={['Public board at jobs.forkhr.com/you', 'Screening questions and scorecards', 'AI resume summary (Premium)']}
           preview={<ApplicantPreview />}
           previewTitle="Fork · Hiring · Jordan Lee"
           href="/hiring"
@@ -347,29 +347,30 @@ export default function ProductsPage() {
         href="/sops"
         hrefLabel="Explore SOPs"
       />
+      <FeatureRow
+        id="feed"
+        className="scroll-mt-36 bg-warm-50"
+        flip
+        eyebrow="Feed"
+        plan="essential"
+        title="The home tab on every phone"
+        lede="Announcements, recognitions and surveys. Everything gets reactions and comments."
+        bullets={['Pinned announcements with confirmations', 'Recognitions with badges', 'Surveys by location (Pro)']}
+        preview={<FeedPreview />}
+        previewTitle="Fork · Feed"
+      />
+      <FeatureRow
+        id="learn"
+        className="scroll-mt-36"
+        eyebrow="Learn"
+        plan="pro"
+        title="Courses, policies, library, FAQs. One tab."
+        lede="Everything someone needs to learn the job, where they will actually look."
+        bullets={['Library by job or location', 'Courses with quizzes and badges (Premium)', 'Policies people acknowledge (Premium)']}
+        preview={<LearningPreview />}
+        previewTitle="Fork · Learn · Jordan Lee"
+      />
       <CardRow>
-        <ProductCard
-          id="feed"
-          eyebrow="Feed"
-          plan="essential"
-          title="The home tab on every phone"
-          lede="Announcements, recognitions and surveys. Everything gets reactions and comments."
-          bullets={['Pinned announcements with confirmations', 'Recognitions with badges', 'Surveys by location (Pro)']}
-          preview={<FeedPreview />}
-          previewTitle="Fork · Feed"
-        />
-        <ProductCard
-          id="learn"
-          eyebrow="Learn"
-          plan="pro"
-          title="Courses, policies, library, FAQs. One tab."
-          lede="Everything someone needs to learn the job, where they will actually look."
-          bullets={['Library by job or location', 'Courses with quizzes and badges (Premium)', 'Policies people acknowledge (Premium)']}
-          preview={<LearningPreview />}
-          previewTitle="Fork · Learn · Jordan Lee"
-        />
-      </CardRow>
-      <CardRow paper={false}>
         <ProductCard
           id="reports"
           eyebrow="Reports"
