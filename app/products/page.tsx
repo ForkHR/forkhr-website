@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import type { ReactNode } from 'react'
 import Link from 'next/link'
 import {
   ArrowRight,
@@ -26,7 +25,6 @@ import Backdrop from '@/components/visual/Backdrop'
 import GradientCanvas from '@/components/visual/GradientCanvas'
 import GradientStage from '@/components/visual/GradientStage'
 import FeatureRow from '@/components/marketing/FeatureRow'
-import ProductCard from '@/components/marketing/ProductCard'
 import ProductsNav from '@/components/marketing/ProductsNav'
 import CtaSection from '@/components/marketing/CtaSection'
 import IllustrationStory from '@/components/marketing/IllustrationStory'
@@ -167,13 +165,6 @@ const ChapterHeader = ({ chapter, seed }: { chapter: Chapter; seed: number }) =>
   </section>
 )
 
-/** Two ProductCards side by side. */
-const CardRow = ({ children, paper = true }: { children: ReactNode; paper?: boolean }) => (
-  <section className={paper ? 'border-b border-warm-100 bg-warm-50' : 'border-b border-warm-100'}>
-    <div className="mx-auto grid max-w-6xl gap-6 px-6 py-14 md:py-20 lg:grid-cols-2">{children}</div>
-  </section>
-)
-
 const navGroups = chapters.map((c) => ({
   id: `chapter-${c.id}`,
   label: c.label,
@@ -262,31 +253,32 @@ export default function ProductsPage() {
         preview={<SchedulePreview />}
         previewTitle="Fork · Schedule · Main St"
       />
-      <CardRow>
-        <ProductCard
-          id="timecards"
-          eyebrow="Timecards & time off"
-          plan="essential"
-          title="Any tablet is the clock"
-          lede="A PIN on the tablet by the register, or a phone inside the location's radius. Approve the week and export it for payroll."
-          bullets={['Kiosk with PINs, phone with GPS', 'Breaks on the same screen', 'Time off approved onto the schedule']}
-          preview={<TimecardsPreview />}
-          previewTitle="Fork · Timecards · Today"
-        />
-        <ProductCard
-          id="chat"
-          eyebrow="Chat"
-          plan="essential"
-          title="One place to talk, by location and job"
-          lede="A group for a location or a job keeps itself up to date: whoever works there is in. Photos, mentions, read receipts."
-          bullets={['Groups by location or job', 'Direct messages and files', 'Vendor and customer chats, same place']}
-          preview={<ChatPreview />}
-          previewTitle="Fork · Chat · Main St team"
-        />
-      </CardRow>
+      <FeatureRow
+        id="timecards"
+        className="scroll-mt-36 bg-warm-50"
+        flip
+        eyebrow="Timecards & time off"
+        plan="essential"
+        title="Any tablet is the clock"
+        lede="A PIN on the tablet by the register, or a phone inside the location's radius. Approve the week and export it for payroll."
+        bullets={['Kiosk with PINs, phone with GPS', 'Breaks on the same screen', 'Time off approved onto the schedule']}
+        preview={<TimecardsPreview />}
+        previewTitle="Fork · Timecards · Today"
+      />
+      <FeatureRow
+        id="chat"
+        className="scroll-mt-36"
+        eyebrow="Chat"
+        plan="essential"
+        title="One place to talk, by location and job"
+        lede="A group for a location or a job keeps itself up to date: whoever works there is in. Photos, mentions, read receipts."
+        bullets={['Groups by location or job', 'Direct messages and files', 'Vendor and customer chats, same place']}
+        preview={<ChatPreview />}
+        previewTitle="Fork · Chat · Main St team"
+      />
       <FeatureRow
         id="performance"
-        className="scroll-mt-36"
+        className="scroll-mt-36 bg-warm-50"
         flip
         badge="New"
         eyebrow="Performance"
@@ -299,30 +291,31 @@ export default function ProductsPage() {
         href="/performance"
         hrefLabel="Explore performance"
       />
-      <CardRow>
-        <ProductCard
-          id="people"
-          eyebrow="People & HR"
-          plan="pro"
-          title="Paperless from first day to last"
-          lede="Onboarding guides, forms and contracts signed on a phone, and documents on file with their expiry dates."
-          bullets={['W-4, I-9, direct deposit and more', 'Documents with expiry dates', 'Contracts, violations, records (Premium)']}
-          preview={<PeoplePreview />}
-          previewTitle="Fork · People · Jordan Lee"
-        />
-        <ProductCard
-          id="hiring"
-          eyebrow="Hiring"
-          plan="essential"
-          title="Your own job board"
-          lede="Post, screen, interview, hire. The profile and the app invite come with the hire."
-          bullets={['Public board at jobs.forkhr.com/you', 'Screening questions and scorecards', 'AI resume summary (Premium)']}
-          preview={<ApplicantPreview />}
-          previewTitle="Fork · Hiring · Jordan Lee"
-          href="/hiring"
-          hrefLabel="Explore hiring"
-        />
-      </CardRow>
+      <FeatureRow
+        id="people"
+        className="scroll-mt-36"
+        eyebrow="People & HR"
+        plan="pro"
+        title="Paperless from first day to last"
+        lede="Onboarding guides, forms and contracts signed on a phone, and documents on file with their expiry dates."
+        bullets={['W-4, I-9, direct deposit and more', 'Documents with expiry dates', 'Contracts, violations, records (Premium)']}
+        preview={<PeoplePreview />}
+        previewTitle="Fork · People · Jordan Lee"
+      />
+      <FeatureRow
+        id="hiring"
+        className="scroll-mt-36 bg-warm-50"
+        flip
+        eyebrow="Hiring"
+        plan="essential"
+        title="Your own job board"
+        lede="Post, screen, interview, hire. The profile and the app invite come with the hire."
+        bullets={['Public board at jobs.forkhr.com/you', 'Screening questions and scorecards', 'AI resume summary (Premium)']}
+        preview={<ApplicantPreview />}
+        previewTitle="Fork · Hiring · Jordan Lee"
+        href="/hiring"
+        hrefLabel="Explore hiring"
+      />
       <IllustrationStory
         id="first-90-days"
         className="scroll-mt-36"
@@ -370,30 +363,31 @@ export default function ProductsPage() {
         preview={<LearningPreview />}
         previewTitle="Fork · Learn · Jordan Lee"
       />
-      <CardRow>
-        <ProductCard
-          id="reports"
-          eyebrow="Reports"
-          plan="essential"
-          title="The numbers behind the shift"
-          lede="Labor, attendance, purchasing and SOP reports, by location."
-          bullets={['Labor cost, scheduled vs. actual', 'Sales vs. labor with Square', 'SOP reports: missed, waste, cash (Premium)']}
-          preview={<ReportPreview />}
-          previewTitle="Fork · Reports · Sales vs. labor"
-        />
-        <ProductCard
-          id="ai"
-          eyebrow="AI assistant"
-          plan="premium"
-          title="Answers from your own content"
-          lede="Ask about a policy, a procedure or the schedule. It answers from what you published."
-          bullets={['Policies, FAQs, courses, schedule', 'Role-aware answers', 'Drafts messages and open shifts']}
-          preview={<AiPreview />}
-          previewTitle="Fork · Assistant"
-          href="/ai-assistant"
-          hrefLabel="About the assistant"
-        />
-      </CardRow>
+      <FeatureRow
+        id="reports"
+        className="scroll-mt-36 bg-warm-50"
+        flip
+        eyebrow="Reports"
+        plan="essential"
+        title="The numbers behind the shift"
+        lede="Labor, attendance, purchasing and SOP reports, by location."
+        bullets={['Labor cost, scheduled vs. actual', 'Sales vs. labor with Square', 'SOP reports: missed, waste, cash (Premium)']}
+        preview={<ReportPreview />}
+        previewTitle="Fork · Reports · Sales vs. labor"
+      />
+      <FeatureRow
+        id="ai"
+        className="scroll-mt-36"
+        eyebrow="AI assistant"
+        plan="premium"
+        title="Answers from your own content"
+        lede="Ask about a policy, a procedure or the schedule. It answers from what you published."
+        bullets={['Policies, FAQs, courses, schedule', 'Role-aware answers', 'Drafts messages and open shifts']}
+        preview={<AiPreview />}
+        previewTitle="Fork · Assistant"
+        href="/ai-assistant"
+        hrefLabel="About the assistant"
+      />
 
       {/* ── 03 Supply & sales ───────────────────────────── */}
       <ChapterHeader chapter={money} seed={23} />
@@ -410,33 +404,35 @@ export default function ProductsPage() {
         href="/supply"
         hrefLabel="Explore supply"
       />
-      <CardRow>
-        <ProductCard
-          id="receiving"
-          eyebrow="Receiving & credits"
-          plan="free"
-          title="Check deliveries in on a phone"
-          lede="Short, extra or damaged lines flagged with a photo and sent to the vendor in one message."
-          bullets={['Credit, return, or keep it and pay', 'Emailed to vendors not on Fork']}
-          preview={<ReceivingPreview />}
-          previewTitle="Fork · Receive order"
-          href="/supply#receiving"
-          hrefLabel="See a delivery checked in"
-        />
-        <ProductCard
-          id="vendor-chat"
-          eyebrow="Vendor & customer chat"
-          plan="free"
-          title="Talk where the order lives"
-          lede="One chat per vendor or customer. Not on Fork? It goes out as email and the reply comes back as chat."
-          bullets={['Shared by everyone who orders', 'Free on every plan']}
-          preview={<VendorChatPreview />}
-          previewTitle="Fork · Chat · Bluebird Dairy"
-        />
-      </CardRow>
+      <FeatureRow
+        id="receiving"
+        className="scroll-mt-36 bg-warm-50"
+        flip
+        frame="phone"
+        eyebrow="Receiving & credits"
+        plan="free"
+        title="Check deliveries in on a phone"
+        lede="Short, extra or damaged lines flagged and sent to the vendor in one message."
+        bullets={['Credit, return, refund, or keep it and be billed', 'Emailed to vendors not on Fork']}
+        preview={<ReceivingPreview />}
+        previewTitle="Fork · Receive order"
+        href="/supply#receiving"
+        hrefLabel="See a delivery checked in"
+      />
+      <FeatureRow
+        id="vendor-chat"
+        className="scroll-mt-36"
+        eyebrow="Vendor & customer chat"
+        plan="free"
+        title="Talk where the order lives"
+        lede="One chat per vendor or customer. Not on Fork? It goes out as email and the reply comes back as chat."
+        bullets={['Shared by everyone who orders', 'Free on every plan']}
+        preview={<VendorChatPreview />}
+        previewTitle="Fork · Chat · Bluebird Dairy"
+      />
       <FeatureRow
         id="sales"
-        className="scroll-mt-36"
+        className="scroll-mt-36 bg-warm-50"
         flip
         eyebrow="Sell & get paid"
         plan="free"
@@ -448,32 +444,33 @@ export default function ProductsPage() {
         href="/sales"
         hrefLabel="Explore selling"
       />
-      <CardRow>
-        <ProductCard
-          id="routes"
-          eyebrow="Delivery routes"
-          plan="free"
-          title="Deliver on the best route"
-          lede="Pick the orders and Fork puts the stops in order. The driver works them from the app."
-          bullets={['Stops ordered on real road distances', 'Photos and a signature as proof of delivery']}
-          preview={<RoutePreview />}
-          previewTitle="Fork · Routes · Fri, Sep 26"
-          href="/sales#routes"
-          hrefLabel="See a delivery day"
-        />
-        <ProductCard
-          id="services"
-          eyebrow="Service calls"
-          plan="free"
-          title="From the service call to paid"
-          lede="Book a technician, capture the visit, bill from it."
-          bullets={['Photos, parts and a signature on site', 'Maintenance contracts that book themselves', 'A month of calls on one invoice']}
-          preview={<ServiceCallPreview />}
-          previewTitle="Fork · Service calls · #SR-1042"
-          href="/service-providers"
-          hrefLabel="Fork for service providers"
-        />
-      </CardRow>
+      <FeatureRow
+        id="routes"
+        className="scroll-mt-36"
+        eyebrow="Delivery routes"
+        plan="free"
+        title="Deliver on the best route"
+        lede="Pick the orders and Fork puts the stops in order. The driver works them from the app."
+        bullets={['Stops ordered on real road distances', 'Photos and a signature as proof of delivery']}
+        preview={<RoutePreview />}
+        previewTitle="Fork · Routes · Fri, Sep 26"
+        href="/sales#routes"
+        hrefLabel="See a delivery day"
+      />
+      <FeatureRow
+        id="services"
+        className="scroll-mt-36 bg-warm-50"
+        flip
+        eyebrow="Service calls"
+        plan="free"
+        title="From the service call to paid"
+        lede="Book a technician, capture the visit, bill from it."
+        bullets={['Photos, parts and a signature on site', 'Maintenance contracts that book themselves', 'A month of calls on one invoice']}
+        preview={<ServiceCallPreview />}
+        previewTitle="Fork · Service calls · #SR-1042"
+        href="/service-providers"
+        hrefLabel="Fork for service providers"
+      />
 
       <CtaSection title="See it with your own team" lede="Ordering and selling are free. Team tools from $39 per location." />
     </main>
