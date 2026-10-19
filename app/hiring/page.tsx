@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/button'
 import {
   ArrowRight,
-  ChevronRight,
   Globe,
   FileSearch,
   CheckCircle2,
@@ -19,14 +18,17 @@ import {
   Shield,
 } from 'lucide-react'
 import Link from 'next/link'
-import Backdrop from '@/components/visual/Backdrop'
-import { CTA_PRIMARY, REGISTER_URL } from '@/lib/site'
+import Hero from '@/components/marketing/Hero'
+import IllustrationStory from '@/components/marketing/IllustrationStory'
+import { ApplicantPreview, Window } from '@/components/previews'
+import { HIRING } from '@/lib/illustrations'
+import { CTA_PRIMARY, registerUrl } from '@/lib/site'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Hiring — Fork | AI-Powered Job Board & Applicant Tracking',
   description:
-    'Post jobs to a branded, SEO-friendly job board. Screen applicants with custom questions and AI resume scanning. Manage your full hiring pipeline — from application to offer — in one platform.',
+    'Post jobs to a branded, SEO-friendly job board. Screen applicants with custom questions and AI resume summaries. Manage your full hiring pipeline — from application to hire — in one platform.',
   alternates: {
     canonical: '/hiring',
   },
@@ -49,9 +51,9 @@ export const metadata: Metadata = {
 
 const pipelineStages = [
   { label: 'Applied', icon: <UserPlus className="w-4 h-4" />, desc: 'Applicant submits form + resume on your public board' },
-  { label: 'Interview', icon: <CalendarCheck className="w-4 h-4" />, desc: 'Schedule in-person or virtual interviews with one click' },
-  { label: 'Feedback', icon: <Star className="w-4 h-4" />, desc: 'Score candidates on custom scorecards with weighted criteria' },
-  { label: 'Result', icon: <CheckCircle2 className="w-4 h-4" />, desc: 'Hire or reject — with auto-notifications and optional onboarding' },
+  { label: 'Interview', icon: <CalendarCheck className="w-4 h-4" />, desc: 'Schedule it in person or by video. The candidate accepts from the email.' },
+  { label: 'Feedback', icon: <Star className="w-4 h-4" />, desc: 'Rate each scorecard criterion from 1 to 5 and answer “Would you hire?”' },
+  { label: 'Result', icon: <CheckCircle2 className="w-4 h-4" />, desc: 'Hire with a profile and an invite to Fork, or reject with an optional email' },
 ]
 
 const aiScanFields = [
@@ -70,71 +72,52 @@ const boardFeatures = [
   {
     icon: <Globe className="w-5 h-5 text-forest-600" />,
     title: 'SEO-optimized listings',
-    desc: 'Every posting is crawlable with structured metadata — title, location, pay range, employment type.',
+    desc: 'Every posting is crawlable and in the sitemap, with job data for search engines: title, location, employment type.',
   },
   {
     icon: <Layers className="w-5 h-5 text-forest-600" />,
     title: 'Branded experience',
-    desc: 'Your logo, brand color, and company description front and center. No Fork branding in the way.',
+    desc: 'Your logo, brand color and company description up front, with a small Powered by Fork line at the bottom.',
   },
   {
     icon: <ScanSearch className="w-5 h-5 text-forest-600" />,
-    title: 'Full-text job search',
-    desc: 'Candidates can search across all your listings by keyword, location, category, or employment type.',
+    title: 'Search and filters',
+    desc: 'Candidates search your listings by keyword and filter by location, category and employment type.',
   },
 ]
 
 const screeningTypes = [
   { type: 'Multiple choice', desc: 'Applicant selects one or more options from your list', example: 'Which shifts are you available? ○ Morning ○ Afternoon ○ Evening' },
-  { type: 'Single choice', desc: 'Applicant picks exactly one answer', example: 'Do you have a valid food handler\'s permit? ○ Yes ○ No' },
-  { type: 'Free text', desc: 'Open-ended response for detailed answers', example: 'Describe your experience with high-volume kitchen service.' },
+  { type: 'One choice', desc: 'Applicant picks exactly one answer', example: 'Do you have a valid food handler\'s permit? ○ Yes ○ No' },
+  { type: 'Text', desc: 'Open-ended response for detailed answers', example: 'Describe your experience with high-volume kitchen service.' },
 ]
 
-const templates = [
-  'Barista', 'Server', 'Bartender', 'Line Cook', 'Host / Hostess', 'Shift Manager',
-  'Dishwasher', 'Prep Cook', 'Cashier', 'Delivery Driver',
-]
+// The six in the listing wizard (frontend/src/assets/jobListingTemplates.js).
+const templates = ['Barista', 'Server', 'Bartender', 'Chef', 'Manager', 'Delivery Driver']
 
 export default function HiringPage() {
   return (
     <main className="pt-16">
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-warm-100">
-        <Backdrop />
-        <div className="relative max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-32 md:pb-24">
-          <nav className="inline-flex items-center gap-1.5 text-sm mb-8">
-            <Link href="/products" className="text-warm-400 hover:text-warm-950 transition-colors">Products</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-warm-300" />
-            <span className="font-medium text-warm-950">Hiring</span>
-          </nav>
-
-          <h1 className="text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-warm-950 max-w-4xl">
-            Your own job board. AI&#8209;powered screening.
-          </h1>
-
-          <p className="mt-6 text-lg md:text-xl text-warm-600 leading-relaxed max-w-2xl">
-            Post jobs to a branded, SEO-friendly board at <span className="font-medium text-warm-950">jobs.forkhr.com/your-company</span>. Screen applicants with custom questions, scan resumes with AI, and manage your full pipeline — from application to offer letter.
-          </p>
-
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Link href={REGISTER_URL} target="_blank">
-              <Button size="lg" className="text-base px-6 h-11">
-                Start hiring
-                <ArrowRight className="w-4 h-4 ml-1.5" />
-              </Button>
-            </Link>
-            <Link href="#pipeline">
-              <Button variant="outline" size="lg" className="text-base px-6 h-11">
-                Read more
-              </Button>
-            </Link>
-          </div>
-
-          <p className="mt-5 text-sm text-warm-400">
-            Included from Essential · AI resume scanner on Premium
-          </p>
-        </div>
-      </section>
+      <Hero
+        crumb={{ label: 'Products', href: '/products', current: 'Hiring' }}
+        plan="essential"
+        title="Hire from your own job board"
+        lede={
+          <>
+            Post jobs to your board at <span className="font-medium text-warm-950">jobs.forkhr.com/your-company</span>. Screen applicants with your own questions, summarize resumes with AI, and hire from your phone.
+          </>
+        }
+        primaryLabel="Start hiring"
+        registerHref={registerUrl({ use: 'workplace', plan: 'essential' })}
+        secondaryHref="#a-hire"
+        secondaryLabel="See a hire"
+        note="Included from Essential · AI resume summary on Premium"
+        aside={
+          <Window title="Fork · Hiring · Jordan Lee">
+            <ApplicantPreview />
+          </Window>
+        }
+      />
 
       {/* Job Board showcase — side-by-side mockup + features */}
       <section className="border-b border-warm-100">
@@ -160,9 +143,9 @@ export default function HiringPage() {
                 {/* Mock listing cards */}
                 <div className="p-5 space-y-3">
                   {[
-                    { title: 'Line Cook', type: 'Full-time', pay: '$18 – $22/hr', loc: 'Downtown' },
-                    { title: 'Server', type: 'Part-time', pay: '$15 – $18/hr + tips', loc: 'Midtown' },
-                    { title: 'Shift Manager', type: 'Full-time', pay: '$52k – $58k/yr', loc: 'All locations' },
+                    { title: 'Line Cook', type: 'Full time', pay: '$18-22/h', loc: 'Downtown' },
+                    { title: 'Server', type: 'Part time', pay: '$15-18/h', loc: 'Midtown' },
+                    { title: 'Barista', type: 'Part time', pay: '$17/h', loc: 'Main St' },
                   ].map((job) => (
                     <div key={job.title} className="rounded-lg border border-warm-200 bg-white p-4 flex items-center justify-between gap-4 hover:border-warm-300 transition-colors">
                       <div>
@@ -185,7 +168,7 @@ export default function HiringPage() {
                 A branded board your candidates actually want to use
               </h2>
               <p className="text-warm-600 leading-relaxed mb-8">
-                Every listing is SEO-friendly with structured data. Your board is searchable, filterable, and looks like it belongs to your brand.
+                Listings carry job data for search engines. Your board has search and filters, in your logo and colors.
               </p>
 
               <div className="space-y-6">
@@ -203,6 +186,15 @@ export default function HiringPage() {
           </div>
         </div>
       </section>
+
+      <IllustrationStory
+        id="a-hire"
+        eyebrow="A hire on Fork"
+        title="From a sign in the window to hired"
+        lede="Main St needs a weekend barista. Five moments from the sign going up to Jordan's invite to Fork."
+        slides={HIRING}
+        className="bg-warm-50"
+      />
 
       {/* Pipeline — numbered stages with detail cards */}
       <section id="pipeline" className="border-b border-warm-100">
@@ -230,9 +222,9 @@ export default function HiringPage() {
           {/* Pipeline extras */}
           <div className="mt-16 grid sm:grid-cols-3 gap-5">
             {[
-              { icon: <Mail className="w-5 h-5 text-forest-600" />, title: 'Auto-notifications', desc: 'Applicants and managers get emails at every stage — confirmations, interview invites, and results.' },
+              { icon: <Mail className="w-5 h-5 text-forest-600" />, title: 'Candidate emails', desc: 'A confirmation when they apply and the interview invite with Accept and Decline. You hear about every new application.' },
               { icon: <UserPlus className="w-5 h-5 text-forest-600" />, title: 'Hire → Onboard', desc: 'When you hire someone, Fork can auto-create their employee profile and send an app invite.' },
-              { icon: <Users className="w-5 h-5 text-forest-600" />, title: 'Assign reviewers', desc: 'Route applicants to specific team members for review, scoring, and interview scheduling.' },
+              { icon: <Users className="w-5 h-5 text-forest-600" />, title: 'Assign an applicant', desc: 'Hand an applicant to a teammate. They get a notification and can run the interview notes.' },
             ].map((item) => (
               <div key={item.title} className="bg-white border border-warm-200 rounded-xl p-7 hover:border-warm-300 transition-colors">
                 <div className="mb-4">{item.icon}</div>
@@ -255,16 +247,16 @@ export default function HiringPage() {
                 AI reads the resume so you don&apos;t have to
               </h2>
               <p className="text-warm-400 leading-relaxed mb-6">
-                Upload a resume and Fork&apos;s AI scans it against the job description. In seconds, you get a structured summary — highlights, red flags, and an overall fit rating. No more skimming 50 PDFs.
+                Click Summarize with AI on an applicant and Fork reads their resume against the job description. In seconds you get a summary, highlights, red flags and an overall fit rating. No more skimming 50 PDFs.
               </p>
 
               <div className="space-y-3">
                 {[
-                  'Parses uploaded PDF resumes automatically',
+                  'Reads the PDF resume the applicant uploaded',
                   'Compares resume content to your job description',
                   'Reviews screening question answers for context',
-                  'Returns structured JSON — no vague chatbot responses',
-                  'Powered by GPT-4o-mini with 0.1 temperature',
+                  'The same four parts every time, no vague chatbot replies',
+                  'One click on the applicant page, on the web',
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <CheckCircle2 className="w-4 h-4 text-lime-accent mt-0.5 shrink-0" />
@@ -280,8 +272,7 @@ export default function HiringPage() {
                 <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-lime-accent/10">
                   <ScanSearch className="w-4 h-4 text-lime-accent" />
                 </div>
-                <span className="text-sm font-semibold text-white">AI Resume Scan</span>
-                <span className="ml-auto text-xs text-warm-500 font-mono">gpt-4o-mini</span>
+                <span className="text-sm font-semibold text-white">AI Summary</span>
               </div>
 
               <div className="space-y-5">
@@ -361,10 +352,10 @@ export default function HiringPage() {
           <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12">
             <div className="shrink-0 md:max-w-[300px]">
               <h2 className="text-2xl font-semibold tracking-tight text-warm-950 mb-2">
-                Weighted scorecards
+                Scorecards
               </h2>
               <p className="text-sm text-warm-500 leading-relaxed">
-                Define evaluation criteria with custom weights. Reviewers score 1-5, and Fork calculates the weighted total automatically.
+                Set the criteria and how much each one counts. Reviewers rate each from 1 to 5, and the web shows the weighted average.
               </p>
             </div>
             <div className="flex-1 md:border-l md:border-warm-100 md:pl-12">
@@ -395,7 +386,7 @@ export default function HiringPage() {
               Pre-built templates for common roles
             </h2>
             <p className="mt-4 text-lg text-warm-600 leading-relaxed">
-              Don&apos;t start from scratch. Pick a template and customize — descriptions, screening questions, and scorecards included.
+              Don&apos;t start from scratch. Pick a template and make it yours: description, screening questions, a scorecard and an interview guide included.
             </p>
           </div>
 
@@ -411,7 +402,7 @@ export default function HiringPage() {
           </div>
 
           <p className="text-sm text-warm-400 mt-6">
-            Each template includes a full job description, screening questions, and evaluation scorecard.
+            Each template includes a full job description, screening questions, a scorecard and an interview guide.
           </p>
         </div>
       </section>
@@ -435,8 +426,8 @@ export default function HiringPage() {
               { icon: <Shield className="w-5 h-5 text-forest-600" />, title: 'Permission-controlled', desc: 'Control who can view listings vs. manage applicants with role-based permissions per position.' },
               { icon: <MessageSquareText className="w-5 h-5 text-forest-600" />, title: 'Comments & notes', desc: 'Leave internal notes on any applicant. Collaborate with your hiring team without leaving Fork.' },
               { icon: <BarChart3 className="w-5 h-5 text-forest-600" />, title: 'Applicant counts', desc: 'See how many applicants each listing has attracted at a glance from your dashboard.' },
-              { icon: <Mail className="w-5 h-5 text-forest-600" />, title: 'Email automation', desc: 'Confirmation emails, interview invites with accept/decline links, offer letters, and rejection notices — all automated.' },
-              { icon: <FileSearch className="w-5 h-5 text-forest-600" />, title: 'Resume storage', desc: 'Every resume is stored securely in the cloud and accessible from the applicant profile anytime.' },
+              { icon: <Mail className="w-5 h-5 text-forest-600" />, title: 'Candidate emails', desc: 'Confirmation emails, interview invites with Accept and Decline buttons, and an optional rejection email.' },
+              { icon: <FileSearch className="w-5 h-5 text-forest-600" />, title: 'Resumes on file', desc: 'Every resume stays on the applicant profile, a click away.' },
             ].map((f) => (
               <div key={f.title} className="bg-white p-7 hover:bg-warm-50 transition-colors">
                 <div className="mb-4">{f.icon}</div>
@@ -459,7 +450,7 @@ export default function HiringPage() {
               Post your first job listing in minutes. Start receiving applications today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href={REGISTER_URL} target="_blank">
+              <Link href={registerUrl({ use: 'workplace', plan: 'essential' })} target="_blank">
                 <Button size="lg" className="text-base px-7 h-12">
                   {CTA_PRIMARY}
                   <ArrowRight className="w-4 h-4 ml-2" />
@@ -476,7 +467,7 @@ export default function HiringPage() {
               <span className="w-1 h-1 rounded-full bg-warm-300" />
               <span>Unlimited postings and applicants</span>
               <span className="w-1 h-1 rounded-full bg-warm-300" />
-              <span className="inline-flex items-center gap-1"><Crown className="w-3.5 h-3.5 text-forest-600" /> AI scanner on Premium</span>
+              <span className="inline-flex items-center gap-1"><Crown className="w-3.5 h-3.5 text-forest-600" /> AI resume summary on Premium</span>
             </div>
           </div>
         </div>

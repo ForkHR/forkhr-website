@@ -6,7 +6,10 @@ import { Initials, Pill, Typing } from './bits'
 import { useInView, useSequence } from './useSequence'
 
 // One conversation with a business that is not on Fork. What you type goes out as an email;
-// their reply lands back in the chat. `role` is who the other side is to you.
+// their reply lands back in the chat. As in the app: your bubble is green when it went out as an
+// email and says "Emailed", their reply carries "Via email", the composer reads "Email Message ·
+// EMAIL", and the order card is the order's ("Order #…", "View Order"). `role` is who the
+// other side is to you.
 const SIDES = {
   vendor: {
     name: 'Bluebird Dairy',
@@ -15,7 +18,7 @@ const SIDES = {
     ask: "Can you add 6 more gallons of whole milk to tomorrow's order? We're catering an event.",
     reply: 'Done, updated to 18 gallons. Same truck, 6:30 AM. Updated invoice attached.',
     file: 'INV-2041.pdf',
-    card: { title: 'Order #1042 updated', sub: '12 items · $486.20 · delivery Thu 6:30 AM' },
+    card: { title: 'Order #ORD-260929-K7F3Q', sub: '4 items · $486.20 · delivery Thu 6:30 AM' },
   },
   customer: {
     name: 'Corner Café',
@@ -55,10 +58,10 @@ export default function VendorChatPreview({ className, role = 'vendor' }: { clas
         {/* Own message */}
         <div data-on={step >= 1} className="pv-item flex justify-end">
           <div className="max-w-[82%]">
-            <div className="rounded-2xl rounded-br-md bg-warm-950 px-3 py-2 text-[12px] leading-relaxed text-white">{s.ask}</div>
+            <div className="rounded-2xl rounded-br-md bg-ok-500 px-3 py-2 text-[12px] leading-relaxed text-white">{s.ask}</div>
             <div className="mt-1 flex items-center justify-end gap-1 text-[10px] text-warm-400">
               <span data-on={step >= 2} className="pv-item inline-flex items-center gap-1">
-                <Check className="h-3 w-3 text-ok-500" /> Sent by email · 8:12 AM
+                <Check className="h-3 w-3 text-ok-500" /> Emailed
               </span>
             </div>
           </div>
@@ -89,7 +92,7 @@ export default function VendorChatPreview({ className, role = 'vendor' }: { clas
               )}
             </div>
             <div className="mt-1 flex items-center gap-1 text-[10px] text-warm-400">
-              <Mail className="h-3 w-3" /> Replied by email · 8:19 AM
+              <Mail className="h-3 w-3" /> Via email · 8:19 AM
             </div>
           </div>
         </div>
@@ -103,13 +106,12 @@ export default function VendorChatPreview({ className, role = 'vendor' }: { clas
             <div className="font-semibold">{s.card.title}</div>
             <div className="text-warm-500">{s.card.sub}</div>
           </div>
-          <span className="text-[11px] font-semibold text-forest-600">View</span>
+          <span className="text-[11px] font-semibold text-forest-600">View Order</span>
         </div>
       </div>
 
       <div className="flex items-center gap-2 border-t border-warm-100 px-4 py-2.5">
-        <div className="flex-1 rounded-full border border-warm-200 bg-white px-3 py-1.5 text-[11px] text-warm-400">Message {s.name}…</div>
-        <span className="text-[10px] text-warm-400">Sends as email</span>
+        <div className="flex-1 rounded-full border border-warm-200 bg-white px-3 py-1.5 text-[11px] text-warm-400">Email Message · EMAIL</div>
       </div>
     </div>
   )

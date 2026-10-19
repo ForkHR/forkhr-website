@@ -4,8 +4,10 @@ import Hero from '@/components/marketing/Hero'
 import SectionHeading from '@/components/marketing/SectionHeading'
 import DayTimeline, { type DayStop } from '@/components/marketing/DayTimeline'
 import CtaSection from '@/components/marketing/CtaSection'
+import IllustrationStory from '@/components/marketing/IllustrationStory'
 import PlanBadge from '@/components/marketing/PlanBadge'
 import { ReceivingPreview, SupplyPreview, VendorChatPreview, Window } from '@/components/previews'
+import { CAFE_WEEK } from '@/lib/illustrations'
 import { registerUrl } from '@/lib/site'
 
 const description =
@@ -20,12 +22,12 @@ export const metadata: Metadata = {
 }
 
 // A week of one café's ordering. Bluebird Dairy is not on Fork. Names and times match the demos:
-// order #1042 for Thursday 6:30 AM, the 8:12 → 8:19 thread that takes it to 18 gallons, the
-// check-in that flags a short, an extra and a damaged case. For a vendor not on Fork the café
-// records the credit they agreed (orderControllers resolveLineIssue).
+// Thursday's 6:30 AM order, the 8:12 → 8:19 thread that takes it to 18 gallons, the check-in that
+// flags a short, an extra and a damaged case. The count's low-stock push, Par refill, "Submitted",
+// and the credit a café records for a vendor not on Fork (web "Credited") are the app's.
 const order: DayStop[] = [
-  { kind: 'moment', day: 'Tue', time: '9:30 PM', app: 'Stock counts', where: 'Main St', text: 'Closing count: whole milk at 4 gallons. Par is 12.', tag: 'Below par', tone: 'warn' },
-  { kind: 'moment', day: 'Tue', time: '9:34 PM', app: 'Supply', where: 'Bluebird Dairy', text: "What was short went on Thursday's order, #1042, and out as an email.", tag: 'Sent', tone: 'brand' },
+  { kind: 'moment', day: 'Tue', time: '9:30 PM', app: 'Stock counts', where: 'Main St', text: 'Closing count: whole milk at 4 gallons, par 12. The manager gets a low-stock push.', tag: 'Low stock', tone: 'warn' },
+  { kind: 'moment', day: 'Tue', time: '9:34 PM', app: 'Supply', where: 'Bluebird Dairy', text: "Par refill put what was short on Thursday's order. It went out as an email.", tag: 'Submitted', tone: 'brand' },
   {
     kind: 'feature',
     id: 'chat',
@@ -47,20 +49,20 @@ const order: DayStop[] = [
     eyebrow: 'Receiving',
     plan: 'free',
     title: 'Checked in at the back door, line by line',
-    lede: 'Count what came off the truck on a phone. Short, extra or damaged? Flag it with a photo and say what you want: a credit, a return, or to keep it and pay.',
+    lede: 'Count what came off the truck on a phone. Short, extra or damaged? Flag it and say what you want: a credit, a return, a refund, or to keep it and be billed.',
     bullets: ['Short, extra, damaged, spoiled or wrong item', 'Every issue goes to the vendor in one message', 'Not on Fork? They get it by email'],
     preview: <ReceivingPreview />,
-    previewTitle: 'Fork · Order #1042',
+    previewTitle: 'Fork · Receive order',
     frame: 'phone',
   },
-  { kind: 'moment', day: 'Fri', time: '10:15 AM', app: 'Chat', where: 'Bluebird Dairy', text: 'Bluebird replied by email: the butter and the eggs come off the next invoice. Credit recorded on #1042.', tag: 'Credit recorded', tone: 'ok' },
-  { kind: 'moment', day: 'Mon', time: '6:00 AM', app: 'Standing orders', where: 'Fork Warehouse', text: "This week's standing order is ready, the same as every Monday.", tag: 'Standing', tone: 'neutral' },
+  { kind: 'moment', day: 'Fri', time: '10:15 AM', app: 'Chat', where: 'Bluebird Dairy', text: 'Bluebird replied by email: the butter and the eggs come off the next invoice. The credit goes on the order.', tag: 'Credited', tone: 'ok' },
+  { kind: 'moment', day: 'Mon', time: '6:00 AM', app: 'Recurring orders', where: 'Fork Warehouse', text: "This Monday's order was created from the recurring order, the same as every week.", tag: 'Submitted', tone: 'neutral' },
 ]
 
 const included = [
   { icon: <Store className="h-5 w-5" />, title: 'Vendor market', desc: 'See who delivers to you. Connect in a click.' },
   { icon: <CalendarClock className="h-5 w-5" />, title: 'Terms per vendor', desc: 'Delivery days, cutoffs, minimums.' },
-  { icon: <RefreshCw className="h-5 w-5" />, title: 'Standing orders', desc: 'Same order every week. Change one week only.' },
+  { icon: <RefreshCw className="h-5 w-5" />, title: 'Recurring orders', desc: 'Weekly, every two weeks, monthly or daily. Skip a holiday.' },
   { icon: <PackageCheck className="h-5 w-5" />, title: 'Receive and check in', desc: 'Log short items. Request a credit.' },
   { icon: <Receipt className="h-5 w-5" />, title: 'Invoices payable', desc: 'Next to the order they belong to.' },
   { icon: <FileText className="h-5 w-5" />, title: 'Vendor documents', desc: 'Certificates and price lists, on the vendor.' },
@@ -107,13 +109,13 @@ export default function SupplyPage() {
                 <PlanBadge tier="essential" />
               </div>
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-warm-950 md:text-4xl">Count on a phone, reorder in a tap</h2>
-              <p className="mt-4 text-lg leading-relaxed text-warm-600">Par levels on every item. Shortfalls become an order.</p>
+              <p className="mt-4 text-lg leading-relaxed text-warm-600">Par levels per item and location. Par refill turns what is short into an order.</p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               {[
                 { icon: <ClipboardList className="h-4 w-4" />, t: 'Count lists', d: 'Walk-in, dry storage, bar.' },
                 { icon: <MapPin className="h-4 w-4" />, t: 'Per location', d: 'Each site, its own pars.' },
-                { icon: <RefreshCw className="h-4 w-4" />, t: 'Straight into orders', d: 'What is short goes on the next order.' },
+                { icon: <RefreshCw className="h-4 w-4" />, t: 'Par refill', d: 'One tap puts what is below par in the cart.' },
                 { icon: <BarChart3 className="h-4 w-4" />, t: 'Usage over time', d: 'Per product, per week.' },
               ].map((c) => (
                 <div key={c.t} className="surface p-5">
@@ -126,6 +128,14 @@ export default function SupplyPage() {
           </div>
         </div>
       </section>
+
+      <IllustrationStory
+        id="cafe-week"
+        eyebrow="A café's week"
+        title="Counted, ordered, checked in"
+        lede="Main St orders from Bluebird Dairy, which isn't on Fork, and from vendors that are. Five moments from one week."
+        slides={CAFE_WEEK}
+      />
 
       <section id="market" className="scroll-mt-24 border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">

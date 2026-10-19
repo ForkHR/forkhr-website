@@ -5,11 +5,14 @@ import { cn } from '@/lib/utils'
 import { Initials, Pill, Progress, SectionLabel, Toast } from './bits'
 import { useInView, useSequence } from './useSequence'
 
-// The buyer's side: orders out to vendors, a standing order, and a stock count suggesting what to reorder.
+// The buyer's side: orders out to vendors, a recurring order, and what is on hand against par.
+// Labels are the app's: order numbers ORD-YYMMDD-XXXXX, "Submitted" once an order goes out, a
+// recurring plan "Weekly" and "Active", the order guide's "+8 to par", and the phone's Par refill
+// toast ("2 items topped up to par at Main St").
 const ORDERS = [
-  { vendor: 'Bluebird Dairy', no: '#1042', when: 'Delivery Thu 6:30 AM', total: '$486.20', status: 'Confirmed', tone: 'ok' as const },
-  { vendor: 'Harvest Produce', no: '#1043', when: 'Delivery Fri', total: '$312.10', status: 'Sent', tone: 'brand' as const },
-  { vendor: 'Fork Warehouse', no: 'Standing · every Mon', when: 'Next Mon 29', total: '$208.00', status: 'Scheduled', tone: 'neutral' as const, standing: true },
+  { vendor: 'Bluebird Dairy', no: '#ORD-260929-K7F3Q', when: 'Delivery Thu 6:30 AM', total: '$486.20', status: 'Confirmed', tone: 'ok' as const },
+  { vendor: 'Harvest Produce', no: '#ORD-260930-M2B8D', when: 'Delivery Fri', total: '$312.10', status: 'Submitted', tone: 'brand' as const },
+  { vendor: 'Fork Warehouse', no: 'Recurring · Weekly · Mon', when: 'Next run Mon 5', total: '$208.00', status: 'Active', tone: 'neutral' as const, standing: true },
 ]
 
 const COUNT = [
@@ -26,7 +29,7 @@ export default function SupplyPreview({ className }: { className?: string }) {
     <div ref={ref} className={cn('relative grid text-warm-950 @lg:grid-cols-[1.2fr_1fr]', className)}>
       <div className="@lg:border-r @lg:border-warm-100">
         <div className="flex items-center gap-1 border-b border-warm-100 px-3 py-2 text-[11px] font-medium">
-          {['Orders', 'Standing orders', 'Vendors', 'Invoices'].map((t, i) => (
+          {['Orders', 'Recurring', 'Vendors', 'Invoices'].map((t, i) => (
             <span key={t} className={cn('rounded-full px-2.5 py-1', i === 0 ? 'bg-warm-950 text-white' : 'text-warm-500')}>
               {t}
             </span>
@@ -56,7 +59,7 @@ export default function SupplyPreview({ className }: { className?: string }) {
       </div>
 
       <div className="border-t border-warm-100 @lg:border-t-0">
-        <SectionLabel right="Walk-in · Main St">Stock count</SectionLabel>
+        <SectionLabel right="Main St">On hand / par</SectionLabel>
         {COUNT.map((c, i) => {
           const short = c.par - c.have
           const pct = (c.have / c.par) * 100
@@ -72,17 +75,17 @@ export default function SupplyPreview({ className }: { className?: string }) {
               <div className="mt-1.5 flex items-center gap-2">
                 <Progress value={step >= 5 ? pct : 0} tone={low ? 'brand' : 'dark'} className="flex-1" />
                 <span data-on={step >= 6 && short > 1} className={cn('pv-pop whitespace-nowrap rounded-full bg-forest-50 px-2 py-0.5 text-[10px] font-semibold text-forest-700', short <= 1 && 'invisible')}>
-                  Reorder {short}
+                  +{short} to par
                 </span>
               </div>
             </div>
           )
         })}
-        <div className="px-4 py-2.5 text-[10.5px] text-warm-400">Counted on a phone · shortfalls go straight into an order</div>
+        <div className="px-4 py-2.5 text-[10.5px] text-warm-400">Counted on a phone · Par refill puts what is short in the cart</div>
       </div>
 
       <Toast on={step >= 6}>
-        <Check className="h-3.5 w-3.5 text-ok-500" /> 2 items added to Bluebird Dairy order
+        <Check className="h-3.5 w-3.5 text-ok-500" /> 2 items topped up to par at Main St
       </Toast>
     </div>
   )

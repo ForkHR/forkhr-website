@@ -29,6 +29,7 @@ import FeatureRow from '@/components/marketing/FeatureRow'
 import ProductCard from '@/components/marketing/ProductCard'
 import ProductsNav from '@/components/marketing/ProductsNav'
 import CtaSection from '@/components/marketing/CtaSection'
+import IllustrationStory from '@/components/marketing/IllustrationStory'
 import {
   AiPreview,
   ApplicantPreview,
@@ -49,6 +50,7 @@ import {
   VendorChatPreview,
 } from '@/components/previews'
 import type { TierKey } from '@/lib/catalog'
+import { NEW_HIRE } from '@/lib/illustrations'
 import { CTA_PRIMARY, PLATFORM_FEE_BPS, REGISTER_URL } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
@@ -321,6 +323,14 @@ export default function ProductsPage() {
           hrefLabel="Explore hiring"
         />
       </CardRow>
+      <IllustrationStory
+        id="first-90-days"
+        className="scroll-mt-36"
+        eyebrow="A new hire's first 90 days"
+        title="From the sign in the window to the first raise"
+        lede="Jordan Lee applies to be a barista at Main St. Six moments from the next three months, one for each team product."
+        slides={NEW_HIRE}
+      />
 
       {/* ── 02 Operations ───────────────────────────────── */}
       <ChapterHeader chapter={ops} seed={17} />
@@ -408,7 +418,7 @@ export default function ProductsPage() {
           lede="Short, extra or damaged lines flagged with a photo and sent to the vendor in one message."
           bullets={['Credit, return, or keep it and pay', 'Emailed to vendors not on Fork']}
           preview={<ReceivingPreview />}
-          previewTitle="Fork · Order #1042"
+          previewTitle="Fork · Receive order"
           href="/supply#receiving"
           hrefLabel="See a delivery checked in"
         />
