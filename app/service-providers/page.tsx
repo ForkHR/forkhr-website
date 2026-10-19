@@ -8,7 +8,9 @@ import SectionHeading from '@/components/marketing/SectionHeading'
 import CtaSection from '@/components/marketing/CtaSection'
 import PlanBadge from '@/components/marketing/PlanBadge'
 import DayTimeline, { type DayStop } from '@/components/marketing/DayTimeline'
+import IllustrationFrame from '@/components/marketing/IllustrationFrame'
 import { InvoicePreview, ServiceCallPreview, ServiceIssuePreview, TechnicianPreview, Window } from '@/components/previews'
+import { SERVICE_VISIT } from '@/lib/illustrations'
 import { PLATFORM_FEE_BPS, SUPPORT_EMAIL, registerUrl } from '@/lib/site'
 
 const feePct = (PLATFORM_FEE_BPS / 100).toFixed(1).replace(/\.0$/, '')
@@ -196,6 +198,19 @@ export default function ServiceProvidersPage() {
           </div>
         </div>
       </section>
+
+      <FeatureRow
+        id="proof"
+        eyebrow="Proof of work"
+        plan="free"
+        title="Before and after, signed and billed"
+        lede="Espresso machines too. When a steam wand won't shut off, the photos, the parts and the minutes on site go on the call, and the customer signs on the technician's phone."
+        bullets={['Before and after photos on every visit', 'Parts go straight onto the charges', 'The work report goes out with the invoice']}
+        preview={<IllustrationFrame illustration={SERVICE_VISIT} />}
+        previewTitle={SERVICE_VISIT.title}
+        frame="none"
+        className="bg-warm-50"
+      />
 
       <FeatureRow
         id="invoicing"

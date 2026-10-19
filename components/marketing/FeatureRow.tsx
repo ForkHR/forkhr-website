@@ -9,6 +9,7 @@ import PlanBadge from './PlanBadge'
 /**
  * One feature, told in one row: copy on one side, the live demo in a window on the other.
  * Rows alternate sides with `flip`. Used by the products page and the feature pages.
+ * `frame="none"` places the preview as it is, for a drawing that brings its own card.
  */
 export default function FeatureRow({
   id,
@@ -40,7 +41,7 @@ export default function FeatureRow({
   plan?: TierKey
   /** A short dark chip before the eyebrow, e.g. "New". */
   badge?: string
-  frame?: 'window' | 'phone'
+  frame?: 'window' | 'phone' | 'none'
   className?: string
   children?: ReactNode
 }) {
@@ -81,6 +82,8 @@ export default function FeatureRow({
               <div className="flex justify-center">
                 <Phone>{preview}</Phone>
               </div>
+            ) : frame === 'none' ? (
+              preview
             ) : (
               <Window title={previewTitle}>{preview}</Window>
             )}
