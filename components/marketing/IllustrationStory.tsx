@@ -9,8 +9,8 @@ import SectionHeading from './SectionHeading'
 
 /**
  * A story told in drawings: the heading, then one drawing at a time in a row that scrolls
- * sideways (swipe on a phone, the arrows on a desktop). Each drawing carries its time, a title
- * and one sentence. The next drawing peeks in from the right so the row reads as more to see.
+ * sideways (swipe on a phone, the arrows on a desktop). Each drawing carries a title and one
+ * sentence. The next drawing peeks in from the right so the row reads as more to see.
  */
 export default function IllustrationStory({
   id,
@@ -116,8 +116,7 @@ export default function IllustrationStory({
               <figure>
                 <IllustrationFrame illustration={s} sizes="(min-width: 1024px) 860px, 88vw" />
                 <figcaption className="mt-5 max-w-xl">
-                  <span className="text-[13px] font-semibold tabular-nums text-forest-600">{s.time}</span>
-                  <h3 className="mt-1 text-lg font-semibold tracking-tight text-warm-950">{s.title}</h3>
+                  <h3 className="text-lg font-semibold tracking-tight text-warm-950">{s.title}</h3>
                   <p className="mt-1 text-[15px] leading-relaxed text-warm-600">{s.text}</p>
                 </figcaption>
               </figure>
