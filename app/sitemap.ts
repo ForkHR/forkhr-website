@@ -1,5 +1,9 @@
 import type { MetadataRoute } from 'next'
 import { SOLUTIONS } from '@/lib/solutions'
+import { fetchSuppliers, supplierPath } from '@/lib/suppliers'
+
+// The supplier pages come from the app API; the sitemap is rebuilt with them once an hour
+export const revalidate = 3600
 
 const baseUrl = 'https://forkhr.com'
 
@@ -14,6 +18,7 @@ const pages: Page[] = [
   { path: '/sales', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/supply', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/service-providers', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/suppliers', priority: 0.8, changeFrequency: 'daily' },
   { path: '/ai-assistant', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/hiring', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/solutions', priority: 0.8, changeFrequency: 'monthly' },
@@ -29,7 +34,17 @@ const pages: Page[] = [
   { path: '/terms-of-service', priority: 0.3, changeFrequency: 'yearly' },
 ]
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date()
-  return pages.map((p) => ({ url: `${baseUrl}${p.path}`, lastModified, changeFrequency: p.changeFrequency, priority: p.priority }))
+  // One entry per listed supplier (forkhr.com/suppliers/<slug>); none when the API cannot be reached
+  const suppliers = await fetchSuppliers()
+  return [
+    ...pages.map((p) => ({ url: `${baseUrl}${p.path}`, lastModified, changeFrequency: p.changeFrequency, priority: p.priority })),
+    ...suppliers.map((s) => ({
+      url: `${baseUrl}${supplierPath(s.slug)}`,
+      lastModified: s.updatedAt ? new Date(s.updatedAt) : lastModified,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    })),
+  ]
 }

@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react'
-import { BookOpen, BotMessageSquare, Briefcase, CalendarDays, ClipboardCheck, Clock, FileSignature, Landmark, Megaphone, MessageSquare, Package, PieChart, Receipt, ScanBarcode, TrendingUp, Truck, Wrench } from 'lucide-react'
+import { BookOpen, BotMessageSquare, Briefcase, CalendarDays, ClipboardCheck, Clock, FileSignature, Landmark, Megaphone, MessageSquare, Package, PieChart, Receipt, ScanBarcode, Store, TrendingUp, Truck, Wrench } from 'lucide-react'
 import type { PreviewKey } from '@/lib/solutions'
 
 export type NavItem = {
@@ -60,6 +60,7 @@ export const productGroups: ProductGroup[] = [
     free: true,
     items: [
       { name: 'Order from vendors', desc: 'One-time and standing orders', icon: Package, href: '/supply', preview: 'supply', previewTitle: 'Fork · Supply' },
+      { name: 'Suppliers', desc: 'Directory of vendors on Fork', icon: Store, href: '/suppliers', preview: 'supply', previewTitle: 'Fork · Supply' },
       { name: 'Vendor & customer chat', desc: 'Email bridge for anyone not on Fork', icon: MessageSquare, href: '/supply#chat', preview: 'vendorChat', previewTitle: 'Fork · Chat · Bluebird Dairy' },
       { name: 'Stock counts', desc: 'Par levels and reorder suggestions', icon: ScanBarcode, href: '/supply#inventory', preview: 'supply', previewTitle: 'Fork · Supply' },
       { name: 'Sell through Fork', desc: 'Catalog, customers, orders', icon: Receipt, href: '/sales', preview: 'invoice', previewTitle: 'Fork · Sales' },
