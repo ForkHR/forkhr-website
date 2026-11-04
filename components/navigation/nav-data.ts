@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react'
-import { BookOpen, BotMessageSquare, Briefcase, CalendarDays, ClipboardCheck, Clock, FileSignature, Landmark, Megaphone, MessageSquare, Package, PieChart, Receipt, ScanBarcode, Store, TrendingUp, Truck, Wrench } from 'lucide-react'
+import { BookOpen, BotMessageSquare, Briefcase, CalendarDays, ClipboardCheck, Clock, FileSignature, Landmark, Megaphone, MessageSquare, Package, PieChart, Receipt, ScanBarcode, ShoppingBag, Store, TrendingUp, Truck, Wrench } from 'lucide-react'
 import type { PreviewKey } from '@/lib/solutions'
 
 export type NavItem = {
@@ -64,6 +64,7 @@ export const productGroups: ProductGroup[] = [
       { name: 'Vendor & customer chat', desc: 'Email bridge for anyone not on Fork', icon: MessageSquare, href: '/supply#chat', preview: 'vendorChat', previewTitle: 'Fork · Chat · Bluebird Dairy' },
       { name: 'Stock counts', desc: 'Par levels and reorder suggestions', icon: ScanBarcode, href: '/supply#inventory', preview: 'supply', previewTitle: 'Fork · Supply' },
       { name: 'Sell through Fork', desc: 'Catalog, customers, orders', icon: Receipt, href: '/sales', preview: 'invoice', previewTitle: 'Fork · Sales' },
+      { name: 'Online storefront', desc: 'Your catalog on a link, guest checkout', icon: ShoppingBag, href: '/storefront', badge: 'New', preview: 'storefront', previewTitle: 'app.forkhr.com/v/northside-roasters' },
       { name: 'Service calls', desc: 'Technician visits, work reports, invoices', icon: Wrench, href: '/service-providers', preview: 'serviceCall', previewTitle: 'Fork · Service calls' },
       { name: 'Invoices & payments', desc: 'Card or bank, no account needed', icon: Landmark, href: '/sales#payments', preview: 'invoice', previewTitle: 'Fork · Sales' },
       { name: 'Delivery routes', desc: 'Optimized stops, proof of delivery', icon: Truck, href: '/sales#routes', preview: 'route', previewTitle: 'Fork · Routes' },

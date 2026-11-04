@@ -37,6 +37,10 @@ export type PreviewKey =
   | 'learning'
   | 'receiving'
   | 'serviceIssue'
+  | 'storefront'
+  | 'productPage'
+  | 'guestCheckout'
+  | 'storefrontViews'
 
 export type SolutionFeature = {
   eyebrow: string
@@ -135,7 +139,7 @@ export const SOLUTIONS: Solution[] = [
         plan: 'free',
         title: 'Bake for other shops? Get paid online',
         lede: 'Standing orders from cafés, a route for the van, an invoice with a pay link.',
-        bullets: ['Price list per café', 'Card and bank payments through Stripe', 'Route with proof of delivery'],
+        bullets: ['Price list per café', 'A storefront new cafés order from', 'Card and bank payments through Stripe'],
         preview: 'invoice',
         previewTitle: 'Fork · Sales · Order S-2088',
         href: '/sales',
@@ -143,7 +147,7 @@ export const SOLUTIONS: Solution[] = [
       },
     ],
     pricing: {
-      free: ['Vendor orders and standing orders', 'Wholesale orders and invoices', 'Vendor and customer chat', 'Delivery routes'],
+      free: ['Vendor orders and standing orders', 'Wholesale orders and invoices', 'Online storefront with guest checkout', 'Vendor and customer chat', 'Delivery routes'],
       paidTier: 'essential',
       paid: ['Barista schedule, open shifts, trades', 'Kiosk and GPS clock-in, tip pool', 'Team chat and announcements', 'Stock counts with par levels'],
       note: 'Checklists and temperature logs are on Premium.',
@@ -151,7 +155,8 @@ export const SOLUTIONS: Solution[] = [
     faqs: [
       { q: 'Is there a free plan for a small coffee shop?', a: 'Yes. Ordering, wholesale, invoicing and vendor chat are free. Scheduling and timecards are $39 per location per month, unlimited employees.' },
       { q: 'Can baristas swap shifts on their phone?', a: 'Yes. A teammate with the right job takes the shift and a manager approves in one tap.' },
-      { q: 'Does it work for a bakery that sells wholesale?', a: 'Yes. Catalog, standing orders, routes and invoices. Customers pay from a link or QR code and never need an account.' },
+      { q: 'Does it work for a bakery that sells wholesale?', a: 'Yes. Catalog, a storefront, standing orders, routes and invoices. Customers pay from a link or QR code and never need an account.' },
+      { q: 'Can new cafés order from us online?', a: 'Yes. Your storefront is a link with your catalog: cafés on Fork order there, anyone else checks out as a guest and pays by card.' },
       { q: 'Can I order from vendors that do not use Fork?', a: 'Yes. Add them by name and email. Orders and messages go out as email; replies land back in the chat.' },
       { q: 'Does Fork do fridge temperature logs?', a: 'Yes, on Premium. Scan the QR on the fridge to log it. Out of range fails the run and schedules a recheck.' },
     ],
@@ -246,9 +251,9 @@ export const SOLUTIONS: Solution[] = [
     name: 'Food distributors and commissaries',
     title: 'Wholesale Order Management, Invoicing & Delivery Route Software for Food Distributors',
     description:
-      'Take wholesale orders, plan the delivery route, invoice from the order and get paid by card or US bank transfer. Your customers never need an account. Free for unlimited customers and catalog items.',
+      'Take wholesale orders, open an online storefront new customers order from, plan the delivery route, invoice from the order and get paid by card or US bank transfer. Your customers never need an account. Free for unlimited customers and catalog items.',
     h1: 'Take orders, run the route, get paid. Your customers never need an account.',
-    lede: 'Price lists per customer, standing orders, routes with ETAs, invoices with a pay link.',
+    lede: 'Price lists, standing orders, a storefront, routes with ETAs, invoices with a pay link.',
     plan: 'free',
     heroPreview: 'invoice',
     heroPreviewTitle: 'Fork · Sales · Order S-2088',
@@ -258,6 +263,7 @@ export const SOLUTIONS: Solution[] = [
       { before: 'Invoices chased for weeks', after: 'Pay link and QR on every invoice' },
       { before: 'Drivers with a printed list', after: 'Stops in order, a photo at each one' },
       { before: 'Every customer needs a portal account', after: 'No account needed' },
+      { before: 'New accounts wait for a callback and a PDF', after: 'They order from your storefront and pay by card' },
     ],
     features: [
       {
@@ -268,6 +274,17 @@ export const SOLUTIONS: Solution[] = [
         bullets: ['Price list per customer', 'Import from a spreadsheet', 'Credits taken off the invoice'],
         preview: 'customerChat',
         previewTitle: 'Fork · Chat · Corner Café',
+      },
+      {
+        eyebrow: 'Storefront',
+        plan: 'free',
+        title: 'A store new customers order from on their own',
+        lede: 'Your catalog on a link. Guests check out and pay by card.',
+        bullets: ['Shelves by category, a page per product', 'Your minimum, delivery days and fee at checkout', 'Searches that found nothing, every week'],
+        preview: 'storefront',
+        previewTitle: 'app.forkhr.com/v/northside-roasters',
+        href: '/storefront',
+        hrefLabel: 'Explore the storefront',
       },
       {
         eyebrow: 'Invoices & payments',
@@ -300,7 +317,7 @@ export const SOLUTIONS: Solution[] = [
       },
     ],
     pricing: {
-      free: ['Catalog, customers, orders', 'Invoices with card and bank payments', 'Delivery routes', 'Customer chat with email bridge'],
+      free: ['Catalog, customers, orders', 'Online storefront with guest checkout', 'Invoices with card and bank payments', 'Delivery routes', 'Customer chat with email bridge'],
       paidTier: 'essential',
       paid: ['Driver and warehouse schedule', 'GPS and kiosk time clock', 'Team chat and announcements', 'Stock counts with par levels'],
       note: `${feePct}% platform fee plus Stripe processing on online payments. No fee on invoices settled outside Fork.`,
@@ -309,6 +326,7 @@ export const SOLUTIONS: Solution[] = [
       { q: 'Do my customers need a Fork account?', a: 'No. They pay from the emailed link or the QR code on the PDF. They can claim an account later with the same email.' },
       { q: 'What does it cost to sell through Fork?', a: `Nothing to start. When a customer pays online, Fork keeps ${feePct}% and Stripe charges its processing fee.` },
       { q: 'How do I get paid?', a: 'Through Stripe, straight to your bank account. Paid, failed and refunded states sync onto the order.' },
+      { q: 'Can new customers order online without calling us?', a: 'Yes. Your storefront is a link with your catalog: buyers on Fork order there, anyone else checks out as a guest and pays by card.' },
       { q: 'Can I import my customers and catalog?', a: 'Yes, from a spreadsheet. Customer item names can be linked to your SKUs.' },
       { q: 'Can I plan routes for several vans?', a: 'Yes. Each route takes the orders you pick, orders the stops and shows in the driver\'s Deliveries tab.' },
     ],
@@ -639,6 +657,7 @@ export const SOLUTION_MENU: { business: SolutionLink[]; need: SolutionLink[] } =
   need: [
     ...SOLUTIONS.filter((s) => s.kind === 'need').map((s) => ({ label: s.menuLabel, desc: s.menuDesc, href: `/solutions/${s.slug}`, preview: s.menuPreview })),
     { label: 'Wholesale ordering & invoicing', desc: 'Sell, invoice and get paid online', href: '/sales', preview: 'invoice' },
+    { label: 'Online wholesale storefront', desc: 'Your catalog on a link, guest checkout', href: '/storefront', preview: 'storefront' },
     { label: 'Vendor ordering', desc: 'Every vendor order in one place, free', href: '/supply', preview: 'vendorChat' },
     { label: 'Compliance & HR records', desc: 'Signed forms, policies, a record for every case', href: '/solutions/compliance', preview: 'people' },
     { label: 'Labor & food cost control', desc: 'Labor against sales, waste against the menu', href: '/solutions/operational-efficiency', preview: 'report' },

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import Backdrop from '@/components/visual/Backdrop'
 import { Button } from '@/components/ui/button'
@@ -60,7 +61,12 @@ export default async function SuppliersPage() {
         <div className="mx-auto flex max-w-6xl flex-col gap-5 px-4 py-12 md:flex-row md:items-center md:justify-between md:px-6 md:py-16">
           <div className="max-w-xl">
             <h2 className="text-2xl font-semibold tracking-tight text-warm-950 md:text-3xl">Sell to the shops already on Fork</h2>
-            <p className="mt-2 text-[15px] leading-relaxed text-warm-600">List your catalog, take orders and get paid online. A listed storefront gets its own page here.</p>
+            <p className="mt-2 text-[15px] leading-relaxed text-warm-600">
+              List your catalog, take orders and get paid online. A listed storefront gets its own page here.{' '}
+              <Link href="/storefront" className="font-medium text-forest-600 hover:text-forest-700">
+                How the storefront works
+              </Link>
+            </p>
           </div>
           <Button asChild size="lg" className="h-11 shrink-0 px-6 text-base">
             <a href={CLAIM_URL} target="_blank" rel="noopener noreferrer">

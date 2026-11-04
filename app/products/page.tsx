@@ -16,6 +16,7 @@ import {
   PackageCheck,
   PieChart,
   Receipt,
+  ShoppingBag,
   TrendingUp,
   Truck,
   Wrench,
@@ -43,6 +44,7 @@ import {
   SchedulePreview,
   ServiceCallPreview,
   SopsPreview,
+  StorefrontPreview,
   SupplyPreview,
   TimecardsPreview,
   VendorChatPreview,
@@ -53,7 +55,7 @@ import { CTA_PRIMARY, PLATFORM_FEE_BPS, REGISTER_URL } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
 const description =
-  'Every Fork product: scheduling, timecards, chat, performance reviews, people & HR, hiring, SOPs and checklists, the feed, learning, reports, the AI assistant, ordering from vendors, receiving, selling and invoicing customers, delivery routes and service calls.'
+  'Every Fork product: scheduling, timecards, chat, performance reviews, people & HR, hiring, SOPs and checklists, the feed, learning, reports, the AI assistant, ordering from vendors, receiving, selling and invoicing customers, an online storefront with guest checkout, delivery routes and service calls.'
 
 export const metadata: Metadata = {
   title: 'Products — Fork | Scheduling, Reviews, SOPs, Supply, Sales & More',
@@ -114,6 +116,7 @@ const chapters: Chapter[] = [
       { id: 'receiving', label: 'Receiving & credits', tier: 'free', Icon: PackageCheck },
       { id: 'vendor-chat', label: 'Vendor & customer chat', tier: 'free', Icon: MessagesSquare },
       { id: 'sales', label: 'Sell & get paid', tier: 'free', Icon: Receipt },
+      { id: 'storefront', label: 'Online storefront', tier: 'free', Icon: ShoppingBag, badge: 'New' },
       { id: 'routes', label: 'Delivery routes', tier: 'free', Icon: Truck },
       { id: 'services', label: 'Service calls', tier: 'free', Icon: Wrench },
     ],
@@ -445,8 +448,23 @@ export default function ProductsPage() {
         hrefLabel="Explore selling"
       />
       <FeatureRow
-        id="routes"
+        id="storefront"
         className="scroll-mt-36"
+        badge="New"
+        eyebrow="Online storefront"
+        plan="free"
+        title="Your catalog, as a store on a link"
+        lede="Shelves by category, a page per product, a cart that knows your minimum. Buyers order on Fork or check out as a guest and pay by card."
+        bullets={['Product pages with details and nutrition facts', 'Guest checkout on your delivery days', 'Views and searches that found nothing']}
+        preview={<StorefrontPreview />}
+        previewTitle="app.forkhr.com/v/northside-roasters"
+        href="/storefront"
+        hrefLabel="Explore the storefront"
+      />
+      <FeatureRow
+        id="routes"
+        className="scroll-mt-36 bg-warm-50"
+        flip
         eyebrow="Delivery routes"
         plan="free"
         title="Deliver on the best route"
@@ -459,8 +477,7 @@ export default function ProductsPage() {
       />
       <FeatureRow
         id="services"
-        className="scroll-mt-36 bg-warm-50"
-        flip
+        className="scroll-mt-36"
         eyebrow="Service calls"
         plan="free"
         title="From the service call to paid"

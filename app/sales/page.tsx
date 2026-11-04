@@ -6,14 +6,14 @@ import SectionHeading from '@/components/marketing/SectionHeading'
 import CtaSection from '@/components/marketing/CtaSection'
 import DayTimeline, { type DayStop } from '@/components/marketing/DayTimeline'
 import IllustrationStory from '@/components/marketing/IllustrationStory'
-import { InvoicePreview, RoutePreview, VendorChatPreview, Window } from '@/components/previews'
+import { InvoicePreview, RoutePreview, StorefrontPreview, VendorChatPreview, Window } from '@/components/previews'
 import { SUPPLIER_DAY } from '@/lib/illustrations'
 import { PLATFORM_FEE_BPS, registerUrl } from '@/lib/site'
 
 const feePct = (PLATFORM_FEE_BPS / 100).toFixed(1).replace(/\.0$/, '')
 
 const description =
-  'Sell through Fork: catalog, customers, sales and standing orders, delivery routes and invoices. Customers pay by card or US bank transfer from an emailed link or the QR on the PDF, no Fork account needed. Free plan.'
+  'Sell through Fork: catalog, an online storefront with guest checkout, customers, sales and standing orders, delivery routes and invoices. Customers pay by card or US bank transfer from an emailed link or the QR on the PDF, no Fork account needed. Free plan.'
 
 export const metadata: Metadata = {
   title: 'Sell through Fork — Orders, invoices, online payments and delivery routes',
@@ -104,6 +104,21 @@ export default function SalesPage() {
       </section>
 
       <FeatureRow
+        id="storefront"
+        flip
+        badge="New"
+        eyebrow="Storefront"
+        plan="free"
+        title="A store for the buyers you haven't met yet"
+        lede="Your catalog on a link: shelves by category, a page for every product, a cart that knows your minimum. Guests pay by card."
+        bullets={['Customers on Fork order in a few clicks', 'Guest checkout, paid into your Stripe account', 'Views and searches that found nothing, every week']}
+        preview={<StorefrontPreview />}
+        previewTitle="app.forkhr.com/v/northside-roasters"
+        href="/storefront"
+        hrefLabel="Explore the storefront"
+      />
+
+      <FeatureRow
         id="payments"
         eyebrow="Invoices & payments"
         plan="free"
@@ -144,9 +159,9 @@ export default function SalesPage() {
             <SectionHeading eyebrow="What it costs" title="Free to sell. A small fee only when money moves online." />
             <div className="surface divide-y divide-warm-100">
               {[
-                { l: 'Catalog, customers, orders, routes, chat', v: '$0', d: 'Unlimited' },
+                { l: 'Catalog, storefront, orders, routes, chat', v: '$0', d: 'Unlimited' },
                 { l: 'Invoices settled outside Fork', v: '$0', d: 'Mark them paid' },
-                { l: 'Invoices paid online', v: `${feePct}%`, d: 'On the pre-tax amount, plus Stripe processing' },
+                { l: 'Invoices paid online, guest checkouts', v: `${feePct}%`, d: 'On the pre-tax amount, plus Stripe processing' },
               ].map((r) => (
                 <div key={r.l} className="flex items-center justify-between gap-6 px-6 py-5">
                   <div>

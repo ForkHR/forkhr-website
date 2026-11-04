@@ -100,7 +100,7 @@ const more = [
   { icon: <Timer className="h-5 w-5" />, title: 'By the visit or the hour', desc: 'A fixed call-out or hourly labor, from your price list.' },
   { icon: <LifeBuoy className="h-5 w-5" />, title: 'Callbacks and credits', desc: 'A problem after the visit becomes a revisit or a credit.' },
   { icon: <MessageSquare className="h-5 w-5" />, title: 'A chat per customer', desc: 'On Fork or by email. Replies come back to the thread.' },
-  { icon: <Store className="h-5 w-5" />, title: 'Listed in the Fork market', desc: 'Restaurants and shops on Fork find you by trade.' },
+  { icon: <Store className="h-5 w-5" />, title: 'Listed, with a page of your own', desc: 'Shops on Fork find you by trade and request a visit from your storefront.' },
   { icon: <Users className="h-5 w-5" />, title: 'The whole crew', desc: 'Add every technician. No per-user price.' },
 ]
 

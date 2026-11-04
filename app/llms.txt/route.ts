@@ -20,10 +20,11 @@ Fork is for hourly-staff businesses (coffee shops, bakeries, restaurants, food d
 
 ## Products
 
-- [Everything in one place](${base}/products): schedule, timecards, chat, feed, SOPs, learn, people & HR, performance, hiring, supply, sales, reports, AI assistant.
+- [Everything in one place](${base}/products): schedule, timecards, chat, feed, SOPs, learn, people & HR, performance, hiring, supply, sales, online storefront, reports, AI assistant.
 - [SOPs & checklists](${base}/sops): boards, procedures and runs; opening and closing, temperature, waste and cash logs.
 - [Performance reviews](${base}/performance): reviews written beside the record Fork already keeps (attendance, shift flags, tasks, SOP runs, training, recognition); automatic 90-day and anniversary reviews; self reviews on a phone; raises approved and applied to the pay rate; teammate feedback and anonymous manager feedback; check-ins, goals and notes. On the Pro plan; improvement plans on Premium.
 - [Sell through Fork](${base}/sales): catalog, customers, orders, delivery routes, invoices paid online by card or US bank transfer; customers need no account.
+- [Online storefront](${base}/storefront): a seller's catalog as a public page at app.forkhr.com/v/<address>: shelves by category, a page per product (brand, origin, storage, ingredients, allergens, nutrition facts), search, a cart that knows the minimum; customers on Fork sign in and order on their terms, anyone else checks out as a guest and pays by card; views, most viewed items and searches that found nothing. Free; guest card payments carry the online payment fee.
 - [Service providers](${base}/service-providers): service calls for repair and maintenance companies; technician visits with photos, parts, time on site and a signature; maintenance contracts; one call or a month of calls on one invoice paid online; customers need no account.
 - [Supply](${base}/supply): order from vendors, standing orders, vendor chat with email bridge, stock counts.
 - [Hiring](${base}/hiring): public job board, screening questions, AI resume scan, pipeline to onboarding.
