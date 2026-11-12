@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import Backdrop from '@/components/visual/Backdrop'
 import SectionHeading from '@/components/marketing/SectionHeading'
 import { LogoMark } from '@/components/navigation/Logo'
-import { CTA_PRIMARY, REGISTER_URL, SUPPORT_EMAIL } from '@/lib/site'
+import { CTA_PRIMARY, DEMO_PATH, REGISTER_URL, SUPPORT_EMAIL } from '@/lib/site'
 
 const description = 'Fork was built to give hourly teams one app for the team, the operations and the money. Learn about our mission and values.'
 
@@ -93,7 +93,13 @@ export default function AboutPage() {
         <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="max-w-2xl">
             <h2 className="mb-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">Questions? We would love to hear from you.</h2>
-            <p className="mb-10 max-w-xl text-lg text-warm-400">Reach out for a demo, a partnership, or just to say hello.</p>
+            <p className="mb-10 max-w-xl text-lg text-warm-400">
+              Reach out for{' '}
+              <Link href={DEMO_PATH} className="text-warm-200 underline decoration-warm-600 underline-offset-4 transition-colors hover:text-white">
+                a demo
+              </Link>
+              , a partnership, or just to say hello.
+            </p>
             <div className="flex flex-col gap-4 sm:flex-row">
               <Link href={`mailto:${SUPPORT_EMAIL}`}>
                 <Button size="lg" className="h-12 bg-white px-8 text-base text-warm-950 hover:bg-warm-100">

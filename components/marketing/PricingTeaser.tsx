@@ -21,7 +21,7 @@ export default function PricingTeaser() {
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-semibold text-warm-950">{t.name}</h3>
                 {t.popular && <span className="rounded-full bg-warm-950 px-2 py-0.5 text-[11px] font-semibold text-white">Most popular</span>}
-                {t.key === 'free' && <span className="rounded-full bg-ok-50 px-2 py-0.5 text-[11px] font-semibold text-ok-700">No card</span>}
+                {t.key === 'free' && <span className="rounded-full bg-ok-50 px-2 py-0.5 text-[11px] font-semibold text-ok-700">Always free</span>}
               </div>
               <div className="mt-3 flex items-end gap-1">
                 <span className="text-4xl font-semibold tracking-tight text-warm-950">${t.price}</span>

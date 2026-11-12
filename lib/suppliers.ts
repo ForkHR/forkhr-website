@@ -4,12 +4,11 @@
 // `generateStaticParams` comes from this list. An API that is unreachable at build time leaves an
 // empty directory ("Suppliers are being added") and no detail pages, never a failed build.
 // The storefront itself (ordering) stays in the app: app.forkhr.com/v/<slug>.
-import { APP_URL, registerUrl } from '@/lib/site'
+import { API_URL, APP_URL, registerUrl } from '@/lib/site'
 
 export const SITE_URL = 'https://forkhr.com'
 export const REVALIDATE_SECONDS = 3600
 
-const API_BASE = (process.env.NEXT_PUBLIC_API_URL || 'https://app.forkhr.com/api').replace(/\/$/, '')
 const PAGE_SIZE = 100
 const MAX_PAGES = 20
 const TIMEOUT_MS = 10_000
@@ -42,7 +41,7 @@ export type SupplierEntry = { seller: Supplier; categories: SupplierCategory[]; 
 /** GET the API's `data`, or null for any failure (network, timeout, 404, 429, 5xx, bad JSON). */
 const getData = async <T,>(path: string): Promise<T | null> => {
   try {
-    const res = await fetch(`${API_BASE}${path}`, {
+    const res = await fetch(`${API_URL}${path}`, {
       next: { revalidate: REVALIDATE_SECONDS },
       signal: AbortSignal.timeout(TIMEOUT_MS),
       headers: { Accept: 'application/json' },

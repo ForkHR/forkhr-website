@@ -189,7 +189,7 @@ export default async function SupplierPage({ params }: Params) {
           <aside className="order-1 lg:order-2">
             <div className="surface p-5 lg:sticky lg:top-24">
               <p className="text-[12px] font-semibold uppercase tracking-wider text-warm-400">Order on Fork</p>
-              <p className="mt-2 text-[15px] leading-relaxed text-warm-600">Browse the full catalog and place orders with {s.name} through Fork. Free for buyers, no card needed.</p>
+              <p className="mt-2 text-[15px] leading-relaxed text-warm-600">Browse the full catalog and place orders with {s.name} through Fork. Free for buyers.</p>
               <Button asChild size="lg" className="mt-4 h-11 w-full text-base">
                 <a href={orderUrl} target="_blank" rel="noopener noreferrer">
                   Order on Fork

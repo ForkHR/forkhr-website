@@ -7,7 +7,7 @@ import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { Button } from '../ui/button'
 import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
-import { CTA_PRIMARY, GUARANTEE_DAYS, LOGIN_URL, REGISTER_URL } from '@/lib/site'
+import { CTA_DEMO, CTA_PRIMARY, DEMO_PATH, GUARANTEE_DAYS, LOGIN_URL, REGISTER_URL } from '@/lib/site'
 import { SOLUTION_MENU, type PreviewKey, type SolutionLink } from '@/lib/solutions'
 import { renderPreview } from '@/components/previews/registry'
 import Logo from './Logo'
@@ -195,9 +195,16 @@ const Header = () => {
               <Link href="/faq" className={navLink}>
                 FAQ
               </Link>
+              <Link href="/docs" className={cn(navLink, 'hidden lg:inline-flex')}>
+                Docs
+              </Link>
             </nav>
 
             <div className="flex items-center gap-2">
+              {/* From 1280px: under that the links, Sign in and the button fill the bar (the page is in the footer and the phone's menu) */}
+              <Link href={DEMO_PATH} className={cn(navLink, 'hidden whitespace-nowrap xl:inline-flex')}>
+                {CTA_DEMO}
+              </Link>
               <Link href={LOGIN_URL} target="_blank">
                 <Button variant="ghost" className="text-[14px] font-medium text-warm-600 hover:bg-transparent hover:text-warm-950">
                   Sign in
@@ -291,6 +298,8 @@ const Header = () => {
                     { href: '/pricing', label: 'Pricing' },
                     { href: '/about', label: 'About' },
                     { href: '/faq', label: 'FAQ' },
+                    { href: '/docs', label: 'Docs' },
+                    { href: DEMO_PATH, label: CTA_DEMO },
                   ].map((l) => (
                     <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="flex items-center border-b border-warm-100 px-4 py-4 text-base font-medium text-warm-900">
                       {l.label}

@@ -7,7 +7,7 @@ import { CTA_PRIMARY, GUARANTEE_DAYS, REGISTER_URL } from '@/lib/site'
 
 /** The promises every page closes on, beside the offer. Same everywhere, so they stay true. */
 const PROMISES = [
-  { title: 'Free plan, no card', desc: 'Ordering, selling, invoices and routes, free for good.' },
+  { title: 'A free plan, for good', desc: 'Ordering, selling, invoices and routes. The card at sign-up only confirms your business.' },
   { title: 'Unlimited employees', desc: 'One price per location. Everyone who works there is included.' },
   { title: `${GUARANTEE_DAYS}-day money-back guarantee`, desc: 'On every paid plan. Cancel anytime, your data stays.' },
   { title: 'On every phone', desc: 'iOS and Android for the team, the web and a kiosk for the shop.' },

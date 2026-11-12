@@ -22,7 +22,7 @@ export const TIERS: Tier[] = [
     name: 'Free',
     price: 0,
     tagline: 'Ordering & selling',
-    description: 'Order from your vendors, sell to your customers and get paid. No card, no clock.',
+    description: 'Order from your vendors, sell to your customers and get paid. No charge, no clock.',
     bullets: [
       'Order from unlimited vendors',
       'Standing orders & delivery schedules',

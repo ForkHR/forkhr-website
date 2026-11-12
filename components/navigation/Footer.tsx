@@ -4,7 +4,7 @@ import { Button } from '../ui/button'
 import Logo from './Logo'
 import { productGroups } from './nav-data'
 import StoreBadges from '@/components/marketing/StoreBadges'
-import { CTA_PRIMARY, JOBS_URL, LOGIN_URL, REGISTER_URL, SITE_TAGLINE } from '@/lib/site'
+import { CTA_DEMO, CTA_PRIMARY, DEMO_PATH, JOBS_URL, LOGIN_URL, REGISTER_URL, SITE_TAGLINE, VENDORS_PATH } from '@/lib/site'
 import { ALL_SOLUTION_LINKS, SOLUTION_MENU } from '@/lib/solutions'
 
 type FooterLink = { label: string; href: string; external?: boolean; badge?: string }
@@ -23,8 +23,16 @@ const companyLinks: FooterLink[] = [
   { label: 'Pricing for AI agents', href: '/pricing.md' },
   { label: 'About', href: '/about' },
   { label: 'FAQ', href: '/faq' },
+  { label: 'Docs', href: '/docs' },
   { label: 'Privacy policy', href: '/privacy-policy' },
   { label: 'Terms of service', href: '/terms-of-service' },
+]
+
+// The two forms (app/demo, app/vendors) stand with the footer's own offer, under Get started
+// free · Sign in, and not in a column: they are the other two ways in.
+const talkLinks: FooterLink[] = [
+  { label: CTA_DEMO, href: DEMO_PATH },
+  { label: 'For vendors', href: VENDORS_PATH },
 ]
 
 const businessLinks: FooterLink[] = [...SOLUTION_MENU.business.map((l) => ({ label: l.label, href: l.href })), { label: 'All solutions →', href: '/solutions' }]
@@ -83,6 +91,13 @@ const Footer = () => {
                   Sign in
                 </Button>
               </Link>
+            </div>
+            <div className="-mt-1 flex items-center gap-4">
+              {talkLinks.map((l) => (
+                <Link key={l.href} href={l.href} className="whitespace-nowrap text-sm font-medium text-warm-600 underline decoration-warm-300 underline-offset-4 transition-colors hover:text-warm-950 hover:decoration-warm-950">
+                  {l.label}
+                </Link>
+              ))}
             </div>
             <StoreBadges size="sm" />
             <iframe src="https://status.forkhr.com/badge?theme=light" width="250" height="30" scrolling="no" title="Fork status" className="-ml-1" />

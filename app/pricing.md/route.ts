@@ -19,7 +19,7 @@ const table = (header: string[], rows: string[][]) => {
 const build = () => {
   const plans = table(
     ['Plan', 'Price', 'Billing', 'Summary'],
-    TIERS.map((t) => [t.name, price(t.price), t.price === 0 ? 'Free forever, no card' : 'Monthly, per active location', t.tagline]),
+    TIERS.map((t) => [t.name, price(t.price), t.price === 0 ? 'Free forever' : 'Monthly, per active location', t.tagline]),
   )
 
   const included = TIERS.map((t) => `### ${t.name} (${price(t.price)})\n\n${t.description}\n\n${t.bullets.map((b) => `- ${b}`).join('\n')}`).join('\n\n')

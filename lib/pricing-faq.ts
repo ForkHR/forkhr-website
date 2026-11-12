@@ -7,7 +7,11 @@ export const feePct = (PLATFORM_FEE_BPS / 100).toFixed(1).replace(/\.0$/, '')
 export const PRICING_FAQS: { q: string; a: string }[] = [
   {
     q: 'Is there a free plan?',
-    a: 'Yes. Ordering from vendors, selling to your customers, service calls, invoicing, online payments, vendor and customer chat and delivery routes are free, with unlimited vendors, customers, catalog items and locations. No card is needed to start.',
+    a: 'Yes. Ordering from vendors, selling to your customers, service calls, invoicing, online payments, vendor and customer chat and delivery routes are free, with unlimited vendors, customers, catalog items and locations. Sign-up asks for a card to confirm your business; it is never charged on the Free plan.',
+  },
+  {
+    q: 'Why do you ask for a card if the plan is free?',
+    a: 'To confirm that a real business is signing up, which keeps fake and accidental accounts out of the network your vendors and customers use. The card is checked, not charged: nothing is billed on the Free plan, and it is only used if you choose a paid plan yourself. You can change it anytime from your billing settings.',
   },
   {
     q: 'How does per-location pricing work?',

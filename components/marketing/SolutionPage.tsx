@@ -118,7 +118,7 @@ export default function SolutionPage({ solution }: { solution: Solution }) {
             <div className="surface flex flex-col p-7">
               <div className="flex items-center justify-between">
                 <h3 className="text-xl font-semibold text-warm-950">Free</h3>
-                <span className="rounded-full bg-ok-50 px-2 py-0.5 text-[11px] font-semibold text-ok-700">No card needed</span>
+                <span className="rounded-full bg-ok-50 px-2 py-0.5 text-[11px] font-semibold text-ok-700">Always free</span>
               </div>
               <div className="mt-3 flex items-end gap-1">
                 <span className="text-4xl font-semibold tracking-tight text-warm-950">$0</span>

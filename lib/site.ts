@@ -3,6 +3,8 @@
 // per location with a money-back guarantee (mirrors backend/config/billingConfig.js).
 
 export const APP_URL = 'https://app.forkhr.com'
+/** The app's API: the supplier directory is read from it (lib/suppliers.ts) and the site's forms are sent to it (lib/leads.ts). */
+export const API_URL = (process.env.NEXT_PUBLIC_API_URL || `${APP_URL}/api`).replace(/\/$/, '')
 export const REGISTER_URL = `${APP_URL}/register`
 export const LOGIN_URL = `${APP_URL}/login`
 /**
@@ -29,6 +31,11 @@ export const REFERRAL_REWARD_MONTHS = 1
 export const PLATFORM_FEE_BPS = 50
 
 export const CTA_PRIMARY = 'Get started free'
+/** The link to /demo (the Request a demo form), worded the same in the header, the footer and on the pages. */
+export const CTA_DEMO = 'Request a demo'
+export const DEMO_PATH = '/demo'
+/** The form for a supplier or service company that wants to be on the marketplace. */
+export const VENDORS_PATH = '/vendors'
 export const CTA_NOTE = `Free for ordering & selling · Paid plans from $39 per location · ${GUARANTEE_DAYS}-day money-back guarantee`
 
 export const SEGMENTS = [

@@ -5,6 +5,7 @@ import Backdrop from '@/components/visual/Backdrop'
 import { Button } from '@/components/ui/button'
 import SupplierDirectory from '@/components/suppliers/SupplierDirectory'
 import { CLAIM_URL, SITE_URL, fetchSuppliers, supplierPath } from '@/lib/suppliers'
+import { VENDORS_PATH } from '@/lib/site'
 
 // Static with ISR: rebuilt in the background once an hour from the app API's directory
 export const revalidate = 3600
@@ -44,7 +45,7 @@ export default async function SuppliersPage() {
             <span className="eyebrow mb-4">Supplier directory</span>
             <h1 className="text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-warm-950 sm:text-5xl md:text-6xl">Suppliers you can order from on Fork</h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-warm-600 md:text-xl">
-              Every business here has a storefront on Fork: browse what they carry and where they deliver, then place the order from the app. Free for buyers, no card needed.
+              Every business here has a storefront on Fork: browse what they carry and where they deliver, then place the order from the app. Free for buyers.
             </p>
             {suppliers.length > 0 && (
               <p className="mt-5 text-sm text-warm-400">
@@ -65,6 +66,12 @@ export default async function SuppliersPage() {
               List your catalog, take orders and get paid online. A listed storefront gets its own page here.{' '}
               <Link href="/storefront" className="font-medium text-forest-600 hover:text-forest-700">
                 How the storefront works
+              </Link>
+            </p>
+            <p className="mt-2 text-[15px] leading-relaxed text-warm-600">
+              Want to talk first?{' '}
+              <Link href={VENDORS_PATH} className="font-medium text-forest-600 hover:text-forest-700">
+                Tell us about your business
               </Link>
             </p>
           </div>

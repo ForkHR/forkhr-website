@@ -2,12 +2,15 @@
 // pricing page first, then the pages that describe the product, in plain language.
 import { SOLUTIONS } from '@/lib/solutions'
 import { GUARANTEE_DAYS, REGISTER_URL, SITE_DESCRIPTION, SUPPORT_EMAIL } from '@/lib/site'
+import { articlesLabel, fetchDocsIndex, topicPath, type DocsTopic } from '@/lib/docs'
 
+// Static, rebuilt once an hour: the Docs topics come from the app API (lib/docs.ts)
 export const dynamic = 'force-static'
+export const revalidate = 3600
 
 const base = 'https://forkhr.com'
 
-const body = () => `# Fork
+const body = (docTopics: DocsTopic[]) => `# Fork
 
 > ${SITE_DESCRIPTION}
 
@@ -29,6 +32,11 @@ Fork is for hourly-staff businesses (coffee shops, bakeries, restaurants, food d
 - [Supply](${base}/supply): order from vendors, standing orders, vendor chat with email bridge, stock counts.
 - [Hiring](${base}/hiring): public job board, screening questions, AI resume scan, pipeline to onboarding.
 - [AI assistant](${base}/ai-assistant): answers from the company's own policies, FAQs, courses and schedule.
+
+## Docs
+
+- [Fork Docs](${base}/docs): how every part of Fork works on the web and in the app, one page per article: what it is, which plan has it, where to find it, who can use it, the steps, and common questions.
+${docTopics.map((t) => `- [${t.label}](${base}${topicPath(t.key)}): ${t.description}${t.description ? ' · ' : ''}${articlesLabel(t.articles.length)}`).join('\n')}
 
 ## Solutions
 
@@ -55,13 +63,17 @@ ${SOLUTIONS.filter((s) => s.kind === 'need')
 
 - [About](${base}/about)
 - [FAQ](${base}/faq)
+- [Request a demo](${base}/demo): a form (work email, name, phone, organization, state, number of locations, business type); someone from Fork replies by email to set up a time.
+- [For vendors](${base}/vendors): a form for a supplier or service company that wants to be listed on the Fork marketplace (what they supply and where); Fork replies by email. A vendor can also sign up directly and list its storefront.
 - [Sign up](${REGISTER_URL})
 - Support: ${SUPPORT_EMAIL}
 - Apps: iOS and Android (links on every page footer)
 `
 
-export function GET() {
-  return new Response(body(), {
+export async function GET() {
+  // No topic lines when the API cannot be reached; the link to /docs stays
+  const docs = await fetchDocsIndex()
+  return new Response(body(docs ? docs.sections.flatMap((s) => s.topics) : []), {
     status: 200,
     headers: {
       'Content-Type': 'text/plain; charset=utf-8',

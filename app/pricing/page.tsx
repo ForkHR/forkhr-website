@@ -9,7 +9,7 @@ import CtaSection from '@/components/marketing/CtaSection'
 import SectionHeading from '@/components/marketing/SectionHeading'
 import { FEATURE_GROUPS, TIERS, tierIncludes } from '@/lib/catalog'
 import { PRICING_FAQS as faqs } from '@/lib/pricing-faq'
-import { GUARANTEE_DAYS, REFERRAL_REWARD_MONTHS, REGISTER_URL, SUPPORT_EMAIL, registerUrl } from '@/lib/site'
+import { DEMO_PATH, GUARANTEE_DAYS, REFERRAL_REWARD_MONTHS, REGISTER_URL, SUPPORT_EMAIL, registerUrl } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
 const description = `Ordering and selling are free. Team tools from $39 per location per month with unlimited employees and a ${GUARANTEE_DAYS}-day money-back guarantee.`
@@ -74,7 +74,7 @@ export default function PricingPage() {
                 <div className="flex items-center justify-between">
                   <h2 className="text-xl font-semibold text-warm-950">{tier.name}</h2>
                   {tier.popular && <span className="rounded-full bg-warm-950 px-2 py-0.5 text-[11px] font-semibold text-white">Most popular</span>}
-                  {tier.key === 'free' && <span className="rounded-full bg-ok-50 px-2 py-0.5 text-[11px] font-semibold text-ok-700">No card needed</span>}
+                  {tier.key === 'free' && <span className="rounded-full bg-ok-50 px-2 py-0.5 text-[11px] font-semibold text-ok-700">Always free</span>}
                 </div>
                 <p className="mt-1 text-sm text-warm-500">{tier.tagline}</p>
                 <div className="mt-5 flex items-end gap-1">
@@ -192,6 +192,11 @@ export default function PricingPage() {
             <a href={`mailto:${SUPPORT_EMAIL}`} className="font-medium text-forest-600 hover:text-forest-700">
               {SUPPORT_EMAIL}
             </a>
+            , or{' '}
+            <Link href={DEMO_PATH} className="font-medium text-forest-600 hover:text-forest-700">
+              request a demo
+            </Link>
+            .
           </p>
         </div>
       </section>
