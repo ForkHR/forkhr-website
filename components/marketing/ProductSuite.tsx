@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
-import { productGroups } from '@/components/navigation/nav-data'
+import { productSides } from '@/components/navigation/nav-data'
 import SectionHeading from './SectionHeading'
 
 /**
- * Everything Fork does, at a glance: the header's product menu laid out as three columns, one
- * per side of the business. Same data as the menu and the footer (nav-data).
+ * Everything Fork does, at a glance: three cards, one per side of the business. The header's
+ * menu's own links (nav-data), with Supply and Sales as one side (productSides), as in the footer.
  */
 export default function ProductSuite() {
   return (
@@ -13,7 +13,7 @@ export default function ProductSuite() {
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
         <SectionHeading eyebrow="One app" title="Three sides of the business. One login." lede="Team, operations and money, on the web and on every phone. Each part knows about the others." />
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
-          {productGroups.map((g) => (
+          {productSides.map((g) => (
             <div key={g.label} className="surface flex flex-col p-2">
               <div className="rounded-xl bg-warm-50 px-4 pb-4 pt-4">
                 <div className="flex items-center gap-2">

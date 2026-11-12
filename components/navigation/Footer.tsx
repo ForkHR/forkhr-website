@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { Button } from '../ui/button'
 import Logo from './Logo'
-import { productGroups } from './nav-data'
+import { productSides } from './nav-data'
 import StoreBadges from '@/components/marketing/StoreBadges'
 import { CTA_DEMO, CTA_PRIMARY, DEMO_PATH, JOBS_URL, LOGIN_URL, REGISTER_URL, SITE_TAGLINE, VENDORS_PATH } from '@/lib/site'
 import { ALL_SOLUTION_LINKS, SOLUTION_MENU } from '@/lib/solutions'
@@ -10,7 +10,9 @@ import { ALL_SOLUTION_LINKS, SOLUTION_MENU } from '@/lib/solutions'
 type FooterLink = { label: string; href: string; external?: boolean; badge?: string }
 
 // Product columns come from the header's menu (nav-data), so a product added there shows up here.
-const productColumns: { title: string; links: FooterLink[] }[] = productGroups.map((g) => ({
+// Three of them: the menu's Supply and Sales columns are one here (productSides), which is as
+// many columns as the footer's width holds without folding their links.
+const productColumns: { title: string; links: FooterLink[] }[] = productSides.map((g) => ({
   title: g.label,
   links: [
     ...g.items.map((i) => ({ label: i.name, href: i.href, badge: i.badge })),

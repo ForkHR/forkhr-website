@@ -117,8 +117,9 @@ const Header = () => {
                   <ChevronDown className={cn('h-3.5 w-3.5 transition-transform duration-200', activeDropdown === 'products' && 'rotate-180')} />
                 </Link>
                 <div className={panel('products')}>
-                  <div className="w-[min(1100px,calc(100vw-2rem))] rounded-2xl border border-warm-200 bg-white p-4 shadow-[0_24px_60px_-20px_rgba(27,26,25,0.25)]">
-                    <div className="grid grid-cols-[1fr_1fr_1.15fr_300px] gap-4">
+                  {/* Four columns of links; from 1280px the live demo stands beside them (under that the four take the width) */}
+                  <div className="w-[min(1240px,calc(100vw-2rem))] rounded-2xl border border-warm-200 bg-white p-4 shadow-[0_24px_60px_-20px_rgba(27,26,25,0.25)]">
+                    <div className="grid grid-cols-4 gap-3 xl:grid-cols-[repeat(4,minmax(0,1fr))_280px]">
                       {productGroups.map((group, gi) => (
                         <div
                           key={group.label}
@@ -126,7 +127,7 @@ const Header = () => {
                             if (productFocus !== gi) setProductItem(null)
                             setProductFocus(gi)
                           }}
-                          className={cn('rounded-xl p-1 transition-colors', productFocus === gi && 'bg-warm-50/70')}
+                          className={cn('min-w-0 rounded-xl p-1 transition-colors', productFocus === gi && 'bg-warm-50/70')}
                         >
                           <div className="mb-1.5 flex items-center gap-2 px-2 pt-1 text-[11px] font-semibold uppercase tracking-wider text-warm-400">
                             {group.label}
@@ -143,13 +144,15 @@ const Header = () => {
                         </div>
                       ))}
                       {activeDropdown === 'products' && (
-                        <MenuDemo
-                          preview={productItem?.preview ?? focusedGroup.preview}
-                          title={productItem?.previewTitle ?? focusedGroup.previewTitle}
-                          pitch={productItem ? `${productItem.name}: ${productItem.desc.charAt(0).toLowerCase()}${productItem.desc.slice(1)}.` : focusedGroup.pitch}
-                          href={productItem?.href ?? focusedGroup.items[0].href}
-                          hrefLabel={productItem ? `Explore ${productItem.name}` : `Explore ${focusedGroup.label}`}
-                        />
+                        <div className="hidden xl:block">
+                          <MenuDemo
+                            preview={productItem?.preview ?? focusedGroup.preview}
+                            title={productItem?.previewTitle ?? focusedGroup.previewTitle}
+                            pitch={productItem ? `${productItem.name}: ${productItem.desc.charAt(0).toLowerCase()}${productItem.desc.slice(1)}.` : focusedGroup.pitch}
+                            href={productItem?.href ?? focusedGroup.items[0].href}
+                            hrefLabel={productItem ? (productItem.cta ?? `Explore ${productItem.name}`) : `Explore ${focusedGroup.label}`}
+                          />
+                        </div>
                       )}
                     </div>
                     <div className="mt-3 flex items-center justify-between border-t border-warm-100 px-2 pt-3">
@@ -157,7 +160,7 @@ const Header = () => {
                         See the whole platform
                         <ArrowRight className="h-3.5 w-3.5" />
                       </Link>
-                      <span className="text-[12px] text-warm-500">Supply & Sales are free · team tools from $39 per location · {GUARANTEE_DAYS}-day money-back guarantee</span>
+                      <span className="text-[12px] text-warm-500">Supply and Sales are free · team tools from $39 per location · {GUARANTEE_DAYS}-day money-back guarantee</span>
                     </div>
                   </div>
                 </div>
