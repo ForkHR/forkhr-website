@@ -13,7 +13,7 @@ import {
 import Link from 'next/link'
 import Backdrop from '@/components/visual/Backdrop'
 import CtaSection from '@/components/marketing/CtaSection'
-import { CTA_PRIMARY, REGISTER_URL } from '@/lib/site'
+import { CTA_DEMO, CTA_PRIMARY, DEMO_PATH, REGISTER_URL } from '@/lib/site'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -119,9 +119,9 @@ export default function FranchisePage() {
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
             </Link>
-            <Link href="/solutions/multi-location">
+            <Link href={DEMO_PATH}>
               <Button variant="outline" size="lg" className="text-base px-6 h-11">
-                Learn more
+                {CTA_DEMO}
               </Button>
             </Link>
           </div>

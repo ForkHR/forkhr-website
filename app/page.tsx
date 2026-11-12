@@ -29,7 +29,7 @@ import {
 } from '@/components/previews'
 import Spotlight from '@/components/marketing/Spotlight'
 import StoreBadges from '@/components/marketing/StoreBadges'
-import { CTA_PRIMARY, REGISTER_URL, SITE_DESCRIPTION } from '@/lib/site'
+import { CTA_DEMO, CTA_PRIMARY, DEMO_PATH, REGISTER_URL, SITE_DESCRIPTION } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Fork — Run the whole business from one app',
@@ -211,9 +211,9 @@ export default function Home() {
                     <ArrowRight className="ml-1.5 h-4 w-4" />
                   </Button>
                 </Link>
-                <Link href="/products">
+                <Link href={DEMO_PATH}>
                   <Button variant="outline" size="lg" className="h-11 px-6 text-base">
-                    See the platform
+                    {CTA_DEMO}
                   </Button>
                 </Link>
               </div>

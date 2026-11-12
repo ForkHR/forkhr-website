@@ -3,7 +3,7 @@ import { ArrowRight, Check } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Backdrop from '@/components/visual/Backdrop'
 import StoreBadges from './StoreBadges'
-import { CTA_PRIMARY, GUARANTEE_DAYS, REGISTER_URL } from '@/lib/site'
+import { CTA_DEMO, CTA_PRIMARY, DEMO_PATH, GUARANTEE_DAYS, REGISTER_URL } from '@/lib/site'
 
 /** The promises every page closes on, beside the offer. Same everywhere, so they stay true. */
 const PROMISES = [
@@ -13,13 +13,16 @@ const PROMISES = [
   { title: 'On every phone', desc: 'iOS and Android for the team, the web and a kiosk for the shop.' },
 ]
 
-/** The closing dark band every page ends on. Same offer everywhere. */
+/**
+ * The closing dark band every page ends on. Same offer everywhere: sign up, or ask for a demo
+ * (whoever read the page and is not ready to sign up; pricing is in the header).
+ */
 export default function CtaSection({
   eyebrow = 'Get started',
   title = 'Run the whole business from one app',
   lede = 'Free to order and sell. Team plans from $39 per location.',
-  secondaryHref = '/pricing',
-  secondaryLabel = 'View pricing',
+  secondaryHref = DEMO_PATH,
+  secondaryLabel = CTA_DEMO,
   registerHref = REGISTER_URL,
 }: {
   eyebrow?: string

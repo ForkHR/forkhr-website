@@ -6,7 +6,7 @@ import Hero from '@/components/marketing/Hero'
 import SectionHeading from '@/components/marketing/SectionHeading'
 import CtaSection from '@/components/marketing/CtaSection'
 import { ReportPreview, SopsPreview, Window } from '@/components/previews'
-import { CTA_PRIMARY, REGISTER_URL } from '@/lib/site'
+import { CTA_DEMO, CTA_PRIMARY, DEMO_PATH, REGISTER_URL } from '@/lib/site'
 
 const description =
   'Run a tighter operation with SOPs for opening, closing, temperature and waste logs, stock counts that feed orders, and labor read against sales. Fork shows where the day leaks time and money.'
@@ -72,8 +72,8 @@ export default function OperationalEfficiencyPage() {
         crumb={{ label: 'Solutions', href: '/solutions', current: 'Labor & food cost control' }}
         title="Cut labor and food costs without a spreadsheet"
         lede="Skipped checklists, unlogged waste, over-ordering and overtime cost more than they look. Fork puts procedures, counts and labor numbers on the phone of the person doing the work, so you see where the day leaks and fix it."
-        secondaryHref="/sops"
-        secondaryLabel="Explore SOPs"
+        secondaryHref={DEMO_PATH}
+        secondaryLabel={CTA_DEMO}
         aside={
           <Window title="Fork · SOPs · Opening checklist">
             <SopsPreview />

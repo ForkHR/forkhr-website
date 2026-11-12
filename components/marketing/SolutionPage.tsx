@@ -12,7 +12,7 @@ import { frameFor, renderPreview } from '@/components/previews/registry'
 import { tierByKey } from '@/lib/catalog'
 import { SUPPLIER_DAY } from '@/lib/illustrations'
 import { relatedLink, type Solution } from '@/lib/solutions'
-import { GUARANTEE_DAYS, REGISTER_URL } from '@/lib/site'
+import { CTA_DEMO, DEMO_PATH, GUARANTEE_DAYS, REGISTER_URL } from '@/lib/site'
 
 /**
  * Every solution page (an industry or a job to be done) renders through this one template,
@@ -50,8 +50,8 @@ export default function SolutionPage({ solution }: { solution: Solution }) {
         plan={solution.plan}
         title={solution.h1}
         lede={solution.lede}
-        secondaryHref="#pricing"
-        secondaryLabel="What it costs"
+        secondaryHref={DEMO_PATH}
+        secondaryLabel={CTA_DEMO}
         aside={<Window title={solution.heroPreviewTitle}>{renderPreview(solution.heroPreview)}</Window>}
       />
 

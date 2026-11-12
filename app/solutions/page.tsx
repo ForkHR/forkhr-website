@@ -5,6 +5,7 @@ import Hero from '@/components/marketing/Hero'
 import SectionHeading from '@/components/marketing/SectionHeading'
 import CtaSection from '@/components/marketing/CtaSection'
 import { SOLUTION_MENU, type SolutionLink } from '@/lib/solutions'
+import { CTA_DEMO, DEMO_PATH } from '@/lib/site'
 import { renderPreview } from '@/components/previews/registry'
 
 const description =
@@ -42,8 +43,8 @@ export default function SolutionsIndexPage() {
         crumb={{ label: 'Fork', href: '/', current: 'Solutions' }}
         title="Built for the businesses that run on shifts, and the ones that supply them"
         lede="Pick your kind of business or the job you need done. Every page shows the features that matter for it, live, and what they cost."
-        secondaryHref="/products"
-        secondaryLabel="See every product"
+        secondaryHref={DEMO_PATH}
+        secondaryLabel={CTA_DEMO}
       />
 
       <section className="border-b border-warm-100">
