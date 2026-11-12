@@ -27,8 +27,13 @@ export const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=co
 
 export const GUARANTEE_DAYS = 30
 export const REFERRAL_REWARD_MONTHS = 1
-/** Platform fee on invoices paid online, in basis points (backend/config/paymentsConfig.js). */
-export const PLATFORM_FEE_BPS = 50
+/**
+ * Platform fee on invoices paid online, in basis points: 1% (the owner's figure, 2026-11-11; the
+ * site said 0.5% until then). Every page's fee line reads this. What a seller is actually charged
+ * is the API's `PLATFORM_FEE_BPS_DEFAULT` (backend/config/paymentsConfig.js, whose default in code
+ * is 50 unless the server's environment sets it): keep the two the same.
+ */
+export const PLATFORM_FEE_BPS = 100
 
 export const CTA_PRIMARY = 'Get started free'
 /** The link to /demo (the Request a demo form), worded the same in the header, the footer and on the pages. */

@@ -1,45 +1,19 @@
-import type { ReactNode } from 'react'
 import { Check, Copy, Link2, Search, Wrench } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { money } from '@/components/previews/bits'
 import { MILK, ProductArt, SELLER, SellerLogo, VerifiedTick } from '@/components/previews/storefrontBits'
+import { BentoCard, BentoGrid, BentoHeading, Mini } from './Bento'
 
 /*
- * "Also on the page" on /storefront: a bento of what the public page does besides shelves and
- * checkout, each card a small still of the real thing over a dotted ground (Northside Roasters
- * again, so it reads as the page the story just walked through). Decorative: the card's title and
- * line say what the still shows. The words on the stills are the app's: "Ordering for", "Your
+ * "Also on the page" on /storefront: a bento (./Bento: the card, the floating pieces, the heading)
+ * of what the public page does besides shelves and checkout, each card a small still of the real
+ * thing over a dotted ground (Northside Roasters again, so it reads as the page the story just
+ * walked through). Decorative: the card's title and line say what the still shows. The words on the stills are the app's: "Ordering for", "Your
  * price", "Create your buyer account", "Sign in for prices", "?cat=" and "?tab=services" links.
  */
 
 const COVER = `linear-gradient(120deg, ${SELLER.brand} 0%, #7A4A2E 55%, #B7794A 100%)`
 const SWATCHES = [SELLER.brand, '#1F3D2B', '#1D4ED8', '#9F1239', '#1B1A19']
-
-/** A floating piece of the page: white, a hairline ring and a soft shadow under it. */
-const Mini = ({ className, children }: { className?: string; children: ReactNode }) => (
-  <div className={cn('rounded-xl bg-white shadow-[0_16px_36px_-20px_rgba(27,26,25,0.4)] ring-1 ring-warm-200/80', className)}>{children}</div>
-)
-
-const Card = ({ title, desc, visual, className }: { title: string; desc: string; visual: ReactNode; className?: string }) => (
-  <div className={cn('group flex flex-col overflow-hidden rounded-2xl border border-warm-200 bg-white transition-shadow duration-300 hover:shadow-[0_24px_50px_-30px_rgba(27,26,25,0.35)]', className)}>
-    <div aria-hidden="true" className="pointer-events-none relative h-[228px] select-none overflow-hidden border-b border-warm-100 bg-warm-100/50">
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: 'radial-gradient(var(--color-warm-300) 1px, transparent 1px)',
-          backgroundSize: '16px 16px',
-          maskImage: 'radial-gradient(ellipse at center, black 30%, transparent 80%)',
-          opacity: 0.55,
-        }}
-      />
-      <div className="relative flex h-full items-center justify-center px-5 py-4 transition-transform duration-500 ease-out group-hover:-translate-y-1">{visual}</div>
-    </div>
-    <div className="flex-1 px-6 py-5">
-      <h3 className="text-[16px] font-semibold tracking-tight text-warm-950">{title}</h3>
-      <p className="mt-1.5 text-[14.5px] leading-relaxed text-warm-500">{desc}</p>
-    </div>
-  </div>
-)
 
 const LookVisual = () => (
   <div className="flex w-full max-w-[540px] items-center gap-4">
@@ -250,24 +224,18 @@ export default function StorefrontFeatures({ id, className }: { id?: string; cla
   return (
     <section id={id} className={cn('scroll-mt-24 border-b border-warm-100', className)}>
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <div className="grid items-end gap-6 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-          <div>
-            <span className="eyebrow">Also on the page</span>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-warm-950 md:text-4xl">Built like the stores buyers already shop</h2>
-          </div>
-          <p className="text-lg leading-relaxed text-warm-600 lg:pb-1">What buyers expect from a good online store, made from the items, prices and terms you already keep in Fork.</p>
-        </div>
+        <BentoHeading eyebrow="Also on the page" title="Built like the stores buyers already shop" lede="What buyers expect from a good online store, made from the items, prices and terms you already keep in Fork." />
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-          <Card className="sm:col-span-2" title="Your look" desc="Logo, brand color and a cover photo, with your headline and a button over it." visual={<LookVisual />} />
-          <Card title="Found on the web" desc="Link previews with your cover, on search engines and in the Fork supplier directory." visual={<WebVisual />} />
-          <Card title="Customers on Fork" desc="Signed in, they see their own prices and order on their terms in a few clicks." visual={<CustomerVisual />} />
-          <Card title="One search, every item" desc="Across every category at once. View all opens a shelf as a grid." visual={<SearchVisual />} />
-          <Card title="Become a customer" desc="Two short screens make a free buyer account, connected to you." visual={<JoinVisual />} />
-          <Card title="Services too" desc="Repairs or consultations as cards. Customers on Fork press Request." visual={<ServiceVisual />} />
-          <Card title="A link for everything" desc="The whole page, one category, the services or a single product." visual={<LinksVisual />} />
-          <Card className="sm:col-span-2 lg:col-span-1" title="Prices on or off" desc="Off, visitors sign in to see what they would pay." visual={<PricesVisual />} />
-        </div>
+        <BentoGrid>
+          <BentoCard className="sm:col-span-2" title="Your look" desc="Logo, brand color and a cover photo, with your headline and a button over it." visual={<LookVisual />} />
+          <BentoCard title="Found on the web" desc="Link previews with your cover, on search engines and in the Fork supplier directory." visual={<WebVisual />} />
+          <BentoCard title="Customers on Fork" desc="Signed in, they see their own prices and order on their terms in a few clicks." visual={<CustomerVisual />} />
+          <BentoCard title="One search, every item" desc="Across every category at once. View all opens a shelf as a grid." visual={<SearchVisual />} />
+          <BentoCard title="Become a customer" desc="Two short screens make a free buyer account, connected to you." visual={<JoinVisual />} />
+          <BentoCard title="Services too" desc="Repairs or consultations as cards. Customers on Fork press Request." visual={<ServiceVisual />} />
+          <BentoCard title="A link for everything" desc="The whole page, one category, the services or a single product." visual={<LinksVisual />} />
+          <BentoCard className="sm:col-span-2 lg:col-span-1" title="Prices on or off" desc="Off, visitors sign in to see what they would pay." visual={<PricesVisual />} />
+        </BentoGrid>
       </div>
     </section>
   )

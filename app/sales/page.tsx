@@ -1,14 +1,15 @@
 import type { Metadata } from 'next'
-import { BarChart3, Boxes, FileSpreadsheet, PackageCheck, RefreshCw, ShieldCheck, Tags, UserCheck, Users } from 'lucide-react'
+import { ShieldCheck } from 'lucide-react'
 import Hero from '@/components/marketing/Hero'
 import FeatureRow from '@/components/marketing/FeatureRow'
 import SectionHeading from '@/components/marketing/SectionHeading'
 import CtaSection from '@/components/marketing/CtaSection'
 import DayTimeline, { type DayStop } from '@/components/marketing/DayTimeline'
 import IllustrationStory from '@/components/marketing/IllustrationStory'
+import SalesFeatures from '@/components/marketing/SalesFeatures'
 import { InvoicePreview, RoutePreview, StorefrontPreview, VendorChatPreview, Window } from '@/components/previews'
 import { SUPPLIER_DAY } from '@/lib/illustrations'
-import { PLATFORM_FEE_BPS, registerUrl } from '@/lib/site'
+import { PLATFORM_FEE_BPS, VENDORS_PATH, registerUrl } from '@/lib/site'
 
 const feePct = (PLATFORM_FEE_BPS / 100).toFixed(1).replace(/\.0$/, '')
 
@@ -61,17 +62,6 @@ const order: DayStop[] = [
   { kind: 'moment', day: 'Thu', time: '9:00 AM', app: 'Payouts', where: 'Stripe', text: 'Paid out to your bank account.', tag: 'Paid out', tone: 'ok' },
 ]
 
-const more = [
-  { icon: <Tags className="h-5 w-5" />, title: 'Price lists per customer', desc: 'Each customer sees their items at their prices.' },
-  { icon: <RefreshCw className="h-5 w-5" />, title: 'Standing orders', desc: 'Every Monday, 24 sourdough. Generated ahead, emailed for confirmation.' },
-  { icon: <PackageCheck className="h-5 w-5" />, title: 'Issues and credits', desc: 'A short case becomes a credit on the invoice.' },
-  { icon: <FileSpreadsheet className="h-5 w-5" />, title: 'Imports', desc: 'Customers, items and open orders from a spreadsheet.' },
-  { icon: <UserCheck className="h-5 w-5" />, title: 'Customers can claim their side', desc: 'Sign up later with the email on file and order in the app.' },
-  { icon: <Boxes className="h-5 w-5" />, title: 'Seller inventory', desc: 'Stock per item and location.' },
-  { icon: <BarChart3 className="h-5 w-5" />, title: 'Sales reports', desc: 'Revenue by customer. Which items move.' },
-  { icon: <Users className="h-5 w-5" />, title: 'A chat per customer', desc: 'On Fork or by email. Replies come back to the thread.' },
-]
-
 export default function SalesPage() {
   return (
     <main className="pt-16">
@@ -80,8 +70,10 @@ export default function SalesPage() {
         plan="free"
         title="Sell to your customers and get paid. No account needed on their side."
         lede="Catalog, orders, routes and invoices. Customers pay from a link or a QR code. Money lands in your bank."
-        secondaryHref="#payments"
-        secondaryLabel="How you get paid"
+        // The second button is the other way in (the form for a vendor that wants to be listed), not a
+        // jump down the page: the page is there to scroll (the owner's call, 2026-11-11)
+        secondaryHref={VENDORS_PATH}
+        secondaryLabel="Get listed"
         note={`Free. A ${feePct}% fee only when a customer pays online.`}
         aside={
           <Window title="Fork · Sales · Order S-2088">
@@ -138,20 +130,8 @@ export default function SalesPage() {
         slides={SUPPLIER_DAY}
       />
 
-      <section id="customers" className="scroll-mt-24 border-b border-warm-100">
-        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="Also included" title="The rest of the wholesale side" />
-          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-warm-200 bg-warm-200 sm:grid-cols-2 lg:grid-cols-4">
-            {more.map((m) => (
-              <div key={m.title} className="bg-white p-6">
-                <div className="mb-3 text-forest-600">{m.icon}</div>
-                <h3 className="text-[15px] font-semibold text-warm-950">{m.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-warm-500">{m.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Also included: the bento of what selling does around the order (components/marketing/SalesFeatures) */}
+      <SalesFeatures id="customers" />
 
       <section className="border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
