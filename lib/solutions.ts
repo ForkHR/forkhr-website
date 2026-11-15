@@ -41,6 +41,9 @@ export type PreviewKey =
   | 'productPage'
   | 'guestCheckout'
   | 'storefrontViews'
+  | 'links'
+  | 'reminders'
+  | 'appBlocker'
 
 export type SolutionFeature = {
   eyebrow: string
@@ -198,7 +201,7 @@ export const SOLUTIONS: Solution[] = [
         plan: 'premium',
         title: 'Line checks and walk-in temps that get done',
         lede: 'Checklists start with the shift. Each cold unit carries a QR code.',
-        bullets: ['Out of range fails the run, schedules a recheck', 'Waste log with cost, cash count with photo', 'NYC DOHMH inspection results in Reports'],
+        bullets: ['Out of range fails the run, schedules a recheck', 'Waste log with cost, cash count with photo', 'NYC health inspection results for each shop'],
         preview: 'sops',
         previewTitle: 'Fork · SOPs · Opening checklist',
         href: '/sops',
@@ -619,7 +622,7 @@ export const SOLUTIONS: Solution[] = [
         plan: 'premium',
         title: 'Ready for the inspector',
         lede: 'Seven reports by location. Print or export as PDF.',
-        bullets: ['Missed, waste, cash movement, staff', 'NYC DOHMH results and grades in Reports', 'Starter templates: shift routines, temps, waste, cash, cleaning'],
+        bullets: ['Missed, waste, cash movement, staff', 'NYC health inspection grades under Locations', 'Starter templates: shift routines, temps, waste, cash, cleaning'],
         preview: 'report',
         previewTitle: 'Fork · Reports',
       },

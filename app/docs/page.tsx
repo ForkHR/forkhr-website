@@ -77,7 +77,7 @@ export default async function DocsHomePage() {
     docsUnavailable()
     return (
       <main className="pt-16">
-        <div className="mx-auto max-w-6xl px-4 md:px-6">
+        <div className="px-4 md:px-6 lg:px-8">
           <DocsOnTheWay />
         </div>
       </main>
@@ -101,7 +101,7 @@ export default async function DocsHomePage() {
       {/* The hero, as on the site's other pages: the words and the search at the left, where to start on the moving gradient at the right */}
       <section className="relative overflow-hidden border-b border-warm-100">
         <Backdrop />
-        <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-12 md:pb-24 md:pt-24">
+        <div className="relative px-4 pb-16 pt-12 md:px-6 md:pb-24 md:pt-24 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
             <div className="relative z-10">
               <span className="eyebrow mb-4">Docs</span>
@@ -115,7 +115,7 @@ export default async function DocsHomePage() {
             {popular.length > 0 && (
               <div className="on-gradient relative min-w-0 lg:static">
                 <GradientStage className="lg:h-[620px]" seed={4} />
-                <div className="relative lg:pl-10">
+                <div className="relative lg:ml-auto lg:max-w-[760px] lg:pl-10">
                   <StartHere popular={popular} />
                 </div>
               </div>
@@ -125,7 +125,7 @@ export default async function DocsHomePage() {
       </section>
 
       {/* Every topic, by area: the area named at the left, its topics as cards beside it */}
-      <section aria-labelledby="browse-title" className="mx-auto max-w-6xl px-4 pb-8 pt-14 md:px-6 md:pt-20">
+      <section aria-labelledby="browse-title" className="px-4 pb-8 pt-14 md:px-6 md:pt-20 lg:px-8">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <span className="eyebrow mb-4">Browse</span>
@@ -157,7 +157,7 @@ export default async function DocsHomePage() {
                   </h3>
                   <p className="mt-1.5 text-[13.5px] text-warm-400">{articlesLabel(count)}</p>
                 </div>
-                <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
                   {section.topics.map((topic) => {
                     const Icon = topicIcon(topic.key)
                     return (
@@ -183,7 +183,7 @@ export default async function DocsHomePage() {
 
       {/* When the docs did not answer it */}
       <section className="border-t border-warm-100 bg-warm-50">
-        <div className="mx-auto flex max-w-6xl flex-col gap-5 px-4 py-12 md:flex-row md:items-center md:justify-between md:px-6 md:py-16">
+        <div className="flex flex-col gap-5 px-4 py-12 md:flex-row md:items-center md:justify-between md:px-6 md:py-16 lg:px-8">
           <div className="max-w-xl">
             <h2 className="text-2xl font-semibold tracking-tight text-warm-950 md:text-3xl">Didn&apos;t find what you need?</h2>
             <p className="mt-2 text-[15px] leading-relaxed text-warm-600">Fork Support, inside the app, answers from these docs and can pass you to Fork&apos;s team.</p>

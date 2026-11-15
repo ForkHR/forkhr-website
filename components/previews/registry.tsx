@@ -29,6 +29,9 @@ import StorefrontPreview from './StorefrontPreview'
 import ProductPagePreview from './ProductPagePreview'
 import GuestCheckoutPreview from './GuestCheckoutPreview'
 import StorefrontInsightsPreview from './StorefrontInsightsPreview'
+import LinksPreview from './LinksPreview'
+import RemindersPreview from './RemindersPreview'
+import AppBlockerPreview from './AppBlockerPreview'
 
 /** One place that turns a preview key from lib/solutions into a demo element. */
 export const renderPreview = (key: PreviewKey): ReactNode => {
@@ -98,6 +101,12 @@ export const renderPreview = (key: PreviewKey): ReactNode => {
       return <GuestCheckoutPreview />
     case 'storefrontViews':
       return <StorefrontInsightsPreview />
+    case 'links':
+      return <LinksPreview />
+    case 'reminders':
+      return <RemindersPreview />
+    case 'appBlocker':
+      return <AppBlockerPreview />
     default:
       return null
   }

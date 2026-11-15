@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react'
-import { BadgeCheck, BookOpen, BotMessageSquare, Briefcase, CalendarDays, ClipboardCheck, Clock, FileSignature, Landmark, Megaphone, MessageSquare, Package, PieChart, Receipt, ScanBarcode, ShoppingBag, Store, TrendingUp, Truck, Wrench } from 'lucide-react'
+import { BadgeCheck, BellRing, BookOpen, BotMessageSquare, Briefcase, CalendarDays, ClipboardCheck, Clock, FileSignature, Landmark, Megaphone, MessageSquare, Package, PieChart, QrCode, Receipt, ScanBarcode, ShieldBan, ShoppingBag, Store, TrendingUp, Truck, Wrench } from 'lucide-react'
 import type { PreviewKey } from '@/lib/solutions'
 import { VENDORS_PATH } from '@/lib/site'
 
@@ -57,6 +57,9 @@ const operations: ProductGroup = {
   previewTitle: 'Fork · SOPs',
   items: [
     { name: 'SOPs & checklists', desc: 'Opening, closing, temps, waste, equipment', icon: ClipboardCheck, href: '/sops', preview: 'sops', previewTitle: 'Fork · SOPs' },
+    { name: 'Reminders', desc: 'Shift, clock-out and break reminders', icon: BellRing, href: '/reminders', badge: 'New', preview: 'reminders', previewTitle: 'Fork · Reminders' },
+    { name: 'App blocker', desc: 'Phones away during shifts', icon: ShieldBan, href: '/app-blocker', badge: 'New', preview: 'appBlocker', previewTitle: 'Fork · App blocker' },
+    { name: 'Locations', desc: 'Link page, QR codes, reviews, inspections', icon: QrCode, href: '/locations', badge: 'New', preview: 'links', previewTitle: 'Fork · Links' },
     { name: 'Feed', desc: 'Announcements, recognitions, surveys', icon: Megaphone, href: '/products#feed', preview: 'feed', previewTitle: 'Fork · Feed' },
     { name: 'Learn', desc: 'Courses, policies, library, FAQs', icon: BookOpen, href: '/products#learn', preview: 'learn', previewTitle: 'Fork · Learn' },
     { name: 'AI assistant', desc: 'Answers from your own content', icon: BotMessageSquare, href: '/ai-assistant', preview: 'ai', previewTitle: 'Fork · Assistant' },

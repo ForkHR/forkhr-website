@@ -68,30 +68,33 @@ export default async function DocsTopicPage({ params }: Params) {
   }
 
   return (
-    <div className="max-w-3xl pb-24 pt-8 lg:pt-12">
-      {/* A section named as its only topic (Sales, Reports) is the title below, not a crumb too */}
-      <Crumbs items={[{ label: 'Docs', href: '/docs' }, ...(section.label !== topic.label ? [{ label: section.label, href: `/docs#${section.key}` }] : [])]} />
-      <header className="flex items-start gap-4">
-        <span className="mt-0.5 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-forest-50 text-forest-600">
-          <Icon className="h-[22px] w-[22px]" />
-        </span>
-        <div className="min-w-0">
-          <h1 className="text-[2rem] font-semibold leading-[1.1] tracking-[-0.02em] text-warm-950 sm:text-[2.5rem] md:text-[2.75rem]">{topic.label}</h1>
-          <p className="mt-3 flex flex-wrap items-center gap-x-2.5 gap-y-2 text-[17px] leading-relaxed text-warm-600">
-            <span>
-              {topic.description ? `${topic.description} · ` : ''}
-              {articlesLabel(topic.articles.length)}
-            </span>
-            {onePlan ? <PlanPill plan={onePlan} /> : null}
-          </p>
+    <div className="pb-24 pt-8 lg:pt-12 xl:grid xl:grid-cols-[minmax(0,1fr)_220px] xl:gap-16">
+      {/* The same column as an article's, with its right column left empty, so the two pages line up */}
+      <div className="mx-auto w-full min-w-0 max-w-[800px]">
+        {/* A section named as its only topic (Sales, Reports) is the title below, not a crumb too */}
+        <Crumbs items={[{ label: 'Docs', href: '/docs' }, ...(section.label !== topic.label ? [{ label: section.label, href: `/docs#${section.key}` }] : [])]} />
+        <header className="flex items-start gap-4">
+          <span className="mt-0.5 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-forest-50 text-forest-600">
+            <Icon className="h-[22px] w-[22px]" />
+          </span>
+          <div className="min-w-0">
+            <h1 className="text-[2rem] font-semibold leading-[1.1] tracking-[-0.02em] text-warm-950 sm:text-[2.5rem] md:text-[2.75rem]">{topic.label}</h1>
+            <p className="mt-3 flex flex-wrap items-center gap-x-2.5 gap-y-2 text-[17px] leading-relaxed text-warm-600">
+              <span>
+                {topic.description ? `${topic.description} · ` : ''}
+                {articlesLabel(topic.articles.length)}
+              </span>
+              {onePlan ? <PlanPill plan={onePlan} /> : null}
+            </p>
+          </div>
+        </header>
+
+        <div className="mt-10">
+          <ArticleRows articles={topic.articles} showPlans={!onePlan} />
         </div>
-      </header>
 
-      <div className="mt-10">
-        <ArticleRows articles={topic.articles} showPlans={!onePlan} />
+        <HelpCard />
       </div>
-
-      <HelpCard />
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbs) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(itemList) }} />

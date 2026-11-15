@@ -85,8 +85,9 @@ export default async function DocsArticlePage({ params }: Params) {
     : null
 
   return (
-    <div className="pb-24 pt-8 lg:pt-12 xl:grid xl:grid-cols-[minmax(0,1fr)_176px] xl:gap-12">
-      <article className="min-w-0">
+    <div className="pb-24 pt-8 lg:pt-12 xl:grid xl:grid-cols-[minmax(0,1fr)_220px] xl:gap-16">
+      {/* A readable column, centred in the room the full-width frame leaves; On this page at the right edge */}
+      <article className="mx-auto w-full min-w-0 max-w-[800px]">
         <Crumbs
           items={[
             { label: 'Docs', href: '/docs' },

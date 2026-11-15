@@ -10,7 +10,7 @@ export default function DocsNotFound() {
     <main className="pt-16">
       <section className="relative overflow-hidden">
         <Backdrop />
-        <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <div className="relative px-4 py-20 md:px-6 md:py-28 lg:px-8">
           <div className="max-w-xl">
             <span className="eyebrow mb-4">Docs</span>
             <h1 className="text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-warm-950 sm:text-5xl">This article isn&apos;t here</h1>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import {
   ArrowRight,
+  BellRing,
   BookOpen,
   BotMessageSquare,
   Briefcase,
@@ -15,7 +16,9 @@ import {
   Package,
   PackageCheck,
   PieChart,
+  QrCode,
   Receipt,
+  ShieldBan,
   ShoppingBag,
   TrendingUp,
   Truck,
@@ -31,14 +34,17 @@ import CtaSection from '@/components/marketing/CtaSection'
 import IllustrationStory from '@/components/marketing/IllustrationStory'
 import {
   AiPreview,
+  AppBlockerPreview,
   ApplicantPreview,
   ChatPreview,
   FeedPreview,
   InvoicePreview,
   LearningPreview,
+  LinksPreview,
   PeoplePreview,
   PerformancePreview,
   ReceivingPreview,
+  RemindersPreview,
   ReportPreview,
   RoutePreview,
   SchedulePreview,
@@ -55,7 +61,7 @@ import { CTA_PRIMARY, PLATFORM_FEE_BPS, REGISTER_URL } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
 const description =
-  'Every Fork product: scheduling, timecards, chat, performance reviews, people & HR, hiring, SOPs and checklists, the feed, learning, reports, the AI assistant, ordering from vendors, receiving, selling and invoicing customers, an online storefront with guest checkout, delivery routes and service calls.'
+  'Every Fork product: scheduling, timecards, chat, performance reviews, people & HR, hiring, SOPs and checklists, reminders, an app blocker for shifts, a link page and QR codes for every location, the feed, learning, reports, the AI assistant, ordering from vendors, receiving, selling and invoicing customers, an online storefront with guest checkout, delivery routes and service calls.'
 
 export const metadata: Metadata = {
   title: 'Products — Fork | Scheduling, Reviews, SOPs, Supply, Sales & More',
@@ -94,10 +100,13 @@ const chapters: Chapter[] = [
     number: '02',
     label: 'Operations',
     title: 'Every shift, done the same way',
-    pitch: 'Checklists that start with the shift, a feed people confirm they read, training in one tab, and answers from your own content.',
+    pitch: 'Checklists that start with the shift, reminders that check the clock, a page for every shop, a feed people confirm they read, and training in one tab.',
     note: 'SOPs, courses and the AI assistant on Premium',
     items: [
       { id: 'sops', label: 'SOPs & checklists', tier: 'premium', Icon: ClipboardCheck },
+      { id: 'reminders', label: 'Reminders', tier: 'premium', Icon: BellRing, badge: 'New' },
+      { id: 'app-blocker', label: 'App blocker', tier: 'premium', Icon: ShieldBan, badge: 'New' },
+      { id: 'locations', label: 'Locations', tier: 'free', Icon: QrCode, badge: 'New' },
       { id: 'feed', label: 'Feed', tier: 'essential', Icon: Megaphone },
       { id: 'learn', label: 'Learn', tier: 'pro', Icon: BookOpen },
       { id: 'reports', label: 'Reports', tier: 'essential', Icon: PieChart },
@@ -344,20 +353,64 @@ export default function ProductsPage() {
         hrefLabel="Explore SOPs"
       />
       <FeatureRow
-        id="feed"
+        id="reminders"
         className="scroll-mt-36 bg-warm-50"
         flip
+        badge="New"
+        eyebrow="Reminders"
+        plan="premium"
+        title="Reminders that check the clock first"
+        lede="The evening before a shift, an hour before, and a nudge to clock out for anyone still on the clock. Write your own, as a push, an email or an alarm that waits for an answer."
+        bullets={['Shift and clock-out reminders on every plan with Scheduling', 'A question whose answer goes in your log', 'Break reminders that read the time clock']}
+        preview={<RemindersPreview />}
+        previewTitle="Fork · Reminders"
+        href="/reminders"
+        hrefLabel="Explore reminders"
+      />
+      <FeatureRow
+        id="app-blocker"
+        className="scroll-mt-36"
+        badge="New"
+        eyebrow="App blocker"
+        plan="premium"
+        title="Phones away on the floor"
+        lede="Pick the kinds of apps, and they are blocked on your team's phones during shifts. Breaks are free, with a five-minute way out."
+        bullets={['Phone, Messages, Maps, the camera and Fork never blocked', 'Each person agrees to the notice first', 'Who has it on, and each blocked app opened at work']}
+        preview={<AppBlockerPreview />}
+        previewTitle="Fork · App blocker"
+        href="/app-blocker"
+        hrefLabel="Explore the app blocker"
+      />
+      <FeatureRow
+        id="locations"
+        className="scroll-mt-36 bg-warm-50"
+        flip
+        badge="New"
+        eyebrow="Locations"
+        plan="free"
+        title="Every shop, one scan away"
+        lede="A link page for each location with its review, directions, call, Wi-Fi and hiring buttons, and QR codes that count every scan."
+        bullets={['A link straight to your Google review form', 'Customer surveys by link, by shop (Pro)', 'New York City health inspections (Essential)']}
+        preview={<LinksPreview />}
+        previewTitle="Fork · Links"
+        href="/locations"
+        hrefLabel="Explore locations"
+      />
+      <FeatureRow
+        id="feed"
+        className="scroll-mt-36"
         eyebrow="Feed"
         plan="essential"
         title="The home tab on every phone"
         lede="Announcements, recognitions and surveys. Everything gets reactions and comments."
-        bullets={['Pinned announcements with confirmations', 'Recognitions with badges', 'Surveys by location (Pro)']}
+        bullets={['Pinned announcements with confirmations', 'Recognitions with badges', 'Surveys for the team, or by a public link for customers (Pro)']}
         preview={<FeedPreview />}
         previewTitle="Fork · Feed"
       />
       <FeatureRow
         id="learn"
-        className="scroll-mt-36"
+        className="scroll-mt-36 bg-warm-50"
+        flip
         eyebrow="Learn"
         plan="pro"
         title="Courses, policies, library, FAQs. One tab."
@@ -368,8 +421,7 @@ export default function ProductsPage() {
       />
       <FeatureRow
         id="reports"
-        className="scroll-mt-36 bg-warm-50"
-        flip
+        className="scroll-mt-36"
         eyebrow="Reports"
         plan="essential"
         title="The numbers behind the shift"
@@ -380,7 +432,8 @@ export default function ProductsPage() {
       />
       <FeatureRow
         id="ai"
-        className="scroll-mt-36"
+        className="scroll-mt-36 bg-warm-50"
+        flip
         eyebrow="AI assistant"
         plan="premium"
         title="Answers from your own content"

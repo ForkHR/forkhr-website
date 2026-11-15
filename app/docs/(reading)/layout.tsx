@@ -4,8 +4,8 @@ import { DocsSearchTrigger } from '@/components/docs/DocsSearch'
 import { cn } from '@/lib/utils'
 import { fetchDocsIndex, navSectionsOf } from '@/lib/docs'
 
-// The reading pages of the Docs (a topic, an article): the contents down the left on a wide
-// screen, with the search above them; below that width a bar under the site header holds a
+// The reading pages of the Docs (a topic, an article), across the full width of the screen like a
+// docs site: the contents down the left edge on a wide screen, with the search above them; below that width a bar under the site header holds a
 // Contents button (the same list in a sheet) and the search.
 export const revalidate = 3600
 
@@ -16,7 +16,7 @@ export default async function DocsReadingLayout({ children }: Readonly<{ childre
 
   return (
     <main className="pt-16">
-      <div className={cn('mx-auto max-w-6xl px-4 md:px-6', hasNav && 'lg:grid lg:grid-cols-[248px_minmax(0,1fr)] lg:gap-12')}>
+      <div className={cn('px-4 md:px-6 lg:px-8', hasNav && 'lg:grid lg:grid-cols-[272px_minmax(0,1fr)] lg:gap-12 xl:gap-16')}>
         {hasNav && (
           <aside className="hidden border-r border-warm-100 lg:block">
             <div className="sticky top-16 flex h-[calc(100vh-4rem)] flex-col pr-6 pt-8">

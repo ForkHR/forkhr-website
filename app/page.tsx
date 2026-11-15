@@ -95,6 +95,7 @@ const day: DayStop[] = [
     hrefLabel: 'Explore selling',
   },
   { kind: 'moment', time: '11:40 AM', app: 'Feed', where: 'All locations', text: '12 of 14 people confirmed they read the new closing procedure.', tag: '12 of 14', tone: 'brand' },
+  { kind: 'moment', time: '2:00 PM', app: 'Reminders', where: 'Main St', text: 'Jordan Lee got Shift in 1 hour for the 3:00 PM close. Nobody had to text.', tag: 'Sent', tone: 'neutral' },
   { kind: 'moment', time: '3:05 PM', app: 'Schedule', where: 'Main St', text: "Luis traded Saturday's close with Priya. Approved in one tap.", tag: 'Approved', tone: 'ok' },
   {
     kind: 'feature',

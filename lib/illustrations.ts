@@ -208,3 +208,111 @@ export const SERVICE_VISIT: Illustration = {
   title: 'Before and after, on the call',
   text: 'Before and after photos, parts, time on site and a signature, all on the call.',
 }
+
+/**
+ * The Locations page's drawings: Juniper Coffee (Main St and Harbor St, Brooklyn) from the outside.
+ * Labels are the app's: the link page as the server draws it (backend/utils/linkPageHtml.js: the
+ * round mark, the place with "Open today 7 AM – 6 PM", the pill buttons "Review us on Google",
+ * "Get directions", "Call us", "We're hiring", the Wi-Fi card, "Made with Fork"), a link's sheet
+ * ("Share it", "Last 30 days": opens, by QR code, by the link, "Buttons pressed"), the Links list
+ * (Opens: "The link page" / "The Google review form"), the public survey ("Which shop did you
+ * visit?", 0 to 10, the "Low rating" notification to the author and the shop's manager) and the
+ * health inspection notice ("New health inspection at Main St"). Fork never reads the reviews
+ * themselves and never asks only happy customers: everyone gets the same link.
+ */
+export const LOCATIONS: Illustration[] = [
+  {
+    src: '/illustrations/locations-counter.webp',
+    ...size,
+    alt: "Illustration of a café counter with a QR stand reading Scan for Wi-Fi, reviews & more, beside a phone showing Juniper Coffee's Main St link page with Review us on Google, Get directions, Call us, We're hiring and the Wi-Fi network and password",
+    title: 'A QR code on the counter',
+    text: "The code opens the shop's own page: review, directions, call, Wi-Fi and hiring, filled in from the location.",
+  },
+  {
+    src: '/illustrations/locations-review.webp',
+    ...size,
+    alt: "Illustration of a café table with a flat white, a croissant and a receipt printed with a QR code and How was your visit? Leave us a review, beside the sheet for the Receipt QR link that opens the Google review form, with 88 opens in the last 30 days",
+    title: 'Straight to your Google review form',
+    text: "A link can skip the page and open the shop's Google review form. Print it on a receipt or a table card; everyone gets the same link.",
+  },
+  {
+    src: '/illustrations/locations-survey.webp',
+    ...size,
+    alt: "Illustration of a phone in front of a café window answering Juniper Coffee's survey, How likely are you to recommend us?, with 9 picked on a 0 to 10 scale, beside the answers for Harbor St and a Low rating notification for a 3 out of 10 there",
+    title: 'Feedback from customers, by shop',
+    text: "Tell us how we did opens a survey anyone can answer without an account. Answers sort by shop, and a low rating tells the shop's manager.",
+  },
+  {
+    src: '/illustrations/locations-links.webp',
+    ...size,
+    alt: "Illustration of Juniper Coffee's Links list, four links with their location, what each opens and its opens in the last 30 days, beside the Counter stand link's 312 opens and the buttons people pressed",
+    title: 'Every code, counted',
+    text: 'Each link knows whether it was scanned or clicked, and the page counts which buttons people press. Nothing is kept about who.',
+  },
+  {
+    src: '/illustrations/locations-inspection.webp',
+    ...size,
+    alt: "Illustration of Juniper Coffee's Main St shop front with a letter grade A in the window, beside its latest health inspection, Grade A with 11 points and one critical and one general violation, and the New health inspection notification",
+    title: 'Every inspection, as the city posts it',
+    text: "Fork matches each New York City shop to the city's inspection records and tells you when a new result is out. New York City only for now.",
+  },
+]
+
+/**
+ * The Reminders page's drawings: one Tuesday shift at Main St (Jordan Lee, 3:00 PM – 10:00 PM, Nov 10).
+ * Labels are the app's: Fork's starters with their own titles and messages and the list's words
+ * for when they go (backend/utils/reminderRules.js: "7:00 PM the evening before", "1 hour before a
+ * shift starts", "10 min after a shift ends" if still clocked in, "25 min into a break" if still
+ * on break), the alarm's "Clock out" / "Still working", a question answered into a log ("Is the
+ * shop open?", the manager told when nobody answers in 20 minutes) and the app blocker's block
+ * screen ("{app} is blocked", "I need my phone for 5 minutes").
+ */
+export const REMINDERS: Illustration[] = [
+  {
+    src: '/illustrations/reminders-shift.webp',
+    ...size,
+    alt: 'Illustration of a phone lock screen at 2:00 PM by a sunny window with the Shift in 1 hour and Shift tomorrow reminders, beside the Reminders list with three switched on and Break is almost over switched off',
+    title: 'The evening before, and an hour before',
+    text: 'Fork sends three reminders on every plan with Scheduling: the evening before, an hour before, and a nudge to clock out. On Premium you change them and write your own.',
+  },
+  {
+    src: '/illustrations/reminders-alarm.webp',
+    ...size,
+    alt: "Illustration of a café closed for the night with a wall clock at 10:10, a phone ringing the Time to clock out alarm with Clock out and Still working, and the reminder's history of who answered what",
+    title: 'An alarm that waits for an answer',
+    text: 'Send it as a push, an email or an alarm in Fork that rings until someone answers. Each reminder keeps who got it and what they said.',
+  },
+  {
+    src: '/illustrations/reminders-question.webp',
+    ...size,
+    alt: "Illustration of a shop front with the sign turned to Open, a phone alarm asking Is the shop open? with Yes and No, and the answers: Maya Chen said Yes for Main St, nobody answered at Harbor St and its manager was told, the answer filed in the Opening log",
+    title: 'A question, answered into the log',
+    text: "A reminder can ask one question from a log. The first answer at a shop goes in as the log's entry, and if nobody answers in 20 minutes the manager hears.",
+  },
+]
+
+/** The app blocker: the block screen on a phone and the company's rule. */
+export const APP_BLOCKER: Illustration = {
+  src: '/illustrations/app-blocker.webp',
+  ...size,
+  alt: 'Illustration of the counter at Main St and a phone showing Instagram is blocked with an OK button and I need my phone for 5 minutes, beside the app blocker rule switched on: during a scheduled shift, social media, games and video blocked, free on breaks',
+  title: 'Phones away on the floor',
+  text: 'Pick the kinds of apps, and they are blocked during shifts. Breaks are free, there is a five-minute way out, and each person agrees to the notice first.',
+}
+
+/** The app blocker's page, beside the block screen: breaks and the five-minute way out, then the notice. */
+export const APP_BLOCKER_BREAK: Illustration = {
+  src: '/illustrations/app-blocker-break.webp',
+  ...size,
+  alt: "Illustration of a break corner behind Main St and a phone asking what five minutes of phone are for, with A code from my bank picked and 2 of 3 left this shift, beside Jordan Lee's day: a blocked app, a break with apps open and a five-minute unlock",
+  title: 'A break is a break, and five minutes when it matters',
+  text: 'Apps open on a break and block again when its time is up. Someone who needs their phone opens it for five minutes, three times a shift, and says why.',
+}
+
+export const APP_BLOCKER_NOTICE: Illustration = {
+  src: '/illustrations/app-blocker-notice.webp',
+  ...size,
+  alt: "Illustration of a staff corner with lockers and a phone showing the notice Juniper Coffee blocks some apps while you work, with a Turn it on button, beside the People list: one person blocked until 10:00 PM, one on break, one not set up yet",
+  title: 'Agreed to on their own phone',
+  text: 'Before it turns on, each person reads what is blocked, when, and what you can see, and agrees on their own phone. The date is kept.',
+}

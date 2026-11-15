@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { ArrowRight, ChevronDown } from 'lucide-react'
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { Button } from '../ui/button'
@@ -39,6 +40,8 @@ const MenuDemo = ({ preview, title, pitch, href, hrefLabel }: { preview: Preview
 )
 
 const Header = () => {
+  // The Docs run the full width of the screen, so the header's logo and links line up with them
+  const fullWidth = (usePathname() || '').startsWith('/docs')
   const [open, setOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
@@ -101,7 +104,7 @@ const Header = () => {
 
   return (
     <header className={cn('fixed top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b transition-colors duration-200', isScrolled ? 'border-warm-200' : 'border-transparent')}>
-      <div className="mx-auto max-w-6xl px-4 md:px-6">
+      <div className={cn('mx-auto px-4 md:px-6', fullWidth ? 'lg:px-8' : 'max-w-6xl')}>
         <div className="flex h-16 items-center">
           <Link href="/" className="mr-8 flex items-center text-warm-950" aria-label="Fork home">
             <Logo height={28} />
