@@ -29,7 +29,7 @@ export default function PrivacyPolicy() {
                 Privacy Policy<span className="text-primary">.</span>
             </div>
             <div className="text-lg text-warm-600 mt-6">
-                Effective as of Jun 20, 2025
+                Effective as of Jun 20, 2025 · Updated Nov 16, 2026
             </div>
             <div className="py-10">
             <div>
@@ -57,6 +57,7 @@ export default function PrivacyPolicy() {
                         <li>Personal Data</li>
                         <li>How We Share Your Personal Data</li>
                         <li>Tracking Tools, Advertising, and Opt-Out</li>
+                        <li>Connected Accounts: Google, Instagram and TikTok</li>
                         <li>Data Security and Retention</li>
                         <li>Personal Data of Children</li>
                         <li>Other State Law Privacy Rights</li>
@@ -209,6 +210,35 @@ export default function PrivacyPolicy() {
                         <a href="http://www.networkadvertising.org/choices/" target="_blank" className="inline-block max-w-full truncate align-bottom">http://www.networkadvertising.org/choices/</a>&nbsp;or&nbsp;
                         <a href="http://www.aboutads.info/choices" target="_blank" className="inline-block max-w-full truncate align-bottom">www.aboutads.info/choices</a>.</p>
                     <br/>
+                </div>
+                <br/>
+                <div>
+                    <strong>Connected Accounts: Google, Instagram and TikTok</strong>
+                    <p>A business that uses Fork can choose to connect its own Google Business Profile, Instagram professional account or TikTok account. Fork connects only when an owner or manager of that business signs in to the platform and gives permission, and only reads what is described below. Fork never posts, comments, likes or changes anything on these accounts, except a reply to a Google review that a person at the business writes and sends from Fork.</p>
+                    <br/>
+                    <p><em>Google Business Profile</em></p>
+                    <ul className="list-disc list-inside">
+                        <li>What we receive: the names of the Business Profile accounts and locations the person manages (title, address, place ID and review link), Google&rsquo;s rating of each location, and its reviews: the reviewer&rsquo;s public display name and profile picture, the star rating, the words, the dates and the business&rsquo;s reply.</li>
+                        <li>How we use it: to show each location&rsquo;s reviews to the people at that business who are allowed to see them, to let them post or remove the business&rsquo;s reply on Google, to notify them of new reviews, and to share a review on the business&rsquo;s internal team feed when they choose to.</li>
+                        <li>How long we keep it: each copy of a review is deleted 30 days after Fork last read it from Google. The connection is kept until the business disconnects it.</li>
+                        <li>Fork&rsquo;s use and transfer to any other app of information received from Google APIs will adhere to the <a className="underline" href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use requirements. We do not use this information for advertising, we do not sell it, and we do not use it to train AI models.</li>
+                    </ul>
+                    <br/>
+                    <p><em>Instagram</em></p>
+                    <ul className="list-disc list-inside">
+                        <li>What we receive: the account&rsquo;s username, name and profile picture, and its recent posts (caption, picture or video cover, link and date).</li>
+                        <li>How we use it: to show the business&rsquo;s own posts to its own staff inside Fork, on its team feed and on its Social page.</li>
+                        <li>How long we keep it: posts are deleted 90 days after they were posted. Disconnecting the account, or removing Fork in Instagram (Settings &rarr; Website permissions &rarr; Apps and websites), deletes the account and all of its posts from Fork. A data deletion request sent through Meta is honored the same way, and its status can be checked at the address Meta gives you.</li>
+                    </ul>
+                    <br/>
+                    <p><em>TikTok</em></p>
+                    <ul className="list-disc list-inside">
+                        <li>What we receive: the account&rsquo;s display name, username and profile picture (scope user.info.basic), and its recent videos: title, description, cover image, link and date (scope video.list).</li>
+                        <li>How we use it: to show the business&rsquo;s own videos to its own staff inside Fork, on its team feed and on its Social page. Videos play on TikTok, not in Fork.</li>
+                        <li>How long we keep it: videos are deleted 90 days after they were posted. Disconnecting the account in Fork revokes Fork&rsquo;s access at TikTok and deletes the account and all of its videos from Fork. You can also remove Fork in TikTok (Settings and privacy &rarr; Security &rarr; Manage app permissions).</li>
+                    </ul>
+                    <br/>
+                    <p>Access tokens from these platforms are stored encrypted and are never shown to anyone. To have any of this information deleted, disconnect the account in Fork or write to support@forkhr.com.</p>
                 </div>
                 <br/>
                 <div>

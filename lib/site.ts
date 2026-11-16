@@ -30,8 +30,10 @@ export const REFERRAL_REWARD_MONTHS = 1
 /**
  * Platform fee on invoices paid online, in basis points: 1% (the owner's figure, 2026-11-11; the
  * site said 0.5% until then). Every page's fee line reads this. What a seller is actually charged
- * is the API's `PLATFORM_FEE_BPS_DEFAULT` (backend/config/paymentsConfig.js, whose default in code
- * is 50 unless the server's environment sets it): keep the two the same.
+ * is the API's `PLATFORM_FEE_BPS_DEFAULT` (backend/config/paymentsConfig.js, 100 in code since
+ * 2026-11-15 unless the server's environment sets it): keep the two the same. Since that date a
+ * vendor's payments are direct charges on its own Stripe account, so Stripe bills the vendor its
+ * processing fee itself and Fork keeps only this fee, as the pages say.
  */
 export const PLATFORM_FEE_BPS = 100
 
