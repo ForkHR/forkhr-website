@@ -12,6 +12,7 @@ import IllustrationFrame from '@/components/marketing/IllustrationFrame'
 import { InvoicePreview, ServiceCallPreview, ServiceIssuePreview, TechnicianPreview, Window } from '@/components/previews'
 import { SERVICE_VISIT } from '@/lib/illustrations'
 import { PLATFORM_FEE_BPS, SUPPORT_EMAIL, registerUrl } from '@/lib/site'
+import FeatureGrid from '@/components/marketing/FeatureGrid'
 
 const feePct = (PLATFORM_FEE_BPS / 100).toFixed(1).replace(/\.0$/, '')
 
@@ -57,7 +58,6 @@ const call: DayStop[] = [
     id: 'visit',
     day: 'Thu',
     time: '8:31 AM',
-    eyebrow: 'Technician app',
     plan: 'free',
     title: 'The whole visit on one phone',
     lede: 'Navigate and call the site from the job. Then photos, parts and time on site, and the manager signs on the screen.',
@@ -74,7 +74,6 @@ const call: DayStop[] = [
     id: 'callbacks',
     day: 'Mon',
     time: '9:12 AM',
-    eyebrow: 'Callbacks',
     plan: 'free',
     title: "When it isn't fixed, it comes back to the same call",
     lede: 'Customers on Fork report a problem from their app, with a photo and what they want: another visit, a credit or a refund. The invoice waits until you answer.',
@@ -166,7 +165,7 @@ export default function ServiceProvidersPage() {
 
       <section className="border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-          <SectionHeading eyebrow="Day one" title="What changes" />
+          <SectionHeading title="What changes" />
           <div className="mt-10 overflow-hidden rounded-2xl border border-warm-200 bg-white">
             <div className="hidden grid-cols-[1fr_40px_1fr] border-b border-warm-200 bg-warm-50 px-6 py-3 text-[11px] font-bold uppercase tracking-wider text-warm-400 md:grid">
               <span>Today</span>
@@ -189,7 +188,6 @@ export default function ServiceProvidersPage() {
       <section id="story" className="scroll-mt-24 border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <SectionHeading
-            eyebrow="A service call on Fork"
             title="From the request to money in the bank"
             lede="Corner Café's walk-in cooler stops holding temperature on Wednesday afternoon. It is fixed, signed for and paid by Friday. On Monday, a customer on Fork reports a leak came back."
           />
@@ -201,7 +199,6 @@ export default function ServiceProvidersPage() {
 
       <FeatureRow
         id="proof"
-        eyebrow="Proof of work"
         plan="free"
         title="Before and after, signed and billed"
         lede="Espresso machines too. When a steam wand won't shut off, the photos, the parts and the minutes on site go on the call, and the customer signs on the technician's phone."
@@ -215,7 +212,6 @@ export default function ServiceProvidersPage() {
       <FeatureRow
         id="invoicing"
         flip
-        eyebrow="Invoices & payments"
         plan="free"
         title="Bill one call or the whole month"
         lede="Put a customer's finished calls on one invoice. The PDF carries the work report for each."
@@ -229,7 +225,6 @@ export default function ServiceProvidersPage() {
           <div className="grid items-start gap-12 md:grid-cols-[1fr_1.2fr] md:gap-16">
             <div>
               <div className="flex flex-wrap items-center gap-3">
-                <span className="eyebrow">Maintenance contracts</span>
                 <PlanBadge tier="free" />
               </div>
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-warm-950 md:text-4xl">Quarterly visits that book themselves</h2>
@@ -250,23 +245,15 @@ export default function ServiceProvidersPage() {
 
       <section className="border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="Also included" title="The rest of running service calls" />
-          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-warm-200 bg-warm-200 sm:grid-cols-2 lg:grid-cols-4">
-            {more.map((m) => (
-              <div key={m.title} className="bg-white p-6">
-                <div className="mb-3 text-forest-600">{m.icon}</div>
-                <h3 className="text-[15px] font-semibold text-warm-950">{m.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-warm-500">{m.desc}</p>
-              </div>
-            ))}
-          </div>
+          <SectionHeading title="The rest of running service calls" />
+          <FeatureGrid className="mt-12" columns={4} items={more} />
         </div>
       </section>
 
       <section id="pricing" className="scroll-mt-24 border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
           <div className="grid items-start gap-12 md:grid-cols-[1fr_1.2fr] md:gap-16">
-            <SectionHeading eyebrow="What it costs" title="Free to run. A small fee only when money moves online." />
+            <SectionHeading title="Free to run. A small fee only when money moves online." />
             <div className="surface divide-y divide-warm-100">
               {[
                 { l: 'Service calls, visits, technician app, chat', v: '$0', d: 'Unlimited technicians and customers' },
@@ -298,7 +285,7 @@ export default function ServiceProvidersPage() {
       <section className="border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid gap-12 md:grid-cols-[1fr_1.6fr] md:gap-16">
-            <SectionHeading eyebrow="Questions" title="Service providers ask us" lede={`Anything else: ${SUPPORT_EMAIL}`} />
+            <SectionHeading title="Service providers ask us" lede={`Anything else: ${SUPPORT_EMAIL}`} />
             <Accordion type="single" collapsible className="w-full border-t border-warm-100">
               {faqs.map((faq, i) => (
                 <AccordionItem key={faq.q} value={`faq-${i}`} className="border-warm-100 last:border-b">
@@ -313,7 +300,6 @@ export default function ServiceProvidersPage() {
 
       <CtaSection
         registerHref={registerUrl({ use: 'sales' })}
-        eyebrow="Free plan"
         title="Invoice your next visit from the job"
         lede="Add your services and customers today. Book the next call from the app."
       />

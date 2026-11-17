@@ -139,7 +139,6 @@ export default function EmployeeRetentionPage() {
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
           <div className="grid md:grid-cols-[1.1fr_1fr] gap-12 md:gap-20 items-center">
             <div>
-              <span className="eyebrow mb-4">By the numbers</span>
               <div className="text-6xl md:text-7xl font-semibold text-warm-950 tracking-tight leading-none mb-4">{stats[0].value}</div>
               <p className="text-xl text-warm-600 leading-relaxed max-w-md">{stats[0].label}</p>
               <p className="text-xs text-warm-400 mt-6">{stats[0].detail}</p>
@@ -165,7 +164,6 @@ export default function EmployeeRetentionPage() {
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
           <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 md:gap-20 items-start">
             <div className="md:sticky md:top-28">
-              <span className="eyebrow mb-4">Retention toolkit</span>
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
                 How Fork helps you keep your team
               </h2>
@@ -193,7 +191,6 @@ export default function EmployeeRetentionPage() {
       <section className="bg-warm-50 border-b border-warm-100">
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
           <div className="max-w-2xl mb-14">
-            <span className="eyebrow mb-4">The real numbers</span>
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
               The true cost of turnover
             </h2>
@@ -231,7 +228,6 @@ export default function EmployeeRetentionPage() {
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
           <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 md:gap-20 items-start">
             <div className="md:sticky md:top-28">
-              <span className="eyebrow mb-4">What works</span>
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
                 What actually drives retention
               </h2>

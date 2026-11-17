@@ -27,7 +27,6 @@ const points: LeadPoint[] = [
 export default function DemoPage() {
   return (
     <LeadPage
-      eyebrow="Request a demo"
       title="See Fork with your own business in mind"
       lede="Tell us a little about your business and someone from Fork will walk you through it, around your questions."
       pointsTitle="What we will go through"

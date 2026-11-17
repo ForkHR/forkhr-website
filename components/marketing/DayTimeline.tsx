@@ -14,7 +14,6 @@ import PlanBadge from './PlanBadge'
 export type DayStop = { time: string; day?: string; /** An anchor, e.g. "routes" for /sales#routes. */ id?: string } & (
   | {
       kind: 'feature'
-      eyebrow: string
       plan?: TierKey
       title: string
       lede: string
@@ -77,11 +76,12 @@ export default function DayTimeline({
                 <div className="mb-3 md:hidden">
                   <Clock time={s.time} day={s.day} strong inline />
                 </div>
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="eyebrow">{s.eyebrow}</span>
-                  {s.plan && <PlanBadge tier={s.plan} />}
-                </div>
-                <h3 className="mt-4 text-2xl font-semibold tracking-tight text-warm-950 md:text-[2rem] md:leading-[1.15]">{s.title}</h3>
+                {s.plan && (
+                  <div className="mb-4">
+                    <PlanBadge tier={s.plan} />
+                  </div>
+                )}
+                <h3 className="text-2xl font-semibold tracking-tight text-warm-950 md:text-[2rem] md:leading-[1.15]">{s.title}</h3>
                 <p className="mt-4 text-[17px] leading-relaxed text-warm-600">{s.lede}</p>
                 {s.bullets && s.bullets.length > 0 && (
                   <ul className="mt-6 hidden space-y-2.5 sm:block">

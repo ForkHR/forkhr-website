@@ -30,6 +30,7 @@ import {
 import Spotlight from '@/components/marketing/Spotlight'
 import StoreBadges from '@/components/marketing/StoreBadges'
 import { CTA_DEMO, CTA_PRIMARY, DEMO_PATH, REGISTER_URL, SITE_DESCRIPTION } from '@/lib/site'
+import FeatureGrid from '@/components/marketing/FeatureGrid'
 
 export const metadata: Metadata = {
   title: 'Fork — Run the whole business from one app',
@@ -57,7 +58,6 @@ const day: DayStop[] = [
   {
     kind: 'feature',
     time: '7:00 AM',
-    eyebrow: 'Checklists & SOPs',
     plan: 'premium',
     title: 'The opening checklist starts with the shift',
     lede: "Alarm, walk-in temperature, a photo of the line, the float. On the opener's phone, the same way every morning.",
@@ -71,7 +71,6 @@ const day: DayStop[] = [
   {
     kind: 'feature',
     time: '8:12 AM',
-    eyebrow: 'Supply',
     plan: 'free',
     title: 'Six more gallons of milk, sorted in seven minutes',
     lede: "One chat per vendor, next to its orders. Bluebird isn't on Fork, so the message went out as an email and their reply came back here.",
@@ -84,7 +83,6 @@ const day: DayStop[] = [
   {
     kind: 'feature',
     time: '9:40 AM',
-    eyebrow: 'Sales',
     plan: 'free',
     title: "Corner Café pays yesterday's invoice",
     lede: 'Invoice from the order. They paid by bank transfer from the emailed link, with no account on their side.',
@@ -100,7 +98,6 @@ const day: DayStop[] = [
   {
     kind: 'feature',
     time: '4:10 PM',
-    eyebrow: 'Scheduling & timecards',
     plan: 'essential',
     title: 'Next week, published before the dinner rush',
     lede: 'Drag shifts onto the week and watch labor cost as you go. Publish once and every phone gets it.',
@@ -110,6 +107,7 @@ const day: DayStop[] = [
     href: '/products#schedule',
     hrefLabel: 'See scheduling',
   },
+  { kind: 'moment', time: '5:12 PM', app: 'Surprise bags', where: 'Main St', text: 'Sam showed the code K7RT and took home the two pastry bags reserved at 2:18.', tag: 'Picked up', tone: 'ok' },
   { kind: 'moment', time: '10:12 PM', app: 'SOPs', where: 'Main St', text: 'Closing checklist done four minutes early. The till matches.', tag: 'Done', tone: 'ok' },
 ]
 
@@ -122,7 +120,6 @@ const newHire: DayStop[] = [
     kind: 'feature',
     day: 'Mon',
     time: '9:20 AM',
-    eyebrow: 'Hiring',
     plan: 'essential',
     title: 'The resume, read before you open it',
     lede: 'One tap and AI sums up the resume and the screening answers against the job: highlights, red flags and an honest fit.',
@@ -138,7 +135,6 @@ const newHire: DayStop[] = [
     kind: 'feature',
     day: 'Fri',
     time: '11:20 AM',
-    eyebrow: 'People & HR',
     plan: 'pro',
     title: 'The paperwork is done before day one',
     lede: 'W-4, I-9 and direct deposit filled in on a phone, the food handler card uploaded. The onboarding guide ticks itself off as they go.',
@@ -154,7 +150,6 @@ const newHire: DayStop[] = [
     kind: 'feature',
     day: 'Thu',
     time: '3:00 PM',
-    eyebrow: 'Learn',
     plan: 'premium',
     title: 'Every course done, every policy acknowledged',
     lede: 'Short courses with quizzes on their phone, the handbook and policies acknowledged, the library and FAQs a tap away. You see who has finished what.',
@@ -240,7 +235,7 @@ export default function Home() {
       {/* A day on Fork */}
       <section id="day" className="scroll-mt-24 border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="A day on Fork" title="Everything between opening and closing" lede="One café, one Tuesday, from the first clock-in to the closing checklist. Every stop is a real screen in Fork." />
+          <SectionHeading title="Everything between opening and closing" lede="One café, one Tuesday, from the first clock-in to the closing checklist. Every stop is a real screen in Fork." />
           <div className="mt-14 md:mt-16">
             <DayTimeline stops={day} />
           </div>
@@ -251,7 +246,6 @@ export default function Home() {
       <section id="new-hire" className="scroll-mt-24 border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <SectionHeading
-            eyebrow="A new hire on Fork"
             title="From applicant to first shift"
             lede="Jordan applies on Monday, signs everything on Friday and works a training shift the Monday after. Nobody chases a form."
           />
@@ -265,7 +259,6 @@ export default function Home() {
 
       <Spotlight
         id="supply"
-        eyebrow="Supply & ordering"
         plan="free"
         surface="paper"
         flip
@@ -289,7 +282,6 @@ export default function Home() {
 
       <Spotlight
         id="service-calls"
-        eyebrow="Service calls"
         plan="free"
         shape="wave"
         seed={21}
@@ -318,7 +310,6 @@ export default function Home() {
           <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
             <div className="max-w-lg">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="eyebrow text-lime-accent">AI assistant</span>
                 <PlanBadge tier="premium" className="border-warm-700 bg-transparent text-warm-300 hover:border-warm-500 hover:text-white" />
               </div>
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">Ask about your business in plain English</h2>
@@ -352,9 +343,8 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
           <div className="grid items-center gap-12 md:grid-cols-[1.1fr_1fr] md:gap-20">
             <div>
-              <span className="eyebrow mb-4">By the numbers</span>
               <div className="mb-4 text-6xl font-semibold leading-none tracking-tight text-warm-950 md:text-7xl">
-                10 hrs<span className="text-forest-500">/wk</span>
+                10 hrs<span className="text-warm-300">/wk</span>
               </div>
               <p className="max-w-md text-xl leading-relaxed text-warm-600">Saved per manager, every week.</p>
               <p className="mt-6 text-xs text-warm-400">Average reported by teams on Fork for 90+ days.</p>
@@ -374,16 +364,8 @@ export default function Home() {
           </div>
 
           <div className="mt-16 border-t border-warm-100 pt-12 md:mt-20">
-            <SectionHeading eyebrow="Fits what you have" title="No new hardware. Nobody forced to sign up." />
-            <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-warm-200 bg-warm-200 sm:grid-cols-2 lg:grid-cols-5">
-              {integrations.map((i) => (
-                <div key={i.title} className="bg-white p-6">
-                  <div className="mb-3 text-forest-600">{i.icon}</div>
-                  <h3 className="text-[15px] font-semibold text-warm-950">{i.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-warm-500">{i.desc}</p>
-                </div>
-              ))}
-            </div>
+            <SectionHeading title="No new hardware. Nobody forced to sign up." />
+            <FeatureGrid className="mt-10" columns={5} items={integrations} />
           </div>
         </div>
       </section>
@@ -391,7 +373,7 @@ export default function Home() {
       {/* How it works */}
       <section className="border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-          <SectionHeading eyebrow="How it works" title="Up and running in an afternoon" />
+          <SectionHeading title="Up and running in an afternoon" />
           <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
             {steps.map((s) => (
               <div key={s.step} className="border-t-2 border-warm-950 pt-6">

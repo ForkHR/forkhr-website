@@ -150,7 +150,6 @@ export default function MultiLocationPage() {
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
           <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 md:gap-20 items-start">
             <div className="md:sticky md:top-28">
-              <span className="eyebrow mb-4">What you get</span>
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
                 Built for multi-unit operators
               </h2>
@@ -178,7 +177,6 @@ export default function MultiLocationPage() {
       <section className="bg-warm-50 border-b border-warm-100">
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
           <div className="max-w-2xl mb-14">
-            <span className="eyebrow mb-4">Before & After</span>
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
               Before Fork vs. after Fork
             </h2>
@@ -208,7 +206,6 @@ export default function MultiLocationPage() {
       <section className="border-b border-warm-100">
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
           <div className="max-w-2xl mb-10">
-            <span className="eyebrow mb-4">Industries</span>
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
               Trusted by multi-unit teams in
             </h2>

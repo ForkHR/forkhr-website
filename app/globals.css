@@ -183,6 +183,11 @@
 /* Product windows standing on the moving gradient (GradientStage): no oat mat, which would
    muddy the colour, and a deeper shadow so the white card lifts off it. Unlayered on purpose,
    so it wins over the mat's utility classes. */
+/* FeatureGrid: the glyph's ring in the brand gradient (FORK_GRADIENT), turned while its point is pointed at */
+.fg-ring {
+  background: conic-gradient(from 200deg, #1D4ED8, #3B82F6, #7DD3FC, #FDBA74, #F9A8D4, #3B82F6, #1D4ED8);
+}
+
 .on-gradient .pv-mat {
   background-color: transparent;
   border-color: transparent;
@@ -208,14 +213,6 @@
   }
 
   /* Small uppercase eyebrow label (section kicker) */
-  .eyebrow {
-    display: block;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-forest-600);
-  }
 
   /* Hero backdrop grids */
   .bg-dot-grid {

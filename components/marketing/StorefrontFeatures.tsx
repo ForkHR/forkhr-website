@@ -224,7 +224,7 @@ export default function StorefrontFeatures({ id, className }: { id?: string; cla
   return (
     <section id={id} className={cn('scroll-mt-24 border-b border-warm-100', className)}>
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <BentoHeading eyebrow="Also on the page" title="Built like the stores buyers already shop" lede="What buyers expect from a good online store, made from the items, prices and terms you already keep in Fork." />
+        <BentoHeading title="Built like the stores buyers already shop" lede="What buyers expect from a good online store, made from the items, prices and terms you already keep in Fork." />
 
         <BentoGrid>
           <BentoCard className="sm:col-span-2" title="Your look" desc="Logo, brand color and a cover photo, with your headline and a button over it." visual={<LookVisual />} />

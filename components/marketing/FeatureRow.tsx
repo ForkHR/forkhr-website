@@ -13,7 +13,6 @@ import PlanBadge from './PlanBadge'
  */
 export default function FeatureRow({
   id,
-  eyebrow,
   title,
   lede,
   bullets = [],
@@ -29,7 +28,6 @@ export default function FeatureRow({
   children,
 }: {
   id?: string
-  eyebrow?: string
   title: ReactNode
   lede?: ReactNode
   bullets?: string[]
@@ -39,7 +37,7 @@ export default function FeatureRow({
   href?: string
   hrefLabel?: string
   plan?: TierKey
-  /** A short dark chip before the eyebrow, e.g. "New". */
+  /** A short dark chip before the plan, e.g. "New". */
   badge?: string
   frame?: 'window' | 'phone' | 'none'
   className?: string
@@ -50,12 +48,13 @@ export default function FeatureRow({
       <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
         <div className={cn('grid items-center gap-10 lg:grid-cols-[1fr_1.25fr] lg:gap-16', flip && 'lg:grid-cols-[1.25fr_1fr]')}>
           <div className={cn(flip && 'lg:order-2')}>
-            <div className="flex flex-wrap items-center gap-3">
-              {badge && <span className="rounded-full bg-warm-950 px-2.5 py-0.5 text-[12px] font-semibold text-white">{badge}</span>}
-              {eyebrow && <span className="eyebrow">{eyebrow}</span>}
-              {plan && <PlanBadge tier={plan} />}
-            </div>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-warm-950 md:text-4xl">{title}</h2>
+            {(badge || plan) && (
+              <div className="mb-4 flex flex-wrap items-center gap-3">
+                {badge && <span className="rounded-full bg-warm-950 px-2.5 py-0.5 text-[12px] font-semibold text-white">{badge}</span>}
+                {plan && <PlanBadge tier={plan} />}
+              </div>
+            )}
+            <h2 className="text-3xl font-semibold tracking-tight text-warm-950 md:text-4xl">{title}</h2>
             {lede && <p className="mt-4 text-lg leading-relaxed text-warm-600">{lede}</p>}
             {bullets.length > 0 && (
               <ul className="mt-6 space-y-2.5">

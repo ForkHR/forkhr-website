@@ -53,7 +53,6 @@ export default function PricingPage() {
         <Backdrop />
         <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-12 md:pb-24 md:pt-28">
           <div className="max-w-2xl">
-            <span className="eyebrow mb-4">Pricing</span>
             <h1 className="text-5xl font-semibold leading-[1.05] tracking-tight text-warm-950 md:text-6xl">Free to order and sell. One price per location for the team.</h1>
             <p className="mt-5 text-lg leading-relaxed text-warm-600">
               Unlimited employees on every plan. No per-user fees. Every paid plan comes with a {GUARANTEE_DAYS}-day money-back guarantee.
@@ -122,7 +121,7 @@ export default function PricingPage() {
       {/* Comparison */}
       <section className="border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="Compare" title="Every feature, by plan" lede="Each plan includes everything in the plans before it." />
+          <SectionHeading title="Every feature, by plan" lede="Each plan includes everything in the plans before it." />
 
           <div className="mt-12 overflow-x-auto">
             <table className="w-full min-w-[640px] border-collapse text-left">

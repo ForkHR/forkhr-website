@@ -9,6 +9,7 @@ import PlanBadge from '@/components/marketing/PlanBadge'
 import { ReceivingPreview, SupplyPreview, VendorChatPreview, Window } from '@/components/previews'
 import { CAFE_WEEK } from '@/lib/illustrations'
 import { registerUrl } from '@/lib/site'
+import FeatureGrid from '@/components/marketing/FeatureGrid'
 
 const description =
   'Order from every vendor in one place, whether or not they use Fork. One-time and standing orders, vendor chat with an email bridge, deliveries, issues and credits, stock counts with par levels, and a market of vendors that deliver to you. Free.'
@@ -33,7 +34,6 @@ const order: DayStop[] = [
     id: 'chat',
     day: 'Wed',
     time: '8:12 AM',
-    eyebrow: 'Vendor chat',
     plan: 'free',
     title: 'Six more gallons, without a phone call',
     lede: "One chat per vendor, next to its orders. Bluebird isn't on Fork, so your message went out as an email and their reply came back here.",
@@ -46,7 +46,6 @@ const order: DayStop[] = [
     id: 'receiving',
     day: 'Thu',
     time: '6:30 AM',
-    eyebrow: 'Receiving',
     plan: 'free',
     title: 'Checked in at the back door, line by line',
     lede: 'Count what came off the truck on a phone. Short, extra or damaged? Flag it and say what you want: a credit, a return, a refund, or to keep it and be billed.',
@@ -90,7 +89,6 @@ export default function SupplyPage() {
       <section id="story" className="scroll-mt-24 border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <SectionHeading
-            eyebrow="An order on Fork"
             title="From a low count to the next delivery"
             lede="One week at a café's walk-in. Bluebird Dairy isn't on Fork, and nobody had to pick up the phone."
           />
@@ -105,7 +103,6 @@ export default function SupplyPage() {
           <div className="grid items-start gap-12 md:grid-cols-[1fr_1.2fr] md:gap-16">
             <div>
               <div className="flex flex-wrap items-center gap-3">
-                <span className="eyebrow">Stock counts</span>
                 <PlanBadge tier="essential" />
               </div>
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-warm-950 md:text-4xl">Count on a phone, reorder in a tap</h2>
@@ -131,7 +128,6 @@ export default function SupplyPage() {
 
       <IllustrationStory
         id="cafe-week"
-        eyebrow="A café's week"
         title="Counted, ordered, checked in"
         lede="Main St orders from Bluebird Dairy, which isn't on Fork, and from vendors that are. Five moments from one week."
         slides={CAFE_WEEK}
@@ -139,20 +135,12 @@ export default function SupplyPage() {
 
       <section id="market" className="scroll-mt-24 border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="Also included" title="Everything around the order" />
-          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-warm-200 bg-warm-200 sm:grid-cols-2 lg:grid-cols-4">
-            {included.map((m) => (
-              <div key={m.title} className="bg-white p-6">
-                <div className="mb-3 text-forest-600">{m.icon}</div>
-                <h3 className="text-[15px] font-semibold text-warm-950">{m.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-warm-500">{m.desc}</p>
-              </div>
-            ))}
-          </div>
+          <SectionHeading title="Everything around the order" />
+          <FeatureGrid className="mt-12" columns={4} items={included} />
         </div>
       </section>
 
-      <CtaSection registerHref={registerUrl({ use: 'purchasing' })} eyebrow="Free plan" title="Move your ordering to Fork this week" lede="Add your vendors by name and email. Place the next order from the app." />
+      <CtaSection registerHref={registerUrl({ use: 'purchasing' })} title="Move your ordering to Fork this week" lede="Add your vendors by name and email. Place the next order from the app." />
     </main>
   )
 }

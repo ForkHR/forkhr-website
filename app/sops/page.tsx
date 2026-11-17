@@ -5,6 +5,7 @@ import SectionHeading from '@/components/marketing/SectionHeading'
 import CtaSection from '@/components/marketing/CtaSection'
 import PlanBadge from '@/components/marketing/PlanBadge'
 import { Phone, SopsPreview, Window } from '@/components/previews'
+import FeatureGrid from '@/components/marketing/FeatureGrid'
 
 const description =
   'SOPs in Fork: boards, procedures and runs for opening and closing checklists, temperature checks, waste and cash logs, equipment care, incidents and production. Scheduled, triggered by shifts or started from a QR code, and reported by location.'
@@ -80,19 +81,8 @@ export default function SopsPage() {
 
       <section id="how" className="scroll-mt-24 border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="How it fits together" title="Three pieces, one engine" lede="A fridge check and a bake batch are the same object with different steps." />
-          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-warm-200 bg-warm-200 md:grid-cols-3">
-            {pieces.map((p, i) => (
-              <div key={p.title} className="bg-white p-7">
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-forest-50 text-forest-600">{p.icon}</span>
-                  <span className="text-[13px] font-medium tabular-nums text-warm-400">0{i + 1}</span>
-                </div>
-                <h3 className="mt-4 text-lg font-semibold text-warm-950">{p.title}</h3>
-                <p className="mt-1.5 text-[15px] leading-relaxed text-warm-600">{p.desc}</p>
-              </div>
-            ))}
-          </div>
+          <SectionHeading title="Three pieces, one engine" lede="A fridge check and a bake batch are the same object with different steps." />
+          <FeatureGrid className="mt-12" columns={3} size="lg" items={pieces.map((p, i) => ({ icon: p.icon, title: p.title, desc: p.desc, meta: `0${i + 1}` }))} />
         </div>
       </section>
 
@@ -100,7 +90,7 @@ export default function SopsPage() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid items-start gap-12 md:grid-cols-[1fr_1.4fr] md:gap-16">
             <div className="md:sticky md:top-32">
-              <SectionHeading eyebrow="Boards" title="Four kinds of board" lede="Start from a template. Change anything." />
+              <SectionHeading title="Four kinds of board" lede="Start from a template. Change anything." />
               <div className="mt-8 flex flex-wrap gap-2">
                 {templates.map((t) => (
                   <span key={t} className="rounded-full border border-warm-200 bg-white px-3 py-1.5 text-[13px] font-medium text-warm-600">
@@ -127,7 +117,7 @@ export default function SopsPage() {
 
       <section id="logs" className="scroll-mt-24 border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="Waste, maintenance and incidents" title="Now boards, not separate products" lede="Three apps became three boards. They share steps, triggers, photos and reports." />
+          <SectionHeading title="Now boards, not separate products" lede="Three apps became three boards. They share steps, triggers, photos and reports." />
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {moved.map((m) => (
               <div key={m.was} className="surface p-6">
@@ -147,18 +137,8 @@ export default function SopsPage() {
 
       <section className="border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="Steps" title="What a step can ask for" lede="Required, conditional, or limited to a job." />
-          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-warm-200 bg-warm-200 sm:grid-cols-2 lg:grid-cols-3">
-            {stepTypes.map((s) => (
-              <div key={s.name} className="flex items-start gap-3 bg-white p-5">
-                <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-forest-50 text-forest-600">{s.icon}</span>
-                <div>
-                  <h3 className="text-[15px] font-semibold text-warm-950">{s.name}</h3>
-                  <p className="mt-0.5 text-[13.5px] leading-relaxed text-warm-500">{s.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <SectionHeading title="What a step can ask for" lede="Required, conditional, or limited to a job." />
+          <FeatureGrid className="mt-12" columns={3} size="sm" items={stepTypes.map((s) => ({ icon: s.icon, title: s.name, desc: s.desc }))} />
         </div>
       </section>
 
@@ -166,7 +146,7 @@ export default function SopsPage() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid items-center gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
             <div>
-              <SectionHeading eyebrow="Triggers" title="Runs start themselves" lede="Fork creates the run, assigns it, and chases it when late." />
+              <SectionHeading title="Runs start themselves" lede="Fork creates the run, assigns it, and chases it when late." />
               <div className="mt-10 grid gap-6 sm:grid-cols-2">
                 {triggers.map((t) => (
                   <div key={t.name} className="flex items-start gap-3">
@@ -193,7 +173,6 @@ export default function SopsPage() {
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:gap-12">
             <div className="shrink-0 md:max-w-[320px]">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="eyebrow">Reports</span>
                 <PlanBadge tier="premium" />
               </div>
               <h2 className="mt-3 text-2xl font-semibold tracking-tight text-warm-950">What was missed, where, and what it cost</h2>
@@ -210,7 +189,7 @@ export default function SopsPage() {
         </div>
       </section>
 
-      <CtaSection eyebrow="Premium" title="Run every shift the same way" lede="SOPs are part of Premium. $129 per location, unlimited employees." />
+      <CtaSection title="Run every shift the same way" lede="SOPs are part of Premium. $129 per location, unlimited employees." />
     </main>
   )
 }

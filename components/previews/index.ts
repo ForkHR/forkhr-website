@@ -32,3 +32,4 @@ export { default as StorefrontInsightsPreview } from './StorefrontInsightsPrevie
 export { default as LinksPreview } from './LinksPreview'
 export { default as RemindersPreview } from './RemindersPreview'
 export { default as AppBlockerPreview } from './AppBlockerPreview'
+export { default as SurpriseBagsPreview } from './SurpriseBagsPreview'

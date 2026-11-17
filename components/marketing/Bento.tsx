@@ -36,11 +36,10 @@ export const BentoCard = ({ title, desc, visual, className }: { title: string; d
 )
 
 /** The bento's heading: what the section is at the left, one sentence about it at the right. */
-export const BentoHeading = ({ eyebrow, title, lede }: { eyebrow: string; title: string; lede: string }) => (
+export const BentoHeading = ({ title, lede }: { title: string; lede: string }) => (
   <div className="grid items-end gap-6 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
     <div>
-      <span className="eyebrow">{eyebrow}</span>
-      <h2 className="mt-4 text-3xl font-semibold tracking-tight text-warm-950 md:text-4xl">{title}</h2>
+      <h2 className="text-3xl font-semibold tracking-tight text-warm-950 md:text-4xl">{title}</h2>
     </div>
     <p className="text-lg leading-relaxed text-warm-600 lg:pb-1">{lede}</p>
   </div>

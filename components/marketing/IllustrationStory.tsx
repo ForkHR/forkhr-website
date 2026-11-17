@@ -14,14 +14,12 @@ import SectionHeading from './SectionHeading'
  */
 export default function IllustrationStory({
   id,
-  eyebrow,
   title,
   lede,
   slides,
   className,
 }: {
   id?: string
-  eyebrow?: string
   title: ReactNode
   lede?: ReactNode
   slides: Illustration[]
@@ -70,13 +68,13 @@ export default function IllustrationStory({
     el.scrollTo({ left: Math.min(target * step(), el.scrollWidth - el.clientWidth), behavior: 'smooth' })
   }
 
-  const label = typeof title === 'string' ? title : eyebrow
+  const label = typeof title === 'string' ? title : 'Story'
 
   return (
     <section id={id} aria-roledescription="carousel" aria-label={label} className={cn('scroll-mt-24 border-b border-warm-100', className)}>
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading eyebrow={eyebrow} title={title} lede={lede} />
+          <SectionHeading title={title} lede={lede} />
           <div className="hidden items-center gap-3 md:flex">
             <span className="text-sm tabular-nums text-warm-500" aria-live="polite">
               {index + 1} / {slides.length}

@@ -69,6 +69,7 @@ Reports unlock one by one: labor and purchasing reports on Essential, attendance
 - When a customer pays online, Fork keeps a ${feePct}% platform fee on the pre-tax amount, and Stripe charges its processing fee.
 - Invoices settled outside Fork carry no fee.
 - Customers do not need a Fork account to pay: they use the emailed link or the QR code on the PDF invoice.
+- Surprise bags (on every plan) carry their own fee: Fork keeps 5% of the bags, the customer pays a $0.99 service fee per order, and Stripe charges the shop its processing fee. A refund returns Fork's fee too.
 
 ## FAQ
 

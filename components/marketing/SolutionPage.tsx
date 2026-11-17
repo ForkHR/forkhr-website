@@ -58,7 +58,7 @@ export default function SolutionPage({ solution }: { solution: Solution }) {
       {/* Day one */}
       <section className="border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-          <SectionHeading eyebrow="Day one" title="What changes" />
+          <SectionHeading title="What changes" />
           <div className="mt-10 overflow-hidden rounded-2xl border border-warm-200 bg-white">
             <div className="hidden grid-cols-[1fr_40px_1fr] border-b border-warm-200 bg-warm-50 px-6 py-3 text-[11px] font-bold uppercase tracking-wider text-warm-400 md:grid">
               <span>Today</span>
@@ -83,7 +83,6 @@ export default function SolutionPage({ solution }: { solution: Solution }) {
         <FeatureRow
           key={f.title}
           flip={i % 2 === 1}
-          eyebrow={f.eyebrow}
           plan={f.plan}
           title={f.title}
           lede={f.lede}
@@ -99,7 +98,6 @@ export default function SolutionPage({ solution }: { solution: Solution }) {
       {solution.story === 'supplierDay' && (
         <IllustrationStory
           id="supplier-day"
-          eyebrow="A supplier's Tuesday"
           title="From the first drop to the payout"
           lede="Northside Roasters delivers beans, oat milk and cups to cafés around the city. Five moments from one morning."
           slides={SUPPLIER_DAY}
@@ -110,7 +108,6 @@ export default function SolutionPage({ solution }: { solution: Solution }) {
       <section id="pricing" className="scroll-mt-24 border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <SectionHeading
-            eyebrow="What it costs"
             title={`Pricing for ${solution.name.toLowerCase()}`}
             lede={`Start free. Add the team tools when ready. ${GUARANTEE_DAYS}-day money-back guarantee.`}
           />
@@ -173,7 +170,7 @@ export default function SolutionPage({ solution }: { solution: Solution }) {
       <section className="border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid gap-12 md:grid-cols-[1fr_1.6fr] md:gap-16">
-            <SectionHeading eyebrow="Questions" title={solution.kind === 'business' ? `${solution.name} ask us` : `Questions about ${solution.name.toLowerCase()}`} lede="Anything else: support@forkhr.com" />
+            <SectionHeading title={solution.kind === 'business' ? `${solution.name} ask us` : `Questions about ${solution.name.toLowerCase()}`} lede="Anything else: support@forkhr.com" />
             <Accordion type="single" collapsible className="w-full border-t border-warm-100">
               {solution.faqs.map((faq, i) => (
                 <AccordionItem key={i} value={`faq-${i}`} className="border-warm-100 last:border-b">

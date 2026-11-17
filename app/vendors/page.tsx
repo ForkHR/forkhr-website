@@ -27,7 +27,6 @@ const points: LeadPoint[] = [
 export default function VendorsPage() {
   return (
     <LeadPage
-      eyebrow="For vendors"
       title="Get your business on the Fork marketplace"
       lede="Suppliers and service companies: tell us what you supply and where. We will be in touch about getting your storefront listed where shops on Fork look for vendors."
       pointsTitle="What a listing gives you"

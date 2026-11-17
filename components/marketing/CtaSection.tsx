@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import Backdrop from '@/components/visual/Backdrop'
 import StoreBadges from './StoreBadges'
 import { CTA_DEMO, CTA_PRIMARY, DEMO_PATH, GUARANTEE_DAYS, REGISTER_URL } from '@/lib/site'
+import FeatureGrid from './FeatureGrid'
 
 /** The promises every page closes on, beside the offer. Same everywhere, so they stay true. */
 const PROMISES = [
@@ -18,14 +19,12 @@ const PROMISES = [
  * (whoever read the page and is not ready to sign up; pricing is in the header).
  */
 export default function CtaSection({
-  eyebrow = 'Get started',
   title = 'Run the whole business from one app',
   lede = 'Free to order and sell. Team plans from $39 per location.',
   secondaryHref = DEMO_PATH,
   secondaryLabel = CTA_DEMO,
   registerHref = REGISTER_URL,
 }: {
-  eyebrow?: string
   title?: string
   lede?: string
   secondaryHref?: string
@@ -39,7 +38,6 @@ export default function CtaSection({
       <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
         <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-20">
           <div>
-            <span className="eyebrow mb-4 text-lime-accent">{eyebrow}</span>
             <h2 className="mb-5 text-4xl font-semibold tracking-tight text-white md:text-5xl">{title}</h2>
             <p className="mb-10 max-w-lg text-lg text-warm-400">{lede}</p>
             <div className="flex flex-col gap-4 sm:flex-row">
@@ -61,17 +59,7 @@ export default function CtaSection({
             </div>
           </div>
 
-          <ul className="grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2">
-            {PROMISES.map((p) => (
-              <li key={p.title} className="bg-warm-950 p-5">
-                <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-lime-accent/15 text-lime-accent">
-                  <Check className="h-3.5 w-3.5" strokeWidth={3} />
-                </span>
-                <div className="mt-3 text-[15px] font-semibold text-white">{p.title}</div>
-                <p className="mt-1 text-[13.5px] leading-relaxed text-warm-400">{p.desc}</p>
-              </li>
-            ))}
-          </ul>
+          <FeatureGrid tone="dark" columns={2} size="sm" items={PROMISES.map((p) => ({ icon: <Check strokeWidth={3} />, title: p.title, desc: p.desc }))} />
         </div>
       </div>
     </section>

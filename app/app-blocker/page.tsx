@@ -9,6 +9,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { AppBlockerPreview, Window } from '@/components/previews'
 import { APP_BLOCKER, APP_BLOCKER_BREAK, APP_BLOCKER_NOTICE } from '@/lib/illustrations'
 import { registerUrl } from '@/lib/site'
+import FeatureGrid from '@/components/marketing/FeatureGrid'
 
 const description =
   'Block social media, games and video on your team’s phones during shifts or while clocked in. Breaks are free, there is a five-minute way out, each person agrees to the notice first, and you see who has it on and each blocked app opened at work. On Fork Premium.'
@@ -75,7 +76,6 @@ export default function AppBlockerPage() {
       <FeatureRow
         id="rule"
         badge="New"
-        eyebrow="One rule"
         plan="premium"
         title="Pick the apps once, for every shop"
         lede="Block social media, games, video, shopping or news, or apps by name, during a scheduled shift, while clocked in, or both. The block screen says why, with your name on it and when the app opens again."
@@ -89,7 +89,6 @@ export default function AppBlockerPage() {
         id="breaks"
         className="bg-warm-50"
         flip
-        eyebrow="Breaks & unlocks"
         plan="premium"
         title="A break is a break"
         lede="Apps open on a break and block again when its time is up, or only once they clock back in, as you choose. Anyone who needs their phone opens it for five minutes, three times a shift, and says why."
@@ -103,7 +102,6 @@ export default function AppBlockerPage() {
 
       <FeatureRow
         id="notice"
-        eyebrow="The notice"
         plan="premium"
         title="Agreed to on their own phone"
         lede="Before it turns on, each person reads what is blocked, when, and what you can see, and agrees. The date is kept."
@@ -115,23 +113,15 @@ export default function AppBlockerPage() {
 
       <section id="seen" className="scroll-mt-24 border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="What you see" title="Who is blocked, right now" lede="The App blocker page under Operations, live as phones report in." />
-          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-warm-200 bg-warm-200 sm:grid-cols-2 lg:grid-cols-4">
-            {seen.map((s) => (
-              <div key={s.title} className="bg-white p-6">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-forest-50 text-forest-600">{s.icon}</span>
-                <h3 className="mt-3 text-[15px] font-semibold text-warm-950">{s.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-warm-500">{s.desc}</p>
-              </div>
-            ))}
-          </div>
+          <SectionHeading title="Who is blocked, right now" lede="The App blocker page under Operations, live as phones report in." />
+          <FeatureGrid className="mt-12" columns={4} items={seen} />
         </div>
       </section>
 
       <section className="border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid gap-12 md:grid-cols-[1fr_1.6fr] md:gap-16">
-            <SectionHeading eyebrow="Questions" title="About the app blocker" lede="Anything else: support@forkhr.com" />
+            <SectionHeading title="About the app blocker" lede="Anything else: support@forkhr.com" />
             <Accordion type="single" collapsible className="w-full border-t border-warm-100">
               {faqs.map((faq, i) => (
                 <AccordionItem key={faq.q} value={`faq-${i}`} className="border-warm-100 last:border-b">
@@ -146,7 +136,6 @@ export default function AppBlockerPage() {
 
       <CtaSection
         registerHref={signUp}
-        eyebrow="Premium"
         title="Keep the floor about the customer"
         lede="The app blocker, reminders, checklists and the rest of Operations, on Premium."
         secondaryHref="/pricing"

@@ -34,7 +34,6 @@ const order: DayStop[] = [
     id: 'chat',
     day: 'Thu',
     time: '8:12 AM',
-    eyebrow: 'Customer chat',
     plan: 'free',
     title: 'Twelve more baguettes, from a reply to an email',
     lede: "Corner Café isn't on Fork, so the confirmation went out as an email. Their reply came back to the chat, next to the order.",
@@ -48,7 +47,6 @@ const order: DayStop[] = [
     id: 'routes',
     day: 'Fri',
     time: '5:30 AM',
-    eyebrow: 'Delivery routes',
     plan: 'free',
     title: 'The van leaves on the best route',
     lede: 'Pick the orders and Fork puts the stops in order. The driver works them from the Fork app.',
@@ -85,7 +83,6 @@ export default function SalesPage() {
       <section id="story" className="scroll-mt-24 border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <SectionHeading
-            eyebrow="An order on Fork"
             title="From standing order to money in the bank"
             lede="Blue Door Bakery's Friday order for Corner Café, which isn't on Fork and never needs to be."
           />
@@ -99,7 +96,6 @@ export default function SalesPage() {
         id="storefront"
         flip
         badge="New"
-        eyebrow="Storefront"
         plan="free"
         title="A store for the buyers you haven't met yet"
         lede="Your catalog on a link: shelves by category, a page for every product, a cart that knows your minimum. Guests pay by card."
@@ -112,7 +108,6 @@ export default function SalesPage() {
 
       <FeatureRow
         id="payments"
-        eyebrow="Invoices & payments"
         plan="free"
         title="Invoices that get paid"
         lede="The customer gets an email with a pay link. The PDF carries a QR code. Stripe moves the money to your bank."
@@ -124,7 +119,6 @@ export default function SalesPage() {
 
       <IllustrationStory
         id="supplier-day"
-        eyebrow="A supplier's Tuesday"
         title="From the first drop to the payout"
         lede="Northside Roasters delivers beans, oat milk and cups to cafés around the city. Five moments from one morning."
         slides={SUPPLIER_DAY}
@@ -136,7 +130,7 @@ export default function SalesPage() {
       <section className="border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
           <div className="grid items-start gap-12 md:grid-cols-[1fr_1.2fr] md:gap-16">
-            <SectionHeading eyebrow="What it costs" title="Free to sell. A small fee only when money moves online." />
+            <SectionHeading title="Free to sell. A small fee only when money moves online." />
             <div className="surface divide-y divide-warm-100">
               {[
                 { l: 'Catalog, storefront, orders, routes, chat', v: '$0', d: 'Unlimited' },
@@ -159,7 +153,7 @@ export default function SalesPage() {
         </div>
       </section>
 
-      <CtaSection registerHref={registerUrl({ use: 'sales' })} eyebrow="Free plan" title="Start selling through Fork" lede="Add your catalog and customers today. Invoice your first order this week." />
+      <CtaSection registerHref={registerUrl({ use: 'sales' })} title="Start selling through Fork" lede="Add your catalog and customers today. Invoice your first order this week." />
     </main>
   )
 }

@@ -24,6 +24,7 @@ import { ApplicantPreview, Window } from '@/components/previews'
 import { HIRING } from '@/lib/illustrations'
 import { CTA_PRIMARY, registerUrl } from '@/lib/site'
 import type { Metadata } from 'next'
+import FeatureGrid from '@/components/marketing/FeatureGrid'
 
 export const metadata: Metadata = {
   title: 'Hiring — Fork | AI-Powered Job Board & Applicant Tracking',
@@ -163,7 +164,6 @@ export default function HiringPage() {
 
             {/* Right — feature list */}
             <div>
-              <span className="eyebrow mb-4">Public job board</span>
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950 mb-4">
                 A branded board your candidates actually want to use
               </h2>
@@ -189,7 +189,6 @@ export default function HiringPage() {
 
       <IllustrationStory
         id="a-hire"
-        eyebrow="A hire on Fork"
         title="From a sign in the window to hired"
         lede="Main St needs a weekend barista. Five moments from the sign going up to Jordan's invite to Fork."
         slides={HIRING}
@@ -200,7 +199,6 @@ export default function HiringPage() {
       <section id="pipeline" className="border-b border-warm-100">
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
           <div className="max-w-2xl mb-14">
-            <span className="eyebrow mb-4">Hiring pipeline</span>
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
               Four stages from application to offer
             </h2>
@@ -242,7 +240,6 @@ export default function HiringPage() {
           <div className="grid md:grid-cols-[1fr_1.3fr] gap-12 md:gap-16 items-start">
             {/* Left — explanation */}
             <div>
-              <span className="eyebrow text-lime-accent mb-4">AI-powered · Premium</span>
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-white mb-4">
                 AI reads the resume so you don&apos;t have to
               </h2>
@@ -304,7 +301,6 @@ export default function HiringPage() {
           <div className="grid md:grid-cols-[1fr_1.2fr] gap-12 md:gap-16 items-start">
             {/* Left — header */}
             <div>
-              <span className="eyebrow mb-4">Screening questions</span>
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950 mb-4">
                 Filter before you interview
               </h2>
@@ -381,7 +377,6 @@ export default function HiringPage() {
       <section className="border-b border-warm-100">
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
           <div className="max-w-2xl mb-12">
-            <span className="eyebrow mb-4">Quick start</span>
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
               Pre-built templates for common roles
             </h2>
@@ -411,7 +406,6 @@ export default function HiringPage() {
       <section className="border-b border-warm-100">
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
           <div className="max-w-2xl mb-14">
-            <span className="eyebrow mb-4">Why Fork</span>
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
               Hiring that&apos;s connected to everything else
             </h2>
@@ -420,22 +414,14 @@ export default function HiringPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-warm-200 border border-warm-200 rounded-xl overflow-hidden">
-            {[
+          <FeatureGrid columns={3} items={[
               { icon: <UserPlus className="w-5 h-5 text-forest-600" />, title: 'Hire → Employee', desc: 'Convert an applicant to an employee profile with one click. Auto-create their account and send an app invite.' },
               { icon: <Shield className="w-5 h-5 text-forest-600" />, title: 'Permission-controlled', desc: 'Control who can view listings vs. manage applicants with role-based permissions per position.' },
               { icon: <MessageSquareText className="w-5 h-5 text-forest-600" />, title: 'Comments & notes', desc: 'Leave internal notes on any applicant. Collaborate with your hiring team without leaving Fork.' },
               { icon: <BarChart3 className="w-5 h-5 text-forest-600" />, title: 'Applicant counts', desc: 'See how many applicants each listing has attracted at a glance from your dashboard.' },
               { icon: <Mail className="w-5 h-5 text-forest-600" />, title: 'Candidate emails', desc: 'Confirmation emails, interview invites with Accept and Decline buttons, and an optional rejection email.' },
               { icon: <FileSearch className="w-5 h-5 text-forest-600" />, title: 'Resumes on file', desc: 'Every resume stays on the applicant profile, a click away.' },
-            ].map((f) => (
-              <div key={f.title} className="bg-white p-7 hover:bg-warm-50 transition-colors">
-                <div className="mb-4">{f.icon}</div>
-                <h3 className="text-[15px] font-semibold text-warm-950 mb-1.5">{f.title}</h3>
-                <p className="text-sm text-warm-500 leading-relaxed">{f.desc}</p>
-              </div>
-            ))}
-          </div>
+            ]} />
         </div>
       </section>
 

@@ -12,7 +12,6 @@ export default function DocsNotFound() {
         <Backdrop />
         <div className="relative px-4 py-20 md:px-6 md:py-28 lg:px-8">
           <div className="max-w-xl">
-            <span className="eyebrow mb-4">Docs</span>
             <h1 className="text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-warm-950 sm:text-5xl">This article isn&apos;t here</h1>
             <p className="mt-5 text-lg leading-relaxed text-warm-600">It may have been renamed. Search the docs for it, or start from the topics.</p>
             <DocsSearchTrigger size="lg" className="mt-8" />

@@ -12,7 +12,6 @@ export default function PerformanceSpotlight({ id = 'performance' }: { id?: stri
     <Spotlight
       id={id}
       badge="New"
-      eyebrow="Performance"
       plan="pro"
       accent="plum"
       seed={7}

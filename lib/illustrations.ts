@@ -309,6 +309,54 @@ export const APP_BLOCKER_BREAK: Illustration = {
   text: 'Apps open on a break and block again when its time is up. Someone who needs their phone opens it for five minutes, three times a shift, and says why.',
 }
 
+/**
+ * The Surprise bags page's drawings: one Tuesday (November 17) at Juniper Coffee's Main St, the same
+ * cast and numbers as the hero demo and the home page's 5:12 PM moment: the Pastry bag at $6.00
+ * (worth about $18.00), 8 a day, picked up 5–6 PM with orders closing at 5:45 PM; Sam Ortiz reserves
+ * two at 2:18 PM (code K7RT, $12.99 with the $0.99 service fee, free cancel until 3 PM); Maya Chen
+ * is on shift then, Jordan Lee closes. Labels are the app's (docs/grab-bags-api.md): Availability's
+ * "Taking orders today" and "left of 8", the public page's "N left", "worth about", "Usually inside"
+ * and "Reserve a bag", the order page's "Your code" and "Show this code at the counter", the push
+ * "New surprise bag order", and the statuses New, Got it and Picked up in the app's tones.
+ */
+export const SURPRISE_BAGS: Illustration[] = [
+  {
+    src: '/illustrations/surprise-bags-count.webp',
+    ...size,
+    alt: "Illustration of Main St's pastry case after lunch, with a few croissants, muffins and a loaf left and the café's kraft bags with a J sticker on the counter, beside the Availability page: Main St · 9 left and Harbor St · 5 left, Taking orders today switched on, the Pastry bag at 3 sold · 5 left with a stepper reading 5, left of 8, and the Bread bag at 4 left of 4",
+    title: "Today's count, set at the counter",
+    text: 'Make a bag once. Each day the count follows the case: more, fewer, or sold out for today.',
+  },
+  {
+    src: '/illustrations/surprise-bags-page.webp',
+    ...size,
+    alt: "Illustration of Juniper Coffee's shop front on Main St with a Surprise bags sign and QR code in the window reading Scan to reserve, beside a phone showing the shop's Surprise bags page: the Pastry bag at $6.00, worth about $18.00, 5 left, Pick up Today, 5–6 PM, order by 5:45 PM, usually croissants, muffins and a loaf of the day, Vegetarian, and a Reserve a bag button",
+    title: 'Found from the window, reserved on the page',
+    text: 'Your own page in your colours, with what usually goes in, the price and what is left today.',
+  },
+  {
+    src: '/illustrations/surprise-bags-pay.webp',
+    ...size,
+    alt: 'Illustration of a desk by an office window with the checkout Pay for your bags (Pastry bag × 2 $12.00, service fee $0.99, total $12.99, a Pay button, bags held for 14:52), the confirmation email Your surprise bag order at Juniper Coffee: K7RT, and a phone showing Your bags are reserved with the code K7RT, Pick up Today, 5–6 PM at Main St, Directions and Free cancel until 3 PM',
+    title: 'Paid in a tap, with no account',
+    text: 'A card, Apple Pay or Google Pay. The code comes by email with a page of its own.',
+  },
+  {
+    src: '/illustrations/surprise-bags-push.webp',
+    ...size,
+    alt: "Illustration of the counter behind the bar at Main St, with an espresso machine, a grinder and Maya's phone buzzing face up, beside the lock screen at 2:18 on Tuesday, November 17 showing New surprise bag order, Sam · 2 bags · pick up Today, 5–6 PM, and the order K7RT marked New: Sam Ortiz, two Pastry bags for $12.00, pickup Today, 5–6 PM at Main St, $12.99 paid, and a Got it button",
+    title: 'Whoever is on shift gets a push',
+    text: 'The order goes to the people working at that shop who handle orders. Got it tells the team it is in hand.',
+  },
+  {
+    src: '/illustrations/surprise-bags-pickup.webp',
+    ...size,
+    alt: "Illustration of the Main St counter at dusk, warm lamps lit and a blue city outside the window, a hand passing a kraft bag with a green J sticker across the counter beside a phone showing the code K7RT, next to Today's orders at Main St: 5 orders, 2 waiting, 3 picked up, with K7RT for Sam O. just picked up by Jordan Lee at 5:12 PM",
+    title: 'Handed over with the code',
+    text: 'The customer shows the four-character code, and Picked up closes the order.',
+  },
+]
+
 export const APP_BLOCKER_NOTICE: Illustration = {
   src: '/illustrations/app-blocker-notice.webp',
   ...size,

@@ -155,7 +155,6 @@ export default function CompliancePage() {
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
           <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 md:gap-20 items-start">
             <div className="md:sticky md:top-28">
-              <span className="eyebrow mb-4">What you get</span>
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
                 What Fork does for compliance
               </h2>
@@ -183,7 +182,6 @@ export default function CompliancePage() {
       <section className="bg-warm-50 border-b border-warm-100">
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
           <div className="max-w-2xl mb-10">
-            <span className="eyebrow mb-4">Coverage</span>
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950">
               Compliance areas Fork covers
             </h2>
@@ -204,7 +202,6 @@ export default function CompliancePage() {
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
           <div className="grid md:grid-cols-[1.5fr_1fr] gap-12 md:gap-20 items-start">
             <div>
-              <span className="eyebrow mb-4">Why it matters</span>
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-warm-950 mb-4">
                 The cost of non-compliance
               </h2>

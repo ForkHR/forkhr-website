@@ -11,7 +11,6 @@ export default function PricingTeaser() {
     <section className="border-b border-warm-100 bg-warm-50">
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
         <SectionHeading
-          eyebrow="Pricing"
           title="Free to order and sell. Pay per location for the team tools."
           lede={`One price per location, unlimited employees. Every paid plan comes with a ${GUARANTEE_DAYS}-day money-back guarantee.`}
         />

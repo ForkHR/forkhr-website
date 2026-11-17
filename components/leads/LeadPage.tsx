@@ -9,7 +9,6 @@ export type LeadPoint = { icon: ComponentType<{ className?: string }>; title: st
  * is the page's one action.
  */
 export default function LeadPage({
-  eyebrow,
   title,
   lede,
   pointsTitle,
@@ -17,7 +16,6 @@ export default function LeadPage({
   aside,
   children,
 }: {
-  eyebrow: string
   title: ReactNode
   lede: ReactNode
   pointsTitle: string
@@ -32,7 +30,6 @@ export default function LeadPage({
         <Backdrop />
         <div className="relative mx-auto grid max-w-6xl gap-x-16 gap-y-10 px-4 pb-16 pt-10 md:px-6 md:pb-24 md:pt-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,520px)] lg:grid-rows-[auto_1fr] lg:items-start">
           <div className="lg:pt-6">
-            <span className="eyebrow mb-4">{eyebrow}</span>
             <h1 className="text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-warm-950 sm:text-5xl">{title}</h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-warm-600">{lede}</p>
           </div>

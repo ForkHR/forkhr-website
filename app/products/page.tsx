@@ -9,6 +9,7 @@ import {
   CalendarDays,
   ClipboardCheck,
   Clock,
+  Croissant,
   FileSignature,
   Megaphone,
   MessageSquare,
@@ -52,6 +53,7 @@ import {
   SopsPreview,
   StorefrontPreview,
   SupplyPreview,
+  SurpriseBagsPreview,
   TimecardsPreview,
   VendorChatPreview,
 } from '@/components/previews'
@@ -61,7 +63,7 @@ import { CTA_PRIMARY, PLATFORM_FEE_BPS, REGISTER_URL } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
 const description =
-  'Every Fork product: scheduling, timecards, chat, performance reviews, people & HR, hiring, SOPs and checklists, reminders, an app blocker for shifts, a link page and QR codes for every location, the feed, learning, reports, the AI assistant, ordering from vendors, receiving, selling and invoicing customers, an online storefront with guest checkout, delivery routes and service calls.'
+  'Every Fork product: scheduling, timecards, chat, performance reviews, people & HR, hiring, SOPs and checklists, reminders, an app blocker for shifts, a link page and QR codes for every location, the feed, learning, reports, the AI assistant, ordering from vendors, receiving, selling and invoicing customers, an online storefront with guest checkout, surprise bags of what is left today, delivery routes and service calls.'
 
 export const metadata: Metadata = {
   title: 'Products — Fork | Scheduling, Reviews, SOPs, Supply, Sales & More',
@@ -128,6 +130,7 @@ const chapters: Chapter[] = [
       { id: 'storefront', label: 'Online storefront', tier: 'free', Icon: ShoppingBag, badge: 'New' },
       { id: 'routes', label: 'Delivery routes', tier: 'free', Icon: Truck },
       { id: 'services', label: 'Service calls', tier: 'free', Icon: Wrench },
+      { id: 'surprise-bags', label: 'Surprise bags', tier: 'free', Icon: Croissant, badge: 'New' },
     ],
   },
 ]
@@ -162,8 +165,7 @@ const ChapterHeader = ({ chapter, seed }: { chapter: Chapter; seed: number }) =>
     </div>
     <div className="relative mx-auto flex max-w-6xl items-end justify-between gap-10 px-6 pb-14 pt-32 md:pb-20 lg:pt-20">
       <div className="max-w-xl lg:max-w-[52%]">
-        <span className="eyebrow text-lime-accent">{chapter.label}</span>
-        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-5xl">{chapter.title}</h2>
+        <h2 className="text-3xl font-semibold tracking-tight text-white md:text-5xl">{chapter.title}</h2>
         <p className="mt-4 text-lg leading-relaxed text-warm-400">{chapter.pitch}</p>
         <p className="mt-4 text-[13px] text-warm-500">{chapter.note}</p>
       </div>
@@ -193,8 +195,7 @@ export default function ProductsPage() {
         <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-12 md:pb-24 md:pt-20">
           <div className="grid items-end gap-6 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
             <div>
-              <span className="eyebrow">Products</span>
-              <h1 className="mt-4 text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-warm-950 sm:text-5xl md:text-6xl">Everything the shop runs on, in one app</h1>
+              <h1 className="text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-warm-950 sm:text-5xl md:text-6xl">Everything the shop runs on, in one app</h1>
             </div>
             <div className="lg:pb-1">
               <p className="text-lg leading-relaxed text-warm-600">Team, operations and money, with one login, one record and one bill. Jump to a part, or scroll through all of it.</p>
@@ -257,7 +258,6 @@ export default function ProductsPage() {
       <FeatureRow
         id="schedule"
         className="scroll-mt-36"
-        eyebrow="Schedule"
         plan="essential"
         title="Build the week. Publish once."
         lede="Drag shifts onto the week. Publish. Every phone gets a push."
@@ -269,7 +269,6 @@ export default function ProductsPage() {
         id="timecards"
         className="scroll-mt-36 bg-warm-50"
         flip
-        eyebrow="Timecards & time off"
         plan="essential"
         title="Any tablet is the clock"
         lede="A PIN on the tablet by the register, or a phone inside the location's radius. Approve the week and export it for payroll."
@@ -280,7 +279,6 @@ export default function ProductsPage() {
       <FeatureRow
         id="chat"
         className="scroll-mt-36"
-        eyebrow="Chat"
         plan="essential"
         title="One place to talk, by location and job"
         lede="A group for a location or a job keeps itself up to date: whoever works there is in. Photos, mentions, read receipts."
@@ -293,7 +291,6 @@ export default function ProductsPage() {
         className="scroll-mt-36 bg-warm-50"
         flip
         badge="New"
-        eyebrow="Performance"
         plan="pro"
         title="Reviews written from the record"
         lede="Attendance, shift flags, tasks and training sit beside every question. Reviews start on their own."
@@ -306,7 +303,6 @@ export default function ProductsPage() {
       <FeatureRow
         id="people"
         className="scroll-mt-36"
-        eyebrow="People & HR"
         plan="pro"
         title="Paperless from first day to last"
         lede="Onboarding guides, forms and contracts signed on a phone, and documents on file with their expiry dates."
@@ -318,7 +314,6 @@ export default function ProductsPage() {
         id="hiring"
         className="scroll-mt-36 bg-warm-50"
         flip
-        eyebrow="Hiring"
         plan="essential"
         title="Your own job board"
         lede="Post, screen, interview, hire. The profile and the app invite come with the hire."
@@ -331,7 +326,6 @@ export default function ProductsPage() {
       <IllustrationStory
         id="first-90-days"
         className="scroll-mt-36"
-        eyebrow="A new hire's first 90 days"
         title="From the sign in the window to the first raise"
         lede="Jordan Lee applies to be a barista at Main St. Six moments from the next three months, one for each team product."
         slides={NEW_HIRE}
@@ -342,7 +336,6 @@ export default function ProductsPage() {
       <FeatureRow
         id="sops"
         className="scroll-mt-36"
-        eyebrow="SOPs & checklists"
         plan="premium"
         title="Procedures your team runs on a phone"
         lede="Checklists start with the shift or a QR scan. Temps, waste and cash are logs on the same engine."
@@ -357,7 +350,6 @@ export default function ProductsPage() {
         className="scroll-mt-36 bg-warm-50"
         flip
         badge="New"
-        eyebrow="Reminders"
         plan="premium"
         title="Reminders that check the clock first"
         lede="The evening before a shift, an hour before, and a nudge to clock out for anyone still on the clock. Write your own, as a push, an email or an alarm that waits for an answer."
@@ -371,7 +363,6 @@ export default function ProductsPage() {
         id="app-blocker"
         className="scroll-mt-36"
         badge="New"
-        eyebrow="App blocker"
         plan="premium"
         title="Phones away on the floor"
         lede="Pick the kinds of apps, and they are blocked on your team's phones during shifts. Breaks are free, with a five-minute way out."
@@ -386,7 +377,6 @@ export default function ProductsPage() {
         className="scroll-mt-36 bg-warm-50"
         flip
         badge="New"
-        eyebrow="Locations"
         plan="free"
         title="Every shop, one scan away"
         lede="A link page for each location with its review, directions, call, Wi-Fi and hiring buttons, and QR codes that count every scan."
@@ -399,7 +389,6 @@ export default function ProductsPage() {
       <FeatureRow
         id="feed"
         className="scroll-mt-36"
-        eyebrow="Feed"
         plan="essential"
         title="The home tab on every phone"
         lede="Announcements, recognitions and surveys. Everything gets reactions and comments."
@@ -411,7 +400,6 @@ export default function ProductsPage() {
         id="learn"
         className="scroll-mt-36 bg-warm-50"
         flip
-        eyebrow="Learn"
         plan="pro"
         title="Courses, policies, library, FAQs. One tab."
         lede="Everything someone needs to learn the job, where they will actually look."
@@ -422,7 +410,6 @@ export default function ProductsPage() {
       <FeatureRow
         id="reports"
         className="scroll-mt-36"
-        eyebrow="Reports"
         plan="essential"
         title="The numbers behind the shift"
         lede="Labor, attendance, purchasing and SOP reports, by location."
@@ -434,7 +421,6 @@ export default function ProductsPage() {
         id="ai"
         className="scroll-mt-36 bg-warm-50"
         flip
-        eyebrow="AI assistant"
         plan="premium"
         title="Answers from your own content"
         lede="Ask about a policy, a procedure or the schedule. It answers from what you published."
@@ -450,7 +436,6 @@ export default function ProductsPage() {
       <FeatureRow
         id="supply"
         className="scroll-mt-36"
-        eyebrow="Order from vendors"
         plan="free"
         title="Every vendor order in one place"
         lede="Vendors on Fork or not. Orders go out as email, replies come back as chat."
@@ -465,7 +450,6 @@ export default function ProductsPage() {
         className="scroll-mt-36 bg-warm-50"
         flip
         frame="phone"
-        eyebrow="Receiving & credits"
         plan="free"
         title="Check deliveries in on a phone"
         lede="Short, extra or damaged lines flagged and sent to the vendor in one message."
@@ -478,7 +462,6 @@ export default function ProductsPage() {
       <FeatureRow
         id="vendor-chat"
         className="scroll-mt-36"
-        eyebrow="Vendor & customer chat"
         plan="free"
         title="Talk where the order lives"
         lede="One chat per vendor or customer. Not on Fork? It goes out as email and the reply comes back as chat."
@@ -490,7 +473,6 @@ export default function ProductsPage() {
         id="sales"
         className="scroll-mt-36 bg-warm-50"
         flip
-        eyebrow="Sell & get paid"
         plan="free"
         title="Sell and get paid online"
         lede="Invoice from the order. Customers pay from the link or the QR code. No account needed."
@@ -504,7 +486,6 @@ export default function ProductsPage() {
         id="storefront"
         className="scroll-mt-36"
         badge="New"
-        eyebrow="Online storefront"
         plan="free"
         title="Your catalog, as a store on a link"
         lede="Shelves by category, a page per product, a cart that knows your minimum. Buyers order on Fork or check out as a guest and pay by card."
@@ -518,7 +499,6 @@ export default function ProductsPage() {
         id="routes"
         className="scroll-mt-36 bg-warm-50"
         flip
-        eyebrow="Delivery routes"
         plan="free"
         title="Deliver on the best route"
         lede="Pick the orders and Fork puts the stops in order. The driver works them from the app."
@@ -531,7 +511,6 @@ export default function ProductsPage() {
       <FeatureRow
         id="services"
         className="scroll-mt-36"
-        eyebrow="Service calls"
         plan="free"
         title="From the service call to paid"
         lede="Book a technician, capture the visit, bill from it."
@@ -540,6 +519,20 @@ export default function ProductsPage() {
         previewTitle="Fork · Service calls · #SR-1042"
         href="/service-providers"
         hrefLabel="Fork for service providers"
+      />
+      <FeatureRow
+        id="surprise-bags"
+        className="scroll-mt-36 bg-warm-50"
+        flip
+        badge="New"
+        plan="free"
+        title="Sell what is left, before you close"
+        lede="Bags of the day's leftovers on your own page. Customers reserve and pay, and whoever is on shift gets each order on their phone."
+        bullets={['No app or account for your customers', 'Today’s count changed with a tap', 'Paid straight into your own Stripe account']}
+        preview={<SurpriseBagsPreview />}
+        previewTitle="Fork · Surprise bags"
+        href="/surprise-bags"
+        hrefLabel="Explore surprise bags"
       />
 
       <CtaSection title="See it with your own team" lede="Ordering and selling are free. Team tools from $39 per location." />

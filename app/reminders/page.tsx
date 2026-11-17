@@ -9,6 +9,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { RemindersPreview, Window } from '@/components/previews'
 import { APP_BLOCKER, REMINDERS } from '@/lib/illustrations'
 import { registerUrl } from '@/lib/site'
+import FeatureGrid from '@/components/marketing/FeatureGrid'
 
 const description =
   'Reminders for hourly teams that read the schedule and the time clock: the evening before a shift, an hour before, a nudge to clock out, a break that is nearly over, and your own at any time, by push, email or an alarm that waits for an answer. A reminder can ask a question whose answer goes in your log.'
@@ -75,7 +76,6 @@ export default function RemindersPage() {
       <FeatureRow
         id="shift-reminders"
         badge="New"
-        eyebrow="Shift reminders"
         plan="essential"
         title="The evening before, and an hour before"
         lede="Three reminders go out from the day you publish a schedule: the shift tomorrow, the shift in an hour, and a nudge to clock out for anyone still on the clock. On Premium you change their words and times, or turn on clock-in, meal break and break reminders."
@@ -89,7 +89,6 @@ export default function RemindersPage() {
         id="alarms"
         className="bg-warm-50"
         flip
-        eyebrow="Alarms & history"
         plan="premium"
         title="An alarm that waits for an answer"
         lede="Send a reminder as a push, an email, or an alarm that fills the screen in Fork and rings until someone answers. Every reminder keeps who it reached and what they pressed."
@@ -101,7 +100,6 @@ export default function RemindersPage() {
 
       <FeatureRow
         id="questions"
-        eyebrow="Questions"
         plan="premium"
         title="A question, answered into the log"
         lede="A reminder can ask one question from a log or a checklist, like Is the shop open? The first answer at a shop is saved as that log's entry, and the manager hears when nobody answers within 20 minutes."
@@ -115,16 +113,8 @@ export default function RemindersPage() {
 
       <section id="when" className="scroll-mt-24 border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="Your own reminders" title="Around a shift, a break, or at a set time" lede="Up to forty of your own, each with its title, its message and the way it arrives. Blanks like the person's name and shift fill themselves in." />
-          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-warm-200 bg-warm-200 sm:grid-cols-2 lg:grid-cols-4">
-            {triggers.map((t) => (
-              <div key={t.title} className="bg-white p-6">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-forest-50 text-forest-600">{t.icon}</span>
-                <h3 className="mt-3 text-[15px] font-semibold text-warm-950">{t.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-warm-500">{t.desc}</p>
-              </div>
-            ))}
-          </div>
+          <SectionHeading title="Around a shift, a break, or at a set time" lede="Up to forty of your own, each with its title, its message and the way it arrives. Blanks like the person's name and shift fill themselves in." />
+          <FeatureGrid className="mt-12" columns={4} items={triggers} />
         </div>
       </section>
 
@@ -132,7 +122,6 @@ export default function RemindersPage() {
         id="app-blocker"
         flip
         badge="New"
-        eyebrow="App blocker"
         plan="premium"
         title="Phones away on the floor"
         lede="Also in Operations: pick the kinds of apps, and they are blocked on your team's phones during shifts. Breaks are free, with a five-minute way out."
@@ -147,7 +136,7 @@ export default function RemindersPage() {
       <section className="border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid gap-12 md:grid-cols-[1fr_1.6fr] md:gap-16">
-            <SectionHeading eyebrow="Questions" title="About reminders" lede="Anything else: support@forkhr.com" />
+            <SectionHeading title="About reminders" lede="Anything else: support@forkhr.com" />
             <Accordion type="single" collapsible className="w-full border-t border-warm-100">
               {faqs.map((faq, i) => (
                 <AccordionItem key={faq.q} value={`faq-${i}`} className="border-warm-100 last:border-b">
@@ -162,7 +151,6 @@ export default function RemindersPage() {
 
       <CtaSection
         registerHref={signUp}
-        eyebrow="Premium"
         title="Let Fork do the reminding"
         lede="Shift reminders come with Scheduling. Your own reminders, alarms and questions on Premium."
         secondaryHref="/pricing"

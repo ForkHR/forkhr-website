@@ -44,9 +44,9 @@ export type PreviewKey =
   | 'links'
   | 'reminders'
   | 'appBlocker'
+  | 'surpriseBags'
 
 export type SolutionFeature = {
-  eyebrow: string
   title: string
   lede: string
   bullets: string[]
@@ -107,7 +107,6 @@ export const SOLUTIONS: Solution[] = [
     ],
     features: [
       {
-        eyebrow: 'Scheduling & timecards',
         plan: 'essential',
         title: 'Baristas set availability. You publish.',
         lede: 'Every phone gets the week. The register tablet is the clock.',
@@ -116,7 +115,6 @@ export const SOLUTIONS: Solution[] = [
         previewTitle: 'Fork · Timecards · Today',
       },
       {
-        eyebrow: 'Checklists',
         plan: 'premium',
         title: 'Opening, closing and machine care, the same every shift',
         lede: 'Checklists start with the shift. Fridges carry a QR code.',
@@ -127,7 +125,6 @@ export const SOLUTIONS: Solution[] = [
         hrefLabel: 'Explore SOPs',
       },
       {
-        eyebrow: 'Supply',
         plan: 'free',
         title: 'Beans, milk and cups, one order screen',
         lede: 'Standing orders to the dairy. Vendor replies land in the chat.',
@@ -138,7 +135,6 @@ export const SOLUTIONS: Solution[] = [
         hrefLabel: 'Explore supply',
       },
       {
-        eyebrow: 'Wholesale',
         plan: 'free',
         title: 'Bake for other shops? Get paid online',
         lede: 'Standing orders from cafés, a route for the van, an invoice with a pay link.',
@@ -150,7 +146,7 @@ export const SOLUTIONS: Solution[] = [
       },
     ],
     pricing: {
-      free: ['Vendor orders and standing orders', 'Wholesale orders and invoices', 'Online storefront with guest checkout', 'Vendor and customer chat', 'Delivery routes'],
+      free: ['Vendor orders and standing orders', 'Wholesale orders and invoices', 'Online storefront with guest checkout', 'Surprise bags of what is left today', 'Vendor and customer chat', 'Delivery routes'],
       paidTier: 'essential',
       paid: ['Barista schedule, open shifts, trades', 'Kiosk and GPS clock-in, tip pool', 'Team chat and announcements', 'Stock counts with par levels'],
       note: 'Checklists and temperature logs are on Premium.',
@@ -161,6 +157,7 @@ export const SOLUTIONS: Solution[] = [
       { q: 'Does it work for a bakery that sells wholesale?', a: 'Yes. Catalog, a storefront, standing orders, routes and invoices. Customers pay from a link or QR code and never need an account.' },
       { q: 'Can new cafés order from us online?', a: 'Yes. Your storefront is a link with your catalog: cafés on Fork order there, anyone else checks out as a guest and pays by card.' },
       { q: 'Can I order from vendors that do not use Fork?', a: 'Yes. Add them by name and email. Orders and messages go out as email; replies land back in the chat.' },
+      { q: 'Can we sell the pastries left at the end of the day?', a: 'Yes, as surprise bags: customers reserve and pay on your own page and pick up before you close, and whoever is on shift gets each order on their phone. Free on every plan; Fork keeps 5% of the bags and the customer pays a $0.99 service fee.' },
       { q: 'Does Fork do fridge temperature logs?', a: 'Yes, on Premium. Scan the QR on the fridge to log it. Out of range fails the run and schedules a recheck.' },
     ],
     related: ['restaurants', 'food-distributors', 'employee-scheduling', 'food-safety-checklists'],
@@ -188,7 +185,6 @@ export const SOLUTIONS: Solution[] = [
     ],
     features: [
       {
-        eyebrow: 'Scheduling & timecards',
         plan: 'essential',
         title: 'Schedule the week, clock in at the pass, split the tips',
         lede: 'Trades with approval. The tablet by the pass is the kiosk.',
@@ -197,7 +193,6 @@ export const SOLUTIONS: Solution[] = [
         previewTitle: 'Fork · Schedule · Main St',
       },
       {
-        eyebrow: 'Line checks & food safety',
         plan: 'premium',
         title: 'Line checks and walk-in temps that get done',
         lede: 'Checklists start with the shift. Each cold unit carries a QR code.',
@@ -208,7 +203,6 @@ export const SOLUTIONS: Solution[] = [
         hrefLabel: 'Explore SOPs',
       },
       {
-        eyebrow: 'Labor against sales',
         plan: 'essential',
         title: 'See the hours that lose money',
         lede: 'Connect Square. Labor % by hour, day and location.',
@@ -217,7 +211,6 @@ export const SOLUTIONS: Solution[] = [
         previewTitle: 'Fork · Reports · Sales vs. labor',
       },
       {
-        eyebrow: 'Supply',
         plan: 'free',
         title: 'Every vendor order in one place',
         lede: 'Orders go out as email. Replies come back as chat.',
@@ -270,7 +263,6 @@ export const SOLUTIONS: Solution[] = [
     ],
     features: [
       {
-        eyebrow: 'Orders',
         plan: 'free',
         title: 'Standing orders that write themselves',
         lede: 'Every Monday, 24 sourdough. Generated ahead, emailed for confirmation.',
@@ -279,7 +271,6 @@ export const SOLUTIONS: Solution[] = [
         previewTitle: 'Fork · Chat · Corner Café',
       },
       {
-        eyebrow: 'Storefront',
         plan: 'free',
         title: 'A store new customers order from on their own',
         lede: 'Your catalog on a link. Guests check out and pay by card.',
@@ -290,7 +281,6 @@ export const SOLUTIONS: Solution[] = [
         hrefLabel: 'Explore the storefront',
       },
       {
-        eyebrow: 'Invoices & payments',
         plan: 'free',
         title: 'Invoices that get paid',
         lede: 'Email with a pay link, QR code on the PDF, payout to your bank.',
@@ -301,7 +291,6 @@ export const SOLUTIONS: Solution[] = [
         hrefLabel: 'How you get paid',
       },
       {
-        eyebrow: 'Routes',
         plan: 'free',
         title: 'Deliver on the best route',
         lede: 'Stops ordered on real roads. The driver checks each off with a photo.',
@@ -310,7 +299,6 @@ export const SOLUTIONS: Solution[] = [
         previewTitle: 'Fork · Routes · Fri, Sep 26',
       },
       {
-        eyebrow: 'Your team',
         plan: 'essential',
         title: 'Drivers, packers and bakers on one schedule',
         lede: 'Shifts by route and station. GPS from the van, kiosk at the warehouse.',
@@ -358,7 +346,6 @@ export const SOLUTIONS: Solution[] = [
     ],
     features: [
       {
-        eyebrow: 'Scheduling & timecards',
         plan: 'essential',
         title: 'A week built in minutes',
         lede: 'Availability and trades in view. The counter tablet is the clock.',
@@ -367,7 +354,6 @@ export const SOLUTIONS: Solution[] = [
         previewTitle: 'Fork · Timecards · Today',
       },
       {
-        eyebrow: 'Store checklists',
         plan: 'premium',
         title: 'Open and close the same way in every store',
         lede: 'Cash count against the float. A photo of the floor. Missed steps visible by morning.',
@@ -378,7 +364,6 @@ export const SOLUTIONS: Solution[] = [
         hrefLabel: 'Explore SOPs',
       },
       {
-        eyebrow: 'Feed & learn',
         plan: 'essential',
         title: 'Announcements people confirm, training people finish',
         lede: 'The feed is the home tab. Product knowledge one tap away.',
@@ -387,7 +372,6 @@ export const SOLUTIONS: Solution[] = [
         previewTitle: 'Fork · Feed',
       },
       {
-        eyebrow: 'People & HR',
         plan: 'pro',
         title: 'Paperless onboarding for seasonal hiring',
         lede: 'Post the job, hire, and the forms arrive on their phone.',
@@ -434,7 +418,6 @@ export const SOLUTIONS: Solution[] = [
     ],
     features: [
       {
-        eyebrow: 'Scheduling & timecards',
         plan: 'essential',
         title: 'Desk, classes and floor on one schedule',
         lede: 'Shifts by job, so cover only goes to people who can teach it.',
@@ -443,7 +426,6 @@ export const SOLUTIONS: Solution[] = [
         previewTitle: 'Fork · Schedule · Front desk',
       },
       {
-        eyebrow: 'Cleaning & equipment care',
         plan: 'premium',
         title: 'Every machine on a routine',
         lede: 'Daily wipe-down, weekly inspection, photo when done. Out of service raises an issue.',
@@ -454,7 +436,6 @@ export const SOLUTIONS: Solution[] = [
         hrefLabel: 'Explore SOPs',
       },
       {
-        eyebrow: 'Certifications & HR',
         plan: 'pro',
         title: 'Certifications that never lapse quietly',
         lede: 'CPR, first aid and trainer certs on the employee, with a reminder before they expire.',
@@ -463,7 +444,6 @@ export const SOLUTIONS: Solution[] = [
         previewTitle: 'Fork · People · Jordan Lee',
       },
       {
-        eyebrow: 'Feed & learn',
         plan: 'essential',
         title: 'Keep a part-time team in the loop',
         lede: 'Most of the team works a few shifts a week. The feed is where they catch up.',
@@ -513,7 +493,6 @@ export const SOLUTIONS: Solution[] = [
     ],
     features: [
       {
-        eyebrow: 'Build the week',
         plan: 'essential',
         title: 'Templates. Copy last week. Drag to move.',
         lede: 'Availability, time off and totals stay in view while you build.',
@@ -522,7 +501,6 @@ export const SOLUTIONS: Solution[] = [
         previewTitle: 'Fork · Schedule · Main St',
       },
       {
-        eyebrow: 'Open shifts & trades',
         plan: 'essential',
         title: 'Coverage without the phone calls',
         lede: 'Post an open shift. Everyone with the right job is notified.',
@@ -531,7 +509,6 @@ export const SOLUTIONS: Solution[] = [
         previewTitle: 'Fork · Chat · #main-st',
       },
       {
-        eyebrow: 'Timecards',
         plan: 'essential',
         title: 'From clock-in to payroll',
         lede: 'Any tablet is a kiosk. Phones clock in inside a GPS fence.',
@@ -540,7 +517,6 @@ export const SOLUTIONS: Solution[] = [
         previewTitle: 'Fork · Timecards · Today',
       },
       {
-        eyebrow: 'Reports',
         plan: 'essential',
         title: 'Scheduled vs. actual, labor vs. sales',
         lede: 'Where the plan and the punches diverge, and what it costs.',
@@ -589,7 +565,6 @@ export const SOLUTIONS: Solution[] = [
     ],
     features: [
       {
-        eyebrow: 'Runs',
         plan: 'premium',
         title: 'A checklist that runs itself',
         lede: 'Triggered by the shift, assigned to whoever is on, chased when late.',
@@ -600,7 +575,6 @@ export const SOLUTIONS: Solution[] = [
         hrefLabel: 'How SOPs work',
       },
       {
-        eyebrow: 'Temperature logs',
         plan: 'premium',
         title: 'Fridges and hot-holds on a QR code',
         lede: 'Scan the unit to start its check. The reading is tied to the right fridge.',
@@ -609,7 +583,6 @@ export const SOLUTIONS: Solution[] = [
         previewTitle: 'Fork · SOPs',
       },
       {
-        eyebrow: 'Waste & cash logs',
         plan: 'premium',
         title: 'Waste and cash, logged in seconds',
         lede: 'Item, quantity, reason. Cost from the supply product.',
@@ -618,7 +591,6 @@ export const SOLUTIONS: Solution[] = [
         previewTitle: 'Fork · Supply · Stock count',
       },
       {
-        eyebrow: 'Reports & inspections',
         plan: 'premium',
         title: 'Ready for the inspector',
         lede: 'Seven reports by location. Print or export as PDF.',

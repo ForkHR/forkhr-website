@@ -49,7 +49,7 @@ export default function SolutionsIndexPage() {
 
       <section className="border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
-          <SectionHeading eyebrow="By business" title="What kind of business do you run?" />
+          <SectionHeading title="What kind of business do you run?" />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {SOLUTION_MENU.business.map((l) => (
               <Card key={l.href} link={l} />
@@ -60,7 +60,7 @@ export default function SolutionsIndexPage() {
 
       <section className="border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
-          <SectionHeading eyebrow="By need" title="What do you need done?" />
+          <SectionHeading title="What do you need done?" />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {SOLUTION_MENU.need.map((l) => (
               <Card key={l.href} link={l} />

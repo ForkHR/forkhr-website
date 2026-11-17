@@ -21,6 +21,7 @@ const pages: Page[] = [
   { path: '/locations', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/sales', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/storefront', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/surprise-bags', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/supply', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/service-providers', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/suppliers', priority: 0.8, changeFrequency: 'daily' },

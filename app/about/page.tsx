@@ -6,6 +6,7 @@ import Backdrop from '@/components/visual/Backdrop'
 import SectionHeading from '@/components/marketing/SectionHeading'
 import { LogoMark } from '@/components/navigation/Logo'
 import { CTA_PRIMARY, DEMO_PATH, REGISTER_URL, SUPPORT_EMAIL } from '@/lib/site'
+import FeatureGrid from '@/components/marketing/FeatureGrid'
 
 const description = 'Fork was built to give hourly teams one app for the team, the operations and the money. Learn about our mission and values.'
 
@@ -43,7 +44,6 @@ export default function AboutPage() {
         <Backdrop />
         <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-12 md:pb-24 md:pt-28">
           <div className="max-w-3xl">
-            <span className="eyebrow mb-4">About</span>
             <h1 className="text-5xl font-semibold leading-[1.05] tracking-tight text-warm-950 md:text-6xl">One app for the whole shop.</h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-warm-600 md:text-xl">
               We started Fork because we saw teams running on group chats, paper checklists and a shoebox of vendor invoices. There had to be one place for the team, the procedures and the money.
@@ -76,15 +76,8 @@ export default function AboutPage() {
 
       <section className="border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="Values" title="What we stand for" className="mb-14" />
-          <div className="grid gap-px overflow-hidden rounded-2xl border border-warm-200 bg-warm-200 sm:grid-cols-2">
-            {values.map((v) => (
-              <div key={v.title} className="bg-white p-7 transition-colors hover:bg-warm-50">
-                <h3 className="mb-2 text-lg font-semibold text-warm-950">{v.title}</h3>
-                <p className="text-[15px] leading-relaxed text-warm-600">{v.description}</p>
-              </div>
-            ))}
-          </div>
+          <SectionHeading title="What we stand for" className="mb-14" />
+          <FeatureGrid columns={2} size="lg" items={values.map((v) => ({ title: v.title, desc: v.description }))} />
         </div>
       </section>
 

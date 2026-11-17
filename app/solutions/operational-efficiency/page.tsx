@@ -110,7 +110,7 @@ export default function OperationalEfficiencyPage() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid items-start gap-12 md:grid-cols-[1fr_1.5fr] md:gap-20">
             <div className="md:sticky md:top-28">
-              <SectionHeading eyebrow="What you get" title="How Fork improves the day" lede="Every skipped step, warm fridge, wasted tray and idle hour is a cost. Fork records them where they happen and shows you the pattern." />
+              <SectionHeading title="How Fork improves the day" lede="Every skipped step, warm fridge, wasted tray and idle hour is a cost. Fork records them where they happen and shows you the pattern." />
             </div>
             <div className="divide-y divide-warm-200/70">
               {benefits.map((b) => (
@@ -132,7 +132,7 @@ export default function OperationalEfficiencyPage() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.25fr] lg:gap-16">
             <div>
-              <SectionHeading eyebrow="Reports" title="See the hours that lose money" lede="Connect Square and Fork lines labor cost up against sales by hour, day and location. Sunday ran 34% labor? Now you know which two shifts to move." />
+              <SectionHeading title="See the hours that lose money" lede="Connect Square and Fork lines labor cost up against sales by hour, day and location. Sunday ran 34% labor? Now you know which two shifts to move." />
               <ul className="mt-6 space-y-2.5">
                 {['Sales vs. labor with Square sales synced every 20 minutes', 'Scheduled vs. actual hours, hourly labor cost, employee hours', 'SOP reports: what was missed, waste, cash movement, expenses', 'Purchases and product usage by vendor and location'].map((b) => (
                   <li key={b} className="flex items-start gap-2.5">
@@ -154,7 +154,7 @@ export default function OperationalEfficiencyPage() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid items-start gap-12 md:grid-cols-[1fr_1.5fr] md:gap-20">
             <div className="md:sticky md:top-28">
-              <SectionHeading eyebrow="ROI" title="Estimated annual savings per location" lede="Based on average improvements reported by teams using digital operations tools in food service, retail and hospitality." />
+              <SectionHeading title="Estimated annual savings per location" lede="Based on average improvements reported by teams using digital operations tools in food service, retail and hospitality." />
             </div>
             <div>
               <div className="divide-y divide-warm-200/70">

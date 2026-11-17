@@ -17,7 +17,6 @@ export type SpotlightPoint = { icon: ReactNode; title: string; desc: string }
 export default function Spotlight({
   id,
   badge,
-  eyebrow,
   plan,
   title,
   lede,
@@ -36,7 +35,6 @@ export default function Spotlight({
 }: {
   id: string
   badge?: string
-  eyebrow: string
   plan?: TierKey
   title: string
   lede: ReactNode
@@ -62,12 +60,13 @@ export default function Spotlight({
       <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
         <div className="grid gap-6 lg:grid-cols-[1.1fr_1fr] lg:items-end lg:gap-16">
           <div>
-            <div className="flex flex-wrap items-center gap-3">
-              {badge && <span className="rounded-full bg-warm-950 px-2.5 py-0.5 text-[12px] font-semibold text-white">{badge}</span>}
-              <span className="eyebrow">{eyebrow}</span>
-              {plan && <PlanBadge tier={plan} />}
-            </div>
-            <h2 className="mt-5 text-4xl font-semibold tracking-tight text-warm-950 md:text-5xl md:leading-[1.05]">{title}</h2>
+            {(badge || plan) && (
+              <div className="mb-5 flex flex-wrap items-center gap-3">
+                {badge && <span className="rounded-full bg-warm-950 px-2.5 py-0.5 text-[12px] font-semibold text-white">{badge}</span>}
+                {plan && <PlanBadge tier={plan} />}
+              </div>
+            )}
+            <h2 className="text-4xl font-semibold tracking-tight text-warm-950 md:text-5xl md:leading-[1.05]">{title}</h2>
           </div>
           <p className="text-lg leading-relaxed text-warm-600">{lede}</p>
         </div>

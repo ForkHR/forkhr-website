@@ -11,6 +11,7 @@ import { CheckInPreview, ManagerFeedbackPreview, PerformancePreview, Phone, Plan
 import { Pill, RatingDots, type PillTone } from '@/components/previews/bits'
 import { tierByKey } from '@/lib/catalog'
 import { registerUrl } from '@/lib/site'
+import FeatureGrid from '@/components/marketing/FeatureGrid'
 
 // Performance reviews, sold on what only Fork can do: the review is written beside the record
 // Fork already keeps (backend/utils/performanceSnapshot.js in the app repo). Rules and names
@@ -147,22 +148,12 @@ export default function PerformancePage() {
       <section id="record" className="scroll-mt-24 border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid items-end gap-6 md:grid-cols-[1.2fr_1fr]">
-            <SectionHeading eyebrow="The record" title="Every answer sits next to the facts" lede="Reviews pull in what Fork already keeps for the period. Nobody types it in, and nobody has to remember March." />
+            <SectionHeading title="Every answer sits next to the facts" lede="Reviews pull in what Fork already keeps for the period. Nobody types it in, and nobody has to remember March." />
             <p className="text-[15px] leading-relaxed text-warm-500 md:pb-1.5">
               Most review tools start from a blank page. Fork runs the schedule, the time clock, the checklists and the training, so the evidence is already there.
             </p>
           </div>
-          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-warm-200 bg-warm-200 sm:grid-cols-2 lg:grid-cols-3">
-            {record.map((r) => (
-              <div key={r.name} className="flex items-start gap-3.5 bg-white p-6">
-                <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-forest-50 text-forest-600">{r.icon}</span>
-                <div>
-                  <h3 className="text-[15px] font-semibold text-warm-950">{r.name}</h3>
-                  <p className="mt-1 text-[14px] leading-relaxed text-warm-500">{r.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <FeatureGrid className="mt-12" columns={3} items={record.map((r) => ({ icon: r.icon, title: r.name, desc: r.desc }))} />
           <p className="mt-6 flex items-start gap-2 text-sm text-warm-500">
             <Lock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-warm-400" />
             Employees see their own record only once the review is shared. Conduct and shift notes stay with managers.
@@ -175,7 +166,7 @@ export default function PerformancePage() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid items-center gap-14 lg:grid-cols-[1.25fr_1fr] lg:gap-20">
             <div>
-              <SectionHeading eyebrow="How a review runs" title="Start to raise, without a single reminder from you" lede="Fork opens it, nudges whoever is late, and tells you when it is your turn." />
+              <SectionHeading title="Start to raise, without a single reminder from you" lede="Fork opens it, nudges whoever is late, and tells you when it is your turn." />
               <ol className="mt-10">
                 {steps.map((s, i) => (
                   <li key={s.title} className="relative grid grid-cols-[32px_1fr] gap-4 pb-7 last:pb-0">
@@ -206,7 +197,7 @@ export default function PerformancePage() {
       {/* Cycles and templates */}
       <section id="cycles" className="scroll-mt-24 border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="Cycles & templates" title="Set it up once. Reviews keep coming." lede="Three kinds of cycle, and templates written for people who work shifts." />
+          <SectionHeading title="Set it up once. Reviews keep coming." lede="Three kinds of cycle, and templates written for people who work shifts." />
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {cycles.map((c) => (
               <div key={c.name} className="surface flex flex-col p-6">
@@ -261,8 +252,7 @@ export default function PerformancePage() {
         <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
             <div className="max-w-lg">
-              <span className="eyebrow text-lime-accent">Feedback</span>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">Honest feedback, from people who are safe to give it</h2>
+              <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">Honest feedback, from people who are safe to give it</h2>
               <p className="mt-5 text-lg leading-relaxed text-warm-400">Small teams make anonymity hard. Fork builds the safeguards in.</p>
               <dl className="mt-10 space-y-6">
                 {[
@@ -286,7 +276,6 @@ export default function PerformancePage() {
 
       <FeatureRow
         id="check-ins"
-        eyebrow="Check-ins, goals & notes"
         plan="pro"
         title="The months between reviews count too"
         lede="Book 1:1s with talking points and action items. Set goals Fork measures for you."
@@ -301,7 +290,6 @@ export default function PerformancePage() {
           <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
             <div>
               <div className="flex flex-wrap items-center gap-3">
-                <span className="eyebrow">Raises</span>
                 <PlanBadge tier="pro" />
               </div>
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-warm-950 md:text-4xl">From the review to the paycheck</h2>
@@ -330,7 +318,6 @@ export default function PerformancePage() {
       <FeatureRow
         id="improvement-plans"
         flip
-        eyebrow="Improvement plans"
         plan="premium"
         title="A fair, written chance to turn things around"
         lede="What is expected, how it is measured, the support on offer and the dates you will check in."
@@ -345,7 +332,6 @@ export default function PerformancePage() {
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:gap-12">
             <div className="shrink-0 md:max-w-[340px]">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="eyebrow">Reports</span>
                 <PlanBadge tier="pro" />
               </div>
               <h2 className="mt-3 text-2xl font-semibold tracking-tight text-warm-950">Who is growing, who is stuck, which reviews are late</h2>
@@ -382,7 +368,6 @@ export default function PerformancePage() {
       </section>
 
       <CtaSection
-        eyebrow={pro.name}
         title="Review the team with the facts"
         lede={`Performance is part of ${pro.name}: $${pro.price} per location a month, unlimited employees.`}
         registerHref={signUp}

@@ -4,6 +4,7 @@ import Hero from '@/components/marketing/Hero'
 import SectionHeading from '@/components/marketing/SectionHeading'
 import CtaSection from '@/components/marketing/CtaSection'
 import { AiPreview, Window } from '@/components/previews'
+import FeatureGrid from '@/components/marketing/FeatureGrid'
 
 const description =
   "An assistant trained on your company's own content: policies, FAQs, courses, library and the schedule itself. Accurate, role-aware answers for managers and employees, drafts for messages and open shifts, and escalation to a manager when it should not decide. Premium plan."
@@ -91,7 +92,7 @@ export default function AIAssistantPage() {
       <section className="border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid items-start gap-12 md:grid-cols-[1fr_1.4fr] md:gap-16">
-            <SectionHeading eyebrow="The problem" title="The answers exist. They are just hard to find." lede="Managers spend the day repeating them." />
+            <SectionHeading title="The answers exist. They are just hard to find." lede="Managers spend the day repeating them." />
             <div className="divide-y divide-warm-100 border-t border-warm-100 md:border-t-0">
               {painPoints.map((p, i) => (
                 <div key={p.problem} className="flex gap-5 py-5">
@@ -110,7 +111,7 @@ export default function AIAssistantPage() {
       {/* How it works */}
       <section id="how-it-works" className="scroll-mt-24 border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="How it works" title="Publish once, answer forever" lede="Nothing to configure." />
+          <SectionHeading title="Publish once, answer forever" lede="Nothing to configure." />
           <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
             {steps.map((s) => (
               <div key={s.step} className="border-t-2 border-warm-950 pt-6">
@@ -137,35 +138,16 @@ export default function AIAssistantPage() {
       {/* Features */}
       <section className="border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="Features" title="Built for accuracy, not novelty" />
-          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-warm-200 bg-warm-200 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((f) => (
-              <div key={f.title} className="bg-white p-7 transition-colors hover:bg-warm-50">
-                <div className="mb-4">{f.icon}</div>
-                <h3 className="mb-1.5 text-[15px] font-semibold text-warm-950">{f.title}</h3>
-                <p className="text-sm leading-relaxed text-warm-500">{f.desc}</p>
-              </div>
-            ))}
-          </div>
+          <SectionHeading title="Built for accuracy, not novelty" />
+          <FeatureGrid className="mt-12" columns={3} items={features} />
         </div>
       </section>
 
       {/* Sources */}
       <section className="border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="Content sources" title="Your content, in this order" />
-          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-warm-200 bg-warm-200 sm:grid-cols-2 lg:grid-cols-4">
-            {sources.map((s, i) => (
-              <div key={s.title} className="bg-white p-7">
-                <div className="mb-4 flex items-center justify-between">
-                  {s.icon}
-                  <span className="text-[12px] font-medium tabular-nums text-warm-400">Priority {i + 1}</span>
-                </div>
-                <h3 className="mb-1.5 text-[15px] font-semibold text-warm-950">{s.title}</h3>
-                <p className="text-sm leading-relaxed text-warm-500">{s.desc}</p>
-              </div>
-            ))}
-          </div>
+          <SectionHeading title="Your content, in this order" />
+          <FeatureGrid className="mt-12" columns={4} items={sources.map((s, i) => ({ icon: s.icon, title: s.title, desc: s.desc, meta: `Priority ${i + 1}` }))} />
           <p className="mt-6 text-sm text-warm-500">Fork&apos;s own product documentation comes last, for questions about the app itself. Live schedule, time off and timecard data is read from your company when the question needs it.</p>
         </div>
       </section>
@@ -173,7 +155,7 @@ export default function AIAssistantPage() {
       {/* Use cases */}
       <section className="border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="Use cases" title="Built for both sides of the org chart" />
+          <SectionHeading title="Built for both sides of the org chart" />
           <div className="mt-12 overflow-hidden rounded-2xl border border-warm-200 bg-white">
             <div className="grid grid-cols-2 border-b border-warm-200">
               <div className="flex items-center gap-3 border-r border-warm-200 px-6 py-5 md:px-8">
@@ -228,7 +210,7 @@ export default function AIAssistantPage() {
         </div>
       </section>
 
-      <CtaSection eyebrow="Premium" title="Stop answering the same questions" lede="The assistant is part of Premium, with SOPs, courses, policies and contracts." />
+      <CtaSection title="Stop answering the same questions" lede="The assistant is part of Premium, with SOPs, courses, policies and contracts." />
     </main>
   )
 }

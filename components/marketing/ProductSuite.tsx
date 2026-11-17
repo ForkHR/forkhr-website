@@ -11,7 +11,7 @@ export default function ProductSuite() {
   return (
     <section className="border-b border-warm-100 bg-warm-50">
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <SectionHeading eyebrow="One app" title="Three sides of the business. One login." lede="Team, operations and money, on the web and on every phone. Each part knows about the others." />
+        <SectionHeading title="Three sides of the business. One login." lede="Team, operations and money, on the web and on every phone. Each part knows about the others." />
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
           {productSides.map((g) => (
             <div key={g.label} className="surface flex flex-col p-2">

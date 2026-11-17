@@ -104,7 +104,6 @@ export default async function DocsHomePage() {
         <div className="relative px-4 pb-16 pt-12 md:px-6 md:pb-24 md:pt-24 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
             <div className="relative z-10">
-              <span className="eyebrow mb-4">Docs</span>
               <h1 className="text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-warm-950 sm:text-5xl md:text-6xl">How can we help?</h1>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-warm-600 md:text-xl">Guides for every part of Fork: where things are, what each button and menu does, and how to get the work done.</p>
               <DocsSearchTrigger size="lg" className="mt-9 max-w-xl" />
@@ -128,7 +127,6 @@ export default async function DocsHomePage() {
       <section aria-labelledby="browse-title" className="px-4 pb-8 pt-14 md:px-6 md:pt-20 lg:px-8">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <span className="eyebrow mb-4">Browse</span>
             <h2 id="browse-title" className="text-3xl font-semibold tracking-tight text-warm-950 md:text-4xl">
               Every part of Fork, by topic
             </h2>

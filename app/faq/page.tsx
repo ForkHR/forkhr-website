@@ -173,7 +173,6 @@ export default function FAQPage() {
         <Backdrop />
         <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-12 md:pb-24 md:pt-28">
           <div className="max-w-2xl">
-            <span className="eyebrow mb-4">Support</span>
             <h1 className="text-5xl font-semibold leading-[1.05] tracking-tight text-warm-950 md:text-6xl">Questions, answered.</h1>
             <p className="mt-4 text-lg leading-relaxed text-warm-600">
               Everything you need to know about Fork. Can&apos;t find it?{' '}
@@ -219,7 +218,7 @@ export default function FAQPage() {
         </div>
       </section>
 
-      <CtaSection eyebrow="Still have questions?" title="Try it, or ask us" lede="Start on the Free plan and see the app with your own vendors and customers, or email support and a person will answer." secondaryHref={`mailto:${SUPPORT_EMAIL}`} secondaryLabel="Contact support" />
+      <CtaSection title="Try it, or ask us" lede="Start on the Free plan and see the app with your own vendors and customers, or email support and a person will answer." secondaryHref={`mailto:${SUPPORT_EMAIL}`} secondaryLabel="Contact support" />
     </main>
   )
 }

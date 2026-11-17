@@ -35,7 +35,6 @@ const story: DayStop[] = [
     id: 'product-pages',
     day: 'Tue',
     time: '7:06 PM',
-    eyebrow: 'Product pages',
     plan: 'free',
     title: 'Every answer before the first order',
     lede: 'A card opens the product’s own page: the pictures, the pack, what a piece works out to, and the details a buyer asks about.',
@@ -50,7 +49,6 @@ const story: DayStop[] = [
     id: 'guest-checkout',
     day: 'Tue',
     time: '7:14 PM',
-    eyebrow: 'Guest checkout',
     plan: 'free',
     title: 'Paid by card, no account needed',
     lede: 'A short form, one of your next delivery dates, and Stripe’s card page. The money lands in your Stripe account.',
@@ -66,7 +64,6 @@ const story: DayStop[] = [
     id: 'views',
     day: 'Mon',
     time: '8:00 AM',
-    eyebrow: 'Storefront views',
     plan: 'free',
     title: 'See what buyers look for, and what they could not find',
     lede: 'Views against last week, the items that held a buyer’s eye, and the searches that came up empty. Counts only, never who.',
@@ -123,7 +120,6 @@ export default function StorefrontPage() {
       <section id="story" className="scroll-mt-24 border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <SectionHeading
-            eyebrow="A first order from a link"
             title="From an email signature to a paid order"
             lede="Northside Roasters put its storefront link everywhere it writes. Harbor Bistro had never heard of them on Tuesday."
           />
@@ -137,7 +133,7 @@ export default function StorefrontPage() {
 
       <section id="setup" className="scroll-mt-24 border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="Going live" title="Open in an afternoon" lede="Everything the page shows comes from what you already keep in Fork: items, terms and delivery area." />
+          <SectionHeading title="Open in an afternoon" lede="Everything the page shows comes from what you already keep in Fork: items, terms and delivery area." />
           <ol className="mt-12 grid gap-5 md:grid-cols-3">
             {steps.map((s) => (
               <li key={s.n} className="surface p-6">
@@ -160,7 +156,7 @@ export default function StorefrontPage() {
       <section id="pricing" className="scroll-mt-24 border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
           <div className="grid items-start gap-12 md:grid-cols-[1fr_1.2fr] md:gap-16">
-            <SectionHeading eyebrow="What it costs" title="Free to open. A small fee only when a guest pays by card." />
+            <SectionHeading title="Free to open. A small fee only when a guest pays by card." />
             <div className="surface divide-y divide-warm-100">
               {[
                 { l: 'Storefront, product pages, search', v: '$0', d: 'Unlimited items and views' },
@@ -186,7 +182,7 @@ export default function StorefrontPage() {
       <section className="border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid gap-12 md:grid-cols-[1fr_1.6fr] md:gap-16">
-            <SectionHeading eyebrow="Questions" title="About the storefront" lede="Anything else: support@forkhr.com" />
+            <SectionHeading title="About the storefront" lede="Anything else: support@forkhr.com" />
             <Accordion type="single" collapsible className="w-full border-t border-warm-100">
               {faqs.map((faq, i) => (
                 <AccordionItem key={faq.q} value={`faq-${i}`} className="border-warm-100 last:border-b">
@@ -201,7 +197,6 @@ export default function StorefrontPage() {
 
       <CtaSection
         registerHref={registerUrl({ use: 'sales' })}
-        eyebrow="Free plan"
         title="Open your storefront"
         lede="Add your items, pick your address, share the link. Selling on Fork is free."
         secondaryHref="/sales"

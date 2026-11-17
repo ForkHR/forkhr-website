@@ -31,7 +31,7 @@ export const PRICING_FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'Are there fees on payments I collect from customers?',
-    a: `Only when a customer pays online. Fork keeps a ${feePct}% platform fee on the pre-tax amount and Stripe charges its card or bank processing fee. Invoices you settle outside Fork carry no fee at all.`,
+    a: `Only when a customer pays online. Fork keeps a ${feePct}% platform fee on the pre-tax amount and Stripe charges its card or bank processing fee. Invoices you settle outside Fork carry no fee at all. Surprise bags are the one exception: Fork keeps 5% of the bags and the customer pays a $0.99 service fee per order.`,
   },
   {
     q: 'What payment methods do you accept for the subscription?',

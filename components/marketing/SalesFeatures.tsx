@@ -291,7 +291,7 @@ export default function SalesFeatures({ id, className }: { id?: string; classNam
   return (
     <section id={id} className={cn('scroll-mt-24 border-b border-warm-100', className)}>
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <BentoHeading eyebrow="Also included" title="The rest of the wholesale side" lede="What sits around every order, kept in the same place as the order: prices, repeats, credits, stock and the conversation." />
+        <BentoHeading title="The rest of the wholesale side" lede="What sits around every order, kept in the same place as the order: prices, repeats, credits, stock and the conversation." />
 
         <BentoGrid>
           <BentoCard className="sm:col-span-2" title="Price lists per customer" desc="Each customer sees their items at their prices: a list for a group, an own price where one was agreed." visual={<PricesVisual />} />

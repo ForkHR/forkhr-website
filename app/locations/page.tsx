@@ -79,7 +79,6 @@ export default function LocationsPage() {
       <FeatureRow
         id="link-page"
         badge="New"
-        eyebrow="Link page"
         plan="free"
         title="One page for each shop, already filled in"
         lede="Review, directions, call and hiring come from the location, so every shop's page is right the day you open it. Add the Wi-Fi, your profiles and buttons of your own."
@@ -93,7 +92,6 @@ export default function LocationsPage() {
         id="reviews"
         className="bg-warm-50"
         flip
-        eyebrow="Google reviews"
         plan="free"
         title="A link straight to your review form"
         lede="Paste each shop's Google review link once. A QR code on the receipt or a table card then opens the form for that shop, and so does the page's Review us on Google button."
@@ -105,7 +103,6 @@ export default function LocationsPage() {
 
       <FeatureRow
         id="feedback"
-        eyebrow="Customer surveys"
         plan="pro"
         title="Hear from customers, shop by shop"
         lede="Make a survey for anyone with the link and put it on the page as Tell us how we did. One question at a time, in your colours, with no account to make."
@@ -119,7 +116,6 @@ export default function LocationsPage() {
         id="links"
         className="bg-warm-50"
         flip
-        eyebrow="Links & QR codes"
         plan="free"
         title="A code for every spot, each one counted"
         lede="Make a link for the counter, the window, the receipt or your bio. Each has its own short address and QR code, so you can see which ones get used."
@@ -131,7 +127,6 @@ export default function LocationsPage() {
 
       <FeatureRow
         id="inspections"
-        eyebrow="Health inspections"
         plan="essential"
         title="Every inspection, as the city posts it"
         lede="Link each New York City shop to its record once; Fork suggests the match from the address. Every result is kept: the grade, the points and each violation as the city wrote it."
@@ -146,7 +141,7 @@ export default function LocationsPage() {
       <section id="fair" className="scroll-mt-24 border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
           <div className="grid items-start gap-12 md:grid-cols-[1fr_1.4fr] md:gap-16">
-            <SectionHeading eyebrow="Fair by design" title="Fair to your customers, and to Google" lede="The rules Fork follows on every page and every code, so a review is a review and a scan stays a count." />
+            <SectionHeading title="Fair to your customers, and to Google" lede="The rules Fork follows on every page and every code, so a review is a review and a scan stays a count." />
             <div className="grid gap-4">
               {promises.map((p) => (
                 <div key={p.title} className="surface flex items-start gap-4 p-5">
@@ -164,7 +159,7 @@ export default function LocationsPage() {
 
       <section id="setup" className="scroll-mt-24 border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading eyebrow="Going live" title="On the counter by this afternoon" lede="Links is on for every company. Each shop's page starts from what Settings already knows about the location." />
+          <SectionHeading title="On the counter by this afternoon" lede="Links is on for every company. Each shop's page starts from what Settings already knows about the location." />
           <ol className="mt-12 grid gap-5 md:grid-cols-3">
             {steps.map((s) => (
               <li key={s.n} className="surface p-6">
@@ -183,7 +178,7 @@ export default function LocationsPage() {
       <section className="border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid gap-12 md:grid-cols-[1fr_1.6fr] md:gap-16">
-            <SectionHeading eyebrow="Questions" title="About locations" lede="Anything else: support@forkhr.com" />
+            <SectionHeading title="About locations" lede="Anything else: support@forkhr.com" />
             <Accordion type="single" collapsible className="w-full border-t border-warm-100">
               {faqs.map((faq, i) => (
                 <AccordionItem key={faq.q} value={`faq-${i}`} className="border-warm-100 last:border-b">
@@ -196,7 +191,7 @@ export default function LocationsPage() {
         </div>
       </section>
 
-      <CtaSection eyebrow="Free plan" title="Put a code on the counter this week" lede="Every shop's page is filled in from its location. The link page and QR codes are free on every plan." secondaryHref="/pricing" secondaryLabel="Compare plans" />
+      <CtaSection title="Put a code on the counter this week" lede="Every shop's page is filled in from its location. The link page and QR codes are free on every plan." secondaryHref="/pricing" secondaryLabel="Compare plans" />
     </main>
   )
 }
