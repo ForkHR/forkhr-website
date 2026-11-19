@@ -313,7 +313,7 @@ export const APP_BLOCKER_BREAK: Illustration = {
  * The Surprise bags page's drawings: one Tuesday (November 17) at Juniper Coffee's Main St, the same
  * cast and numbers as the hero demo and the home page's 5:12 PM moment: the Pastry bag at $6.00
  * (worth about $18.00), 8 a day, picked up 5–6 PM with orders closing at 5:45 PM; Sam Ortiz reserves
- * two at 2:18 PM (code K7RT, $12.99 with the $0.99 service fee, free cancel until 3 PM); Maya Chen
+ * two at 2:18 PM (code K7RT, $13.49 with the $1.49 service fee, free cancel until 3 PM); Maya Chen
  * is on shift then, Jordan Lee closes. Labels are the app's (docs/grab-bags-api.md): Availability's
  * "Taking orders today" and "left of 8", the public page's "N left", "worth about", "Usually inside"
  * and "Reserve a bag", the order page's "Your code" and "Show this code at the counter", the push
@@ -337,14 +337,14 @@ export const SURPRISE_BAGS: Illustration[] = [
   {
     src: '/illustrations/surprise-bags-pay.webp',
     ...size,
-    alt: 'Illustration of a desk by an office window with the checkout Pay for your bags (Pastry bag × 2 $12.00, service fee $0.99, total $12.99, a Pay button, bags held for 14:52), the confirmation email Your surprise bag order at Juniper Coffee: K7RT, and a phone showing Your bags are reserved with the code K7RT, Pick up Today, 5–6 PM at Main St, Directions and Free cancel until 3 PM',
+    alt: 'Illustration of a desk by an office window with the checkout Pay for your bags (Pastry bag × 2 $12.00, service fee $1.49, total $13.49, a Pay button, bags held for 14:52), the confirmation email Your surprise bag order at Juniper Coffee: K7RT, and a phone showing Your bags are reserved with the code K7RT, Pick up Today, 5–6 PM at Main St, Directions and Free cancel until 3 PM',
     title: 'Paid in a tap, with no account',
     text: 'A card, Apple Pay or Google Pay. The code comes by email with a page of its own.',
   },
   {
     src: '/illustrations/surprise-bags-push.webp',
     ...size,
-    alt: "Illustration of the counter behind the bar at Main St, with an espresso machine, a grinder and Maya's phone buzzing face up, beside the lock screen at 2:18 on Tuesday, November 17 showing New surprise bag order, Sam · 2 bags · pick up Today, 5–6 PM, and the order K7RT marked New: Sam Ortiz, two Pastry bags for $12.00, pickup Today, 5–6 PM at Main St, $12.99 paid, and a Got it button",
+    alt: "Illustration of the counter behind the bar at Main St, with an espresso machine, a grinder and Maya's phone buzzing face up, beside the lock screen at 2:18 on Tuesday, November 17 showing New surprise bag order, Sam · 2 bags · pick up Today, 5–6 PM, and the order K7RT marked New: Sam Ortiz, two Pastry bags for $12.00, pickup Today, 5–6 PM at Main St, $13.49 paid, and a Got it button",
     title: 'Whoever is on shift gets a push',
     text: 'The order goes to the people working at that shop who handle orders. Got it tells the team it is in hand.',
   },

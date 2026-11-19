@@ -162,7 +162,7 @@ const body = `
     </div>
     <div class="row kv"><span class="k">Pickup</span><span class="v">Today, 5–6 PM</span></div>
     <div class="row kv"><span class="k">Location</span><span class="v">Main St</span></div>
-    <div class="row kv total"><span class="k">Total paid</span><span class="v">$12.99</span></div>
+    <div class="row kv total"><span class="k">Total paid</span><span class="v">$13.49</span></div>
   </div>
   <div class="go">${icon('check', { size: 22, stroke: 2.6 })} Got it</div>
 </div>

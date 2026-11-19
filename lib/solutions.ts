@@ -157,7 +157,7 @@ export const SOLUTIONS: Solution[] = [
       { q: 'Does it work for a bakery that sells wholesale?', a: 'Yes. Catalog, a storefront, standing orders, routes and invoices. Customers pay from a link or QR code and never need an account.' },
       { q: 'Can new cafés order from us online?', a: 'Yes. Your storefront is a link with your catalog: cafés on Fork order there, anyone else checks out as a guest and pays by card.' },
       { q: 'Can I order from vendors that do not use Fork?', a: 'Yes. Add them by name and email. Orders and messages go out as email; replies land back in the chat.' },
-      { q: 'Can we sell the pastries left at the end of the day?', a: 'Yes, as surprise bags: customers reserve and pay on your own page and pick up before you close, and whoever is on shift gets each order on their phone. Free on every plan; Fork keeps 5% of the bags and the customer pays a $0.99 service fee.' },
+      { q: 'Can we sell the pastries left at the end of the day?', a: 'Yes, as surprise bags: customers reserve and pay on your own page and pick up before you close, and whoever is on shift gets each order on their phone. Free on every plan; Fork keeps 5% of the bags and the customer pays a $1.49 service fee.' },
       { q: 'Does Fork do fridge temperature logs?', a: 'Yes, on Premium. Scan the QR on the fridge to log it. Out of range fails the run and schedules a recheck.' },
     ],
     related: ['restaurants', 'food-distributors', 'employee-scheduling', 'food-safety-checklists'],

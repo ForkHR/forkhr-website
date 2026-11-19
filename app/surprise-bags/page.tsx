@@ -30,7 +30,7 @@ const signUp = registerUrl({ use: 'sales' })
 // grabBagPayments.js, grabBagNotify.js; the public pages frontend/src/pages/grabBags/public). One
 // evening at Juniper Coffee's Main St, the same cast as /locations and /reminders: the Pastry bag
 // at $6.00 (worth about $18.00), 8 a day, picked up 5–6 PM; Sam reserves two at 2:18 PM (code
-// K7RT, $12.99 with the $0.99 service fee); Maya Chen is on shift then, Jordan Lee closes. The
+// K7RT, $13.49 with the $1.49 service fee); Maya Chen is on shift then, Jordan Lee closes. The
 // money: Fork's fee is 5% of the bags plus the customer's service fee, Stripe's processing is the
 // shop's, refunds are whole and give Fork's fee back. Not claimed: a marketplace or consumer app
 // (there is none), delivery, a bag on a locked phone's alarm, any city rule or licence.
@@ -61,11 +61,11 @@ const steps = [
 const fees = [
   { l: 'Surprise bags, your page and the app', v: '$0', d: 'On every plan, Free included' },
   { l: 'Fork’s fee', v: '5%', d: 'Of the bags, paid back with any refund' },
-  { l: 'Service fee', v: '$0.99', d: 'Paid by the customer, once per order' },
+  { l: 'Service fee', v: '$1.49', d: 'Paid by the customer, once per order' },
 ]
 
 const faqs = [
-  { q: 'What does it cost?', a: 'Nothing to set up, on every plan. On each order Fork keeps 5% of the bags and the customer pays a $0.99 service fee; Stripe charges your account its processing fee. Two bags at $6.00 come to $12.99 for the customer and $11.40 for you, before Stripe’s fee.' },
+  { q: 'What does it cost?', a: 'Nothing to set up, on every plan. On each order Fork keeps 5% of the bags and the customer pays a $1.49 service fee; Stripe charges your account its processing fee. Two bags at $6.00 come to $13.49 for the customer and $11.40 for you, before Stripe’s fee.' },
   { q: 'Do customers need an app or an account?', a: 'No. Your page opens in any phone’s browser. They pay by card, Apple Pay or Google Pay, and get their code and a link to their order by email.' },
   { q: 'Will Fork list our bags on a marketplace?', a: 'No. There is no Fork app for customers and no list of shops. Your bags are on your own page, which people reach from your QR codes, your link page and your posts.' },
   { q: 'Who gets the orders?', a: 'The people on shift at that shop whose job handles surprise bag orders, as a push and in the Fork app. With nobody on shift, the shop’s manager, then the owners. A reminder to pack comes half an hour before pickup.' },
@@ -95,7 +95,7 @@ export default function SurpriseBagsPage() {
         lede="Put the day's leftovers in bags on your own page. Customers reserve and pay with no app, whoever is on shift gets the order on their phone, and the money goes straight to your Stripe account."
         secondaryHref="#count"
         secondaryLabel="See an evening at Main St"
-        note="Free on every plan. Fork keeps 5% of the bags; customers pay a $0.99 service fee."
+        note="Free on every plan. Fork keeps 5% of the bags; customers pay a $1.49 service fee."
         aside={
           <Window title="Fork · Surprise bags">
             <SurpriseBagsPreview />
@@ -186,15 +186,15 @@ export default function SurpriseBagsPage() {
                   </div>
                   <div className="flex justify-between gap-6 text-warm-600">
                     <dt>Service fee</dt>
-                    <dd className="tabular-nums">$0.99</dd>
+                    <dd className="tabular-nums">$1.49</dd>
                   </div>
                   <div className="flex justify-between gap-6 border-t border-warm-200 pt-1.5 font-semibold text-warm-950">
                     <dt>Sam pays</dt>
-                    <dd className="tabular-nums">$12.99</dd>
+                    <dd className="tabular-nums">$13.49</dd>
                   </div>
                   <div className="flex justify-between gap-6 text-warm-600">
                     <dt>Fork’s fee (5% of $12.00, and the service fee)</dt>
-                    <dd className="shrink-0 tabular-nums">−$1.59</dd>
+                    <dd className="shrink-0 tabular-nums">−$2.09</dd>
                   </div>
                   <div className="flex justify-between gap-6 border-t border-warm-200 pt-1.5 font-semibold text-warm-950">
                     <dt>Juniper Coffee receives, before Stripe’s fee</dt>

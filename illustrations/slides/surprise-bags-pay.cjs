@@ -91,8 +91,8 @@ const body = `
   <div class="sub">Juniper Coffee · Main St</div>
   <div class="lines">
     <div class="ln"><span>Pastry bag × 2</span><b>$12.00</b></div>
-    <div class="ln"><span>Service fee</span><b>$0.99</b></div>
-    <div class="ln tot"><span>Total</span><b>$12.99</b></div>
+    <div class="ln"><span>Service fee</span><b>$1.49</b></div>
+    <div class="ln tot"><span>Total</span><b>$13.49</b></div>
   </div>
   <div class="wallet">${glyph(WALLET, 22, 2.2)}<span>Pay</span></div>
   <div class="hold">${icon('clock', { size: 18, stroke: 2.4 })}<span>Your bags are held for <b>14:52</b></span></div>

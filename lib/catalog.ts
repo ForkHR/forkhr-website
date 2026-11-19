@@ -130,7 +130,7 @@ export const FEATURE_GROUPS: FeatureGroup[] = [
       { key: 'standing-orders', label: 'Standing orders', minTier: 'free' },
       { key: 'vendor', label: 'Sell & deliver to customers', minTier: 'free' },
       { key: 'storefront', label: 'Online storefront & guest checkout', minTier: 'free', note: 'Guest card payments carry the online payment fee' },
-      { key: 'grabBags', label: 'Surprise bags: sell what is left today from your own page', minTier: 'free', note: 'Fork keeps 5% of the bags; customers pay a $0.99 service fee' },
+      { key: 'grabBags', label: 'Surprise bags: sell what is left today from your own page', minTier: 'free', note: 'Fork keeps 5% of the bags; customers pay a $1.49 service fee' },
       { key: 'service-calls', label: 'Service calls, technician visits & work reports', minTier: 'free' },
       { key: 'invoices', label: 'Invoices & online payments', minTier: 'free', note: 'Card and US bank transfer' },
       { key: 'routes', label: 'Delivery routes & proof of delivery', minTier: 'free' },
