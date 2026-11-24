@@ -285,6 +285,28 @@
   .pv-fade-in {
     animation: fade-in 0.4s ease both;
   }
+  /* A message landing in a chat demo: up from where it was typed, fading in */
+  .pv-msg-in {
+    animation: pv-msg-in 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  /* A finger's tap on a button in a demo: one ring that grows and fades (the element is keyed to replay it) */
+  .pv-tap {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    animation: pv-tap 0.55s ease-out both;
+  }
+  /* The caret in a demo's message box while someone types */
+  .pv-caret {
+    display: inline-block;
+    width: 1.5px;
+    height: 1.05em;
+    margin-left: 1px;
+    vertical-align: -0.15em;
+    background: currentColor;
+    animation: pv-caret 1s steps(1) infinite;
+  }
   /* A bar that grows from the left when it mounts (results that just unlocked) */
   .pv-bar-in {
     transform-origin: left;
@@ -348,7 +370,7 @@
     .pv-item, .pv-pop, .pv-slide-r, .pv-grow, .pv-fill, .pv-swap, .pv-path {
       transition: none !important;
     }
-    .pv-live::after, .pv-typing span, .marquee, .pv-bar-in {
+    .pv-live::after, .pv-typing span, .marquee, .pv-bar-in, .pv-msg-in, .pv-tap, .pv-caret {
       animation: none !important;
     }
   }
@@ -430,6 +452,18 @@
   @keyframes pv-ping {
     0% { transform: scale(0.6); opacity: 0.8; }
     100% { transform: scale(1.8); opacity: 0; }
+  }
+  @keyframes pv-msg-in {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes pv-tap {
+    0% { box-shadow: 0 0 0 0 rgba(27, 26, 25, 0.35); }
+    100% { box-shadow: 0 0 0 10px rgba(27, 26, 25, 0); }
+  }
+  @keyframes pv-caret {
+    0%, 50% { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
   }
   @keyframes pv-blink {
     0%, 80%, 100% { opacity: 0.25; transform: translateY(0); }

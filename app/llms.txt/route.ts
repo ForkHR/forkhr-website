@@ -23,7 +23,7 @@ Fork is for hourly-staff businesses (coffee shops, bakeries, restaurants, food d
 
 ## Products
 
-- [Everything in one place](${base}/products): schedule, timecards, chat, feed, SOPs, reminders, app blocker, locations, learn, people & HR, performance, hiring, supply, sales, online storefront, surprise bags, reports, AI assistant.
+- [Everything in one place](${base}/products): schedule, timecards, chat, feed, SOPs, reminders, app blocker, locations, learn, people & HR, performance, hiring, supply, sales, online storefront, surprise bags, reports, and Sauce, the AI assistant.
 - [SOPs & checklists](${base}/sops): boards, procedures and runs; opening and closing, temperature, waste and cash logs.
 - [Reminders](${base}/reminders): reminders that read the schedule and the time clock: the evening before a shift, an hour before, a nudge to clock out for anyone still clocked in (these three on every plan with Scheduling); on Premium, your own reminders around a shift, a break or at a set time, by push, email or an in-app alarm that waits for an answer, with a history of who answered what, and questions whose answers are saved as a log's entry.
 - [App blocker](${base}/app-blocker): blocks the kinds of apps a company picks (social media, games, video and streaming, shopping, news, or apps by name) on staff phones during scheduled shifts and/or while clocked in; free on breaks; a five-minute unlock three times a shift with a reason; Phone, Messages, Maps, the camera and Fork are never blocked; each person agrees to a notice on their own phone first; managers see who has it on and each blocked app opened at work, nothing else about the phone. Premium.
@@ -35,7 +35,7 @@ Fork is for hourly-staff businesses (coffee shops, bakeries, restaurants, food d
 - [Service providers](${base}/service-providers): service calls for repair and maintenance companies; technician visits with photos, parts, time on site and a signature; maintenance contracts; one call or a month of calls on one invoice paid online; customers need no account.
 - [Supply](${base}/supply): order from vendors, standing orders, vendor chat with email bridge, stock counts.
 - [Hiring](${base}/hiring): public job board, screening questions, AI resume scan, pipeline to onboarding.
-- [AI assistant](${base}/ai-assistant): answers from the company's own policies, FAQs, courses and schedule.
+- [Sauce, the AI assistant](${base}/ai-assistant): answers from the café's own schedule, stock, timecards and policies, and gets shifts, orders and write-ups ready for a person to confirm.
 
 ## Docs
 

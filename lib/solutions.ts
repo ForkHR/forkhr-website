@@ -45,6 +45,9 @@ export type PreviewKey =
   | 'reminders'
   | 'appBlocker'
   | 'surpriseBags'
+  | 'sauce'
+  | 'sauceChat'
+  | 'calendar'
 
 export type SolutionFeature = {
   title: string
@@ -602,7 +605,7 @@ export const SOLUTIONS: Solution[] = [
     pricing: {
       free: ['Ordering and selling stay free'],
       paidTier: 'premium',
-      paid: ['SOPs: boards, procedures, runs', 'Temperature, waste and cash logs', 'Courses, policies, FAQs, contracts', 'AI assistant and advanced reports'],
+      paid: ['SOPs: boards, procedures, runs', 'Temperature, waste and cash logs', 'Courses, policies, FAQs, contracts', 'Sauce, the AI assistant, and advanced reports'],
       note: 'Premium includes everything in Essential and Pro.',
     },
     faqs: [

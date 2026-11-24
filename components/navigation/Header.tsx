@@ -9,35 +9,150 @@ import { Button } from '../ui/button'
 import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
 import { CTA_DEMO, CTA_PRIMARY, DEMO_PATH, GUARANTEE_DAYS, LOGIN_URL, REGISTER_URL } from '@/lib/site'
-import { SOLUTION_MENU, type PreviewKey, type SolutionLink } from '@/lib/solutions'
-import { renderPreview } from '@/components/previews/registry'
+import SauceCardPreview from '@/components/previews/SauceCardPreview'
+import { SauceMark } from '@/components/previews/sauceBits'
 import Logo from './Logo'
-import { productGroups, type NavItem } from './nav-data'
+import { productGroups, sauceAsks, sauceItem, solutionGroups, type NavItem, type ProductGroup } from './nav-data'
 
-/**
- * The live demo panel in a menu: whatever the pointer is on, shown in a small window frame.
- * Only rendered while the menu is open, so the demos do not run in the background.
+/*
+ * Each menu is a rail of groups at the left and the pointed group's tools at the right, each tool an
+ * icon and a name; a tool's line is said at the menu's foot while it is pointed at (the owner's pick of
+ * 2026-11-23: the rail of sketch B with the rows of sketch A). Products opens on Sauce.
  */
-const MenuDemo = ({ preview, title, pitch, href, hrefLabel }: { preview: PreviewKey; title: string; pitch: string; href: string; hrefLabel: string }) => (
-  <div className="flex h-full flex-col rounded-xl bg-warm-100/80 p-3">
-    <div className="@container pointer-events-none relative h-[220px] overflow-hidden rounded-lg border border-warm-200 bg-white shadow-[0_18px_40px_-24px_rgba(9,9,11,0.35)] mask-[linear-gradient(to_bottom,black_72%,transparent)]" aria-hidden="true">
-      <div className="flex items-center gap-1.5 border-b border-warm-100 px-2.5 py-1.5">
-        <span className="h-2 w-2 rounded-full bg-warm-200" />
-        <span className="h-2 w-2 rounded-full bg-warm-200" />
-        <span className="h-2 w-2 rounded-full bg-warm-200" />
-        <span className="flex-1 truncate text-center text-[10px] font-medium text-warm-400">{title}</span>
+
+const SAUCE = 'sauce'
+
+const FreeChip = () => <span className="rounded-full bg-ok-50 px-1.5 py-px text-[11px] font-semibold text-ok-700">Free</span>
+const PremiumChip = () => <span className="rounded-full bg-warm-100 px-1.5 py-px text-[11px] font-semibold text-warm-700">Premium</span>
+const NewChip = ({ children }: { children: string }) => <span className="shrink-0 rounded-full bg-forest-50 px-1.5 py-px text-[11px] font-semibold text-forest-700">{children}</span>
+
+type RailRow = { key: string; label: string; sub: string; href: string; free?: boolean; premium?: boolean; icon?: ProductGroup['icon'] }
+
+/** The menu's left side: one row a group, the pointed one raised. Hover or focus shows its tools; a click opens its page. */
+function MenuRail({ rows, active, onPick, onClose, foot }: { rows: RailRow[]; active: string; onPick: (key: string) => void; onClose: () => void; foot: { label: string; href: string } }) {
+  return (
+    <div className="flex flex-col gap-1 border-r border-warm-100 bg-warm-50 p-2">
+      {rows.map((row) => {
+        const on = row.key === active
+        return (
+          <Link
+            key={row.key}
+            href={row.href}
+            onClick={onClose}
+            onMouseEnter={() => onPick(row.key)}
+            onFocus={() => onPick(row.key)}
+            aria-current={on ? 'true' : undefined}
+            className={cn(
+              'flex items-center gap-3 rounded-xl border px-2.5 py-2 transition-colors',
+              on ? 'border-warm-200 bg-white shadow-[0_1px_2px_rgba(27,26,25,0.06)]' : 'border-transparent hover:bg-warm-100/70',
+            )}
+          >
+            {row.icon ? (
+              <span className={cn('inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] border border-warm-200 text-warm-800', on ? 'bg-warm-50' : 'bg-white')}>
+                <row.icon className="h-[17px] w-[17px]" />
+              </span>
+            ) : (
+              <SauceMark size={36} title={null} className="shrink-0" />
+            )}
+            <span className="min-w-0">
+              <span className="flex items-center gap-1.5 text-[14px] font-semibold text-warm-950">
+                {row.label}
+                {row.free && <FreeChip />}
+                {row.premium && <PremiumChip />}
+              </span>
+              <span className="block truncate text-[12.5px] text-warm-500">{row.sub}</span>
+            </span>
+          </Link>
+        )
+      })}
+      <Link href={foot.href} onClick={onClose} className="mt-auto inline-flex items-center gap-1.5 px-3 pb-2 pt-3 text-[13px] font-semibold text-warm-950 hover:underline">
+        {foot.label}
+        <ArrowRight className="h-3.5 w-3.5" />
+      </Link>
+    </div>
+  )
+}
+
+/** The menu's right side for a group: its name and pitch, its tools as icons and names, and a foot that says the pointed tool's line. */
+function GroupTools({ group, note, onClose }: { group: ProductGroup; note: string; onClose: () => void }) {
+  const [pointed, setPointed] = useState<NavItem | null>(null)
+  return (
+    <div className="flex h-full flex-col">
+      <div className="px-6 pt-5">
+        <div className="flex items-center gap-2 text-[16px] font-semibold tracking-tight text-warm-950">
+          {group.label}
+          {group.free && <FreeChip />}
+        </div>
+        <p className="mt-1 max-w-[540px] text-[13px] leading-relaxed text-warm-600">{group.pitch}</p>
       </div>
-      <div key={preview} className="pv-fade-in">
-        {renderPreview(preview)}
+      <div className="grid grid-cols-2 gap-x-2 gap-y-0.5 px-4 pb-4 pt-3" onMouseLeave={() => setPointed(null)}>
+        {group.items.map((item) => (
+          <Link
+            key={item.href + item.name}
+            href={item.href}
+            onClick={onClose}
+            onMouseEnter={() => setPointed(item)}
+            onFocus={() => setPointed(item)}
+            onBlur={() => setPointed(null)}
+            className="group flex h-9 min-w-0 items-center gap-2.5 rounded-lg px-2.5 transition-colors hover:bg-warm-50"
+          >
+            <item.icon className="h-4 w-4 shrink-0 text-warm-500 transition-colors group-hover:text-warm-950" />
+            <span className="truncate text-[14px] font-medium text-warm-900">{item.name}</span>
+            {item.badge && <NewChip>{item.badge}</NewChip>}
+          </Link>
+        ))}
+      </div>
+      <div className="mt-auto flex min-h-[48px] items-center border-t border-warm-100 bg-warm-50/60 px-6 py-2.5 text-[12.5px] text-warm-600" aria-live="polite">
+        {pointed ? (
+          <span className="min-w-0">
+            <span className="font-semibold text-warm-950">{pointed.name}</span> · {pointed.desc}
+          </span>
+        ) : (
+          <span>{note}</span>
+        )}
       </div>
     </div>
-    <p className="mt-3 flex-1 text-[12.5px] leading-snug text-warm-600">{pitch}</p>
-    <Link href={href} className="mt-3 inline-flex items-center gap-1 text-[13px] font-semibold text-warm-950 hover:underline">
-      {hrefLabel}
-      <ArrowRight className="h-3.5 w-3.5" />
-    </Link>
-  </div>
-)
+  )
+}
+
+/** Products' right side for Sauce: what it is, a working example, a few more things to ask. Drawn only while the menu is open. */
+function SauceView({ onClose }: { onClose: () => void }) {
+  return (
+    <div className="flex h-full flex-col px-6 pb-4 pt-5">
+      <div className="flex items-center gap-2 text-[16px] font-semibold tracking-tight text-warm-950">
+        Sauce
+        <PremiumChip />
+      </div>
+      {/* The demo keeps one height while it plays (its last step is its tallest), so the menu never moves */}
+      <div className="mt-3 grid grid-cols-[minmax(0,1fr)_200px] gap-5">
+        <div className="pointer-events-none h-[326px] overflow-hidden rounded-xl border border-warm-200" aria-hidden="true">
+          <SauceCardPreview task="swap" className="h-full" />
+        </div>
+        <div className="flex flex-col gap-2.5">
+          <p className="text-[13px] leading-relaxed text-warm-600">Tell it what needs doing, the way you’d text a manager. It gets it ready, and you tap Confirm.</p>
+          <span className="mt-2 text-[12.5px] text-warm-500">Also ask it</span>
+          {sauceAsks.map((q) => (
+            <span key={q} className="text-[13.5px] leading-snug text-warm-800">
+              “{q}”
+            </span>
+          ))}
+          <Link href={sauceItem.href} onClick={onClose} className="mt-auto inline-flex items-center gap-1.5 text-[13px] font-semibold text-warm-950 hover:underline">
+            Meet Sauce
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const PRODUCT_RAIL: RailRow[] = [
+  { key: SAUCE, label: sauceItem.name, sub: 'Ask for it in a sentence', href: sauceItem.href, premium: true },
+  ...productGroups.map((g) => ({ key: g.key, label: g.label, sub: g.sub, href: g.href, free: g.free, icon: g.icon })),
+]
+const SOLUTION_RAIL: RailRow[] = solutionGroups.map((g) => ({ key: g.key, label: g.label, sub: g.sub, href: g.href, free: g.free, icon: g.icon }))
+const PRODUCTS_NOTE = `Ordering from vendors is free · team tools from $39 per location · ${GUARANTEE_DAYS}-day money-back guarantee`
+const SOLUTIONS_NOTE = 'Every business runs on the same app · ordering from vendors and selling to cafés are free'
 
 const Header = () => {
   // The Docs run the full width of the screen, so the header's logo and links line up with them
@@ -45,10 +160,8 @@ const Header = () => {
   const [open, setOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
-  const [productFocus, setProductFocus] = useState(0)
-  // The item under the pointer; its own demo plays, else the group's.
-  const [productItem, setProductItem] = useState<NavItem | null>(null)
-  const [solutionFocus, setSolutionFocus] = useState<SolutionLink>(SOLUTION_MENU.business[0])
+  const [productKey, setProductKey] = useState(SAUCE)
+  const [solutionKey, setSolutionKey] = useState(solutionGroups[0].key)
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
   const dropdownTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -61,12 +174,18 @@ const Header = () => {
 
   const enter = (name: string) => {
     if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current)
+    // Products opens on Sauce each time
+    if (name === 'products' && activeDropdown !== 'products') setProductKey(SAUCE)
     setActiveDropdown(name)
   }
   const leave = () => {
     dropdownTimeout.current = setTimeout(() => setActiveDropdown(null), 150)
   }
   const close = () => setActiveDropdown(null)
+  // Tabbing through: a menu opens as focus enters it and closes once focus has left it
+  const blurOut = (e: React.FocusEvent<HTMLDivElement>) => {
+    if (!e.currentTarget.contains(e.relatedTarget as Node | null)) leave()
+  }
 
   const navLink = 'text-[14px] font-medium text-warm-600 hover:text-warm-950 px-3 py-2 rounded-lg transition-colors'
   // Menus hang from the header itself (the nearest positioned box), centred and never wider than
@@ -74,31 +193,23 @@ const Header = () => {
   const panel = (name: string) =>
     cn(
       'absolute left-1/2 top-[50px] -translate-x-1/2 pt-4 transition-all duration-200',
-      activeDropdown === name ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none',
+      activeDropdown === name ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none invisible',
     )
-  const focusedGroup = productGroups[productFocus]
+  const box = 'grid grid-cols-[256px_minmax(0,1fr)] overflow-hidden rounded-2xl border border-warm-200 bg-white shadow-[0_24px_60px_-20px_rgba(27,26,25,0.25)]'
+  const productGroup = productGroups.find((g) => g.key === productKey)
+  const solutionGroup = solutionGroups.find((g) => g.key === solutionKey) ?? solutionGroups[0]
 
-  const itemRow = (item: { name: string; desc: string; href: string; badge?: string; icon?: React.ComponentType<{ className?: string }> }, onFocus?: () => void) => (
-    <Link
-      key={item.href + item.name}
-      href={item.href}
-      onClick={close}
-      onMouseEnter={onFocus}
-      onFocus={onFocus}
-      className="group flex items-start gap-2.5 rounded-lg px-2 py-2 transition-colors hover:bg-warm-50"
-    >
-      {item.icon && (
-        <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-warm-100 text-warm-700 transition-colors group-hover:bg-forest-50 group-hover:text-forest-600">
-          <item.icon className="h-3.5 w-3.5" />
-        </span>
-      )}
-      <span className="min-w-0">
-        <span className="flex items-center gap-1.5 text-[13px] font-semibold text-warm-800 group-hover:text-warm-950">
-          {item.name}
-          {item.badge && <span className="rounded-full bg-forest-50 px-1.5 py-px text-[9.5px] font-bold uppercase tracking-wider text-forest-600">{item.badge}</span>}
-        </span>
-        <span className="block text-[11.5px] leading-snug text-warm-500">{item.desc}</span>
-      </span>
+  const mobileHead = (label: string, free?: boolean) => (
+    <div className="mb-1 flex items-center gap-2 text-[13px] font-medium text-warm-500">
+      {label}
+      {free && <FreeChip />}
+    </div>
+  )
+  const mobileRow = (item: NavItem) => (
+    <Link key={item.href + item.name} href={item.href} onClick={() => setOpen(false)} className="flex items-center gap-3 px-1 py-2.5 text-warm-800">
+      <item.icon className="h-4 w-4 shrink-0 text-warm-500" />
+      <span className="text-sm font-medium">{item.name}</span>
+      {item.badge && <NewChip>{item.badge}</NewChip>}
     </Link>
   )
 
@@ -114,79 +225,32 @@ const Header = () => {
           <div className="hidden flex-1 items-center justify-between md:flex">
             <nav className="flex items-center gap-1">
               {/* Products */}
-              <div onMouseEnter={() => enter('products')} onMouseLeave={leave}>
+              <div onMouseEnter={() => enter('products')} onMouseLeave={leave} onFocus={() => enter('products')} onBlur={blurOut}>
                 <Link href="/products" className={cn(navLink, 'inline-flex items-center gap-1')}>
                   Products
                   <ChevronDown className={cn('h-3.5 w-3.5 transition-transform duration-200', activeDropdown === 'products' && 'rotate-180')} />
                 </Link>
                 <div className={panel('products')}>
-                  {/* Four columns of links; from 1280px the live demo stands beside them (under that the four take the width) */}
-                  <div className="w-[min(1240px,calc(100vw-2rem))] rounded-2xl border border-warm-200 bg-white p-4 shadow-[0_24px_60px_-20px_rgba(27,26,25,0.25)]">
-                    <div className="grid grid-cols-4 gap-3 xl:grid-cols-[repeat(4,minmax(0,1fr))_280px]">
-                      {productGroups.map((group, gi) => (
-                        <div
-                          key={group.label}
-                          onMouseEnter={() => {
-                            if (productFocus !== gi) setProductItem(null)
-                            setProductFocus(gi)
-                          }}
-                          className={cn('min-w-0 rounded-xl p-1 transition-colors', productFocus === gi && 'bg-warm-50/70')}
-                        >
-                          <div className="mb-1.5 flex items-center gap-2 px-2 pt-1 text-[11px] font-semibold uppercase tracking-wider text-warm-400">
-                            {group.label}
-                            {group.free && <span className="rounded-full bg-ok-50 px-1.5 py-px text-[9px] font-bold tracking-wider text-ok-700">Free plan</span>}
-                          </div>
-                          <div className="space-y-0.5">
-                            {group.items.map((item) =>
-                              itemRow(item, () => {
-                                setProductFocus(gi)
-                                setProductItem(item)
-                              }),
-                            )}
-                          </div>
-                        </div>
-                      ))}
-                      {activeDropdown === 'products' && (
-                        <div className="hidden xl:block">
-                          <MenuDemo
-                            preview={productItem?.preview ?? focusedGroup.preview}
-                            title={productItem?.previewTitle ?? focusedGroup.previewTitle}
-                            pitch={productItem ? `${productItem.name}: ${productItem.desc.charAt(0).toLowerCase()}${productItem.desc.slice(1)}.` : focusedGroup.pitch}
-                            href={productItem?.href ?? focusedGroup.items[0].href}
-                            hrefLabel={productItem ? (productItem.cta ?? `Explore ${productItem.name}`) : `Explore ${focusedGroup.label}`}
-                          />
-                        </div>
-                      )}
-                    </div>
-                    <div className="mt-3 flex items-center justify-between border-t border-warm-100 px-2 pt-3">
-                      <Link href="/products" onClick={close} className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-warm-950 hover:underline">
-                        See the whole platform
-                        <ArrowRight className="h-3.5 w-3.5" />
-                      </Link>
-                      <span className="text-[12px] text-warm-500">Supply and Sales are free · team tools from $39 per location · {GUARANTEE_DAYS}-day money-back guarantee</span>
+                  <div className={cn(box, 'h-[402px] w-[min(920px,calc(100vw-2rem))]')}>
+                    <MenuRail rows={PRODUCT_RAIL} active={productKey} onPick={setProductKey} onClose={close} foot={{ label: 'See the whole platform', href: '/products' }} />
+                    <div className="min-w-0">
+                      {productGroup ? <GroupTools key={productGroup.key} group={productGroup} note={PRODUCTS_NOTE} onClose={close} /> : activeDropdown === 'products' && <SauceView onClose={close} />}
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Solutions */}
-              <div onMouseEnter={() => enter('solutions')} onMouseLeave={leave}>
+              <div onMouseEnter={() => enter('solutions')} onMouseLeave={leave} onFocus={() => enter('solutions')} onBlur={blurOut}>
                 <Link href="/solutions" className={cn(navLink, 'inline-flex items-center gap-1')}>
                   Solutions
                   <ChevronDown className={cn('h-3.5 w-3.5 transition-transform duration-200', activeDropdown === 'solutions' && 'rotate-180')} />
                 </Link>
                 <div className={panel('solutions')}>
-                  <div className="w-[min(920px,calc(100vw-2rem))] rounded-2xl border border-warm-200 bg-white p-4 shadow-[0_24px_60px_-20px_rgba(27,26,25,0.25)]">
-                    <div className="grid grid-cols-[1fr_1.1fr_300px] gap-4">
-                      <div className="rounded-xl p-1">
-                        <div className="mb-1.5 px-2 pt-1 text-[11px] font-semibold uppercase tracking-wider text-warm-400">By business</div>
-                        <div className="space-y-0.5">{SOLUTION_MENU.business.map((l) => itemRow({ name: l.label, desc: l.desc, href: l.href }, () => setSolutionFocus(l)))}</div>
-                      </div>
-                      <div className="rounded-xl p-1">
-                        <div className="mb-1.5 px-2 pt-1 text-[11px] font-semibold uppercase tracking-wider text-warm-400">By need</div>
-                        <div className="space-y-0.5">{SOLUTION_MENU.need.map((l) => itemRow({ name: l.label, desc: l.desc, href: l.href }, () => setSolutionFocus(l)))}</div>
-                      </div>
-                      {activeDropdown === 'solutions' && <MenuDemo preview={solutionFocus.preview} title={`Fork · ${solutionFocus.label}`} pitch={solutionFocus.desc} href={solutionFocus.href} hrefLabel={`Fork for ${solutionFocus.label.toLowerCase()}`} />}
+                  <div className={cn(box, 'h-[320px] w-[min(860px,calc(100vw-2rem))]')}>
+                    <MenuRail rows={SOLUTION_RAIL} active={solutionKey} onPick={setSolutionKey} onClose={close} foot={{ label: 'All solutions', href: '/solutions' }} />
+                    <div className="min-w-0">
+                      <GroupTools key={solutionGroup.key} group={solutionGroup} note={SOLUTIONS_NOTE} onClose={close} />
                     </div>
                   </div>
                 </div>
@@ -195,22 +259,9 @@ const Header = () => {
               <Link href="/pricing" className={navLink}>
                 Pricing
               </Link>
-              <Link href="/about" className={navLink}>
-                About
-              </Link>
-              <Link href="/faq" className={navLink}>
-                FAQ
-              </Link>
-              <Link href="/docs" className={cn(navLink, 'hidden lg:inline-flex')}>
-                Docs
-              </Link>
             </nav>
 
             <div className="flex items-center gap-2">
-              {/* From 1280px: under that the links, Sign in and the button fill the bar (the page is in the footer and the phone's menu) */}
-              <Link href={DEMO_PATH} className={cn(navLink, 'hidden whitespace-nowrap xl:inline-flex')}>
-                {CTA_DEMO}
-              </Link>
               <Link href={LOGIN_URL} target="_blank">
                 <Button variant="ghost" className="text-[14px] font-medium text-warm-600 hover:bg-transparent hover:text-warm-950">
                   Sign in
@@ -250,25 +301,21 @@ const Header = () => {
                     <ChevronDown className={cn('h-4 w-4 transition-transform', mobileExpanded === 'products' && 'rotate-180')} />
                   </button>
                   {mobileExpanded === 'products' && (
-                    <div className="border-b border-warm-100 bg-warm-50">
+                    <div className="border-b border-warm-100 bg-warm-50 pb-2">
+                      <Link href={sauceItem.href} onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 pb-1 pt-4 text-warm-800">
+                        <SauceMark size={28} title={null} className="shrink-0" />
+                        <span className="min-w-0">
+                          <span className="flex items-center gap-1.5 text-sm font-semibold">
+                            {sauceItem.name}
+                            <PremiumChip />
+                          </span>
+                          <span className="block text-xs text-warm-500">{sauceItem.desc}</span>
+                        </span>
+                      </Link>
                       {productGroups.map((group) => (
-                        <div key={group.label} className="px-4 pb-1 pt-3">
-                          <div className="mb-1 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-warm-400">
-                            {group.label}
-                            {group.free && <span className="rounded-full bg-ok-50 px-1.5 py-px text-[9px] font-bold tracking-wider text-ok-700">Free plan</span>}
-                          </div>
-                          {group.items.map((item) => (
-                            <Link key={item.name} href={item.href} onClick={() => setOpen(false)} className="flex items-center gap-3 px-1 py-2.5 text-warm-700">
-                              <item.icon className="h-4 w-4 shrink-0 text-forest-600" />
-                              <div className="min-w-0">
-                                <div className="flex items-center gap-1.5 text-sm font-medium">
-                                  {item.name}
-                                  {item.badge && <span className="rounded-full bg-forest-50 px-1.5 py-px text-[9.5px] font-bold uppercase tracking-wider text-forest-600">{item.badge}</span>}
-                                </div>
-                                <div className="text-xs text-warm-500">{item.desc}</div>
-                              </div>
-                            </Link>
-                          ))}
+                        <div key={group.key} className="px-4 pb-1 pt-3">
+                          {mobileHead(group.label, group.free)}
+                          {group.items.map(mobileRow)}
                         </div>
                       ))}
                     </div>
@@ -279,22 +326,11 @@ const Header = () => {
                     <ChevronDown className={cn('h-4 w-4 transition-transform', mobileExpanded === 'solutions' && 'rotate-180')} />
                   </button>
                   {mobileExpanded === 'solutions' && (
-                    <div className="border-b border-warm-100 bg-warm-50">
-                      {[
-                        ['By business', SOLUTION_MENU.business],
-                        ['By need', SOLUTION_MENU.need],
-                      ].map(([label, links]) => (
-                        <div key={label as string} className="px-4 pb-1 pt-3">
-                          <div className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-warm-400">{label as string}</div>
-                          {(links as SolutionLink[]).map((l) => (
-                            <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="flex items-center justify-between gap-3 px-1 py-2.5 text-warm-700">
-                              <div className="min-w-0">
-                                <div className="text-sm font-medium">{l.label}</div>
-                                <div className="text-xs text-warm-500">{l.desc}</div>
-                              </div>
-                              <ArrowRight className="h-3.5 w-3.5 shrink-0 text-warm-300" />
-                            </Link>
-                          ))}
+                    <div className="border-b border-warm-100 bg-warm-50 pb-2">
+                      {solutionGroups.map((group) => (
+                        <div key={group.key} className="px-4 pb-1 pt-3">
+                          {mobileHead(group.label, group.free)}
+                          {group.items.map(mobileRow)}
                         </div>
                       ))}
                     </div>

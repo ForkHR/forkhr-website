@@ -1,216 +1,99 @@
 import type { Metadata } from 'next'
-import { ArrowUpRight, BookOpen, CalendarDays, CheckCircle2, FolderOpen, HelpCircle, LayoutDashboard, Lock, MessageSquare, RefreshCw, Search, ShieldCheck, Smartphone, Sparkles, UserCog, Zap } from 'lucide-react'
+import { LockKeyhole, MousePointerClick, ShieldCheck, Users } from 'lucide-react'
 import Hero from '@/components/marketing/Hero'
 import SectionHeading from '@/components/marketing/SectionHeading'
 import CtaSection from '@/components/marketing/CtaSection'
-import { AiPreview, Window } from '@/components/previews'
 import FeatureGrid from '@/components/marketing/FeatureGrid'
+import SauceAnswers from '@/components/marketing/SauceAnswers'
+import SauceComposer from '@/components/marketing/SauceComposer'
+import SauceTasks from '@/components/marketing/SauceTasks'
+import { Phone, SauceChatPreview } from '@/components/previews'
 
-const description =
-  "An assistant trained on your company's own content: policies, FAQs, courses, library and the schedule itself. Accurate, role-aware answers for managers and employees, drafts for messages and open shifts, and escalation to a manager when it should not decide. Premium plan."
+/*
+ * Sauce, Fork's AI assistant (the name since 2026-11-22; this page was "AI Assistant: your
+ * company's knowledge, one question away" until the owner asked for it to follow, 2026-11-23).
+ * The address stays /ai-assistant: it is indexed and linked from the app. The story in order: ask it
+ * (answers, each saying what it reads), have it do the work (the cards, the same as the home page's),
+ * talk to it like a coworker, why it is safe. Every claim is something the app does: the lookups, the
+ * kinds of card and their button words, @ and / in the composer, files put on the record.
+ */
+const TITLE = 'Sauce, the AI assistant — Fork | Shifts, orders and answers in one sentence'
+const DESCRIPTION =
+  'Sauce is Fork’s AI assistant for cafés. Ask who is working tomorrow or what is low on stock, or tell it to move a shift, order from a vendor or write someone up. It gets it ready on a card, and nothing happens until you tap Confirm. Premium plan.'
 
 export const metadata: Metadata = {
-  title: 'AI Assistant — Fork | Answers from your own policies, FAQs and schedule',
-  description,
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: '/ai-assistant' },
-  openGraph: { title: 'AI Assistant — Fork', description, url: 'https://forkhr.com/ai-assistant', images: ['/og-image.png'], type: 'website' },
-  twitter: { card: 'summary_large_image', title: 'AI Assistant — Fork', description, images: ['/og-image.png'] },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: 'https://forkhr.com/ai-assistant', images: ['/og-image.png'], type: 'website' },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: ['/og-image.png'] },
 }
 
-const painPoints = [
-  { problem: 'Managers answering the same questions every week', detail: '"What\'s our PTO policy?" "How do I swap a shift?" "Where\'s the handbook?"' },
-  { problem: 'Answers buried in documents nobody opens twice', detail: 'Policies, FAQs and training exist, but finding them takes longer than asking.' },
-  { problem: 'Different managers, different answers', detail: 'The same policy question answered three ways across three locations.' },
-  { problem: 'Nobody has the numbers at hand', detail: 'Who is off Friday? Who closed last night? Somebody has to go and look.' },
+const trust = [
+  { icon: <MousePointerClick className="h-5 w-5" />, title: 'Nothing happens until you confirm', desc: 'Sauce gets it ready on a card. Only your tap places the order or saves the shift. A typed “yes” is not enough.' },
+  { icon: <Users className="h-5 w-5" />, title: 'It follows each person’s job', desc: 'A barista can ask for time off. Only a manager can move someone’s shift, and only in the plan you’re on.' },
+  { icon: <LockKeyhole className="h-5 w-5" />, title: 'Only your café’s data', desc: 'It reads what the person asking could open themselves, never another company’s, and it is not used to train AI models.' },
+  { icon: <ShieldCheck className="h-5 w-5" />, title: 'Drafts stay drafts', desc: 'Shifts, write-ups and policies it writes are drafts until you publish or submit them.' },
 ]
 
-const steps = [
-  {
-    step: '01',
-    icon: <BookOpen className="h-5 w-5 text-forest-600" />,
-    title: 'You publish your content',
-    description: 'FAQs, policies, courses and library files. The assistant indexes what you publish, nothing else.',
-    sources: ['Company FAQs', 'Policies and handbook', 'Courses', 'Library files'],
-  },
-  {
-    step: '02',
-    icon: <Search className="h-5 w-5 text-forest-600" />,
-    title: 'It retrieves, then answers',
-    description: 'Your content first. If nothing matches, it says so instead of guessing.',
-    sources: ['Your content ranked first', 'Live schedule and time off data', 'No made-up answers', 'Escalation when unsure'],
-  },
-  {
-    step: '03',
-    icon: <MessageSquare className="h-5 w-5 text-forest-600" />,
-    title: 'People get an answer, or a draft',
-    description: 'Policy answers, who is off, or a message ready to post. Matched to the person\'s role.',
-    sources: ['Role-aware answers', 'Drafts for announcements and messages', 'Hand-off to a manager', 'On every screen, web and mobile'],
-  },
-]
-
-const features = [
-  { icon: <Sparkles className="h-5 w-5 text-forest-600" />, title: 'Company-aware', desc: 'Answers are sourced from what you published: FAQs, policies, courses and library. Not generic internet answers.' },
-  { icon: <UserCog className="h-5 w-5 text-forest-600" />, title: 'Role-based', desc: 'Owners get billing and setup help, managers get team answers, employees get self-service steps. Permissions apply.' },
-  { icon: <CalendarDays className="h-5 w-5 text-forest-600" />, title: 'Knows the schedule', desc: 'Who is working, who is off, who has not clocked in. Real data from your company, not a guess.' },
-  { icon: <RefreshCw className="h-5 w-5 text-forest-600" />, title: 'Always current', desc: 'Publish an FAQ or update a policy and the next conversation knows it. No retraining step.' },
-  { icon: <Lock className="h-5 w-5 text-forest-600" />, title: 'Company-isolated', desc: 'Your content is never shared across companies or used to train other models.' },
-  { icon: <ArrowUpRight className="h-5 w-5 text-forest-600" />, title: 'Escalates', desc: 'When it cannot answer, it offers to hand off to your support or the employee\'s manager, context attached.' },
-]
-
-const sources = [
-  { icon: <HelpCircle className="h-5 w-5 text-forest-600" />, title: 'Company FAQs', desc: 'Published question-and-answer pairs. The first place the assistant looks for policy questions.' },
-  { icon: <ShieldCheck className="h-5 w-5 text-forest-600" />, title: 'Policies', desc: 'The current version of every published policy, including who has acknowledged it.' },
-  { icon: <BookOpen className="h-5 w-5 text-forest-600" />, title: 'Courses', desc: 'Modules, sections and steps. Good for "how do I" questions about procedures.' },
-  { icon: <FolderOpen className="h-5 w-5 text-forest-600" />, title: 'Library', desc: 'Handbooks, guides, recipes and other documents you share with the team.' },
-]
-
-const managerUseCases = ['Fewer repeat questions from the team', 'One answer to a policy question, at every location', 'A summary of who is off or late, without opening three screens', 'Drafts for announcements and cover requests', 'Support that scales without more managers']
-const employeeUseCases = ['Instant answers to policy questions', 'Step-by-step help with the app', 'Schedule, time off and timecard questions', 'Help on the closing shift when nobody is around', 'Course and training information on demand']
-
-export default function AIAssistantPage() {
+export default function SaucePage() {
   return (
     <main className="pt-16">
       <Hero
-        crumb={{ label: 'Products', href: '/products', current: 'AI assistant' }}
+        crumb={{ label: 'Products', href: '/products', current: 'Sauce' }}
         plan="premium"
-        title={
-          <>
-            Your company&apos;s knowledge<span className="text-forest-500">.</span> One question away<span className="text-forest-500">.</span>
-          </>
-        }
-        lede="Answers from your own policies, FAQs, courses and schedule. A manager one tap away when it should not decide."
-        secondaryHref="#how-it-works"
-        secondaryLabel="How it works"
+        title="Say what needs doing. Sauce gets it ready."
+        lede="Sauce is Fork’s AI assistant. It answers from your schedule, stock and handbook, and gets the shift, the order or the write-up ready for you to check. Nothing happens until you tap Confirm."
+        secondaryHref="#ask"
+        secondaryLabel="What you can ask"
+        note="On the web and in the Fork app for iOS and Android"
         aside={
-          <Window title="Fork · Assistant">
-            <AiPreview />
-          </Window>
+          <Phone>
+            <SauceChatPreview />
+          </Phone>
         }
       />
 
-      {/* Problem */}
-      <section className="border-b border-warm-100">
+      {/* Ask it */}
+      <section id="ask" className="scroll-mt-24 border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <div className="grid items-start gap-12 md:grid-cols-[1fr_1.4fr] md:gap-16">
-            <SectionHeading title="The answers exist. They are just hard to find." lede="Managers spend the day repeating them." />
-            <div className="divide-y divide-warm-100 border-t border-warm-100 md:border-t-0">
-              {painPoints.map((p, i) => (
-                <div key={p.problem} className="flex gap-5 py-5">
-                  <span className="w-8 shrink-0 pt-0.5 text-[13px] font-medium tabular-nums text-warm-400">{String(i + 1).padStart(2, '0')}</span>
-                  <div>
-                    <h3 className="mb-1 text-base font-semibold text-warm-950">{p.problem}</h3>
-                    <p className="text-sm leading-relaxed text-warm-500">{p.detail}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <SectionHeading align="center" title="Ask it about your café" lede="Answers from your own Fork, not the internet: the schedule, stock, timecards and the policies you wrote." />
+          <div className="mt-10">
+            <SauceAnswers />
           </div>
         </div>
       </section>
 
-      {/* How it works */}
-      <section id="how-it-works" className="scroll-mt-24 border-b border-warm-100 bg-warm-50">
-        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading title="Publish once, answer forever" lede="Nothing to configure." />
-          <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
-            {steps.map((s) => (
-              <div key={s.step} className="border-t-2 border-warm-950 pt-6">
-                <div className="flex items-center gap-3">
-                  <span className="text-[13px] font-medium tabular-nums text-warm-400">{s.step}</span>
-                  {s.icon}
-                </div>
-                <h3 className="mb-2 mt-3 text-lg font-semibold text-warm-950">{s.title}</h3>
-                <p className="mb-5 text-[15px] leading-relaxed text-warm-600">{s.description}</p>
-                <ul className="space-y-2.5">
-                  {s.sources.map((source) => (
-                    <li key={source} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-forest-500" />
-                      <span className="text-[15px] text-warm-600">{source}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Features */}
-      <section className="border-b border-warm-100">
-        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading title="Built for accuracy, not novelty" />
-          <FeatureGrid className="mt-12" columns={3} items={features} />
-        </div>
-      </section>
-
-      {/* Sources */}
+      {/* Have it do the work */}
       <section className="border-b border-warm-100 bg-warm-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading title="Your content, in this order" />
-          <FeatureGrid className="mt-12" columns={4} items={sources.map((s, i) => ({ icon: s.icon, title: s.title, desc: s.desc, meta: `Priority ${i + 1}` }))} />
-          <p className="mt-6 text-sm text-warm-500">Fork&apos;s own product documentation comes last, for questions about the app itself. Live schedule, time off and timecard data is read from your company when the question needs it.</p>
+          <SectionHeading title="Or have it do the work" lede="Sauce makes the card the app would make, with the people, days and items filled in. Check it, then tap." />
+          <div className="mt-12 md:mt-14">
+            <SauceTasks />
+          </div>
+          <p className="mt-8 text-[15px] leading-relaxed text-warm-500">Also: timecards, events, checklists and log entries, new employees, terminations, FAQs, policies, sales orders and service requests.</p>
         </div>
       </section>
 
-      {/* Use cases */}
-      <section className="border-b border-warm-100">
+      {/* Like a coworker */}
+      <section id="coworker" className="border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading title="Built for both sides of the org chart" />
-          <div className="mt-12 overflow-hidden rounded-2xl border border-warm-200 bg-white">
-            <div className="grid grid-cols-2 border-b border-warm-200">
-              <div className="flex items-center gap-3 border-r border-warm-200 px-6 py-5 md:px-8">
-                <ShieldCheck className="h-5 w-5 text-forest-600" />
-                <span className="text-base font-semibold text-warm-950">For managers</span>
-              </div>
-              <div className="flex items-center gap-3 px-6 py-5 md:px-8">
-                <Smartphone className="h-5 w-5 text-forest-600" />
-                <span className="text-base font-semibold text-warm-950">For employees</span>
-              </div>
-            </div>
-            {managerUseCases.map((uc, i) => (
-              <div key={uc} className="grid grid-cols-2 border-b border-warm-100 last:border-0">
-                <div className="flex items-start gap-3 border-r border-warm-100 px-6 py-4 md:px-8">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-forest-500" />
-                  <span className="text-[15px] text-warm-600">{uc}</span>
-                </div>
-                <div className="flex items-start gap-3 px-6 py-4 md:px-8">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-forest-500" />
-                  <span className="text-[15px] text-warm-600">{employeeUseCases[i]}</span>
-                </div>
-              </div>
-            ))}
+          <SectionHeading title="Talk to it like a coworker" lede="The same message box as a chat with your team." />
+          <div className="mt-12">
+            <SauceComposer />
           </div>
         </div>
       </section>
 
-      {/* Where */}
-      <section className="border-b border-warm-100 bg-warm-50">
-        <div className="mx-auto max-w-6xl px-6 py-14 md:py-16">
-          <div className="flex flex-col gap-8 md:flex-row md:items-center md:gap-12">
-            <div className="shrink-0 md:max-w-[280px]">
-              <h2 className="text-2xl font-semibold tracking-tight text-warm-950">Where your team already is</h2>
-            </div>
-            <div className="grid flex-1 grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-4 md:border-l md:border-warm-200 md:pl-12">
-              {[
-                { icon: <LayoutDashboard className="h-5 w-5 text-forest-600" />, title: 'Web app', desc: 'On every page' },
-                { icon: <Smartphone className="h-5 w-5 text-forest-600" />, title: 'Mobile app', desc: 'iOS and Android' },
-                { icon: <Lock className="h-5 w-5 text-forest-600" />, title: 'Company-isolated', desc: 'Never shared across companies' },
-                { icon: <Zap className="h-5 w-5 text-forest-600" />, title: 'Retrieval first', desc: 'Your content, then the answer' },
-              ].map((item) => (
-                <div key={item.title} className="flex items-start gap-3">
-                  <div className="mt-0.5 shrink-0">{item.icon}</div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-warm-950">{item.title}</h3>
-                    <p className="text-xs text-warm-500">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+      {/* Safe */}
+      <section id="safe" className="border-b border-warm-100 bg-warm-50">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+          <SectionHeading title="It can only do what you could" />
+          <FeatureGrid className="mt-12" columns={4} items={trust} />
         </div>
       </section>
 
-      <CtaSection title="Stop answering the same questions" lede="The assistant is part of Premium, with SOPs, courses, policies and contracts." />
+      <CtaSection title="Hand Sauce the busywork" lede="Sauce comes with Premium, with checklists, reminders and the app blocker." />
     </main>
   )
 }
