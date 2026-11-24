@@ -87,7 +87,7 @@ export const TIERS: Tier[] = [
     name: 'Premium',
     price: 129,
     tagline: 'Run every shift the same way',
-    description: 'SOPs, training, policies, contracts and an AI assistant trained on your content.',
+    description: 'SOPs, training, policies, contracts and Sauce, the AI assistant.',
     bullets: [
       'Everything in Pro',
       'SOPs: boards, procedures & checklists',
@@ -101,7 +101,7 @@ export const TIERS: Tier[] = [
       'Events with RSVPs',
       'Reminders with alarms and questions',
       'App blocker for shifts',
-      'AI assistant',
+      'Sauce, the AI assistant',
       'Advanced reports',
       'Priority support',
     ],
@@ -185,7 +185,7 @@ export const FEATURE_GROUPS: FeatureGroup[] = [
       { key: 'policies', label: 'Policies & acknowledgements', minTier: 'premium' },
       { key: 'faqs', label: 'Company FAQs', minTier: 'premium' },
       { key: 'events', label: 'Events & RSVPs', minTier: 'premium' },
-      { key: 'ai', label: 'AI assistant', minTier: 'premium' },
+      { key: 'ai', label: 'Sauce, the AI assistant', minTier: 'premium' },
     ],
   },
   {

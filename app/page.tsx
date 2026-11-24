@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, Inbox, Landmark, Mail, Monitor, PackageCheck, Receipt, RefreshCw, Repeat, Smartphone, Store } from 'lucide-react'
+import { ArrowRight, LockKeyhole, Mail, Monitor, MousePointerClick, ShieldCheck, Smartphone, Store, Landmark, Users } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Backdrop from '@/components/visual/Backdrop'
 import GradientStage from '@/components/visual/GradientStage'
@@ -8,51 +8,39 @@ import SectionHeading from '@/components/marketing/SectionHeading'
 import Segments from '@/components/marketing/Segments'
 import PricingTeaser from '@/components/marketing/PricingTeaser'
 import CtaSection from '@/components/marketing/CtaSection'
-import PlanBadge from '@/components/marketing/PlanBadge'
 import DayTimeline, { type DayStop } from '@/components/marketing/DayTimeline'
-import PerformanceSpotlight from '@/components/marketing/PerformanceSpotlight'
 import ProductSuite from '@/components/marketing/ProductSuite'
-import {
-  AiPreview,
-  ApplicantPreview,
-  InvoicePreview,
-  LearningPreview,
-  PeoplePreview,
-  ProductTour,
-  ReceivingPreview,
-  SchedulePreview,
-  ServiceCallPreview,
-  SopsPreview,
-  SupplyPreview,
-  TechnicianPreview,
-  VendorChatPreview,
-} from '@/components/previews'
-import Spotlight from '@/components/marketing/Spotlight'
-import StoreBadges from '@/components/marketing/StoreBadges'
-import { CTA_DEMO, CTA_PRIMARY, DEMO_PATH, REGISTER_URL, SITE_DESCRIPTION } from '@/lib/site'
+import CalendarDay from '@/components/marketing/CalendarDay'
+import SauceTasks from '@/components/marketing/SauceTasks'
 import FeatureGrid from '@/components/marketing/FeatureGrid'
+import StoreBadges from '@/components/marketing/StoreBadges'
+import { Phone, SauceChatPreview, SchedulePreview, SopsPreview, VendorChatPreview } from '@/components/previews'
+import { SauceMark } from '@/components/previews/sauceBits'
+import { CTA_DEMO, CTA_PRIMARY, DEMO_PATH, REGISTER_URL } from '@/lib/site'
+
+/*
+ * The home page, for cafés, led by Sauce (2026-11-23, the owner picked hero "E" of the sketches on
+ * https://claude.ai/artifact/XQqaJTdSdXuBKbepuVfMud and asked for the rest of the site to follow).
+ * The story in order: you ask Sauce (the hero, then what it can do and why it is safe), it lands on
+ * the calendar and the team hears in the chat, a day at a café, everything behind it, pricing.
+ * Not here any more, on purpose: the wholesale and service-call spotlights (For suppliers has them),
+ * the new-hire story (the Hiring page), the old assistant band, and the "10 hrs/wk" figures, which no
+ * source backed.
+ */
+const TITLE = 'Fork — The café app you can talk to'
+const DESCRIPTION =
+  'Fork runs your café: schedules and timecards, checklists, vendor orders, the team chat and one calendar for all of it. Ask Sauce, its AI assistant, and it gets the shift, the order or the write-up ready for you to confirm.'
 
 export const metadata: Metadata = {
-  title: 'Fork — Run the whole business from one app',
-  description: SITE_DESCRIPTION,
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: '/' },
-  openGraph: {
-    title: 'Fork — Run the whole business from one app',
-    description: SITE_DESCRIPTION,
-    url: 'https://forkhr.com',
-    images: ['/og-image.png'],
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Fork — Run the whole business from one app',
-    description: SITE_DESCRIPTION,
-    images: ['/og-image.png'],
-  },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: 'https://forkhr.com', images: ['/og-image.png'], type: 'website' },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: ['/og-image.png'] },
 }
 
 // One Tuesday at a café, in the order it happens. Times match the demos (the 6:58 punch on the
-// timecards demo, the 8:12 → 8:19 dairy thread, Corner Café paying at 9:40 on Tuesday).
+// timecards demo, the 8:12 → 8:19 dairy thread).
 const day: DayStop[] = [
   { kind: 'moment', time: '6:58 AM', app: 'Timecards', where: 'Main St', text: 'Maya Chen clocked in on the counter tablet.', tag: 'On time', tone: 'ok' },
   {
@@ -80,19 +68,8 @@ const day: DayStop[] = [
     href: '/supply',
     hrefLabel: 'Explore supply',
   },
-  {
-    kind: 'feature',
-    time: '9:40 AM',
-    plan: 'free',
-    title: "Corner Café pays yesterday's invoice",
-    lede: 'Invoice from the order. They paid by bank transfer from the emailed link, with no account on their side.',
-    bullets: ['Price lists per customer', 'Card and bank payments through Stripe', 'Delivery routes with proof of delivery'],
-    preview: <InvoicePreview />,
-    previewTitle: 'Fork · Sales · Order S-2088',
-    href: '/sales',
-    hrefLabel: 'Explore selling',
-  },
   { kind: 'moment', time: '11:40 AM', app: 'Feed', where: 'All locations', text: '12 of 14 people confirmed they read the new closing procedure.', tag: '12 of 14', tone: 'brand' },
+  { kind: 'moment', time: '12:30 PM', app: 'Sauce', where: 'Main St', text: 'Maya is sick tomorrow. One message to Sauce, one tap, and Luis has the opening shift.', tag: 'Saved', tone: 'ok' },
   { kind: 'moment', time: '2:00 PM', app: 'Reminders', where: 'Main St', text: 'Jordan Lee got Shift in 1 hour for the 3:00 PM close. Nobody had to text.', tag: 'Sent', tone: 'neutral' },
   { kind: 'moment', time: '3:05 PM', app: 'Schedule', where: 'Main St', text: "Luis traded Saturday's close with Priya. Approved in one tap.", tag: 'Approved', tone: 'ok' },
   {
@@ -111,93 +88,46 @@ const day: DayStop[] = [
   { kind: 'moment', time: '10:12 PM', app: 'SOPs', where: 'Main St', text: 'Closing checklist done four minutes early. The till matches.', tag: 'Done', tone: 'ok' },
 ]
 
-// A new hire's first weeks, in order. Jordan Lee is the same new barista as the people demo;
-// every step is something the app does (hiringControllers hire → profile + invite, onboarding
-// tasks that complete themselves, training shifts with a trainer, a 30-day automatic cycle).
-const newHire: DayStop[] = [
-  { kind: 'moment', day: 'Mon', time: '9:14 AM', app: 'Hiring', where: 'Main St', text: 'Jordan Lee applied to be a barista, from your job board.', tag: 'New', tone: 'brand' },
-  {
-    kind: 'feature',
-    day: 'Mon',
-    time: '9:20 AM',
-    plan: 'essential',
-    title: 'The resume, read before you open it',
-    lede: 'One tap and AI sums up the resume and the screening answers against the job: highlights, red flags and an honest fit.',
-    bullets: ['Your own job board at jobs.forkhr.com', 'Interview invites the candidate accepts from the email', 'Hire, and the profile and app invite come with it'],
-    preview: <ApplicantPreview />,
-    previewTitle: 'Fork · Hiring · Jordan Lee',
-    href: '/hiring',
-    hrefLabel: 'Explore hiring',
-  },
-  { kind: 'moment', day: 'Tue', time: '10:02 AM', app: 'Hiring', where: 'Main St', text: "Jordan accepted Thursday's interview from the email.", tag: 'Accepted', tone: 'ok' },
-  { kind: 'moment', day: 'Thu', time: '4:30 PM', app: 'Hiring', where: 'Main St', text: 'Hired at $17.00 an hour. Profile created, app invite sent.', tag: 'Hired', tone: 'ok' },
-  {
-    kind: 'feature',
-    day: 'Fri',
-    time: '11:20 AM',
-    plan: 'pro',
-    title: 'The paperwork is done before day one',
-    lede: 'W-4, I-9 and direct deposit filled in on a phone, the food handler card uploaded. The onboarding guide ticks itself off as they go.',
-    bullets: ['Onboarding guides that track themselves', 'Documents with expiry reminders', 'Contracts and the handbook signed on a phone (Premium)'],
-    preview: <PeoplePreview />,
-    previewTitle: 'Fork · People · Jordan Lee',
-    href: '/products#people',
-    hrefLabel: 'See people & HR',
-  },
-  { kind: 'moment', day: 'Mon', time: '6:55 AM', app: 'Schedule', where: 'Main St', text: 'First shift: a training shift with Priya.', tag: 'Training', tone: 'brand' },
-  { kind: 'moment', day: 'Mon', time: '1:30 PM', app: 'Learn', where: 'Courses', text: 'Jordan finished Food safety basics on the shift and earned its badge.', tag: 'Completed', tone: 'ok' },
-  {
-    kind: 'feature',
-    day: 'Thu',
-    time: '3:00 PM',
-    plan: 'premium',
-    title: 'Every course done, every policy acknowledged',
-    lede: 'Short courses with quizzes on their phone, the handbook and policies acknowledged, the library and FAQs a tap away. You see who has finished what.',
-    bullets: ['Courses with video, quizzes and badges', 'Courses assigned by job, in order', 'Policy acknowledgements, with reminders for the unsigned'],
-    preview: <LearningPreview />,
-    previewTitle: 'Fork · Learn · Jordan Lee',
-    href: '/products#learn',
-    hrefLabel: 'See Learn',
-  },
-  { kind: 'moment', day: 'Week 2', time: '9:00 AM', app: 'Learn', where: 'New hires', text: '3 of 4 new hires have finished their first-week courses.', tag: '3 of 4', tone: 'brand' },
-  { kind: 'moment', day: 'Day 30', time: '9:00 AM', app: 'Performance', where: 'Main St', text: "Jordan's 30-day check-in opened on its own.", tag: 'Opened', tone: 'plum' },
+const trust = [
+  { icon: <MousePointerClick className="h-5 w-5" />, title: 'Nothing happens until you confirm', desc: 'Sauce gets it ready on a card. Only your tap places the order or saves the shift.' },
+  { icon: <Users className="h-5 w-5" />, title: 'It follows each person’s job', desc: 'A barista can ask for time off. Only a manager can move someone’s shift.' },
+  { icon: <LockKeyhole className="h-5 w-5" />, title: 'Only your café’s data', desc: 'It reads what the person asking could open themselves, and nothing from anyone else.' },
+  { icon: <ShieldCheck className="h-5 w-5" />, title: 'Drafts stay drafts', desc: 'Shifts, write-ups and policies it writes are drafts until you publish them.' },
 ]
 
 const integrations = [
   { icon: <Store className="h-5 w-5" />, title: 'Square', desc: 'Sales synced every 20 minutes' },
   { icon: <Landmark className="h-5 w-5" />, title: 'Stripe', desc: 'Card and bank payments, paid out to you' },
-  { icon: <Mail className="h-5 w-5" />, title: 'Email', desc: 'Vendors and customers reply from their inbox' },
+  { icon: <Mail className="h-5 w-5" />, title: 'Email', desc: 'Vendors reply from their inbox' },
   { icon: <Smartphone className="h-5 w-5" />, title: 'iOS & Android', desc: 'The team on their own phones' },
   { icon: <Monitor className="h-5 w-5" />, title: 'Web & kiosk', desc: 'Any browser. Any tablet as the clock' },
 ]
 
 const steps = [
-  { step: '01', title: 'Add locations, vendors, customers', description: 'Import from a spreadsheet. Ordering and selling are free from day one.' },
+  { step: '01', title: 'Add your shops and vendors', description: 'Import from a spreadsheet. Ordering from vendors is free from day one.' },
   { step: '02', title: 'Invite the team', description: 'They install the app. The first schedule lands on their phones.' },
-  { step: '03', title: 'Turn on checklists and reviews', description: 'Start from templates. Add courses and policies when ready.' },
+  { step: '03', title: 'Start asking Sauce', description: 'Shifts, orders, write-ups, time off. Turn on checklists from templates when you are ready.' },
 ]
 
 export default function Home() {
   return (
     <main className="pt-16">
-      {/* Hero */}
+      {/* Hero: a manager texting Sauce */}
       <section className="relative overflow-hidden border-b border-warm-100">
         <Backdrop />
         <div className="relative mx-auto max-w-6xl px-6 pb-14 pt-12 md:pb-20 md:pt-20">
-          <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.15fr] lg:gap-14">
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_1fr] lg:gap-14">
             <div className="relative z-10">
-              <Link href="/performance" className="group inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 rounded-full border border-warm-200 bg-white/80 py-1 pl-1 pr-3 text-sm shadow-[0_1px_2px_rgba(27,26,25,0.05)] transition-colors hover:border-warm-300">
-                <span className="inline-flex items-center rounded-full bg-warm-950 px-2.5 py-0.5 text-[12px] font-semibold text-white">New</span>
-                <span className="font-medium text-warm-700 group-hover:text-warm-950">
-                  Performance reviews<span className="hidden sm:inline">, written from the record</span>
-                </span>
+              <Link href="/ai-assistant" className="group inline-flex items-center gap-2.5 rounded-full border border-warm-200 bg-white/80 py-1 pl-1 pr-3 text-sm shadow-[0_1px_2px_rgba(27,26,25,0.05)] transition-colors hover:border-warm-300">
+                <SauceMark size={24} title={null} />
+                <span className="font-medium text-warm-700 group-hover:text-warm-950">Meet Sauce, your café’s AI assistant</span>
                 <ArrowRight className="h-3.5 w-3.5 text-warm-400 transition-transform group-hover:translate-x-0.5" />
               </Link>
 
-              <h1 className="mt-7 text-5xl font-semibold leading-[1.02] tracking-[-0.02em] text-warm-950 md:text-6xl lg:text-[4.25rem]">Run the whole business from one app.</h1>
+              <h1 className="mt-7 text-5xl font-semibold leading-[1.02] tracking-[-0.02em] text-warm-950 md:text-6xl lg:text-[4.25rem]">The café app you can talk to.</h1>
 
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-warm-600 md:text-xl">
-                Schedules and timecards for the team. Checklists that get done. Reviews with the facts already in. Orders to vendors, invoices to customers.
+                Tell Sauce what needs doing, the way you’d text a manager. It gets the shift, the order or the write-up ready, and you tap Confirm. Behind it, Fork runs your schedule, checklists, vendor orders and team chat.
               </p>
 
               <div className="mt-9 flex flex-wrap items-center gap-4">
@@ -214,21 +144,46 @@ export default function Home() {
                 </Link>
               </div>
 
-              <p className="mt-5 text-sm text-warm-500">Free for ordering and selling · Team plans from $39 per location</p>
+              <p className="mt-5 text-sm text-warm-500">Sauce comes with Premium · Ordering from vendors is free · Team plans from $39 per location</p>
 
               <StoreBadges size="sm" className="mt-7" />
             </div>
 
-            {/* The tour on Fork's moving gradient (GradientStage explains the lg:static wrapper) */}
             <div className="on-gradient relative lg:static">
               <GradientStage />
-              <ProductTour className="relative" />
+              <Phone className="relative">
+                <SauceChatPreview />
+              </Phone>
             </div>
           </div>
 
           <div className="mt-16 border-t border-warm-100 pt-8">
-            <Segments />
+            <Segments label="Built for" />
           </div>
+        </div>
+      </section>
+
+      {/* What to ask */}
+      <section id="sauce" className="scroll-mt-24 border-b border-warm-100">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+          <SectionHeading title="One sentence instead of five screens" lede="Pick one. Sauce makes the card the app would make, with the right people, days and items already filled in." />
+          <div className="mt-12 md:mt-14">
+            <SauceTasks />
+          </div>
+          <p className="mt-8 text-[15px] leading-relaxed text-warm-500">
+            Also: timecards, events, checklists and logs, new employees, sales orders, service calls, FAQs and policies. And questions, like who is working Saturday or what is low on stock.
+          </p>
+          <div className="mt-14 border-t border-warm-100 pt-12">
+            <FeatureGrid columns={4} items={trust} />
+          </div>
+        </div>
+      </section>
+
+      {/* Where it lands: one day of the calendar, up close (sketch H, the owner's pick of 2026-11-23, after a week grid beside a chat window and then a week grid with a chat card were "crowded" and "so bad") */}
+      <section id="calendar" className="scroll-mt-24 border-b border-warm-100 bg-warm-50">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 py-20 md:py-28 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
+          <SectionHeading title="It lands where everyone looks" lede="What Sauce makes goes on the calendar, next to the shifts, checklists and deliveries already there. The people it touches hear about it in the chat." />
+          <CalendarDay />
         </div>
       </section>
 
@@ -242,135 +197,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* A new hire on Fork */}
-      <section id="new-hire" className="scroll-mt-24 border-b border-warm-100 bg-warm-50">
-        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <SectionHeading
-            title="From applicant to first shift"
-            lede="Jordan applies on Monday, signs everything on Friday and works a training shift the Monday after. Nobody chases a form."
-          />
-          <div className="mt-14 md:mt-16">
-            <DayTimeline stops={newHire} rail="weeks" surface="paper" />
-          </div>
-        </div>
-      </section>
-
-      <PerformanceSpotlight />
-
-      <Spotlight
-        id="supply"
-        plan="free"
-        surface="paper"
-        flip
-        shape="band-reverse"
-        seed={13}
-        title="Every vendor, one place to order. Free."
-        lede="Vendors who aren't on Fork get an email and reply into the chat. Deliveries are checked in on a phone, with every short, extra or damaged item flagged."
-        windowTitle="Fork · Supply · Orders"
-        preview={<SupplyPreview />}
-        phone={<ReceivingPreview />}
-        points={[
-          { icon: <Mail className="h-4 w-4" />, title: 'Vendors on Fork or not', desc: 'Not on Fork? They get an email, and their reply lands in the chat.' },
-          { icon: <RefreshCw className="h-4 w-4" />, title: 'One-time and standing orders', desc: 'Delivery days, cutoffs and minimums checked as you order.' },
-          { icon: <PackageCheck className="h-4 w-4" />, title: 'Checked in on a phone', desc: 'Short, extra or damaged, flagged with a photo and sent in one message.' },
-          { icon: <Receipt className="h-4 w-4" />, title: 'Credits that stick', desc: 'Every credit and invoice stays on the order it belongs to.' },
-        ]}
-        href="/supply"
-        hrefLabel="Explore supply"
-        note="Plus stock counts with par levels (Essential), vendor documents and purchasing reports."
-      />
-
-      <Spotlight
-        id="service-calls"
-        plan="free"
-        shape="wave"
-        seed={21}
-        title="Finish the job. The invoice is already written."
-        lede="For repair and maintenance companies: book the visit, capture it on the technician's phone and bill from it. Customers pay from a link, no account needed."
-        windowTitle="Fork · Service calls · #SR-1042"
-        preview={<ServiceCallPreview />}
-        phone={<TechnicianPreview />}
-        points={[
-          { icon: <Inbox className="h-4 w-4" />, title: 'Requests from your form', desc: "Or from the customer's Fork app, or a call you log yourself." },
-          { icon: <Smartphone className="h-4 w-4" />, title: 'The visit on one phone', desc: 'Photos, parts, time on site and a signature.' },
-          { icon: <Receipt className="h-4 w-4" />, title: 'One call or the whole month', desc: 'Bill either way. The work report rides along on the PDF.' },
-          { icon: <Repeat className="h-4 w-4" />, title: 'Contracts that book themselves', desc: 'Quarterly visits are created ahead of time.' },
-        ]}
-        href="/service-providers"
-        hrefLabel="Fork for service providers"
-        note="Plus estimates, callbacks and credits, and a chat per customer."
-      />
-
       <ProductSuite />
 
-      {/* AI */}
-      <section className="relative overflow-hidden bg-warm-950">
-        <Backdrop tone="dark" />
-        <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-            <div className="max-w-lg">
-              <div className="flex flex-wrap items-center gap-3">
-                <PlanBadge tier="premium" className="border-warm-700 bg-transparent text-warm-300 hover:border-warm-500 hover:text-white" />
-              </div>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">Ask about your business in plain English</h2>
-              <p className="mt-5 text-lg leading-relaxed text-warm-400">Answers come from your own policies, FAQs and schedule. Not the internet.</p>
-              <dl className="mt-10 space-y-6">
-                {[
-                  { title: 'Trained on your content', desc: 'Publish a policy. The next answer knows it.' },
-                  { title: 'Role-aware', desc: 'People only see what they are allowed to.' },
-                  { title: 'Knows when to hand off', desc: 'A manager gets the question, with context.' },
-                ].map((c) => (
-                  <div key={c.title} className="border-l-2 border-warm-800 pl-5">
-                    <dt className="text-[15px] font-semibold text-white">{c.title}</dt>
-                    <dd className="mt-1 text-[15px] leading-relaxed text-warm-400">{c.desc}</dd>
-                  </div>
-                ))}
-              </dl>
-              <Link href="/ai-assistant" className="mt-10 inline-flex items-center gap-1.5 text-[15px] font-medium text-lime-accent transition-colors hover:text-white">
-                About the assistant
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-            <div className="@container overflow-hidden rounded-xl border border-warm-800 bg-warm-900/60">
-              <AiPreview dark />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Numbers + what it works with */}
-      <section className="border-b border-warm-100">
-        <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-          <div className="grid items-center gap-12 md:grid-cols-[1.1fr_1fr] md:gap-20">
-            <div>
-              <div className="mb-4 text-6xl font-semibold leading-none tracking-tight text-warm-950 md:text-7xl">
-                10 hrs<span className="text-warm-300">/wk</span>
-              </div>
-              <p className="max-w-md text-xl leading-relaxed text-warm-600">Saved per manager, every week.</p>
-              <p className="mt-6 text-xs text-warm-400">Average reported by teams on Fork for 90+ days.</p>
-            </div>
-            <div className="divide-y divide-warm-100">
-              {[
-                { metric: '90%', label: 'Faster onboarding' },
-                { metric: '$4,800', label: 'Saved per location per year' },
-                { metric: '70%', label: 'Fewer repeat questions' },
-              ].map((m) => (
-                <div key={m.label} className="flex items-baseline justify-between gap-6 py-5">
-                  <p className="text-[15px] leading-relaxed text-warm-600">{m.label}</p>
-                  <div className="shrink-0 text-3xl font-semibold tracking-tight text-warm-950">{m.metric}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-16 border-t border-warm-100 pt-12 md:mt-20">
-            <SectionHeading title="No new hardware. Nobody forced to sign up." />
-            <FeatureGrid className="mt-10" columns={5} items={integrations} />
-          </div>
-        </div>
-      </section>
-
-      {/* How it works */}
+      {/* How it starts */}
       <section className="border-b border-warm-100">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
           <SectionHeading title="Up and running in an afternoon" />
@@ -383,11 +212,15 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <div className="mt-16 border-t border-warm-100 pt-12 md:mt-20">
+            <SectionHeading title="No new hardware. Nobody forced to sign up." />
+            <FeatureGrid className="mt-10" columns={5} items={integrations} />
+          </div>
         </div>
       </section>
 
       <PricingTeaser />
-      <CtaSection />
+      <CtaSection title="Tell Sauce what your café needs" lede="Ordering from vendors is free. Team plans from $39 per location, and Sauce comes with Premium." />
     </main>
   )
 }

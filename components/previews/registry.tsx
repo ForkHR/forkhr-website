@@ -33,6 +33,9 @@ import LinksPreview from './LinksPreview'
 import RemindersPreview from './RemindersPreview'
 import AppBlockerPreview from './AppBlockerPreview'
 import SurpriseBagsPreview from './SurpriseBagsPreview'
+import SauceCardPreview from './SauceCardPreview'
+import SauceChatPreview from './SauceChatPreview'
+import CalendarPreview from './CalendarPreview'
 
 /** One place that turns a preview key from lib/solutions into a demo element. */
 export const renderPreview = (key: PreviewKey): ReactNode => {
@@ -110,10 +113,16 @@ export const renderPreview = (key: PreviewKey): ReactNode => {
       return <AppBlockerPreview />
     case 'surpriseBags':
       return <SurpriseBagsPreview />
+    case 'sauce':
+      return <SauceCardPreview />
+    case 'sauceChat':
+      return <SauceChatPreview />
+    case 'calendar':
+      return <CalendarPreview />
     default:
       return null
   }
 }
 
 /** Which frame a key wants: the phone for the mobile-first demos, a window otherwise. */
-export const frameFor = (key: PreviewKey): 'window' | 'phone' => (key === 'sopsPhone' || key === 'technician' || key === 'reviewPhone' || key === 'receiving' || key === 'productPage' ? 'phone' : 'window')
+export const frameFor = (key: PreviewKey): 'window' | 'phone' => (key === 'sopsPhone' || key === 'technician' || key === 'reviewPhone' || key === 'receiving' || key === 'productPage' || key === 'sauceChat' ? 'phone' : 'window')

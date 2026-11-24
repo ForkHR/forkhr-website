@@ -9,14 +9,13 @@ import { ALL_SOLUTION_LINKS, SOLUTION_MENU } from '@/lib/solutions'
 
 type FooterLink = { label: string; href: string; external?: boolean; badge?: string }
 
-// Product columns come from the header's menu (nav-data), so a product added there shows up here.
-// Three of them: the menu's Supply and Sales columns are one here (productSides), which is as
-// many columns as the footer's width holds without folding their links.
-const productColumns: { title: string; links: FooterLink[] }[] = productSides.map((g) => ({
+// Product columns come from the header's menu (nav-data), so a product added there shows up here:
+// your team, your shop, vendors and customers (two short groups in one column) and For suppliers.
+const productColumns: { title: string; links: FooterLink[] }[] = productSides.map((g, i) => ({
   title: g.label,
   links: [
-    ...g.items.map((i) => ({ label: i.name, href: i.href, badge: i.badge })),
-    ...(g.label === 'Team' ? [{ label: 'Job board ↗', href: JOBS_URL, external: true }] : []),
+    ...g.items.map((item) => ({ label: item.name, href: item.href, badge: item.badge })),
+    ...(i === 0 ? [{ label: 'Job board ↗', href: JOBS_URL, external: true }] : []),
   ],
 }))
 
@@ -75,8 +74,9 @@ const Footer = () => {
   return (
     <footer className="border-t border-warm-200 bg-warm-50">
       <div className="mx-auto max-w-6xl px-4 pb-10 pt-16 md:px-6">
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 lg:grid-cols-[1.6fr_repeat(5,1fr)]">
-          <div className="col-span-2 flex flex-col gap-5 md:col-span-4 lg:col-span-1 lg:pr-6">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 lg:grid-cols-6">
+          {/* The brand and the ways in: a row of its own over the six columns on a wide screen */}
+          <div className="col-span-2 flex flex-col gap-5 md:col-span-4 lg:col-span-6 lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-8 lg:border-b lg:border-warm-200 lg:pb-8">
             <Link href="/" className="text-warm-950" aria-label="Fork home">
               <Logo height={28} />
             </Link>

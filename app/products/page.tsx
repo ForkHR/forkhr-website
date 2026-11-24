@@ -112,7 +112,7 @@ const chapters: Chapter[] = [
       { id: 'feed', label: 'Feed', tier: 'essential', Icon: Megaphone },
       { id: 'learn', label: 'Learn', tier: 'pro', Icon: BookOpen },
       { id: 'reports', label: 'Reports', tier: 'essential', Icon: PieChart },
-      { id: 'ai', label: 'AI assistant', tier: 'premium', Icon: BotMessageSquare },
+      { id: 'ai', label: 'Sauce, the AI assistant', tier: 'premium', Icon: BotMessageSquare },
     ],
   },
   {
