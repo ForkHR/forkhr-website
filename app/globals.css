@@ -340,6 +340,24 @@
   .pv-typing span:nth-child(2) { animation-delay: 0.15s; }
   .pv-typing span:nth-child(3) { animation-delay: 0.3s; }
 
+  /* Sauce typing, as Messages draws it: three grey dots lit one after another (SauceChatPreview) */
+  .pv-imsg-dots span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: #8e8e93;
+    opacity: 0.35;
+    animation: pv-imsg-dot 1.2s linear infinite;
+  }
+  .pv-imsg-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .pv-imsg-dots span:nth-child(3) { animation-delay: 0.4s; }
+  /* ...and its bubble growing out of its corner as it comes */
+  .pv-imsg-pop {
+    transform-origin: left bottom;
+    animation: pv-imsg-pop 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
   /* Route path drawing (pathLength="100" on the path) */
   .pv-path {
     stroke-dasharray: 100;
@@ -370,7 +388,7 @@
     .pv-item, .pv-pop, .pv-slide-r, .pv-grow, .pv-fill, .pv-swap, .pv-path {
       transition: none !important;
     }
-    .pv-live::after, .pv-typing span, .marquee, .pv-bar-in, .pv-msg-in, .pv-tap, .pv-caret {
+    .pv-live::after, .pv-typing span, .pv-imsg-dots span, .pv-imsg-pop, .marquee, .pv-bar-in, .pv-msg-in, .pv-tap, .pv-caret {
       animation: none !important;
     }
   }
@@ -464,6 +482,14 @@
   @keyframes pv-caret {
     0%, 50% { opacity: 1; }
     50.01%, 100% { opacity: 0; }
+  }
+  @keyframes pv-imsg-dot {
+    0%, 50%, 100% { opacity: 0.35; transform: scale(1); }
+    25% { opacity: 1; transform: scale(1.12); }
+  }
+  @keyframes pv-imsg-pop {
+    from { opacity: 0; transform: scale(0.4); }
+    to { opacity: 1; transform: scale(1); }
   }
   @keyframes pv-blink {
     0%, 80%, 100% { opacity: 0.25; transform: translateY(0); }
